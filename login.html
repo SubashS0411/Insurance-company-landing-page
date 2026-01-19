@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" class="scroll-smooth dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claimora Insurance - Login</title>
+    <title>Claimora - Secure Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -13,39 +13,92 @@
             theme: {
                 extend: {
                     colors: {
-                        royal: {
-                            900: '#1e293b',
-                            800: '#334155',
+                        navy: { 900: '#0a192f', 800: '#112240', 700: '#233554' },
+                        neon: {
+                            cyan: '#64ffda',
+                            violet: '#b39ddb',
+                            magenta: '#f50057',
+                            orange: '#FF9F1C',
+                            green: '#00ff9d'
                         },
-                        gold: {
-                            500: '#d4af37',
-                            600: '#b4941f',
+                        vibrant: {
+                            'electric-purple': '#240046',
+                            'royal-indigo': '#1A237E',
                         }
                     },
                     fontFamily: {
-                        serif: ['Playfair Display', 'serif'],
-                        sans: ['Outfit', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'guilloche': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        .glass-panel {
+            background: rgba(17, 34, 64, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        html:not(.dark) .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Form Transition Syles */
+        .form-container {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(20px);
+        }
+
+        .form-container.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            position: relative;
+        }
+
+        .form-container.inactive-left {
+            transform: translateX(-20px);
+        }
+
+        /* Input Focus Glow */
+        .input-group:focus-within i {
+            color: #64ffda;
+        }
+
+        html:not(.dark) .input-group:focus-within i {
+            color: #2563EB;
+        }
+
+        .bg-login-gradient {
+            background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+        }
+
+        html:not(.dark) .bg-login-gradient {
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+        }
+    </style>
 </head>
 
 <body
-    class="font-sans text-gray-800 bg-gray-50 dark:bg-slate-900 bg-guilloche min-h-screen flex items-center justify-center p-4 relative overflow-hidden transition-colors duration-300">
+    class="font-sans antialiased overflow-x-hidden bg-slate-900 text-slate-200 dark:text-slate-lightest transition-colors duration-300 flex flex-col min-h-screen">
 
-    <!-- Background decorations -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-20 left-20 w-96 h-96 bg-royal-900/5 dark:bg-gold-500/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-20 right-20 w-72 h-72 bg-gold-500/10 rounded-full blur-3xl"></div>
-    </div>
-
-    <!-- LIQUID GLASS HEADER -->
-    <nav class="header-glass">
+    <!-- Navbar (Consistent with Services) -->
+    <nav class="header-glass sticky top-0 z-50">
         <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
             <!-- Brand -->
             <a href="index.html" class="flex items-center gap-3 group">
@@ -61,43 +114,46 @@
             </a>
 
             <!-- Desktop Nav -->
-            <div class="hidden lg:flex items-center space-x-8">
+            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse gap-x-8">
                 <!-- Home Dropdown -->
                 <div class="relative group">
-                    <button class="nav-link flex items-center gap-1 py-4">
+                    <button
+                        class="nav-link flex items-center gap-1 py-4 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-neon-cyan transition-colors font-medium">
                         Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
                     </button>
                     <!-- Dropdown -->
                     <div
-                        class="absolute top-full left-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                        class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
                         <a href="index.html"
-                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white">Home
-                            V1
-                            (Parallax)</a>
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
+                            V1 (Parallax)</a>
                         <a href="index2.html"
-                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white">Home
-                            V2
-                            (Retro)</a>
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
+                            V2 (Retro)</a>
                     </div>
                 </div>
 
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="about.html"
+                    class="nav-link text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-neon-cyan transition-colors font-medium">About</a>
+                <a href="services.html"
+                    class="nav-link text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-neon-cyan transition-colors font-medium">Services</a>
+                <a href="contact.html"
+                    class="nav-link text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-neon-cyan transition-colors font-medium">Contact</a>
 
                 <!-- Dashboards Dropdown -->
                 <div class="relative group">
-                    <button class="nav-link flex items-center gap-1 py-4">
+                    <button
+                        class="nav-link flex items-center gap-1 py-4 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-neon-cyan transition-colors font-medium">
                         Dashboards <i data-lucide="chevron-down" class="w-4 h-4"></i>
                     </button>
                     <div
-                        class="absolute top-full left-0 w-56 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                        class="absolute top-full ltr:left-0 rtl:right-0 w-56 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
                         <a href="user_dashboard.html"
-                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white">
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white text-start">
                             <i data-lucide="user" class="w-4 h-4 text-indigo-500"></i> User Dashboard
                         </a>
                         <a href="admin_dashboard.html"
-                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white">
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white text-start">
                             <i data-lucide="shield" class="w-4 h-4 text-rose-500"></i> Admin Dashboard
                         </a>
                     </div>
@@ -106,12 +162,12 @@
 
             <!-- Action Buttons -->
             <div class="hidden lg:flex items-center gap-4">
-                <button id="rtl-toggle"
+                <button id="rtl-toggle" onclick="toggleRTL()"
                     class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
                     title="Toggle RTL">
                     <i data-lucide="globe" class="w-5 h-5"></i>
                 </button>
-                <button id="theme-toggle"
+                <button id="theme-toggle" onclick="toggleTheme()"
                     class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
                     title="Toggle Theme">
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
@@ -122,23 +178,35 @@
                 </a>
             </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
+            <!-- Mobile Actions -->
+            <div class="lg:hidden flex items-center gap-3">
+                <button onclick="toggleTheme()"
+                    class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+
+                <button id="mobile-menu-btn"
+                    onclick="document.getElementById('mobile-drawer').classList.remove('ltr:-translate-x-full', 'rtl:translate-x-full'); document.getElementById('mobile-overlay').classList.remove('opacity-0', 'pointer-events-none');"
+                    class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- MOBILE DRAWER & OVERLAY -->
     <div id="mobile-overlay"
-        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300">
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300"
+        onclick="closeDrawer()">
     </div>
     <div id="mobile-drawer"
-        class="fixed top-0 bottom-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[70] mobile-drawer mobile-drawer-closed shadow-2xl overflow-y-auto">
+        class="fixed top-0 bottom-0 ltr:left-0 rtl:right-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[70] mobile-drawer shadow-2xl overflow-y-auto transform transition-transform duration-300 ltr:-translate-x-full rtl:translate-x-full">
         <div class="p-6">
             <div class="flex items-center justify-between mb-8">
                 <span class="font-bold text-xl dark:text-white">Menu</span>
-                <button id="close-menu-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-full">
+                <button id="close-menu-btn" onclick="closeDrawer()"
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-full">
                     <i data-lucide="x" class="w-6 h-6 dark:text-white"></i>
                 </button>
             </div>
@@ -146,19 +214,22 @@
             <nav class="space-y-6">
                 <!-- Mobile Links -->
                 <div class="space-y-3">
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Navigation</p>
-                    <a href="index.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">Home</a>
-                    <a href="index2.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">Home V2
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Navigation</p>
+                    <a href="index.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home</a>
+                    <a href="index2.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home V2
                         (Retro)</a>
-                    <a href="about.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">About</a>
+                    <a href="about.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">About</a>
                     <a href="services.html"
-                        class="block text-lg font-medium text-slate-800 dark:text-slate-200">Services</a>
+                        class="block text-lg font-medium text-indigo-600 dark:text-neon-cyan font-bold text-start">Services</a>
                     <a href="contact.html"
-                        class="block text-lg font-medium text-slate-800 dark:text-slate-200">Contact</a>
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Contact</a>
                 </div>
 
                 <div class="space-y-3">
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Portals</p>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Portals</p>
                     <a href="user_dashboard.html"
                         class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
                         <div
@@ -179,130 +250,198 @@
 
                 <hr class="border-slate-100 dark:border-slate-800">
 
-                <!-- Mobile Actions -->
-                <div class="flex gap-4">
-                    <button id="mobile-theme-toggle"
-                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
-                        <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
-                    </button>
-                    <a href="login.html"
-                        class="block w-full py-4 text-center font-bold text-white bg-blue-600 rounded-xl shadow-lg shadow-blue-500/30">
-                        Get Started
-                    </a>
-                </div>
+                <a href="login.html"
+                    class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
+                    Get Started
+                </a>
             </nav>
         </div>
     </div>
 
-    <!-- MAIN LOGIN WRAPPER -->
-    <main class="flex-grow flex items-center justify-center py-20 relative">
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow flex items-center justify-center py-24 px-4 bg-login-gradient relative overflow-hidden">
 
-        <div
-            class="w-full max-w-md bg-white dark:bg-slate-800 rounded-2xl shadow-2xl overflow-hidden border border-gray-100 dark:border-slate-700 relative z-10 transform hover:scale-[1.01] transition-all duration-300">
-            <div class="bg-navy-900 p-8 text-center relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-br from-navy-900 via-slate-900 to-navy-900"></div>
-                <div class="absolute top-0 right-0 w-32 h-32 bg-neon-cyan/10 rounded-full blur-2xl"></div>
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-600/20 rounded-full blur-[100px]">
+            </div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-neon-cyan/10 rounded-full blur-[100px]">
+            </div>
+        </div>
 
-                <div class="relative z-10">
-                    <a href="index.html" class="inline-flex items-center gap-2 text-white mb-4 group">
-                        <div
-                            class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan">
-                            <i class="fas fa-shield-alt"></i>
+        <div class="w-full max-w-md relative z-10 perspective-1000">
+            <!-- Glass Card -->
+            <div class="glass-panel rounded-2xl shadow-2xl overflow-hidden relative min-h-[600px] flex flex-col">
+
+                <!-- Toggle Header -->
+                <div class="flex border-b border-slate-200 dark:border-slate-700/50">
+                    <button onclick="switchMode('signin')" id="tab-signin"
+                        class="flex-1 py-4 text-center font-bold text-sm uppercase tracking-wider text-indigo-600 dark:text-neon-cyan border-b-2 border-indigo-600 dark:border-neon-cyan bg-slate-50/50 dark:bg-navy-800/50 transition-colors">
+                        Sign In
+                    </button>
+                    <button onclick="switchMode('signup')" id="tab-signup"
+                        class="flex-1 py-4 text-center font-bold text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 border-b-2 border-transparent hover:bg-slate-50/50 dark:hover:bg-navy-800/30 transition-colors">
+                        Sign Up
+                    </button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="p-8 pb-10 flex-grow relative overflow-hidden">
+
+                    <!-- SIGN IN FORM -->
+                    <div id="signin-form" class="form-container active h-full flex flex-col justify-center">
+                        <div class="text-center mb-8">
+                            <div
+                                class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-navy-800 mb-4 shadow-inner">
+                                <i class="fas fa-user-circle text-3xl text-indigo-600 dark:text-neon-cyan"></i>
+                            </div>
+                            <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white">Welcome Back</h2>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Access your secure portal</p>
                         </div>
-                        <span class="font-display text-2xl font-bold">Claimora</span>
-                    </a>
-                    <h2 class="text-white text-xl font-semibold mt-2">Secure Client Portal</h2>
-                    <p class="text-slate-300 text-sm mt-2 flex items-center justify-center gap-2">
-                        <i class="fas fa-shield-alt text-neon-cyan"></i> 256-bit SSL Encrypted
-                    </p>
+
+                        <form action="user_dashboard.html" class="space-y-5">
+                            <div class="space-y-2 group input-group">
+                                <label
+                                    class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Client
+                                    ID / Email</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <i class="fas fa-envelope text-slate-400 transition-colors duration-300"></i>
+                                    </div>
+                                    <input type="text" placeholder="Enter your ID or Email" required
+                                        class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-slate-700/50 rounded-xl focus:outline-none focus:border-indigo-500 dark:focus:border-neon-cyan focus:ring-1 focus:ring-indigo-500 dark:focus:ring-neon-cyan text-slate-900 dark:text-white placeholder-slate-400 transition-all">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2 group input-group">
+                                <label
+                                    class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Password</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <i class="fas fa-lock text-slate-400 transition-colors duration-300"></i>
+                                    </div>
+                                    <input type="password" placeholder="••••••••" required
+                                        class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-slate-700/50 rounded-xl focus:outline-none focus:border-indigo-500 dark:focus:border-neon-cyan focus:ring-1 focus:ring-indigo-500 dark:focus:ring-neon-cyan text-slate-900 dark:text-white placeholder-slate-400 transition-all">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2 group input-group">
+                                <label
+                                    class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">2FA
+                                    Code</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <i class="fas fa-shield-alt text-slate-400 transition-colors duration-300"></i>
+                                    </div>
+                                    <input type="text" placeholder="123 456"
+                                        class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-slate-700/50 rounded-xl focus:outline-none focus:border-indigo-500 dark:focus:border-neon-cyan focus:ring-1 focus:ring-indigo-500 dark:focus:ring-neon-cyan text-slate-900 dark:text-white placeholder-slate-400 transition-all">
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between text-sm">
+                                <label
+                                    class="flex items-center gap-2 cursor-pointer text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-neon-cyan transition-colors">
+                                    <input type="checkbox"
+                                        class="rounded text-indigo-600 focus:ring-indigo-500 bg-slate-100 dark:bg-navy-900 border-slate-300 dark:border-slate-700">
+                                    <span>Remember me</span>
+                                </label>
+                                <a href="#"
+                                    class="text-indigo-600 dark:text-neon-cyan/80 hover:text-indigo-800 dark:hover:text-neon-cyan transition-colors">Forgot
+                                    Password?</a>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                                <span>Sign In Securely</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- SIGN UP FORM -->
+                    <div id="signup-form" class="form-container h-full flex flex-col justify-center">
+                        <div class="text-center mb-8">
+                            <div
+                                class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-navy-800 mb-4 shadow-inner">
+                                <i class="fas fa-user-plus text-3xl text-indigo-600 dark:text-neon-cyan"></i>
+                            </div>
+                            <h2 class="text-2xl font-display font-bold text-slate-900 dark:text-white">Create Account
+                            </h2>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Join the future of insurance</p>
+                        </div>
+
+                        <form action="user_dashboard.html" class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="space-y-2 group input-group flex-1">
+                                    <div class="relative">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <i class="fas fa-user text-slate-400 transition-colors duration-300"></i>
+                                        </div>
+                                        <input type="text" placeholder="First Name" required
+                                            class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-slate-700/50 rounded-xl focus:outline-none focus:border-indigo-500 dark:focus:border-neon-cyan focus:ring-1 focus:ring-indigo-500 dark:focus:ring-neon-cyan text-slate-900 dark:text-white placeholder-slate-400 transition-all">
+                                    </div>
+                                </div>
+                                <div class="space-y-2 group input-group flex-1">
+                                    <div class="relative">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <i class="fas fa-user text-slate-400 transition-colors duration-300"></i>
+                                        </div>
+                                        <input type="text" placeholder="Last Name" required
+                                            class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-slate-700/50 rounded-xl focus:outline-none focus:border-indigo-500 dark:focus:border-neon-cyan focus:ring-1 focus:ring-indigo-500 dark:focus:ring-neon-cyan text-slate-900 dark:text-white placeholder-slate-400 transition-all">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2 group input-group">
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <i class="fas fa-envelope text-slate-400 transition-colors duration-300"></i>
+                                    </div>
+                                    <input type="email" placeholder="Email Address" required
+                                        class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-slate-700/50 rounded-xl focus:outline-none focus:border-indigo-500 dark:focus:border-neon-cyan focus:ring-1 focus:ring-indigo-500 dark:focus:ring-neon-cyan text-slate-900 dark:text-white placeholder-slate-400 transition-all">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2 group input-group">
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <i class="fas fa-lock text-slate-400 transition-colors duration-300"></i>
+                                    </div>
+                                    <input type="password" placeholder="Create Password" required
+                                        class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-slate-700/50 rounded-xl focus:outline-none focus:border-indigo-500 dark:focus:border-neon-cyan focus:ring-1 focus:ring-indigo-500 dark:focus:ring-neon-cyan text-slate-900 dark:text-white placeholder-slate-400 transition-all">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2 group input-group">
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <i
+                                            class="fas fa-check-circle text-slate-400 transition-colors duration-300"></i>
+                                    </div>
+                                    <input type="password" placeholder="Confirm Password" required
+                                        class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-navy-900/50 border border-slate-200 dark:border-slate-700/50 rounded-xl focus:outline-none focus:border-indigo-500 dark:focus:border-neon-cyan focus:ring-1 focus:ring-indigo-500 dark:focus:ring-neon-cyan text-slate-900 dark:text-white placeholder-slate-400 transition-all">
+                                </div>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full py-4 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 mt-4">
+                                <span>Get Started</span>
+                                <i class="fas fa-rocket"></i>
+                            </button>
+
+                            <p class="text-xs text-center text-slate-500 dark:text-slate-400 mt-4">
+                                By signing up, you agree to our <a href="#"
+                                    class="underline hover:text-indigo-500">Terms</a> and <a href="#"
+                                    class="underline hover:text-indigo-500">Privacy Policy</a>.
+                            </p>
+                        </form>
+                    </div>
+
                 </div>
             </div>
-
-            <form class="p-8 space-y-6" action="user_dashboard.html">
-                <div class="space-y-2">
-                    <label for="client-id" class="block text-sm font-semibold text-gray-700 dark:text-gray-300">Client
-                        ID</label>
-                    <div class="relative group">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <i
-                                class="fas fa-user text-gray-400 group-focus-within:text-royal-900 dark:group-focus-within:text-gold-500 transition"></i>
-                        </div>
-                        <input type="text" id="client-id"
-                            class="block w-full pl-11 pr-4 py-3 border-2 border-gray-200 dark:border-slate-600 rounded-xl leading-5 bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-royal-900/20 dark:focus:ring-gold-500/20 focus:border-royal-900 dark:focus:border-gold-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300"
-                            placeholder="Enter your Client ID">
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <label for="password"
-                        class="block text-sm font-semibold text-gray-700 dark:text-gray-300">Password</label>
-                    <div class="relative group">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <i
-                                class="fas fa-key text-gray-400 group-focus-within:text-royal-900 dark:group-focus-within:text-gold-500 transition"></i>
-                        </div>
-                        <input type="password" id="password"
-                            class="block w-full pl-11 pr-4 py-3 border-2 border-gray-200 dark:border-slate-600 rounded-xl leading-5 bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-royal-900/20 dark:focus:ring-gold-500/20 focus:border-royal-900 dark:focus:border-gold-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300"
-                            placeholder="••••••••">
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <label for="2fa" class="block text-sm font-semibold text-gray-700 dark:text-gray-300">2FA
-                        Code</label>
-                    <div class="relative group">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <i
-                                class="fas fa-shield-alt text-gray-400 group-focus-within:text-royal-900 dark:group-focus-within:text-gold-500 transition"></i>
-                        </div>
-                        <input type="text" id="2fa"
-                            class="block w-full pl-11 pr-4 py-3 border-2 border-gray-200 dark:border-slate-600 rounded-xl leading-5 bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-royal-900/20 dark:focus:ring-gold-500/20 focus:border-royal-900 dark:focus:border-gold-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300"
-                            placeholder="123 456">
-                    </div>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                        <i class="fas fa-info-circle"></i> Enter the code from your authenticator app.
-                    </p>
-                </div>
-
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <input id="remember-me" type="checkbox"
-                            class="h-4 w-4 text-royal-900 focus:ring-royal-900 border-gray-300 rounded cursor-pointer">
-                        <label for="remember-me"
-                            class="ml-2 block text-sm text-gray-700 dark:text-gray-300 cursor-pointer">Remember
-                            me</label>
-                    </div>
-                    <div class="text-sm">
-                        <a href="#"
-                            class="font-semibold text-royal-900 dark:text-gold-500 hover:text-blue-800 dark:hover:text-gold-400 transition">Forgot
-                            password?</a>
-                    </div>
-                </div>
-
-                <button type="submit"
-                    class="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-xl shadow-lg text-sm font-bold text-white bg-black hover:bg-gray-900 dark:bg-black dark:border-white/20 dark:hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-xl uppercase tracking-widest">
-                    <i class="fas fa-sign-in-alt"></i> Sign In
-                </button>
-            </form>
-
-            <div
-                class="bg-gray-50 dark:bg-slate-900/50 px-8 py-4 border-t border-gray-100 dark:border-slate-700 text-center">
-                <p class="text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2">
-                    <i class="fas fa-exclamation-triangle text-amber-500"></i>
-                    Unauthorized access is prohibited.
-                </p>
-                <div class="mt-3 flex items-center justify-center gap-4">
-                    <a href="admin_dashboard.html"
-                        class="text-xs text-gray-400 hover:text-royal-900 dark:hover:text-gold-500 transition flex items-center gap-1">
-                        <i class="fas fa-user-shield"></i> Partner Login
-                    </a>
-                    <span class="text-gray-300 dark:text-slate-600">|</span>
-                    <a href="contact.html"
-                        class="text-xs text-gray-400 hover:text-royal-900 dark:hover:text-gold-500 transition flex items-center gap-1">
-                        <i class="fas fa-headset"></i> Need Help?
-                    </a>
-                </div>
-            </div>
+        </div>
     </main>
 
     <!-- NEW ANIMATED GRADIENT FOOTER -->
@@ -312,26 +451,25 @@
             <div>
                 <a href="#" class="flex items-center gap-2 mb-6 text-white group">
                     <div
-                        class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)]">
-                        <i class="fas fa-shield-alt text-lg"></i>
+                        class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg transition-transform group-hover:rotate-12">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
                     </div>
-                    <span class="font-display font-bold text-xl">Safe<span class="text-neon-cyan">Guard</span></span>
+                    <span class="font-bold text-xl">Claimora</span>
                 </a>
                 <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
-                    Next-generation insurance protection for the digital age. We help you navigate risk with
-                    confidence.
+                    Next-generation insurance & business intelligence. Protecting your future with confidence.
                 </p>
                 <div class="flex gap-4 mt-6">
                     <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-navy-900 transition-all transform hover:-translate-y-1">
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all transform hover:-translate-y-1">
                         <i data-lucide="facebook" class="w-5 h-5"></i>
                     </a>
                     <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-violet hover:text-white transition-all transform hover:-translate-y-1">
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-sky-500 hover:text-white transition-all transform hover:-translate-y-1">
                         <i data-lucide="twitter" class="w-5 h-5"></i>
                     </a>
                     <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-magenta hover:text-white transition-all transform hover:-translate-y-1">
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-pink-600 hover:text-white transition-all transform hover:-translate-y-1">
                         <i data-lucide="instagram" class="w-5 h-5"></i>
                     </a>
                 </div>
@@ -350,7 +488,7 @@
 
             <!-- Col 3: Account -->
             <div>
-                <h4 class="text-white font-bold mb-6">Portals</h4>
+                <h4 class="text-white font-bold mb-6">Account</h4>
                 <ul class="space-y-4 text-sm text-slate-400">
                     <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a></li>
                     <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Console</a></li>
@@ -361,34 +499,117 @@
 
             <!-- Col 4: Newsletter -->
             <div>
-                <h4 class="text-white font-bold mb-6">Stay Protected</h4>
-                <p class="text-slate-400 text-sm mb-4">Subscribe for safety tips and policy updates.</p>
+                <h4 class="text-white font-bold mb-6">Stay Updated</h4>
+                <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest insights.</p>
                 <div class="flex gap-2">
                     <input type="email" placeholder="Email address"
-                        class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-neon-cyan transition-colors">
+                        class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors">
                     <button
-                        class="px-6 py-3 bg-gradient-to-r from-neon-cyan to-neon-violet text-navy-900 font-bold rounded-lg hover:shadow-[0_0_15px_rgba(100,255,218,0.4)] transition-all">Go</button>
+                        class="px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors">Go</button>
                 </div>
             </div>
         </div>
 
         <div
             class="max-w-[1920px] mx-auto px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
-            <div>&copy; 2026 Claimora Insurance. All rights reserved.</div>
+            <div>&copy; 2026 Claimora. All rights reserved.</div>
             <div class="flex gap-6 mt-4 md:mt-0">
                 <a href="#" class="hover:text-white transition-colors">Terms</a>
                 <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-                <span>Designed with <i class="fas fa-shield-alt text-neon-cyan mx-1"></i> by Claimora</span>
+                <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by NexGen</span>
             </div>
         </div>
     </footer>
+
     <script>
         lucide.createIcons();
+
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Check local storage
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // RTL Toggle Logic
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.getAttribute('dir') === 'ltr') {
+                html.setAttribute('dir', 'rtl');
+                html.classList.add('rtl');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.classList.remove('rtl');
+            }
+        }
+
+        function closeDrawer() {
+            document.getElementById('mobile-drawer').classList.add('ltr:-translate-x-full', 'rtl:translate-x-full');
+            document.getElementById('mobile-overlay').classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Sign In / Sign Up Switch Logic
+        function switchMode(mode) {
+            const signinForm = document.getElementById('signin-form');
+            const signupForm = document.getElementById('signup-form');
+            const signinTab = document.getElementById('tab-signin');
+            const signupTab = document.getElementById('tab-signup');
+
+            if (mode === 'signup') {
+                signinForm.classList.remove('active');
+
+                setTimeout(() => {
+                    signinForm.classList.add('hidden'); // Fully hide to prevent layout shift if needed, or just relying on abs pos
+                    // Actually, with absolute positioning, we don't need 'hidden' for layout, but for accessibility maybe.
+                    // For transition:
+                    signinForm.style.display = 'none';
+                    signupForm.style.display = 'flex';
+                    signupForm.classList.add('active');
+                }, 400); // Wait for fade out
+
+                // Styles
+                signinTab.classList.remove('text-indigo-600', 'dark:text-neon-cyan', 'border-indigo-600', 'dark:border-neon-cyan', 'bg-slate-50/50', 'dark:bg-navy-800/50');
+                signinTab.classList.add('text-slate-500', 'dark:text-slate-400', 'border-transparent', 'hover:bg-slate-50/50', 'dark:hover:bg-navy-800/30');
+
+                signupTab.classList.add('text-indigo-600', 'dark:text-neon-cyan', 'border-indigo-600', 'dark:border-neon-cyan', 'bg-slate-50/50', 'dark:bg-navy-800/50');
+                signupTab.classList.remove('text-slate-500', 'dark:text-slate-400', 'border-transparent', 'hover:bg-slate-50/50', 'dark:hover:bg-navy-800/30');
+
+            } else {
+                signupForm.classList.remove('active');
+
+                setTimeout(() => {
+                    signupForm.style.display = 'none';
+                    signinForm.style.display = 'flex';
+                    signinForm.classList.add('active');
+                }, 400);
+
+                // Styles
+                signupTab.classList.remove('text-indigo-600', 'dark:text-neon-cyan', 'border-indigo-600', 'dark:border-neon-cyan', 'bg-slate-50/50', 'dark:bg-navy-800/50');
+                signupTab.classList.add('text-slate-500', 'dark:text-slate-400', 'border-transparent', 'hover:bg-slate-50/50', 'dark:hover:bg-navy-800/30');
+
+                signinTab.classList.add('text-indigo-600', 'dark:text-neon-cyan', 'border-indigo-600', 'dark:border-neon-cyan', 'bg-slate-50/50', 'dark:bg-navy-800/50');
+                signinTab.classList.remove('text-slate-500', 'dark:text-slate-400', 'border-transparent', 'hover:bg-slate-50/50', 'dark:hover:bg-navy-800/30');
+            }
+        }
+
+        // Initial state
+        document.addEventListener('DOMContentLoaded', () => {
+            // ensure signup is hidden initially
+            const signupForm = document.getElementById('signup-form');
+            signupForm.style.display = 'none';
+        });
+
     </script>
-
-    <!-- Scripts -->
-    <script src="main.js"></script>
-
 </body>
 
 </html>
