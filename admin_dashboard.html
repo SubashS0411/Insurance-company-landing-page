@@ -255,7 +255,7 @@
         <!-- Sidebar -->
         <!-- Sidebar -->
         <aside id="sidebar"
-            class="fixed top-20 bottom-0 left-0 z-40 w-64 bg-white dark:bg-slate-950 border-r border-gray-200 dark:border-gray-800 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col">
+            class="fixed top-20 bottom-0 ltr:left-0 rtl:right-0 z-40 w-64 bg-white dark:bg-slate-950 ltr:border-r rtl:border-l border-gray-200 dark:border-gray-800 transform ltr:-translate-x-full rtl:translate-x-full lg:ltr:translate-x-0 lg:rtl:translate-x-0 transition-transform duration-300 flex flex-col">
             <div class="p-6">
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Main Menu</h3>
                 <nav class="space-y-2">
@@ -299,7 +299,7 @@
             class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden glass backdrop-blur-sm transition-opacity"></div>
 
         <!-- Main Content -->
-        <main class="flex-1 lg:ml-64 h-full overflow-y-auto bg-slate-50 dark:bg-slate-900 p-4 md:p-8">
+        <main class="flex-1 ltr:lg:ml-64 rtl:lg:mr-64 h-full overflow-y-auto bg-slate-50 dark:bg-slate-900 p-4 md:p-8">
 
             <!-- Mobile Toggle -->
             <button id="sidebar-toggle" class="lg:hidden mb-6 flex items-center gap-2 text-gray-500">
@@ -643,7 +643,6 @@
 
             <!-- Footer -->
             <!-- NEW ANIMATED GRADIENT FOOTER -->
-            <!-- Footer -->
             <!-- NEW ANIMATED GRADIENT FOOTER -->
             <footer class="footer-gradient pt-24 pb-12 mt-12 w-full">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 px-6">
@@ -651,27 +650,25 @@
                     <div>
                         <a href="#" class="flex items-center gap-2 mb-6 text-white group">
                             <div
-                                class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)]">
+                                class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)] transition-transform group-hover:rotate-12">
                                 <i class="fas fa-shield-alt text-lg"></i>
                             </div>
-                            <span class="font-display font-bold text-xl">Claim<span
-                                    class="text-neon-cyan">ora</span></span>
+                            <span class="font-bold text-xl">Claimora</span>
                         </a>
                         <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
-                            Next-generation insurance protection for the digital age. We help you navigate risk with
-                            confidence.
+                            Next-generation insurance & business intelligence. Protecting your future with confidence.
                         </p>
                         <div class="flex gap-4 mt-6">
                             <a href="#"
-                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-navy-900 transition-all transform hover:-translate-y-1">
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
                                 <i data-lucide="facebook" class="w-5 h-5"></i>
                             </a>
                             <a href="#"
-                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-violet hover:text-white transition-all transform hover:-translate-y-1">
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
                                 <i data-lucide="twitter" class="w-5 h-5"></i>
                             </a>
                             <a href="#"
-                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-magenta hover:text-white transition-all transform hover:-translate-y-1">
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
                                 <i data-lucide="instagram" class="w-5 h-5"></i>
                             </a>
                         </div>
@@ -690,11 +687,11 @@
 
                     <!-- Col 3: Account -->
                     <div>
-                        <h4 class="text-white font-bold mb-6">Portals</h4>
+                        <h4 class="text-white font-bold mb-6">Account</h4>
                         <ul class="space-y-4 text-sm text-slate-400">
                             <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a>
                             </li>
-                            <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Console</a>
+                            <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Dashboard</a>
                             </li>
                             <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
                             <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
@@ -703,13 +700,13 @@
 
                     <!-- Col 4: Newsletter -->
                     <div>
-                        <h4 class="text-white font-bold mb-6">Stay Protected</h4>
-                        <p class="text-slate-400 text-sm mb-4">Subscribe for safety tips and policy updates.</p>
+                        <h4 class="text-white font-bold mb-6">Stay Updated</h4>
+                        <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest insights.</p>
                         <div class="flex gap-2">
                             <input type="email" placeholder="Email address"
                                 class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-neon-cyan transition-colors">
                             <button
-                                class="px-6 py-3 bg-gradient-to-r from-neon-cyan to-neon-violet text-navy-900 font-bold rounded-lg hover:shadow-[0_0_15px_rgba(100,255,218,0.4)] transition-all">Go</button>
+                                class="px-6 py-3 bg-neon-cyan text-white font-bold rounded-lg hover:bg-neon-cyan/80 transition-colors">Go</button>
                         </div>
                     </div>
                 </div>
@@ -720,7 +717,7 @@
                     <div class="flex gap-6 mt-4 md:mt-0">
                         <a href="#" class="hover:text-white transition-colors">Terms</a>
                         <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-                        <span>Designed with <i class="fas fa-shield-alt text-neon-cyan mx-1"></i> by Claimora</span>
+                        <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by Claimora</span>
                     </div>
                 </div>
             </footer>
@@ -740,7 +737,7 @@
         const sidebarOverlay = document.getElementById('sidebar-overlay');
 
         function toggleAdminSidebar() {
-            sidebar.classList.toggle('-translate-x-full');
+            sidebar.classList.toggle('!translate-x-0');
             sidebarOverlay.classList.toggle('hidden');
         }
 

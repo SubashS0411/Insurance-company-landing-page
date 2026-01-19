@@ -1,636 +1,882 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr" class="scroll-smooth">
+<div class="flex flex-col">
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr" class="scroll-smooth">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claimora Insurance | User Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#4F46E5',
-                        primaryHover: '#4338CA',
-                        secondary: '#10B981',
-                        dark: '#0F172A',
-                        'neon-cyan': '#22D3EE',
-                        'neon-magenta': '#F50057',
-                        'neon-violet': '#A855F7',
-                        'neon-orange': '#F97316',
-                        navy: {
-                            800: '#1e293b',
-                            900: '#0f172a',
-                            950: '#020617',
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Claimora Insurance | User Dashboard</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#4F46E5',
+                            primaryHover: '#4338CA',
+                            secondary: '#10B981',
+                            dark: '#0F172A',
+                            'neon-cyan': '#22D3EE',
+                            'neon-magenta': '#F50057',
+                            'neon-violet': '#A855F7',
+                            'neon-orange': '#F97316',
+                            navy: {
+                                800: '#1e293b',
+                                900: '#0f172a',
+                                950: '#020617',
+                            },
+                            teal: {
+                                100: '#ccfbf1',
+                                200: '#99f6e4',
+                                400: '#2dd4bf',
+                            }
                         },
-                        teal: {
-                            100: '#ccfbf1',
-                            200: '#99f6e4',
-                            400: '#2dd4bf',
+                        fontFamily: {
+                            sans: ['Outfit', 'sans-serif'],
+                            display: ['Outfit', 'sans-serif'],
                         }
-                    },
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif'],
                     }
                 }
             }
-        }
-    </script>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
+        </script>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    </head>
 
-<body
-    class="bg-gradient-to-br from-slate-50 to-slate-200 dark:from-black dark:to-navy-900 text-slate-900 dark:text-teal-100 transition-colors duration-300">
+    <body
+        class="bg-gradient-to-br from-slate-50 to-slate-200 dark:from-black dark:to-navy-900 text-slate-900 dark:text-teal-100 transition-colors duration-300">
 
-    <!-- LIQUID GLASS HEADER -->
-    <nav class="header-glass">
-        <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Brand -->
-            <a href="index.html" class="flex items-center gap-3 group">
-                <div
-                    class="brand-box w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
-                    <i data-lucide="shield-check" class="w-6 h-6"></i>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-sans text-xl font-bold tracking-tight text-slate-800 dark:text-teal-400">
-                        Claimora
-                    </span>
-                </div>
-            </a>
-
-            <!-- Desktop Nav -->
-            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse gap-x-8">
-                <!-- Home Dropdown -->
-                <div class="relative group">
-                    <button class="nav-link flex items-center gap-1 py-4">
-                        Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                    </button>
-                    <!-- Dropdown -->
+        <!-- LIQUID GLASS HEADER -->
+        <nav class="header-glass">
+            <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
+                <!-- Brand -->
+                <a href="index.html" class="flex items-center gap-3 group">
                     <div
-                        class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
-                        <a href="index.html"
-                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-teal-400 text-start">Home
-                            V1 (Parallax)</a>
-                        <a href="index2.html"
-                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-teal-400 text-start">Home
-                            V2 (Retro)</a>
+                        class="brand-box w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-sans text-xl font-bold tracking-tight text-slate-800 dark:text-teal-400">
+                            Claimora
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse gap-x-8">
+                    <!-- Home Dropdown -->
+                    <div class="relative group">
+                        <button class="nav-link flex items-center gap-1 py-4">
+                            Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </button>
+                        <!-- Dropdown -->
+                        <div
+                            class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                            <a href="index.html"
+                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-teal-400 text-start">Home
+                                V1 (Parallax)</a>
+                            <a href="index2.html"
+                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-teal-400 text-start">Home
+                                V2 (Retro)</a>
+                        </div>
+                    </div>
+
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+
+                    <!-- Dashboards Dropdown -->
+                    <div class="relative group">
+                        <button class="nav-link flex items-center gap-1 py-4">
+                            Dashboards <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </button>
+                        <div
+                            class="absolute top-full ltr:left-0 rtl:right-0 w-56 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                            <a href="user_dashboard.html"
+                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-teal-400 text-start">
+                                <i data-lucide="user" class="w-4 h-4 text-indigo-500"></i> User Dashboard
+                            </a>
+                            <a href="admin_dashboard.html"
+                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-teal-400 text-start">
+                                <i data-lucide="shield" class="w-4 h-4 text-rose-500"></i> Admin Dashboard
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-
-                <!-- Dashboards Dropdown -->
-                <div class="relative group">
-                    <button class="nav-link flex items-center gap-1 py-4">
-                        Dashboards <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                <!-- Action Buttons -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <button id="rtl-toggle"
+                        class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-teal-200"
+                        title="Toggle RTL">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
                     </button>
-                    <div
-                        class="absolute top-full ltr:left-0 rtl:right-0 w-56 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-teal-200"
+                        title="Toggle Theme">
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+                    <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-teal-400">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- MOBILE DRAWER & OVERLAY -->
+        <div id="mobile-overlay"
+            class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300">
+        </div>
+        <div id="mobile-drawer"
+            class="fixed top-0 bottom-0 ltr:left-0 rtl:right-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[70] mobile-drawer mobile-drawer-closed shadow-2xl overflow-y-auto transform transition-transform duration-300 ltr:-translate-x-full rtl:translate-x-full">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-8">
+                    <span class="font-bold text-xl dark:text-teal-400">Menu</span>
+                    <button id="close-menu-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-full">
+                        <i data-lucide="x" class="w-6 h-6 dark:text-teal-400"></i>
+                    </button>
+                </div>
+
+                <nav class="space-y-6">
+                    <!-- Mobile Links -->
+                    <div class="space-y-3">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Navigation</p>
+                        <a href="index.html"
+                            class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home</a>
+                        <a href="index2.html"
+                            class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home V2
+                            (Retro)</a>
+                        <a href="about.html"
+                            class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">About</a>
+                        <a href="services.html"
+                            class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Services</a>
+                        <a href="contact.html"
+                            class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Contact</a>
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Portals</p>
                         <a href="user_dashboard.html"
-                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-teal-400 text-start">
-                            <i data-lucide="user" class="w-4 h-4 text-indigo-500"></i> User Dashboard
+                            class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                            <div
+                                class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                <i data-lucide="user" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-slate-700 dark:text-slate-300 font-medium">User Dashboard</span>
                         </a>
                         <a href="admin_dashboard.html"
-                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-teal-400 text-start">
-                            <i data-lucide="shield" class="w-4 h-4 text-rose-500"></i> Admin Dashboard
+                            class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                            <div
+                                class="w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
+                                <i data-lucide="shield" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-slate-700 dark:text-slate-300 font-medium">Admin Dashboard</span>
                         </a>
                     </div>
-                </div>
-            </div>
 
-            <!-- Action Buttons -->
-            <div class="hidden lg:flex items-center gap-4">
-                <button id="rtl-toggle"
-                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-teal-200"
-                    title="Toggle RTL">
-                    <i data-lucide="globe" class="w-5 h-5"></i>
-                </button>
-                <button id="theme-toggle"
-                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-teal-200"
-                    title="Toggle Theme">
-                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
-                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                </button>
-                <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
-                    Get Started
-                </a>
-            </div>
+                    <hr class="border-slate-100 dark:border-slate-800">
 
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-teal-400">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
+                    <!-- Mobile Actions -->
+                    <div class="flex gap-4">
+                        <button id="mobile-theme-toggle"
+                            class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-teal-200">
+                            <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
+                        </button>
+                        <!-- Mobile RTL Toggle -->
+                        <button id="mobile-rtl-toggle"
+                            class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-teal-200"
+                            onclick="document.getElementById('rtl-toggle').click()">
+                            <i data-lucide="globe" class="w-5 h-5"></i> <span>RTL</span>
+                        </button>
+                    </div>
+                    <a href="login.html"
+                        class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
+                        Get Started
+                    </a>
+                </nav>
+            </div>
         </div>
-    </nav>
+        <div class="h-20"></div>
 
-    <!-- MOBILE DRAWER & OVERLAY -->
-    <div id="mobile-overlay"
-        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300">
-    </div>
-    <div id="mobile-drawer"
-        class="fixed top-0 bottom-0 ltr:left-0 rtl:right-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[70] mobile-drawer mobile-drawer-closed shadow-2xl overflow-y-auto transform transition-transform duration-300 ltr:-translate-x-full rtl:translate-x-full">
-        <div class="p-6">
-            <div class="flex items-center justify-between mb-8">
-                <span class="font-bold text-xl dark:text-teal-400">Menu</span>
-                <button id="close-menu-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-full">
-                    <i data-lucide="x" class="w-6 h-6 dark:text-teal-400"></i>
-                </button>
-            </div>
+        <div class="flex h-[calc(100vh-6rem)] overflow-hidden">
 
-            <nav class="space-y-6">
-                <!-- Mobile Links -->
-                <div class="space-y-3">
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Navigation</p>
+            <!-- Sidebar -->
+            <!-- Sidebar -->
+            <aside id="sidebar"
+                class="fixed top-20 bottom-0 ltr:left-0 rtl:right-0 z-40 w-64 bg-white dark:bg-black ltr:border-r rtl:border-l border-gray-200 dark:border-gray-800 transform ltr:-translate-x-full rtl:translate-x-full md:ltr:translate-x-0 md:rtl:translate-x-0 transition-transform duration-300 ease-in-out">
+                <div class="flex items-center justify-center h-20 border-b border-gray-200 dark:border-gray-800">
                     <a href="index.html"
-                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home</a>
-                    <a href="index2.html"
-                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home V2
-                        (Retro)</a>
-                    <a href="about.html"
-                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">About</a>
-                    <a href="services.html"
-                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Services</a>
-                    <a href="contact.html"
-                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Contact</a>
-                </div>
-
-                <div class="space-y-3">
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Portals</p>
-                    <a href="user_dashboard.html"
-                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
-                        <div
-                            class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                            <i data-lucide="user" class="w-4 h-4"></i>
-                        </div>
-                        <span class="text-slate-700 dark:text-slate-300 font-medium">User Dashboard</span>
-                    </a>
-                    <a href="admin_dashboard.html"
-                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
-                        <div
-                            class="w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
-                            <i data-lucide="shield" class="w-4 h-4"></i>
-                        </div>
-                        <span class="text-slate-700 dark:text-slate-300 font-medium">Admin Dashboard</span>
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan to-indigo-500">
+                        Claimora.
                     </a>
                 </div>
-
-                <hr class="border-slate-100 dark:border-slate-800">
-
-                <!-- Mobile Actions -->
-                <div class="flex gap-4">
-                    <button id="mobile-theme-toggle"
-                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-teal-200">
-                        <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
+                <nav class="mt-8 px-4 space-y-2">
+                    <button data-target="view-overview"
+                        class="nav-item w-full flex items-center px-4 py-3 bg-neon-cyan/20 text-neon-magenta dark:text-teal-400 border border-neon-cyan/50 rounded-xl transition shadow-[0_0_15px_rgba(100,255,218,0.3)]">
+                        <i class="fas fa-home w-6 text-neon-cyan"></i>
+                        <span class="font-medium">Overview</span>
                     </button>
-                    <!-- Mobile RTL Toggle -->
-                    <button id="mobile-rtl-toggle"
-                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-teal-200"
-                        onclick="document.getElementById('rtl-toggle').click()">
-                        <i data-lucide="globe" class="w-5 h-5"></i> <span>RTL</span>
+                    <button data-target="view-policies"
+                        class="nav-item w-full flex items-center px-4 py-3 text-slate-600 dark:text-teal-200 hover:bg-gray-100 dark:hover:bg-navy-800 rounded-xl transition group">
+                        <i class="fas fa-file-contract w-6 group-hover:text-neon-violet transition-colors"></i>
+                        <span class="font-medium">Policies</span>
                     </button>
+                    <button data-target="view-billing"
+                        class="nav-item w-full flex items-center px-4 py-3 text-slate-600 dark:text-teal-200 hover:bg-gray-100 dark:hover:bg-navy-800 rounded-xl transition group">
+                        <i class="fas fa-file-invoice-dollar w-6 group-hover:text-neon-magenta transition-colors"></i>
+                        <span class="font-medium">Billing</span>
+                    </button>
+                    <button data-target="view-support"
+                        class="nav-item w-full flex items-center px-4 py-3 text-slate-600 dark:text-teal-200 hover:bg-gray-100 dark:hover:bg-navy-800 rounded-xl transition group">
+                        <i class="fas fa-life-ring w-6 group-hover:text-neon-orange transition-colors"></i>
+                        <span class="font-medium">Support</span>
+                    </button>
+                    <button data-target="view-settings"
+                        class="nav-item w-full flex items-center px-4 py-3 text-slate-600 dark:text-teal-200 hover:bg-gray-100 dark:hover:bg-navy-800 rounded-xl transition group">
+                        <i class="fas fa-cog w-6 group-hover:text-slate-200 transition-colors"></i>
+                        <span class="font-medium">Settings</span>
+                    </button>
+                </nav>
+
+                <div class="absolute bottom-8 px-4 w-full">
+                    <a href="login.html"
+                        class="flex items-center px-4 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition">
+                        <i class="fas fa-sign-out-alt w-6"></i>
+                        <span class="font-medium">Logout</span>
+                    </a>
                 </div>
-                <a href="login.html"
-                    class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
-                    Get Started
-                </a>
-            </nav>
-        </div>
-    </div>
-    <div class="h-20"></div>
+            </aside>
 
-    <div class="flex h-[calc(100vh-6rem)] overflow-hidden">
+            <!-- Overlay for Mobile -->
+            <div id="sidebar-overlay" class="fixed inset-0 top-20 bg-black/50 z-30 hidden md:hidden glass"></div>
 
-        <!-- Sidebar -->
-        <!-- Sidebar -->
-        <aside id="sidebar"
-            class="fixed top-20 bottom-0 left-0 z-40 w-64 bg-white dark:bg-black border-r border-gray-200 dark:border-gray-800 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
-            <div class="flex items-center justify-center h-20 border-b border-gray-200 dark:border-gray-800">
-                <a href="index.html"
-                    class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan to-indigo-500">
-                    Claimora.
-                </a>
-            </div>
-            <nav class="mt-8 px-4 space-y-2">
-                <button data-target="view-overview"
-                    class="nav-item w-full flex items-center px-4 py-3 bg-neon-cyan/20 text-neon-magenta dark:text-teal-400 border border-neon-cyan/50 rounded-xl transition shadow-[0_0_15px_rgba(100,255,218,0.3)]">
-                    <i class="fas fa-home w-6 text-neon-cyan"></i>
-                    <span class="font-medium">Overview</span>
-                </button>
-                <button data-target="view-policies"
-                    class="nav-item w-full flex items-center px-4 py-3 text-slate-600 dark:text-teal-200 hover:bg-gray-100 dark:hover:bg-navy-800 rounded-xl transition group">
-                    <i class="fas fa-file-contract w-6 group-hover:text-neon-violet transition-colors"></i>
-                    <span class="font-medium">Policies</span>
-                </button>
-                <button data-target="view-billing"
-                    class="nav-item w-full flex items-center px-4 py-3 text-slate-600 dark:text-teal-200 hover:bg-gray-100 dark:hover:bg-navy-800 rounded-xl transition group">
-                    <i class="fas fa-file-invoice-dollar w-6 group-hover:text-neon-magenta transition-colors"></i>
-                    <span class="font-medium">Billing</span>
-                </button>
-                <button data-target="view-support"
-                    class="nav-item w-full flex items-center px-4 py-3 text-slate-600 dark:text-teal-200 hover:bg-gray-100 dark:hover:bg-navy-800 rounded-xl transition group">
-                    <i class="fas fa-life-ring w-6 group-hover:text-neon-orange transition-colors"></i>
-                    <span class="font-medium">Support</span>
-                </button>
-                <button data-target="view-settings"
-                    class="nav-item w-full flex items-center px-4 py-3 text-slate-600 dark:text-teal-200 hover:bg-gray-100 dark:hover:bg-navy-800 rounded-xl transition group">
-                    <i class="fas fa-cog w-6 group-hover:text-slate-200 transition-colors"></i>
-                    <span class="font-medium">Settings</span>
-                </button>
-            </nav>
+            <!-- Main Content -->
+            <div class="flex-1 flex flex-col ltr:md:ml-64 rtl:md:mr-64 h-screen overflow-y-auto">
 
-            <div class="absolute bottom-8 px-4 w-full">
-                <a href="login.html"
-                    class="flex items-center px-4 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition">
-                    <i class="fas fa-sign-out-alt w-6"></i>
-                    <span class="font-medium">Logout</span>
-                </a>
-            </div>
-        </aside>
-
-        <!-- Overlay for Mobile -->
-        <div id="sidebar-overlay" class="fixed inset-0 top-20 bg-black/50 z-30 hidden md:hidden glass"></div>
-
-        <!-- Main Content -->
-        <div class="flex-1 flex flex-col md:ml-64 h-screen overflow-y-auto">
-
-            <!-- Mobile Sidebar Toggle -->
-            <div
-                class="md:hidden p-4 pb-0 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
-                <button id="sidebar-toggle"
-                    class="text-slate-500 hover:text-primary focus:outline-none flex items-center gap-2">
-                    <i class="fas fa-bars text-xl"></i> <span class="font-bold">Dashboard Menu</span>
-                </button>
-                <div class="flex items-center gap-3">
-                    <img src="https://ui-avatars.com/api/?name=User+Name&background=random" alt="User"
-                        class="w-8 h-8 rounded-full">
-                </div>
-            </div>
-
-            <!-- Dashboard Content -->
-            <main class="p-8">
-                <!-- VIEW: Overview (Default) -->
-                <div id="view-overview" class="view-section">
-                    <!-- Welcome -->
-                    <div class="mb-8">
-                        <h1 class="text-3xl font-display font-bold mb-2 text-neon-magenta dark:text-teal-400">Welcome
-                            back,
-                            John!
-                            👋</h1>
-                        <p class="text-slate-500 dark:text-teal-200">Your protection status is <span
-                                class="text-neon-cyan font-bold">Active</span>.</p>
-                    </div>
-
-                    <!-- Stats Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        <!-- Stat 1 -->
-                        <div
-                            class="p-6 bg-white dark:bg-navy-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 flex items-center hover:border-neon-cyan hover:shadow-[0_0_20px_rgba(100,255,218,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
-                            <div
-                                class="p-4 bg-neon-cyan/10 rounded-xl text-neon-cyan text-2xl mr-4 group-hover:bg-neon-cyan group-hover:text-neon-magenta transition-colors">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div>
-                                <p class="text-slate-500 dark:text-teal-200 text-sm">Active Policies</p>
-                                <p class="text-2xl font-bold text-neon-magenta dark:text-teal-400">3</p>
-                            </div>
-                        </div>
-                        <!-- Stat 2 -->
-                        <div
-                            class="p-6 bg-white dark:bg-navy-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 flex items-center hover:border-neon-violet hover:shadow-[0_0_20px_rgba(179,157,219,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
-                            <div
-                                class="p-4 bg-neon-violet/10 rounded-xl text-neon-violet text-2xl mr-4 group-hover:bg-neon-violet group-hover:text-white transition-colors">
-                                <i class="fas fa-clipboard-check"></i>
-                            </div>
-                            <div>
-                                <p class="text-slate-500 dark:text-teal-200 text-sm">Open Claims</p>
-                                <p class="text-2xl font-bold text-neon-magenta dark:text-teal-400">0</p>
-                            </div>
-                        </div>
-                        <!-- Stat 3 -->
-                        <div
-                            class="p-6 bg-white dark:bg-navy-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 flex items-center hover:border-neon-magenta hover:shadow-[0_0_20px_rgba(245,0,87,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
-                            <div
-                                class="p-4 bg-neon-magenta/10 rounded-xl text-neon-magenta text-2xl mr-4 group-hover:bg-neon-magenta group-hover:text-white transition-colors">
-                                <i class="fas fa-wallet"></i>
-                            </div>
-                            <div>
-                                <p class="text-slate-500 dark:text-teal-200 text-sm">Next Premium</p>
-                                <p class="text-2xl font-bold text-neon-magenta dark:text-teal-400">$145</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recent Activity & Promo -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <!-- Activities -->
-                        <div
-                            class="bg-white dark:bg-navy-950 p-6 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm">
-                            <h3 class="text-xl font-bold mb-6 text-neon-magenta dark:text-teal-400">Recent Activity</h3>
-                            <div class="space-y-6">
-                                <div class="flex items-start">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-neon-cyan/10 flex items-center justify-center text-neon-cyan mr-4 flex-shrink-0">
-                                        <i class="fas fa-sync-alt"></i>
-                                    </div>
-                                    <div>
-                                        <p class="font-medium text-neon-magenta dark:text-teal-400">Policy Auto-Renewed
-                                        </p>
-                                        <p class="text-sm text-slate-500 dark:text-teal-200">Your Auto Insurance policy
-                                            was
-                                            renewed.</p>
-                                        <span class="text-xs text-slate-400 mt-1 block">2 hours ago</span>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-neon-violet/10 flex items-center justify-center text-neon-violet mr-4 flex-shrink-0">
-                                        <i class="fas fa-comment-dollar"></i>
-                                    </div>
-                                    <div>
-                                        <p class="font-medium text-neon-magenta dark:text-teal-400">Claims Status Update
-                                        </p>
-                                        <p class="text-sm text-slate-500 dark:text-teal-200">Claim #4002 is now "In
-                                            Review".</p>
-                                        <span class="text-xs text-slate-400 mt-1 block">5 hours ago</span>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-neon-magenta/10 flex items-center justify-center text-neon-magenta mr-4 flex-shrink-0">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                    <div>
-                                        <p class="font-medium text-neon-magenta dark:text-teal-400">Payment Processed
-                                        </p>
-                                        <p class="text-sm text-slate-500 dark:text-teal-200">Monthly Home Insurance
-                                            premium
-                                            paid.</p>
-                                        <span class="text-xs text-slate-400 mt-1 block">1 day ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Promo/Upgrade -->
-                        <!-- Promo/Upgrade -->
-                        <div
-                            class="bg-gradient-to-br from-neon-violet to-neon-magenta text-white dark:bg-black p-8 rounded-2xl shadow-xl flex flex-col justify-between relative overflow-hidden">
-                            <div class="absolute inset-0 bg-[url('Assets/network-bg.png')] opacity-20 dark:opacity-10">
-                            </div>
-                            <div class="relative z-10">
-                                <h3 class="text-2xl font-bold mb-2 text-black dark:text-neon-magenta">Bundle & Save</h3>
-                                <p class="text-black dark:text-teal-200 mb-6">Combine Auto and Home policies for maximum
-                                    savings.</p>
-                                <ul class="space-y-2 mb-8 text-black dark:text-teal-200 text-sm">
-                                    <li><i class="fas fa-check-circle mr-2 text-neon-cyan"></i> Save up to 20%</li>
-                                    <li><i class="fas fa-check-circle mr-2 text-neon-cyan"></i> Unified Billing</li>
-                                    <li><i class="fas fa-check-circle mr-2 text-neon-cyan"></i> Single Deductible</li>
-                                </ul>
-                            </div>
-                            <button
-                                class="w-full py-3 bg-white text-neon-magenta font-bold rounded-xl hover:bg-neon-cyan transition relative z-10">
-                                Check Eligibility
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VIEW: Policies -->
-                <div id="view-policies" class="view-section hidden">
-                    <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">My Policies</h2>
-                    <p class="text-slate-500 mb-6">View and manage all your active policies here.</p>
-                    <div
-                        class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
-                        <img src="Assets/14.jpeg" alt="Policies" class="w-full h-full object-cover">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
-                            <div>
-                                <h3 class="text-white font-bold text-2xl mb-2">Active Coverage</h3>
-                                <p class="text-slate-300">Review your policy details, download documents, and check
-                                    renewal dates.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VIEW: Billing -->
-                <div id="view-billing" class="view-section hidden">
-                    <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Billing & Payments</h2>
-                    <p class="text-slate-500 mb-6">Manage your payment methods and view history.</p>
-                    <div
-                        class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
-                        <img src="Assets/15.jpeg" alt="Billing" class="w-full h-full object-cover">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
-                            <div>
-                                <h3 class="text-white font-bold text-2xl mb-2">Payment Center</h3>
-                                <p class="text-slate-300">View transaction history, update payment methods, and download
-                                    invoices.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VIEW: Support -->
-                <div id="view-support" class="view-section hidden">
-                    <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Support Center</h2>
-                    <p class="text-slate-500 mb-6">Get help with claims, coverage, and account issues.</p>
-                    <div
-                        class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
-                        <img src="Assets/contact.jpeg" alt="Support" class="w-full h-full object-cover">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
-                            <div>
-                                <h3 class="text-white font-bold text-2xl mb-2">We're Here to Help</h3>
-                                <p class="text-slate-300">Get 24/7 assistance with claims, policy questions, or
-                                    technical issues.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VIEW: Settings -->
-                <div id="view-settings" class="view-section hidden">
-                    <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Account Settings</h2>
-                    <p class="text-slate-500 mb-6">Update your profile, security preference, and notifications.</p>
-                    <div
-                        class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
-                        <img src="Assets/dashboard.jpeg" alt="Settings" class="w-full h-full object-cover">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
-                            <div>
-                                <h3 class="text-white font-bold text-2xl mb-2">Profile & Security</h3>
-                                <p class="text-slate-300">Manage your personal information, login credentials, and
-                                    notification preferences.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </main>
-            <!-- Footer -->
-            <!-- NEW ANIMATED GRADIENT FOOTER -->
-            <footer class="footer-gradient pt-24 pb-12 mt-12 w-full">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 px-6">
-                    <!-- Col 1: Brand -->
-                    <div>
-                        <a href="#" class="flex items-center gap-2 mb-6 text-white group">
-                            <div
-                                class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)]">
-                                <i class="fas fa-shield-alt text-lg"></i>
-                            </div>
-                            <span class="font-display font-bold text-xl">Claim<span
-                                    class="text-neon-cyan">ora</span></span>
-                        </a>
-                        <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
-                            Next-generation insurance protection for the digital age. We help you navigate risk with
-                            confidence.
-                        </p>
-                        <div class="flex gap-4 mt-6">
-                            <a href="#"
-                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-navy-900 transition-all transform hover:-translate-y-1">
-                                <i data-lucide="facebook" class="w-5 h-5"></i>
-                            </a>
-                            <a href="#"
-                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-violet hover:text-white transition-all transform hover:-translate-y-1">
-                                <i data-lucide="twitter" class="w-5 h-5"></i>
-                            </a>
-                            <a href="#"
-                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-magenta hover:text-white transition-all transform hover:-translate-y-1">
-                                <i data-lucide="instagram" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Col 2: Quick Links -->
-                    <div>
-                        <h4 class="text-white font-bold mb-6">Quick Links</h4>
-                        <ul class="space-y-4 text-sm text-slate-400">
-                            <li><a href="index.html" class="footer-link hover:text-white">Home</a></li>
-                            <li><a href="about.html" class="footer-link hover:text-white">About Us</a></li>
-                            <li><a href="services.html" class="footer-link hover:text-white">Services</a></li>
-                            <li><a href="contact.html" class="footer-link hover:text-white">Contact</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Col 3: Account -->
-                    <div>
-                        <h4 class="text-white font-bold mb-6">Portals</h4>
-                        <ul class="space-y-4 text-sm text-slate-400">
-                            <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a>
-                            </li>
-                            <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Console</a>
-                            </li>
-                            <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
-                            <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Col 4: Newsletter -->
-                    <div>
-                        <h4 class="text-white font-bold mb-6">Stay Protected</h4>
-                        <p class="text-slate-400 text-sm mb-4">Subscribe for safety tips and policy updates.</p>
-                        <div class="flex gap-2">
-                            <input type="email" placeholder="Email address"
-                                class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-neon-cyan transition-colors">
-                            <button
-                                class="px-6 py-3 bg-gradient-to-r from-neon-cyan to-neon-violet text-navy-900 font-bold rounded-lg hover:shadow-[0_0_15px_rgba(100,255,218,0.4)] transition-all">Go</button>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- Mobile Sidebar Toggle -->
                 <div
-                    class="px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
-                    <div>&copy; 2026 Claimora Insurance. All rights reserved.</div>
-                    <div class="flex gap-6 mt-4 md:mt-0">
-                        <a href="#" class="hover:text-white transition-colors">Terms</a>
-                        <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-                        <span>Designed with <i class="fas fa-shield-alt text-neon-cyan mx-1"></i> by Claimora</span>
+                    class="md:hidden p-4 pb-0 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
+                    <button id="sidebar-toggle"
+                        class="text-slate-500 hover:text-primary focus:outline-none flex items-center gap-2">
+                        <i class="fas fa-bars text-xl"></i> <span class="font-bold">Dashboard Menu</span>
+                    </button>
+                    <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=User+Name&background=random" alt="User"
+                            class="w-8 h-8 rounded-full">
                     </div>
                 </div>
-            </footer>
-            <script>
-                lucide.createIcons();
-            </script>
+
+                <!-- Dashboard Content -->
+                <main class="p-8">
+                    <!-- VIEW: Overview (Default) -->
+                    <div id="view-overview" class="view-section">
+                        <!-- Welcome -->
+                        <div class="mb-8">
+                            <h1 class="text-3xl font-display font-bold mb-2 text-neon-magenta dark:text-teal-400">
+                                Welcome
+                                back,
+                                John!
+                                👋</h1>
+                            <p class="text-slate-500 dark:text-teal-200">Your protection status is <span
+                                    class="text-neon-cyan font-bold">Active</span>.</p>
+                        </div>
+
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <!-- Stat 1 -->
+                            <div
+                                class="p-6 bg-white dark:bg-navy-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 flex items-center hover:border-neon-cyan hover:shadow-[0_0_20px_rgba(100,255,218,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                                <div
+                                    class="p-4 bg-neon-cyan/10 rounded-xl text-neon-cyan text-2xl mr-4 group-hover:bg-neon-cyan group-hover:text-neon-magenta transition-colors">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-500 dark:text-teal-200 text-sm">Active Policies</p>
+                                    <p class="text-2xl font-bold text-neon-magenta dark:text-teal-400">3</p>
+                                </div>
+                            </div>
+                            <!-- Stat 2 -->
+                            <div
+                                class="p-6 bg-white dark:bg-navy-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 flex items-center hover:border-neon-violet hover:shadow-[0_0_20px_rgba(179,157,219,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                                <div
+                                    class="p-4 bg-neon-violet/10 rounded-xl text-neon-violet text-2xl mr-4 group-hover:bg-neon-violet group-hover:text-white transition-colors">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-500 dark:text-teal-200 text-sm">Open Claims</p>
+                                    <p class="text-2xl font-bold text-neon-magenta dark:text-teal-400">0</p>
+                                </div>
+                            </div>
+                            <!-- Stat 3 -->
+                            <div
+                                class="p-6 bg-white dark:bg-navy-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 flex items-center hover:border-neon-magenta hover:shadow-[0_0_20px_rgba(245,0,87,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                                <div
+                                    class="p-4 bg-neon-magenta/10 rounded-xl text-neon-magenta text-2xl mr-4 group-hover:bg-neon-magenta group-hover:text-white transition-colors">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-500 dark:text-teal-200 text-sm">Next Premium</p>
+                                    <p class="text-2xl font-bold text-neon-magenta dark:text-teal-400">$145</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity & Promo -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Activities -->
+                            <div
+                                class="bg-white dark:bg-navy-950 p-6 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm">
+                                <h3 class="text-xl font-bold mb-6 text-neon-magenta dark:text-teal-400">Recent Activity
+                                </h3>
+                                <div class="space-y-6">
+                                    <div class="flex items-start">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-neon-cyan/10 flex items-center justify-center text-neon-cyan mr-4 flex-shrink-0">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-neon-magenta dark:text-teal-400">Policy
+                                                Auto-Renewed
+                                            </p>
+                                            <p class="text-sm text-slate-500 dark:text-teal-200">Your Auto Insurance
+                                                policy
+                                                was
+                                                renewed.</p>
+                                            <span class="text-xs text-slate-400 mt-1 block">2 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-neon-violet/10 flex items-center justify-center text-neon-violet mr-4 flex-shrink-0">
+                                            <i class="fas fa-comment-dollar"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-neon-magenta dark:text-teal-400">Claims Status
+                                                Update
+                                            </p>
+                                            <p class="text-sm text-slate-500 dark:text-teal-200">Claim #4002 is now "In
+                                                Review".</p>
+                                            <span class="text-xs text-slate-400 mt-1 block">5 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-neon-magenta/10 flex items-center justify-center text-neon-magenta mr-4 flex-shrink-0">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-neon-magenta dark:text-teal-400">Payment
+                                                Processed
+                                            </p>
+                                            <p class="text-sm text-slate-500 dark:text-teal-200">Monthly Home Insurance
+                                                premium
+                                                paid.</p>
+                                            <span class="text-xs text-slate-400 mt-1 block">1 day ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Promo/Upgrade -->
+                            <!-- Promo/Upgrade -->
+                            <div
+                                class="bg-gradient-to-br from-neon-violet to-neon-magenta text-white dark:bg-black p-8 rounded-2xl shadow-xl flex flex-col justify-between relative overflow-hidden">
+                                <div
+                                    class="absolute inset-0 bg-[url('Assets/network-bg.png')] opacity-20 dark:opacity-10">
+                                </div>
+                                <div class="relative z-10">
+                                    <h3 class="text-2xl font-bold mb-2 text-black dark:text-neon-magenta">Bundle & Save
+                                    </h3>
+                                    <p class="text-black dark:text-teal-200 mb-6">Combine Auto and Home policies for
+                                        maximum
+                                        savings.</p>
+                                    <ul class="space-y-2 mb-8 text-black dark:text-teal-200 text-sm">
+                                        <li><i class="fas fa-check-circle mr-2 text-neon-cyan"></i> Save up to 20%</li>
+                                        <li><i class="fas fa-check-circle mr-2 text-neon-cyan"></i> Unified Billing</li>
+                                        <li><i class="fas fa-check-circle mr-2 text-neon-cyan"></i> Single Deductible
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button
+                                    class="w-full py-3 bg-white text-neon-magenta font-bold rounded-xl hover:bg-neon-cyan transition relative z-10">
+                                    Check Eligibility
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- CHART ANALYTICS SECTION -->
+                        <div class="mb-8 mt-8">
+                            <h3 class="text-xl font-bold mb-6 text-neon-magenta dark:text-teal-400">Analytics & Reports
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <!-- Chart 1 -->
+                                <div
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    <h4 class="font-bold text-slate-700 dark:text-white mb-2">Premium History</h4>
+                                    <div id="chart-premium" class="h-60"></div>
+                                </div>
+                                <!-- Chart 2 -->
+                                <div
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    <h4 class="font-bold text-slate-700 dark:text-white mb-2">Coverage Breakdown</h4>
+                                    <div id="chart-coverage" class="h-60"></div>
+                                </div>
+                                <!-- Chart 3 -->
+                                <div
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    <h4 class="font-bold text-slate-700 dark:text-white mb-2">Claims Timeline</h4>
+                                    <div id="chart-claims" class="h-60"></div>
+                                </div>
+                                <!-- Chart 4 -->
+                                <div
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    <h4 class="font-bold text-slate-700 dark:text-white mb-2">Risk Score Trend</h4>
+                                    <div id="chart-risk" class="h-60"></div>
+                                </div>
+                                <!-- Chart 5 -->
+                                <div
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    <h4 class="font-bold text-slate-700 dark:text-white mb-2">Savings Analysis</h4>
+                                    <div id="chart-savings" class="h-60"></div>
+                                </div>
+                                <!-- Chart 6 -->
+                                <div
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    <h4 class="font-bold text-slate-700 dark:text-white mb-2">Renewal Projection</h4>
+                                    <div id="chart-renewal" class="h-60 flex justify-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VIEW: Policies -->
+                    <div id="view-policies" class="view-section hidden">
+                        <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">My Policies</h2>
+                        <p class="text-slate-500 mb-6">View and manage all your active policies here.</p>
+                        <div
+                            class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+                            <img src="Assets/14.jpeg" alt="Policies" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
+                                <div>
+                                    <h3 class="text-white font-bold text-2xl mb-2">Active Coverage</h3>
+                                    <p class="text-slate-300">Review your policy details, download documents, and check
+                                        renewal dates.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VIEW: Billing -->
+                    <div id="view-billing" class="view-section hidden">
+                        <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Billing & Payments</h2>
+                        <p class="text-slate-500 mb-6">Manage your payment methods and view history.</p>
+                        <div
+                            class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+                            <img src="Assets/15.jpeg" alt="Billing" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
+                                <div>
+                                    <h3 class="text-white font-bold text-2xl mb-2">Payment Center</h3>
+                                    <p class="text-slate-300">View transaction history, update payment methods, and
+                                        download
+                                        invoices.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VIEW: Support -->
+                    <div id="view-support" class="view-section hidden">
+                        <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Support Center</h2>
+                        <p class="text-slate-500 mb-6">Get help with claims, coverage, and account issues.</p>
+                        <div
+                            class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+                            <img src="Assets/contact.jpeg" alt="Support" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
+                                <div>
+                                    <h3 class="text-white font-bold text-2xl mb-2">We're Here to Help</h3>
+                                    <p class="text-slate-300">Get 24/7 assistance with claims, policy questions, or
+                                        technical issues.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VIEW: Settings -->
+                    <div id="view-settings" class="view-section hidden">
+                        <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Account Settings</h2>
+                        <p class="text-slate-500 mb-6">Update your profile, security preference, and notifications.</p>
+                        <div
+                            class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+                            <img src="Assets/dashboard.jpeg" alt="Settings" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
+                                <div>
+                                    <h3 class="text-white font-bold text-2xl mb-2">Profile & Security</h3>
+                                    <p class="text-slate-300">Manage your personal information, login credentials, and
+                                        notification preferences.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-black dark:text-teal-200 mb-6">Combine Auto and Home policies for
+                            maximum
+                            savings.</p>
+                        <ul class="space-y-2 mb-8 text-black dark:text-teal-200 text-sm">
+                            <li><i class="fas fa-check-circle mr-2 text-neon-cyan"></i> Save up to 20%</li>
+                            <li><i class="fas fa-check-circle mr-2 text-neon-cyan"></i> Unified Billing</li>
+                            <li><i class="fas fa-check-circle mr-2 text-neon-cyan"></i> Single Deductible
+                            </li>
+                        </ul>
+                    </div>
+                    <button
+                        class="w-full py-3 bg-white text-neon-magenta font-bold rounded-xl hover:bg-neon-cyan transition relative z-10">
+                        Check Eligibility
+                    </button>
+            </div>
+        </div>
+</div>
+
+<!-- VIEW: Policies -->
+<div id="view-policies" class="view-section hidden">
+    <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">My Policies</h2>
+    <p class="text-slate-500 mb-6">View and manage all your active policies here.</p>
+    <div
+        class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+        <img src="Assets/14.jpeg" alt="Policies" class="w-full h-full object-cover">
+        <div
+            class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
+            <div>
+                <h3 class="text-white font-bold text-2xl mb-2">Active Coverage</h3>
+                <p class="text-slate-300">Review your policy details, download documents, and check
+                    renewal dates.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- VIEW: Billing -->
+<div id="view-billing" class="view-section hidden">
+    <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Billing & Payments</h2>
+    <p class="text-slate-500 mb-6">Manage your payment methods and view history.</p>
+    <div
+        class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+        <img src="Assets/15.jpeg" alt="Billing" class="w-full h-full object-cover">
+        <div
+            class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
+            <div>
+                <h3 class="text-white font-bold text-2xl mb-2">Payment Center</h3>
+                <p class="text-slate-300">View transaction history, update payment methods, and
+                    download
+                    invoices.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- VIEW: Support -->
+<div id="view-support" class="view-section hidden">
+    <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Support Center</h2>
+    <p class="text-slate-500 mb-6">Get help with claims, coverage, and account issues.</p>
+    <div
+        class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+        <img src="Assets/contact.jpeg" alt="Support" class="w-full h-full object-cover">
+        <div
+            class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
+            <div>
+                <h3 class="text-white font-bold text-2xl mb-2">We're Here to Help</h3>
+                <p class="text-slate-300">Get 24/7 assistance with claims, policy questions, or
+                    technical issues.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- VIEW: Settings -->
+<div id="view-settings" class="view-section hidden">
+    <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Account Settings</h2>
+    <p class="text-slate-500 mb-6">Update your profile, security preference, and notifications.</p>
+    <div
+        class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+        <img src="Assets/dashboard.jpeg" alt="Settings" class="w-full h-full object-cover">
+        <div
+            class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-8">
+            <div>
+                <h3 class="text-white font-bold text-2xl mb-2">Profile & Security</h3>
+                <p class="text-slate-300">Manage your personal information, login credentials, and
+                    notification preferences.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+<!-- Footer -->
+<!-- NEW ANIMATED GRADIENT FOOTER -->
+<footer class="footer-gradient pt-24 pb-12 mt-12 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 px-6">
+        <!-- Col 1: Brand -->
+        <div>
+            <a href="#" class="flex items-center gap-2 mb-6 text-white group">
+                <div
+                    class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)] transition-transform group-hover:rotate-12">
+                    <i class="fas fa-shield-alt text-lg"></i>
+                </div>
+                <span class="font-bold text-xl">Claimora</span>
+            </a>
+            <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                Next-generation insurance & business intelligence. Protecting your future with confidence.
+            </p>
+            <div class="flex gap-4 mt-6">
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
+                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                </a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
+                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                </a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+            <h4 class="text-white font-bold mb-6">Quick Links</h4>
+            <ul class="space-y-4 text-sm text-slate-400">
+                <li><a href="index.html" class="footer-link hover:text-white">Home</a></li>
+                <li><a href="about.html" class="footer-link hover:text-white">About Us</a></li>
+                <li><a href="services.html" class="footer-link hover:text-white">Services</a></li>
+                <li><a href="contact.html" class="footer-link hover:text-white">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Col 3: Account -->
+        <div>
+            <h4 class="text-white font-bold mb-6">Account</h4>
+            <ul class="space-y-4 text-sm text-slate-400">
+                <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a>
+                </li>
+                <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Dashboard</a>
+                </li>
+                <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
+                <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div>
+            <h4 class="text-white font-bold mb-6">Stay Updated</h4>
+            <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest insights.</p>
+            <div class="flex gap-2">
+                <input type="email" placeholder="Email address"
+                    class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-neon-cyan transition-colors">
+                <button
+                    class="px-6 py-3 bg-neon-cyan text-white font-bold rounded-lg hover:bg-neon-cyan/80 transition-colors">Go</button>
+            </div>
         </div>
     </div>
 
-    <!-- Scripts -->
-
-    <script src="main.js"></script>
-    <script>
-        // Sidebar Toggle Logic for Dashboard
-        const sidebar = document.getElementById('sidebar');
-        const sidebarToggle = document.getElementById('sidebar-toggle');
-        const overlay = document.getElementById('sidebar-overlay');
-
-        function toggleSidebar() {
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
-        }
-
-        if (sidebarToggle) {
-            sidebarToggle.addEventListener('click', toggleSidebar);
-        }
-        if (overlay) {
-            overlay.addEventListener('click', toggleSidebar);
-        }
-
-        // --- SPA Navigation (Ported from Admin Dashboard) ---
-        const navItems = document.querySelectorAll('.nav-item');
-        const views = document.querySelectorAll('.view-section');
-
-        // Styles for Active State (Neon Cyan Glow + Border)
-        const activeClasses = ['bg-neon-cyan/20', 'text-navy-900', 'dark:text-teal-400', 'border', 'border-neon-cyan/50', 'shadow-[0_0_15px_rgba(100,255,218,0.3)]'];
-        // Styles for Inactive State (Default Hover)
-        const inactiveClasses = ['text-slate-600', 'dark:text-teal-200', 'hover:bg-gray-100', 'dark:hover:bg-navy-800'];
-
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const targetId = item.dataset.target;
-
-                // 1. Hide all views
-                views.forEach(view => view.classList.add('hidden'));
-
-                // 2. Show target view
-                const targetView = document.getElementById(targetId);
-                if (targetView) targetView.classList.remove('hidden');
-
-                // 3. Reset all Core Icons colors (optional, if we want strict color switching)
-                // Note: The specific icon colors (neon-cyan, purple, orange) are hardcoded in the HTML icons.
-                // We'll primarily focus on the CONTAINER styling.
-
-                // 4. Update Nav Item Styling
-                navItems.forEach(nav => {
-                    // Remove active styles
-                    nav.classList.remove(...activeClasses);
-                    // Add inactive styles
-                    nav.classList.add(...inactiveClasses);
-                });
-
-                // Apply active styles to clicked item
-                item.classList.remove(...inactiveClasses);
-                item.classList.add(...activeClasses);
-
-                // Mobile: Close sidebar after click
-                if (window.innerWidth < 768) {
-                    toggleSidebar();
-                }
-            });
-        });
-    </script>
-
-    <!-- Mobile Navigation Drawer -->
-    <div id="mobile-overlay"
-        class="fixed inset-0 bg-black/60 z-[60] opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
+    <div
+        class="px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+        <div>&copy; 2026 Claimora Insurance. All rights reserved.</div>
+        <div class="flex gap-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white transition-colors">Terms</a>
+            <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+            <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by Claimora</span>
+        </div>
     </div>
+</footer>
+<script>
+    lucide.createIcons();
+</script>
+</div>
+</div>
+
+<!-- Scripts -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Common Options for Theme and Config
+        const isDark = document.documentElement.classList.contains('dark');
+
+        // Note: In real app, listen to theme change event to update charts. 
+        // For now, we init with current state.
+
+        const commonOptions = {
+            chart: {
+                background: 'transparent',
+                toolbar: { show: false },
+                fontFamily: 'Outfit, sans-serif',
+                animations: { enabled: true }
+            },
+            theme: { mode: 'light' }, // ApexCharts handles dark mode colors better manually usually, or via palette
+            dataLabels: { enabled: false },
+            grid: {
+                borderColor: isDark ? 'rgba(255,255,255,0.1)' : '#f1f5f9',
+                strokeDashArray: 4
+            },
+            xaxis: {
+                labels: { style: { colors: '#94a3b8', fontSize: '12px' } },
+                axisBorder: { show: false },
+                axisTicks: { show: false }
+            },
+            yaxis: {
+                labels: { style: { colors: '#94a3b8', fontSize: '12px' } }
+            }
+        };
+
+        // 1. Premium History (Area)
+        new ApexCharts(document.querySelector("#chart-premium"), {
+            ...commonOptions,
+            series: [{ name: 'Premium', data: [850, 900, 850, 950, 900, 920] }],
+            chart: { type: 'area', height: 240, toolbar: { show: false }, parentHeightOffset: 0 },
+            colors: ['#22d3ee'],
+            stroke: { curve: 'smooth', width: 3 },
+            fill: {
+                type: 'gradient',
+                gradient: { shadeIntensity: 1, opacityFrom: 0.4, opacityTo: 0.05, stops: [0, 90, 100] }
+            },
+            xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], labels: { style: { colors: '#64748b' } } }
+        }).render();
+
+        // 2. Coverage Breakdown (Donut)
+        new ApexCharts(document.querySelector("#chart-coverage"), {
+            ...commonOptions,
+            series: [45, 30, 25],
+            labels: ['Auto', 'Home', 'Life'],
+            chart: { type: 'donut', height: 240 },
+            colors: ['#22d3ee', '#f50057', '#a855f7'],
+            legend: { position: 'bottom', labels: { colors: '#64748b' } },
+            stroke: { show: false },
+            dataLabels: { enabled: false }
+        }).render();
+
+        // 3. Claims Timeline (Bar)
+        new ApexCharts(document.querySelector("#chart-claims"), {
+            ...commonOptions,
+            series: [{ name: 'Claims', data: [1, 0, 0, 2, 0, 1] }],
+            chart: { type: 'bar', height: 240, toolbar: { show: false } },
+            colors: ['#a855f7'],
+            plotOptions: { bar: { borderRadius: 4, columnWidth: '50%' } },
+            xaxis: { categories: ['2020', '2021', '2022', '2023', '2024', '2025'], labels: { style: { colors: '#64748b' } } }
+        }).render();
+
+        // 4. Risk Score Trend (Line)
+        new ApexCharts(document.querySelector("#chart-risk"), {
+            ...commonOptions,
+            series: [{ name: 'Risk', data: [45, 42, 38, 35, 30, 28] }],
+            chart: { type: 'line', height: 240, toolbar: { show: false } },
+            colors: ['#f50057'],
+            stroke: { curve: 'straight', width: 3 },
+            markers: { size: 4, colors: ['#fff'], strokeColors: '#f50057', strokeWidth: 2 }
+        }).render();
+
+        // 5. Savings Analysis (Bar Horizontal)
+        new ApexCharts(document.querySelector("#chart-savings"), {
+            ...commonOptions,
+            series: [{ name: 'Savings ($)', data: [120, 85, 200, 150] }],
+            chart: { type: 'bar', height: 240, toolbar: { show: false } },
+            colors: ['#10b981'],
+            plotOptions: { bar: { horizontal: true, borderRadius: 4, barHeight: '50%' } },
+            xaxis: { categories: ['Bundle', 'Safe Driver', 'Loyalty', 'No Claim'], labels: { style: { colors: '#64748b' } } }
+        }).render();
+
+        // 6. Renewal Projection (Radial)
+        new ApexCharts(document.querySelector("#chart-renewal"), {
+            ...commonOptions,
+            series: [92],
+            chart: { type: 'radialBar', height: 280 },
+            plotOptions: {
+                radialBar: {
+                    hollow: { size: '65%' },
+                    track: { background: '#f1f5f9' },
+                    dataLabels: {
+                        show: true,
+                        name: { show: true, fontSize: '14px', color: '#64748b', offsetY: -10 },
+                        value: { show: true, fontSize: '24px', color: '#0f172a', fontWeight: 'bold', offsetY: 5, formatter: function (val) { return val + '%' } }
+                    }
+                }
+            },
+            colors: ['#f97316'],
+            labels: ['Renewal Prob.']
+        }).render();
+    });
+</script>
+<script src="main.js"></script>
+<script>
+    // Sidebar Toggle Logic for Dashboard
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    function toggleSidebar() {
+        sidebar.classList.toggle('!translate-x-0');
+        overlay.classList.toggle('hidden');
+    }
+
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', toggleSidebar);
+    }
+    if (overlay) {
+        overlay.addEventListener('click', toggleSidebar);
+    }
+
+    // --- SPA Navigation (Ported from Admin Dashboard) ---
+    const navItems = document.querySelectorAll('.nav-item');
+    const views = document.querySelectorAll('.view-section');
+
+    // Styles for Active State (Neon Cyan Glow + Border)
+    const activeClasses = ['bg-neon-cyan/20', 'text-navy-900', 'dark:text-teal-400', 'border', 'border-neon-cyan/50', 'shadow-[0_0_15px_rgba(100,255,218,0.3)]'];
+    // Styles for Inactive State (Default Hover)
+    const inactiveClasses = ['text-slate-600', 'dark:text-teal-200', 'hover:bg-gray-100', 'dark:hover:bg-navy-800'];
+
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const targetId = item.dataset.target;
+
+            // 1. Hide all views
+            views.forEach(view => view.classList.add('hidden'));
+
+            // 2. Show target view
+            const targetView = document.getElementById(targetId);
+            if (targetView) targetView.classList.remove('hidden');
+
+            // 3. Reset all Core Icons colors (optional, if we want strict color switching)
+            // Note: The specific icon colors (neon-cyan, purple, orange) are hardcoded in the HTML icons.
+            // We'll primarily focus on the CONTAINER styling.
+
+            // 4. Update Nav Item Styling
+            navItems.forEach(nav => {
+                // Remove active styles
+                nav.classList.remove(...activeClasses);
+                // Add inactive styles
+                nav.classList.add(...inactiveClasses);
+            });
+
+            // Apply active styles to clicked item
+            item.classList.remove(...inactiveClasses);
+            item.classList.add(...activeClasses);
+
+            // Mobile: Close sidebar after click
+            if (window.innerWidth < 768) {
+                toggleSidebar();
+            }
+        });
+    });
     <div id="mobile-menu"
         class="fixed top-0 left-0 h-full w-80 bg-white dark:bg-navy-900 z-[70] transform -translate-x-full transition-transform duration-300 shadow-2xl flex flex-col rtl:left-auto rtl:right-0 rtl:translate-x-full">
         <div class="p-6 flex items-center justify-between border-b border-slate-100 dark:border-white/10">
@@ -640,10 +886,10 @@
                     <i class="fas fa-shield-alt"></i>
                 </div>
                 <span class="text-lg font-serif font-bold text-navy-900 dark:text-white">Claim<span
-                        class="text-neon-cyan">ora</span></span>
+                    class="text-neon-cyan">ora</span></span>
             </div>
             <button id="close-menu-btn" class="text-slate-500 hover:text-red-500 transition"><i
-                    class="fas fa-times text-xl"></i></button>
+                class="fas fa-times text-xl"></i></button>
         </div>
         <div class="flex-1 overflow-y-auto p-4 space-y-2">
             <a href="index.html"
@@ -674,6 +920,5 @@
                 Now</a>
         </div>
     </div>
-</body>
-
-</html>
+    </body >
+</html >
