@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Console | Claimora</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#4f46e5',
+                        secondary: '#64748b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .chart-card {
+            background-color: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s;
+            border: 1px solid #f3f4f6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark .chart-card {
+            background-color: #1e293b;
+            border-color: #334155;
+        }
+
+        .chart-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-5px);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        /* Skeleton Animation */
+        .skeleton {
+            background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        .dark .skeleton {
+            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gradient-to-br from-slate-50 to-slate-200 dark:from-navy-900 dark:to-navy-950 text-slate-800 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- LIQUID GLASS HEADER -->
+    <nav class="header-glass">
+        <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div
+                    class="brand-box w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-sans text-xl font-bold tracking-tight text-slate-800 dark:text-white">
+                        Claimora
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse gap-x-8">
+                <!-- Home Dropdown -->
+                <div class="relative group">
+                    <button class="nav-link flex items-center gap-1 py-4">
+                        Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                    <!-- Dropdown -->
+                    <div
+                        class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                        <a href="index.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
+                            V1 (Parallax)</a>
+                        <a href="index2.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
+                            V2 (Retro)</a>
+                    </div>
+                </div>
+
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+
+                <!-- Dashboards Dropdown -->
+                <div class="relative group">
+                    <button class="nav-link flex items-center gap-1 py-4">
+                        Dashboards <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                    <div
+                        class="absolute top-full ltr:left-0 rtl:right-0 w-56 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                        <a href="user_dashboard.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white text-start">
+                            <i data-lucide="user" class="w-4 h-4 text-indigo-500"></i> User Dashboard
+                        </a>
+                        <a href="admin_dashboard.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white text-start">
+                            <i data-lucide="shield" class="w-4 h-4 text-rose-500"></i> Admin Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="hidden lg:flex items-center gap-4">
+                <button id="rtl-toggle"
+                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                    title="Toggle RTL">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
+                </button>
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                    title="Toggle Theme">
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+                <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
+                    Get Started
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER & OVERLAY -->
+    <div id="mobile-overlay"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300">
+    </div>
+    <div id="mobile-drawer"
+        class="fixed top-0 bottom-0 ltr:left-0 rtl:right-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[70] mobile-drawer mobile-drawer-closed shadow-2xl overflow-y-auto transform transition-transform duration-300 ltr:-translate-x-full rtl:translate-x-full">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <span class="font-bold text-xl dark:text-white">Menu</span>
+                <button id="close-menu-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-full">
+                    <i data-lucide="x" class="w-6 h-6 dark:text-white"></i>
+                </button>
+            </div>
+
+            <nav class="space-y-6">
+                <!-- Mobile Links -->
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Navigation</p>
+                    <a href="index.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home</a>
+                    <a href="index2.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home V2
+                        (Retro)</a>
+                    <a href="about.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">About</a>
+                    <a href="services.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Services</a>
+                    <a href="contact.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Contact</a>
+                </div>
+
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Portals</p>
+                    <a href="user_dashboard.html"
+                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                        <div
+                            class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                            <i data-lucide="user" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-slate-700 dark:text-slate-300 font-medium">User Dashboard</span>
+                    </a>
+                    <a href="admin_dashboard.html"
+                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                        <div
+                            class="w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
+                            <i data-lucide="shield" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-slate-700 dark:text-slate-300 font-medium">Admin Dashboard</span>
+                    </a>
+                </div>
+
+                <hr class="border-slate-100 dark:border-slate-800">
+
+                <!-- Mobile Actions -->
+                <div class="flex gap-4">
+                    <button id="mobile-theme-toggle"
+                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
+                        <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
+                    </button>
+                    <!-- Mobile RTL Toggle -->
+                    <button id="mobile-rtl-toggle"
+                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400"
+                        onclick="document.getElementById('rtl-toggle').click()">
+                        <i data-lucide="globe" class="w-5 h-5"></i> <span>RTL</span>
+                    </button>
+                </div>
+                <a href="login.html"
+                    class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
+                    Get Started
+                </a>
+            </nav>
+        </div>
+    </div>
+    <div class="h-20"></div>
+
+    <!-- Layout Container -->
+    <div class="flex h-[calc(100vh-6rem)] overflow-hidden">
+
+        <!-- Sidebar -->
+        <!-- Sidebar -->
+        <aside id="sidebar"
+            class="fixed top-20 bottom-0 left-0 z-40 w-64 bg-white dark:bg-slate-950 border-r border-gray-200 dark:border-gray-800 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col">
+            <div class="p-6">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Main Menu</h3>
+                <nav class="space-y-2">
+                    <button
+                        class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-indigo-600 bg-indigo-50 dark:bg-indigo-900/20 dark:text-indigo-400 font-medium transition-all"
+                        data-target="view-overview">
+                        <i class="fas fa-chart-pie w-5"></i> Overview
+                    </button>
+                    <button
+                        class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all"
+                        data-target="view-users">
+                        <i class="fas fa-users w-5"></i> Policyholders
+                    </button>
+                    <button
+                        class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all"
+                        data-target="view-listings">
+                        <i class="fas fa-clipboard-check w-5"></i> Claims
+                    </button>
+                    <button
+                        class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all"
+                        data-target="view-analytics">
+                        <i class="fas fa-chart-line w-5"></i> Risk Analysis
+                    </button>
+                    <button
+                        class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all"
+                        data-target="view-settings">
+                        <i class="fas fa-cog w-5"></i> Settings
+                    </button>
+                </nav>
+            </div>
+            <div class="mt-auto p-6 border-t border-gray-100 dark:border-gray-800">
+                <button
+                    class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition-all">
+                    <i class="fas fa-sign-out-alt w-5"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Overlay -->
+        <div id="sidebar-overlay"
+            class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden glass backdrop-blur-sm transition-opacity"></div>
+
+        <!-- Main Content -->
+        <main class="flex-1 lg:ml-64 h-full overflow-y-auto bg-slate-50 dark:bg-slate-900 p-4 md:p-8">
+
+            <!-- Mobile Toggle -->
+            <button id="sidebar-toggle" class="lg:hidden mb-6 flex items-center gap-2 text-gray-500">
+                <i class="fas fa-bars text-xl"></i> <span class="font-bold">Menu</span>
+            </button>
+
+            <!-- VIEW: OVERVIEW -->
+            <div id="view-overview" class="view-section animate-fade-in">
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                    <div>
+                        <h1 class="text-3xl font-bold text-navy-900 dark:text-white">Admin Console</h1>
+                        <p class="text-slate-500">Overview of system health and policy metrics.</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button
+                            class="px-4 py-2 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg text-sm font-medium shadow-sm hover:shadow transition"><i
+                                class="fas fa-download mr-2"></i> Export</button>
+                        <button
+                            class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 transition"><i
+                                class="fas fa-sync-alt mr-2"></i> Refresh</button>
+                    </div>
+                </div>
+
+                <!-- Charts Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+
+                    <!-- 1. Revenue (Line) - Large -->
+                    <div class="chart-card">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-bold text-lg text-navy-900 dark:text-white">Total Premiums</h3>
+                            <span class="text-neon-cyan text-sm font-bold">+12.5% <i class="fas fa-arrow-up"></i></span>
+                        </div>
+                        <div id="chart-revenue" class="h-64 w-full relative">
+                            <div class="absolute inset-0 skeleton rounded-xl"></div>
+                        </div>
+                    </div>
+
+                    <!-- Moved: Claim Sources (Pie) -->
+                    <div class="chart-card">
+                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Claim Sources</h3>
+                        <div id="chart-device" class="h-64 relative">
+                            <div class="absolute inset-0 skeleton rounded-xl"></div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Category Sales (Stacked Bar) -->
+                    <div class="chart-card">
+                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Policies by Type</h3>
+                        <div id="chart-category" class="h-80 relative">
+                            <div class="absolute inset-0 skeleton rounded-xl"></div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Traffic Growth (Area) -->
+                    <div class="chart-card">
+                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Claims Volume</h3>
+                        <div id="chart-traffic" class="h-64 relative">
+                            <div class="absolute inset-0 skeleton rounded-xl"></div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <!-- 6. Conversion Funnel -->
+                    <div class="chart-card">
+                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Quote to Policy</h3>
+                        <div id="chart-funnel" class="h-64 relative">
+                            <div class="absolute inset-0 skeleton rounded-xl"></div>
+                        </div>
+                    </div>
+
+                    <!-- 7. Price vs Demand (Scatter) -->
+                    <div class="chart-card">
+                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Risk vs Premium</h3>
+                        <div id="chart-scatter" class="h-64 relative">
+                            <div class="absolute inset-0 skeleton rounded-xl"></div>
+                        </div>
+                    </div>
+
+                    <!-- 8. Top Categories (Horizontal Bar) -->
+                    <div class="chart-card">
+                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Top Coverages</h3>
+                        <div id="chart-top-cat" class="h-64 relative">
+                            <div class="absolute inset-0 skeleton rounded-xl"></div>
+                        </div>
+                    </div>
+
+                    <!-- 9. System Health (Gauge) -->
+                    <div class="chart-card">
+                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Platform Status</h3>
+                        <div id="chart-health" class="h-64 relative flex items-center justify-center">
+                            <div class="absolute inset-0 skeleton rounded-xl"></div>
+                        </div>
+                    </div>
+
+                    <!-- 10. Platform Metrics (Radar) -->
+                    <div class="chart-card">
+                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Operational Metrics</h3>
+                        <div id="chart-radar" class="h-64 relative">
+                            <div class="absolute inset-0 skeleton rounded-xl"></div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <!-- VIEW: USERS -->
+            <div id="view-users" class="view-section hidden animate-fade-in">
+                <h1 class="text-3xl font-bold mb-6 text-navy-900 dark:text-white">Policyholder Management</h1>
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-slate-50 dark:bg-slate-900/50 text-xs uppercase text-slate-500 font-semibold">
+                            <tr>
+                                <th class="p-4">Policyholder</th>
+                                <th class="p-4">Status</th>
+                                <th class="p-4">Plan Type</th>
+                                <th class="p-4">Renewal Date</th>
+                                <th class="p-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 dark:divide-slate-700 text-sm">
+                            <tr class="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
+                                <td class="p-4 flex items-center gap-3">
+                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=random"
+                                        class="w-8 h-8 rounded-full">
+                                    <div>
+                                        <div class="font-bold text-navy-900 dark:text-white">John Doe</div>
+                                        <div class="text-xs text-slate-500">john@example.com</div>
+                                    </div>
+                                </td>
+                                <td class="p-4"><span
+                                        class="px-2 py-1 bg-neon-cyan/20 text-neon-cyan rounded-full text-xs font-bold border border-neon-cyan/50">Active</span>
+                                </td>
+                                <td class="p-4">Auto + Home</td>
+                                <td class="p-4 text-slate-500">Jan 12, 2027</td>
+                                <td class="p-4 text-right">
+                                    <button class="text-slate-400 hover:text-neon-cyan px-2"><i
+                                            class="fas fa-edit"></i></button>
+                                    <button class="text-slate-400 hover:text-red-600 px-2"><i
+                                            class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <!-- More rows... -->
+                            <tr class="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
+                                <td class="p-4 flex items-center gap-3">
+                                    <img src="https://ui-avatars.com/api/?name=Sarah+Smith&background=random"
+                                        class="w-8 h-8 rounded-full">
+                                    <div>
+                                        <div class="font-bold text-navy-900 dark:text-white">Sarah Smith</div>
+                                        <div class="text-xs text-slate-500">sarah@example.com</div>
+                                    </div>
+                                </td>
+                                <td class="p-4"><span
+                                        class="px-2 py-1 bg-yellow-100 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-400 rounded-full text-xs font-bold">Pending</span>
+                                </td>
+                                <td class="p-4">Life Insurance</td>
+                                <td class="p-4 text-slate-500">Feb 15, 2026</td>
+                                <td class="p-4 text-right">
+                                    <button class="text-slate-400 hover:text-neon-cyan px-2"><i
+                                            class="fas fa-edit"></i></button>
+                                    <button class="text-slate-400 hover:text-red-600 px-2"><i
+                                            class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- VIEW: LISTINGS -->
+            <div id="view-listings" class="view-section hidden animate-fade-in">
+                <h1 class="text-3xl font-bold mb-6 text-navy-900 dark:text-white">Claims Review</h1>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Claim Card 1 -->
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-red-100 dark:border-red-900/30 relative">
+                        <div class="absolute top-4 right-4 text-red-500" title="High Priority"><i
+                                class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="h-40 bg-slate-100 dark:bg-slate-700 rounded-xl mb-4 overflow-hidden relative group">
+                            <img src="Assets/14.jpeg" alt="Car Accident"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="font-bold text-lg mb-1 text-navy-900 dark:text-white">Claim #4002</h3>
+                        <p class="text-sm text-slate-500 mb-4">Auto Accident - Frontal Impact</p>
+                        <div class="flex gap-2">
+                            <button
+                                class="flex-1 py-2 bg-neon-cyan/20 text-navy-900 dark:text-white rounded-lg hover:bg-neon-cyan/40 transition font-bold text-sm">Approve</button>
+                            <button
+                                class="flex-1 py-2 bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 rounded-lg hover:bg-red-100 transition font-bold text-sm">Deny</button>
+                        </div>
+                    </div>
+                    <!-- Claim Card 2 -->
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-yellow-100 dark:border-yellow-900/30 relative">
+                        <div class="absolute top-4 right-4 text-yellow-500" title="Under Investigation"><i
+                                class="fas fa-search"></i>
+                        </div>
+                        <div class="h-40 bg-slate-100 dark:bg-slate-700 rounded-xl mb-4 overflow-hidden relative group">
+                            <img src="Assets/15.jpeg" alt="Water Damage"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <h3 class="font-bold text-lg mb-1 text-navy-900 dark:text-white">Claim #4005</h3>
+                        <p class="text-sm text-slate-500 mb-4">Property - Water Damage</p>
+                        <div class="flex gap-2">
+                            <button
+                                class="flex-1 py-2 bg-neon-cyan/20 text-navy-900 dark:text-white rounded-lg hover:bg-neon-cyan/40 transition font-bold text-sm">Approve</button>
+                            <button
+                                class="flex-1 py-2 bg-gray-100 text-gray-600 dark:bg-slate-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 transition font-bold text-sm">Hold</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: RISK ANALYSIS -->
+            <div id="view-analytics" class="view-section hidden animate-fade-in">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                    <div>
+                        <h1 class="text-3xl font-bold text-navy-900 dark:text-white">Risk Analysis & Projections</h1>
+                        <p class="text-slate-500">AI-driven risk assessment and future modeling.</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button
+                            class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 transition">
+                            <i class="fas fa-brain mr-2"></i> Run Simulation
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Risk Dashboard Interface -->
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 group">
+                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white flex items-center gap-2">
+                            <i class="fas fa-tachometer-alt text-neon-cyan"></i> Real-time Risk Monitoring
+                        </h3>
+                        <div
+                            class="aspect-video rounded-xl overflow-hidden bg-slate-900 relative border border-slate-200 dark:border-slate-700">
+                            <img src="Assets/dashboard.jpeg" alt="Risk Dashboard Interface"
+                                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent pointer-events-none">
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center justify-between text-white/80 text-xs">
+                                    <span>System Status: <span class="text-emerald-400">Optimal</span></span>
+                                    <span>Last Updated: Just now</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-slate-500 text-sm">
+                            Comprehensive dashboard showing real-time risk vectors, exposure levels, and predictive
+                            anomalies across our entire portfolio.
+                        </p>
+                    </div>
+
+                    <!-- Risk Heatmap -->
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 group">
+                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white flex items-center gap-2">
+                            <i class="fas fa-map-marked-alt text-neon-magenta"></i> Geospatial Risk Heatmap
+                        </h3>
+                        <div
+                            class="aspect-video rounded-xl overflow-hidden bg-slate-900 relative border border-slate-200 dark:border-slate-700">
+                            <img src="Assets/map.jpeg" alt="Risk Heatmap"
+                                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent pointer-events-none">
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center gap-4 text-white/80 text-xs">
+                                    <span class="flex items-center gap-1"><span
+                                            class="w-2 h-2 rounded-full bg-red-500"></span> High</span>
+                                    <span class="flex items-center gap-1"><span
+                                            class="w-2 h-2 rounded-full bg-yellow-400"></span> Medium</span>
+                                    <span class="flex items-center gap-1"><span
+                                            class="w-2 h-2 rounded-full bg-green-500"></span> Low</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-slate-500 text-sm">
+                            Geographic distribution of claims and risk factors, utilizing historical data and climate
+                            models to predict future hotspots.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: SETTINGS -->
+            <div id="view-settings" class="view-section hidden animate-fade-in">
+                <h1 class="text-3xl font-bold mb-6">System Settings</h1>
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-3xl p-8 max-w-2xl shadow-sm border border-gray-100 dark:border-slate-700">
+                    <form onsubmit="event.preventDefault();" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold mb-2">Platform Name</label>
+                            <input type="text" value="Claimora"
+                                class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 focus:ring-2 focus:ring-neon-cyan outline-none transition">
+                        </div>
+
+                        <div
+                            class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <div>
+                                <h4 class="font-bold">Maintenance Mode</h4>
+                                <p class="text-xs text-slate-500">Disable platform for all users</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" value="" class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600">
+                                </div>
+                            </label>
+                        </div>
+
+                        <div
+                            class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <div>
+                                <h4 class="font-bold">Allow New Registrations</h4>
+                                <p class="text-xs text-slate-500">Toggle sign-up capability</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" value="" class="sr-only peer" checked>
+                                <div
+                                    class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500">
+                                </div>
+                            </label>
+                        </div>
+
+                        <button
+                            class="w-full py-3 bg-indigo-600 text-white rounded-xl font-bold shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 transition">Save
+                            Changes</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <!-- NEW ANIMATED GRADIENT FOOTER -->
+            <!-- Footer -->
+            <!-- NEW ANIMATED GRADIENT FOOTER -->
+            <footer class="footer-gradient pt-24 pb-12 mt-12 w-full">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 px-6">
+                    <!-- Col 1: Brand -->
+                    <div>
+                        <a href="#" class="flex items-center gap-2 mb-6 text-white group">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)]">
+                                <i class="fas fa-shield-alt text-lg"></i>
+                            </div>
+                            <span class="font-display font-bold text-xl">Claim<span
+                                    class="text-neon-cyan">ora</span></span>
+                        </a>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                            Next-generation insurance protection for the digital age. We help you navigate risk with
+                            confidence.
+                        </p>
+                        <div class="flex gap-4 mt-6">
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-navy-900 transition-all transform hover:-translate-y-1">
+                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-violet hover:text-white transition-all transform hover:-translate-y-1">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-magenta hover:text-white transition-all transform hover:-translate-y-1">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Col 2: Quick Links -->
+                    <div>
+                        <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                        <ul class="space-y-4 text-sm text-slate-400">
+                            <li><a href="index.html" class="footer-link hover:text-white">Home</a></li>
+                            <li><a href="about.html" class="footer-link hover:text-white">About Us</a></li>
+                            <li><a href="services.html" class="footer-link hover:text-white">Services</a></li>
+                            <li><a href="contact.html" class="footer-link hover:text-white">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 3: Account -->
+                    <div>
+                        <h4 class="text-white font-bold mb-6">Portals</h4>
+                        <ul class="space-y-4 text-sm text-slate-400">
+                            <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a>
+                            </li>
+                            <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Console</a>
+                            </li>
+                            <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
+                            <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 4: Newsletter -->
+                    <div>
+                        <h4 class="text-white font-bold mb-6">Stay Protected</h4>
+                        <p class="text-slate-400 text-sm mb-4">Subscribe for safety tips and policy updates.</p>
+                        <div class="flex gap-2">
+                            <input type="email" placeholder="Email address"
+                                class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-neon-cyan transition-colors">
+                            <button
+                                class="px-6 py-3 bg-gradient-to-r from-neon-cyan to-neon-violet text-navy-900 font-bold rounded-lg hover:shadow-[0_0_15px_rgba(100,255,218,0.4)] transition-all">Go</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                    <div>&copy; 2026 Claimora Insurance. All rights reserved.</div>
+                    <div class="flex gap-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-white transition-colors">Terms</a>
+                        <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                        <span>Designed with <i class="fas fa-shield-alt text-neon-cyan mx-1"></i> by Claimora</span>
+                    </div>
+                </div>
+            </footer>
+            <script>
+                lucide.createIcons();
+            </script>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+
+    <script>
+        // --- 1. Sidebar Logic ---
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        function toggleAdminSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+            sidebarOverlay.classList.toggle('hidden');
+        }
+
+        if (sidebarToggle) sidebarToggle.addEventListener('click', toggleAdminSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleAdminSidebar);
+
+        // --- 2. SPA Navigation ---
+        const navItems = document.querySelectorAll('.nav-item');
+        const views = document.querySelectorAll('.view-section');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetId = item.dataset.target;
+
+                // Hide all views
+                views.forEach(view => view.classList.add('hidden'));
+
+                // Show target view
+                document.getElementById(targetId).classList.remove('hidden');
+
+                // Update Active State
+                navItems.forEach(nav => {
+                    nav.classList.remove('bg-indigo-50', 'text-indigo-600', 'dark:bg-indigo-900/20', 'dark:text-indigo-400');
+                    nav.classList.add('text-gray-600', 'dark:text-gray-400');
+                });
+                item.classList.remove('text-gray-600', 'dark:text-gray-400');
+                item.classList.add('bg-indigo-50', 'text-indigo-600', 'dark:bg-indigo-900/20', 'dark:text-indigo-400');
+
+                // Close sidebar on mobile
+                if (window.innerWidth < 1024) {
+                    toggleAdminSidebar();
+                }
+            });
+        });
+
+        // --- 3. ApexCharts Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Common Options
+            const commonOptions = {
+                chart: {
+                    fontFamily: 'Outfit, sans-serif',
+                    toolbar: { show: false },
+                    background: 'transparent',
+                    animations: { enabled: true }
+                },
+                theme: { mode: 'light' }, // will update dynamically
+                stroke: { curve: 'smooth' },
+                grid: { show: false, padding: { left: 0, right: 0 } },
+                dataLabels: { enabled: false }
+            };
+
+            // 1. Revenue (Line) -> Total Premiums
+            const revenueOptions = {
+                ...commonOptions,
+                series: [{ name: 'Premiums', data: [30, 40, 35, 50, 49, 60, 70, 91, 125] }],
+                chart: { type: 'area', height: 320, ...commonOptions.chart },
+                colors: ['#00f3ff'], // neon-cyan
+                fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.1, stops: [0, 90, 100] } }
+            };
+
+            // 2. Category Sales (Stacked Bar) -> Policies by Type
+            const categoryOptions = {
+                ...commonOptions,
+                series: [{ name: 'Auto', data: [44, 55, 41] }, { name: 'Home', data: [13, 23, 20] }, { name: 'Life', data: [11, 17, 15] }],
+                chart: { type: 'bar', height: 320, stacked: true, ...commonOptions.chart },
+                colors: ['#00f3ff', '#bc13fe', '#ff00ff']
+            };
+
+            // 3. Traffic (Area) -> Claims Volume
+            const trafficOptions = {
+                ...commonOptions,
+                series: [{ name: 'Claims', data: [100, 120, 90, 150, 180, 220, 250] }],
+                chart: { type: 'area', height: 250, ...commonOptions.chart },
+                colors: ['#bc13fe']
+            };
+
+            // 4. Users vs Sellers (Multi-Line) -> REMOVED
+
+
+            // 5. Activity Heatmap -> REMOVED
+
+
+            // 6. Funnel -> Quote to Policy
+            const funnelOptions = {
+                ...commonOptions,
+                series: [{ name: "", data: [200, 150, 110, 80, 50] }],
+                chart: { type: 'bar', height: 250, ...commonOptions.chart },
+                plotOptions: { bar: { borderRadius: 0, horizontal: true, barHeight: '80%', isFunnel: true } },
+                colors: ['#bc13fe']
+            };
+
+            // 7. Scatter -> Risk vs Premium
+            const scatterOptions = {
+                ...commonOptions,
+                series: [{ name: "Risk Score", data: [[16.4, 5.4], [21.7, 2], [25.4, 3], [19, 2], [10.9, 1], [13.6, 3.2], [10.9, 7.4], [10.9, 0], [10.9, 8.2], [16.4, 0], [16.4, 1.8], [13.6, 0.3], [13.6, 0], [29.9, 0], [27.1, 2.3], [16.4, 0], [13.6, 3.7], [10.9, 5.2], [16.4, 6.5], [10.9, 0], [24.5, 7.1], [10.9, 0], [8.1, 4.7], [19, 0], [21.7, 1.8], [27.1, 0], [24.5, 0], [27.1, 0], [29.9, 1.5], [27.1, 0.8], [22.1, 2]] }],
+                chart: { type: 'scatter', height: 250, ...commonOptions.chart },
+                colors: ['#00f3ff']
+            }
+
+            // 8. Horizontal Bar -> Top Coverages
+            const hBarOptions = {
+                ...commonOptions,
+                series: [{ data: [400, 430, 448, 470, 540, 580] }],
+                chart: { type: 'bar', height: 250, ...commonOptions.chart },
+                plotOptions: { bar: { horizontal: true } },
+                colors: ['#ff00ff'],
+                xaxis: { categories: ['Collision', 'Comp', 'Liability', 'Theft', 'Fire', 'Flood'] }
+            };
+
+            // 9. Gauge (Radial) -> Platform Status
+            const gaugeOptions = {
+                ...commonOptions,
+                series: [98],
+                chart: { type: 'radialBar', height: 250, ...commonOptions.chart },
+                colors: ['#00f3ff'],
+                plotOptions: { radialBar: { dataLabels: { name: { show: true, fontSize: '14px' }, value: { fontSize: '24px', fontWeight: 'bold' } } } },
+                labels: ['Uptime']
+            };
+
+            // 10. Radar -> Operational Metrics
+            const radarOptions = {
+                ...commonOptions,
+                series: [{ name: 'Metrics', data: [80, 50, 30, 40, 100, 20] }],
+                chart: { type: 'radar', height: 250, ...commonOptions.chart },
+                xaxis: { categories: ['Speed', 'Claims', 'Sales', 'Errors', 'Uptime', 'Growth'] },
+                colors: ['#bc13fe']
+            };
+
+            // 11. Pie -> Claim Sources
+            const pieOptions = {
+                ...commonOptions,
+                series: [44, 55, 13],
+                chart: { type: 'donut', height: 250, ...commonOptions.chart },
+                labels: ['Desktop', 'Mobile', 'Tablet'],
+                colors: ['#4f46e5', '#3b82f6', '#93c5fd']
+            };
+
+            // Render Function
+            const renderChart = (id, options) => {
+                const el = document.querySelector(`#${id}`);
+                const skeleton = el.querySelector('.skeleton');
+
+                setTimeout(() => {
+                    skeleton.style.opacity = '0';
+                    setTimeout(() => skeleton.remove(), 500);
+
+                    const chart = new ApexCharts(el, options);
+                    chart.render();
+                }, Math.random() * 1500 + 500); // Random delay 0.5s - 2s
+            };
+
+            // Init All Charts
+            renderChart('chart-revenue', revenueOptions);
+            renderChart('chart-category', categoryOptions);
+            renderChart('chart-traffic', trafficOptions);
+            // renderChart('chart-users-sellers', usOptions); // REMOVED
+            // renderChart('chart-activity', heatmapOptions); // REMOVED
+            renderChart('chart-funnel', funnelOptions);
+            renderChart('chart-scatter', scatterOptions);
+            renderChart('chart-top-cat', hBarOptions);
+            renderChart('chart-health', gaugeOptions);
+            renderChart('chart-radar', radarOptions);
+            renderChart('chart-device', pieOptions);
+        });
+    </script>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-overlay"
+        class="fixed inset-0 bg-black/60 z-[60] opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
+    </div>
+    <div id="mobile-menu"
+        class="fixed top-0 left-0 h-full w-80 bg-white dark:bg-royal-900 z-[70] transform -translate-x-full transition-transform duration-300 shadow-2xl flex flex-col rtl:left-auto rtl:right-0 rtl:translate-x-full">
+        <div class="p-6 flex items-center justify-between border-b border-gray-100 dark:border-white/10">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded bg-royal-900 dark:bg-gold-500 flex items-center justify-center text-white">
+                    <i class="fas fa-chess-knight"></i>
+                </div>
+                <span class="text-lg font-serif font-bold text-royal-900 dark:text-white">NextGen</span>
+            </div>
+            <button id="close-menu-btn" class="text-gray-500 hover:text-red-500 transition"><i
+                    class="fas fa-times text-xl"></i></button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-4 space-y-2">
+            <a href="index.html"
+                class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-royal-900 dark:text-white font-bold border-l-4 border-gold-600 pl-4">Home</a>
+            <a href="about.html"
+                class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-gray-600 dark:text-gray-300 font-medium">About
+                The Firm</a>
+            <a href="services.html"
+                class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-gray-600 dark:text-gray-300 font-medium">Expertise</a>
+            <a href="contact.html"
+                class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-gray-600 dark:text-gray-300 font-medium">Contact</a>
+            <div class="border-t border-gray-100 dark:border-white/10 my-4 pt-4">
+                <div class="px-3 text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">My Account</div>
+                <a href="user_dashboard.html"
+                    class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-gray-600 dark:text-gray-300 font-medium"><i
+                        class="fas fa-user w-6"></i> Client Portal</a>
+                <a href="admin_dashboard.html"
+                    class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-gray-600 dark:text-gray-300 font-medium"><i
+                        class="fas fa-lock w-6"></i> Partner Login</a>
+            </div>
+        </div>
+        <div class="p-6 border-t border-gray-100 dark:border-white/10 bg-gray-50 dark:bg-black/20">
+            <button id="mobile-theme-toggle"
+                class="w-full mb-3 py-3 border border-gray-300 dark:border-white/10 rounded text-gray-600 dark:text-white font-bold uppercase text-xs">Switch
+                Theme</button>
+            <a href="contact.html"
+                class="w-full block text-center py-3 rounded bg-indigo-600 text-white font-bold shadow-lg uppercase tracking-widest text-xs">Inquire
+                Now</a>
+        </div>
+    </div>
+</body>
+
+</html>

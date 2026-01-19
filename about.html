@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Claimora Insurance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        retroBg: '#EAE8E3',
+                        retroText: '#0f172a', /* Dark Blue/Black for light mode */
+                        royalPurple: '#4B0082',
+                        royalGold: '#CFA966',
+                        techCyan: '#00FFFF',
+                        primary: '#1F3A5F',
+                        'primary-dark': '#0f172a',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['Space Mono', 'monospace'],
+                        sans: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+class="font-sans text-gray-900 bg-gray-50 dark:bg-primary-dark overflow-x-hidden selection:bg-rose-500
+selection:text-white transition-colors duration-300">
+
+<!-- Film Grain Overlay -->
+<div
+    class="fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-overlay bg-[url('https://upload.wikimedia.org/wikipedia/commons/7/76/Noise.png')]">
+</div>
+
+<!-- LIQUID GLASS HEADER -->
+<!-- LIQUID GLASS HEADER -->
+<nav class="header-glass">
+    <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
+        <!-- Brand -->
+        <a href="index.html" class="flex items-center gap-3 group">
+            <div
+                class="brand-box w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                <i data-lucide="shield-check" class="w-6 h-6"></i>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-sans text-xl font-bold tracking-tight text-slate-800 dark:text-white">
+                    Claimora
+                </span>
+            </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse gap-x-8">
+            <!-- Home Dropdown -->
+            <div class="relative group">
+                <button class="nav-link flex items-center gap-1 py-4">
+                    Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                </button>
+                <!-- Dropdown -->
+                <div
+                    class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                    <a href="index.html"
+                        class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
+                        V1
+                        (Parallax)</a>
+                    <a href="index2.html"
+                        class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
+                        V2
+                        (Retro)</a>
+                </div>
+            </div>
+
+            <a href="about.html" class="nav-link text-indigo-600 dark:text-neon-cyan font-bold">About</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+
+            <!-- Dashboards Dropdown -->
+            <div class="relative group">
+                <button class="nav-link flex items-center gap-1 py-4">
+                    Dashboards <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                </button>
+                <div
+                    class="absolute top-full ltr:left-0 rtl:right-0 w-56 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                    <a href="user_dashboard.html"
+                        class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white text-start">
+                        <i data-lucide="user" class="w-4 h-4 text-indigo-500"></i> User Dashboard
+                    </a>
+                    <a href="admin_dashboard.html"
+                        class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white text-start">
+                        <i data-lucide="shield" class="w-4 h-4 text-rose-500"></i> Admin Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="hidden lg:flex items-center gap-4">
+            <button id="rtl-toggle"
+                class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                title="Toggle RTL">
+                <i data-lucide="globe" class="w-5 h-5"></i>
+            </button>
+            <button id="theme-toggle"
+                class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                title="Toggle Theme">
+                <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+            </button>
+            <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
+                Get Started
+            </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE DRAWER & OVERLAY -->
+<div id="mobile-overlay"
+    class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300">
+</div>
+<div id="mobile-drawer"
+    class="fixed top-0 bottom-0 ltr:left-0 rtl:right-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[70] mobile-drawer mobile-drawer-closed shadow-2xl overflow-y-auto transform transition-transform duration-300 ltr:-translate-x-full rtl:translate-x-full">
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-8">
+            <span class="font-bold text-xl dark:text-white">Menu</span>
+            <button id="close-menu-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-full">
+                <i data-lucide="x" class="w-6 h-6 dark:text-white"></i>
+            </button>
+        </div>
+
+        <nav class="space-y-6">
+            <!-- Mobile Links -->
+            <div class="space-y-3">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Navigation</p>
+                <a href="index.html"
+                    class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home</a>
+                <a href="index2.html"
+                    class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home V2
+                    (Retro)</a>
+                <a href="about.html"
+                    class="block text-lg font-medium text-indigo-600 dark:text-neon-cyan font-bold text-start">About</a>
+                <a href="services.html"
+                    class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Services</a>
+                <a href="contact.html"
+                    class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Contact</a>
+            </div>
+
+            <div class="space-y-3">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Portals</p>
+                <a href="user_dashboard.html"
+                    class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                    <div
+                        class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                        <i data-lucide="user" class="w-4 h-4"></i>
+                    </div>
+                    <span class="text-slate-700 dark:text-slate-300 font-medium">User Dashboard</span>
+                </a>
+                <a href="admin_dashboard.html"
+                    class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                    <div
+                        class="w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
+                        <i data-lucide="shield" class="w-4 h-4"></i>
+                    </div>
+                    <span class="text-slate-700 dark:text-slate-300 font-medium">Admin Dashboard</span>
+                </a>
+            </div>
+
+            <hr class="border-slate-100 dark:border-slate-800">
+
+            <!-- Mobile Actions -->
+            <div class="flex gap-4">
+                <button id="mobile-theme-toggle"
+                    class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
+                    <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
+                </button>
+                <!-- Mobile RTL Toggle -->
+                <button id="mobile-rtl-toggle"
+                    class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400"
+                    onclick="document.getElementById('rtl-toggle').click()">
+                    <i data-lucide="globe" class="w-5 h-5"></i> <span>RTL</span>
+                </button>
+            </div>
+            <a href="login.html"
+                class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
+                Get Started
+            </a>
+        </nav>
+    </div>
+</div>
+
+<!-- SECTION 1: HERO / INTRO (3D Video & Gradient Text) -->
+<section
+    class="min-h-screen relative flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-[#0f172a] pt-28">
+    <div class="max-w-[1920px] mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10 transition-all duration-500"
+        id="hero-grid">
+
+        <!-- Video Left (Default) -->
+        <div class="relative flex justify-center lg:justify-start order-1 w-full" id="hero-visual">
+            <div
+                class="relative w-full aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/20 dark:border-white/5 group">
+                <!-- Merged Filter Overlay -->
+                <div class="absolute inset-0 bg-indigo-500/20 mix-blend-overlay z-10 pointer-events-none"></div>
+                <video autoplay loop muted playsinline
+                    class="w-full h-full object-cover transform transition duration-700 group-hover:scale-110">
+                    <source src="Assets/boy.mp4" type="video/mp4">
+                </video>
+                <!-- 3D Floating Elements -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-neon-cyan/30 rounded-full blur-2xl animate-pulse">
+                </div>
+                <div
+                    class="absolute -bottom-10 -left-10 w-40 h-40 bg-rose-500/30 rounded-full blur-3xl animate-pulse delay-700">
+                </div>
+            </div>
+        </div>
+
+        <!-- Text Right (Default) -->
+        <div class="text-center lg:text-left order-2" id="hero-text">
+            <h4
+                class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-indigo-500 font-mono uppercase tracking-[0.3em] text-sm mb-6 animate-pulse">
+                Who We Are
+            </h4>
+            <h1
+                class="text-6xl md:text-8xl font-serif font-black text-slate-900 dark:text-white mb-8 leading-tight animate-gradient-text bg-custom-gradient bg-[length:200%_auto] text-transparent bg-clip-text">
+                Protecting Your <br> Legacy & Life
+            </h1>
+            <p
+                class="text-xl md:text-2xl text-slate-600 dark:text-gray-300 font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-10">
+                Modern insurance solutions rooted in trust, powered by technology. We secure what matters most.
+            </p>
+            <div class="flex gap-4 justify-center lg:justify-start">
+                <a href="#story"
+                    class="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-full hover:scale-105 transition shadow-lg shadow-indigo-500/25">
+                    Discover Our Story
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RTL/LTR Swap Logic Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const heroGrid = document.getElementById('hero-grid');
+            const heroVisual = document.getElementById('hero-visual');
+            const heroText = document.getElementById('hero-text');
+
+            if (rtlToggle && heroGrid) {
+                // Initial check
+                if (document.documentElement.dir === 'rtl') swapHero(true);
+
+                // Listen for custom event or click (assuming rtltoggle.js dispatches or we check attribute)
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.attributeName === 'dir') {
+                            swapHero(document.documentElement.dir === 'rtl');
+                        }
+                    });
+                });
+                observer.observe(document.documentElement, { attributes: true });
+
+                function swapHero(isRTL) {
+                    if (isRTL) {
+                        heroVisual.classList.remove('lg:justify-start');
+                        heroVisual.classList.add('lg:justify-end');
+                        heroText.classList.remove('lg:text-left');
+                        heroText.classList.add('lg:text-right');
+                        // Flex order swapping is handled by grid-cols but let's ensure visual/text order
+                        // Actually in Grid, order-1 is Visual, order-2 is Text. 
+                        // In RTL, visual (order 1) will be on Right, Text (order 2) on Left by default? 
+                        // No, Grid auto-places. We want:
+                        // LTR: Video Left, Text Right.
+                        // RTL: Text Right (so Left of screen visually? No, usually RTL flips layout).
+                        // User Request: "when rtl toggle clicked it can change the place".
+                        // Use flex-direction row-reverse or grid swap?
+                        // Grid handles RTL auto-flipping usually. 
+                        // If we want explicit swap:
+                        // LTR: Visual (Left), Text (Right).
+                        // RTL: Visual (Right), Text (Left).
+                        // The browser 'dir=rtl' usually swaps grid columns automatically (Col 1 becomes Right).
+                        // So Visual (Order 1) -> Right. Text (Order 2) -> Left.
+                        // This matches "change the place".
+                    } else {
+                        heroVisual.classList.add('lg:justify-start');
+                        heroVisual.classList.remove('lg:justify-end');
+                        heroText.classList.add('lg:text-left');
+                        heroText.classList.remove('lg:text-right');
+                    }
+                }
+            }
+        });
+    </script>
+    <style>
+        .bg-custom-gradient {
+            background-image: linear-gradient(to right, #ef4444, #6366f1, #ef4444);
+        }
+
+        @keyframes gradient-text {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animate-gradient-text {
+            animation: gradient-text 3s linear infinite;
+        }
+    </style>
+</section>
+
+<!-- SECTION 2: OUR STORY (Dropdowns) -->
+<section id="story"
+    class="py-32 bg-gray-50 dark:bg-primary-dark overflow-hidden transition-colors duration-300 relative">
+    <div class="absolute inset-0 bg-purple-500/5 blur-[100px] pointer-events-none"></div> <!-- Vibrant Purple Glow -->
+
+    <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10 hover:shadow-[0_0_40px_rgba(253,164,175,0.6)] hover:border-rose-300 border-2 border-transparent rounded-[3rem] p-10 transition-all duration-500 bg-white/5 backdrop-blur-sm">
+        <div class="relative group">
+            <div
+                class="absolute -inset-4 bg-gradient-to-r from-rose-500 to-indigo-500 opacity-20 rounded-2xl transform rotate-2 group-hover:rotate-0 transition duration-500 blur-lg">
+            </div>
+            <img src="Assets/office-1.png"
+                class="relative rounded-2xl shadow-2xl transition duration-700 w-full object-cover h-[600px] hover:scale-[1.02]">
+        </div>
+
+        <div>
+            <h4 class="text-rose-500 font-mono uppercase tracking-widest mb-4">Our Story</h4>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-8">
+                Built on Trust. <br>
+                <span class="text-indigo-600 dark:text-neon-cyan">Evolving with You.</span>
+            </h2>
+
+            <div class="space-y-4">
+                <!-- Dropdown 1: Red -->
+                <details
+                    class="group bg-white dark:bg-slate-800 rounded-xl border border-rose-100 dark:border-rose-500/20 overflow-hidden open:shadow-lg open:shadow-rose-500/10 transition-all duration-300">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <h3 class="font-bold text-xl text-slate-900 dark:text-white">A Legacy of Care</h3>
+                        </div>
+                        <span class="text-rose-500 transform group-open:rotate-180 transition duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 pt-0 text-gray-600 dark:text-gray-300 leading-relaxed border-t border-rose-50 dark:border-white/5 mt-2">
+                        <p class="mt-4">Founded on century-old principles of fiduciary responsibility and unwavering
+                            support. We started with a simple promise: to be there when it matters most.</p>
+                    </div>
+                </details>
+
+                <!-- Dropdown 2: Purple -->
+                <details
+                    class="group bg-white dark:bg-slate-800 rounded-xl border border-purple-100 dark:border-purple-500/20 overflow-hidden open:shadow-lg open:shadow-purple-500/10 transition-all duration-300">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                                <i class="fas fa-shield-virus"></i>
+                            </div>
+                            <h3 class="font-bold text-xl text-slate-900 dark:text-white">Modern Protection</h3>
+                        </div>
+                        <span class="text-purple-500 transform group-open:rotate-180 transition duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 pt-0 text-gray-600 dark:text-gray-300 leading-relaxed border-t border-purple-50 dark:border-white/5 mt-2">
+                        <p class="mt-4">Adapting coverage to meet the needs of the digital age. From cyber risks to
+                            remote work, our solutions evolve as fast as the world around you.</p>
+                    </div>
+                </details>
+
+                <!-- Dropdown 3: Pastel Pink (Rose/Pink) -->
+                <details
+                    class="group bg-white dark:bg-slate-800 rounded-xl border border-pink-100 dark:border-pink-500/20 overflow-hidden open:shadow-lg open:shadow-pink-500/10 transition-all duration-300">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-600 dark:text-pink-400">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="font-bold text-xl text-slate-900 dark:text-white">Client-First Claims</h3>
+                        </div>
+                        <span class="text-pink-500 transform group-open:rotate-180 transition duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 pt-0 text-gray-600 dark:text-gray-300 leading-relaxed border-t border-pink-50 dark:border-white/5 mt-2">
+                        <p class="mt-4">Our metric for success is the speed and empathy with which we resolve your
+                            claims. We treat every policyholder like family.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 3: MISSION & VISION (Static & Clean) -->
+<section class="py-32 relative"
+    style="background-image: url('Assets/bg2.jpeg'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-sm"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 text-white">
+            <h4 class="text-rose-500 font-mono uppercase tracking-widest mb-2">Purpose</h4>
+            <h2 class="text-4xl font-serif font-bold">Mission & Vision</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Mission Card (Interactive Glow) -->
+            <div
+                class="glass-panel p-10 rounded-2xl border border-white/5 text-left bg-white/5 transition-all duration-500 hover:border-red-600 hover:shadow-[0_0_30px_rgba(220,38,38,0.5)]">
+                <div
+                    class="w-16 h-16 bg-rose-500/20 rounded-full flex items-center justify-center mb-6 text-rose-500 text-2xl">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-white mb-4">Our Mission</h3>
+                <p class="text-gray-400 leading-relaxed font-light">
+                    To provide unwavering protection and peace of mind, empowering individuals and businesses to pursue
+                    their ambitions without fear of the unknown.
+                </p>
+            </div>
+            <!-- Vision Card (Interactive Glow) -->
+            <div
+                class="glass-panel p-10 rounded-2xl border border-white/5 text-left bg-white/5 transition-all duration-500 hover:border-purple-600 hover:shadow-[0_0_30px_rgba(147,51,234,0.5)]">
+                <div
+                    class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mb-6 text-purple-500 text-2xl shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+                    <i class="fas fa-eye drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]"></i>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-white mb-4">Our Vision</h3>
+                <p class="text-gray-400 leading-relaxed font-light">
+                    To be the global standard for accessible, transparent, and responsive insurance, creating a world
+                    where safety is a right, not a privilege.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 4: PRINCIPLES THAT GUIDE US (Flashlight Cards) -->
+<section class="py-32 bg-white dark:bg-[#151e32]">
+    <div class="max-w-7xl mx-auto px-6">
+
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" id="principles-grid">
+            <!-- Card 1: Integrity -->
+            <div
+                class="flashlight-card h-80 relative rounded-xl overflow-hidden group bg-purple-900 border border-white/10 hover:border-purple-400 transition-colors duration-300">
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
+                    <i class="fas fa-balance-scale text-4xl text-white mb-6 transition"></i>
+                    <h3 class="font-bold text-xl text-white mb-2 hover-flash">Integrity</h3>
+                    <p class="text-sm text-white/80 leading-relaxed hover-flash">
+                        We process every claim with total transparency and fairness. Honesty is our only policy.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2: Speed -->
+            <div
+                class="flashlight-card h-80 relative rounded-xl overflow-hidden group bg-emerald-900 border border-white/10 hover:border-emerald-400 transition-colors duration-300">
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
+                    <i class="fas fa-bolt text-4xl text-white mb-6 transition"></i>
+                    <h3 class="font-bold text-xl text-white mb-2 hover-flash">Speed</h3>
+                    <p class="text-sm text-white/80 leading-relaxed hover-flash">
+                        Instant quotes and rapid claim approvals. We respect your time above all else.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3: Empathy -->
+            <div
+                class="flashlight-card h-80 relative rounded-xl overflow-hidden group bg-amber-600 border border-white/10 hover:border-white transition-colors duration-300">
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
+                    <i class="fas fa-heart text-4xl text-white mb-6 transition"></i>
+                    <h3 class="font-bold text-xl text-white mb-2 hover-flash">Empathy</h3>
+                    <p class="text-sm text-white/90 leading-relaxed font-semibold hover-flash">
+                        We understand that behind every claim is a person. Compassion drives our decisions.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 4: Reliability -->
+            <div
+                class="flashlight-card h-80 relative rounded-xl overflow-hidden group bg-blue-900 border border-white/10 hover:border-blue-400 transition-colors duration-300">
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
+                    <i class="fas fa-shield-alt text-4xl text-white mb-6 transition"></i>
+                    <h3 class="font-bold text-xl text-white mb-2 hover-flash">Reliability</h3>
+                    <p class="text-sm text-white/80 leading-relaxed hover-flash">
+                        We'll be there when you need us most. A promise kept is a future secured.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 5: Community -->
+            <div
+                class="flashlight-card h-80 relative rounded-xl overflow-hidden group bg-red-800 border border-white/10 hover:border-red-300 transition-colors duration-300">
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10">
+                    <i class="fas fa-users text-4xl text-white mb-6 transition"></i>
+                    <h3 class="font-bold text-xl text-white mb-2 hover-flash">Community</h3>
+                    <p class="text-sm text-white/80 leading-relaxed hover-flash">
+                        Protecting the communities we serve together. Stronger together.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Flashlight Cursor Effect on TEXT
+        const flashElements = document.querySelectorAll('.hover-flash');
+
+        flashElements.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                el.style.setProperty('--x', `${x}px`);
+                el.style.setProperty('--y', `${y}px`);
+            });
+        });
+    </script>
+    <style>
+        .hover-flash {
+            position: relative;
+            color: rgba(255, 255, 255, 0.7);
+            /* Base dim white */
+            cursor: default;
+            overflow: hidden;
+            /* Or keep visible? usually text-clip needed */
+        }
+
+        /* The Flash Effect */
+        .hover-flash:hover {
+            color: rgba(255, 255, 255, 0.4);
+            /* Dim base slightly to make flash pop? Or keep static */
+            /* We use a mask or background clip for the flash */
+            background-image: radial-gradient(circle 40px at var(--x, 50%) var(--y, 50%),
+                    #ffffff 0%,
+                    rgba(255, 255, 255, 0) 60%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            /* Glow */
+        }
+
+        /* Ensure normal text is visible when not hovering or setup base state */
+        .hover-flash:not(:hover) {
+            background: none;
+            color: white;
+            text-shadow: none;
+        }
+    </style>
+</section>
+
+<!-- SECTION 6: OUR PROCESS -->
+<section class="py-32 bg-white dark:bg-[#151e32]">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl font-serif font-bold dark:text-white">Our Method</h2>
+            <p class="text-gray-500 mt-2">Simple. Rapid. Reliable.</p>
+        </div>
+
+        <div class="relative">
+            <!-- Line -->
+            <div
+                class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 dark:bg-white/10 hidden md:block -z-0 transform -translate-y-1/2">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
+                <!-- Step 1 -->
+                <div
+                    class="bg-white dark:bg-[#1e293b] p-6 rounded-xl shadow-lg border border-gray-100 dark:border-white/5 text-center group hover:-translate-y-2 transition duration-300">
+                    <div
+                        class="w-12 h-12 bg-indigo-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                        1</div>
+                    <h3 class="font-bold mb-2 dark:text-white">Assess</h3>
+                    <p class="text-xs text-gray-500">Analyze your risks.</p>
+                </div>
+                <!-- Step 2 -->
+                <div
+                    class="bg-white dark:bg-[#1e293b] p-6 rounded-xl shadow-lg border border-gray-100 dark:border-white/5 text-center group hover:-translate-y-2 transition duration-300">
+                    <div
+                        class="w-12 h-12 bg-indigo-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                        2</div>
+                    <h3 class="font-bold mb-2 dark:text-white">Quote</h3>
+                    <p class="text-xs text-gray-500">Instant pricing.</p>
+                </div>
+                <!-- Step 3 -->
+                <div
+                    class="bg-white dark:bg-[#1e293b] p-6 rounded-xl shadow-lg border border-gray-100 dark:border-white/5 text-center group hover:-translate-y-2 transition duration-300">
+                    <div
+                        class="w-12 h-12 bg-rose-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold transform scale-125">
+                        3</div>
+                    <h3 class="font-bold mb-2 dark:text-white text-rose-500">Cover</h3>
+                    <p class="text-xs text-gray-500">Active protection.</p>
+                </div>
+                <!-- Step 4 -->
+                <div
+                    class="bg-white dark:bg-[#1e293b] p-6 rounded-xl shadow-lg border border-gray-100 dark:border-white/5 text-center group hover:-translate-y-2 transition duration-300">
+                    <div
+                        class="w-12 h-12 bg-indigo-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                        4</div>
+                    <h3 class="font-bold mb-2 dark:text-white">Support</h3>
+                    <p class="text-xs text-gray-500">24/7 assistance.</p>
+                </div>
+                <!-- Step 5 -->
+                <div
+                    class="bg-white dark:bg-[#1e293b] p-6 rounded-xl shadow-lg border border-gray-100 dark:border-white/5 text-center group hover:-translate-y-2 transition duration-300">
+                    <div
+                        class="w-12 h-12 bg-indigo-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                        5</div>
+                    <h3 class="font-bold mb-2 dark:text-white">Claim</h3>
+                    <p class="text-xs text-gray-500">Quick resolution.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Protection with Purpose Container (Animated Blink Box) -->
+<section class="py-20 bg-white dark:bg-[#151e32]">
+    <div class="max-w-4xl mx-auto px-6">
+        <div
+            class="p-12 text-center rounded-3xl border-4 border-transparent relative overflow-hidden group transition-all duration-500 bg-white/5 backdrop-blur-sm animate-neon-blink shadow-2xl">
+
+            <h5 class="text-purple-500 font-bold tracking-[0.2em] uppercase text-sm mb-4">Philosophy</h5>
+            <h2
+                class="relative text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white tracking-tight mb-8">
+                Protection with Purpose
+            </h2>
+
+            <div class="relative max-w-2xl mx-auto">
+                <i
+                    class="fas fa-quote-left text-5xl text-purple-500 absolute -top-10 -left-4 opacity-80 animate-blink-slow"></i>
+                <p
+                    class="relative text-xl md:text-2xl font-light italic text-slate-600 dark:text-gray-300 leading-relaxed font-serif z-10">
+                    "Insurance is not about the fine print. It's about the promise to be there when life takes an
+                    unexpected turn. That is our sacred duty."
+                </p>
+                <div class="w-16 h-1 bg-purple-500 mx-auto mt-8 rounded-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes neon-blink {
+
+            0%,
+            100% {
+                border-color: rgba(168, 85, 247, 0.4);
+                box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+            }
+
+            50% {
+                border-color: rgba(168, 85, 247, 1);
+                box-shadow: 0 0 60px rgba(168, 85, 247, 0.6), inset 0 0 20px rgba(168, 85, 247, 0.2);
+            }
+        }
+
+        @keyframes blink-slow {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(0.9);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        .animate-neon-blink {
+            animation: neon-blink 4s infinite ease-in-out;
+        }
+
+        .animate-blink-slow {
+            animation: blink-slow 3s infinite ease-in-out;
+        }
+    </style>
+</section>
+
+<!-- SECTION 7: EXPERTISE CAPABILITIES (3x2 Grid) -->
+<section class="py-32 bg-gray-50 dark:bg-primary-dark transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-serif font-bold dark:text-white">Capabilities</h2>
+            <p class="text-gray-500 mt-2">Comprehensive Coverage for Every Stage</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1 (Life & Health - Golden Border) -->
+            <div
+                class="bg-white dark:bg-[#1e293b] p-8 rounded-xl shadow-lg border-2 border-transparent hover:border-yellow-600 hover:shadow-[0_0_20px_rgba(202,138,4,0.4)] transition duration-300 group">
+                <i class="fas fa-heartbeat text-4xl text-rose-500 mb-6 group-hover:scale-110 transition"></i>
+                <h3 class="font-bold text-xl dark:text-white mb-4">Life & Health</h3>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2 list-disc pl-4">
+                    <li>Term Life Insurance</li>
+                    <li>Critical Illness Cover</li>
+                    <li>Family Protection</li>
+                </ul>
+            </div>
+            <!-- Card 2 (Purple Glow) -->
+            <div
+                class="bg-white dark:bg-[#1e293b] p-8 rounded-xl shadow-lg border-2 border-transparent hover:border-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition duration-300 group">
+                <i class="fas fa-home text-4xl text-neon-cyan mb-6 group-hover:scale-110 transition"></i>
+                <h3 class="font-bold text-xl dark:text-white mb-4">Property & Assets</h3>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2 list-disc pl-4">
+                    <li>Homeowners Insurance</li>
+                    <li>Renters Insurance</li>
+                    <li>High-Value Assets</li>
+                </ul>
+            </div>
+            <!-- Card 3 (Purple Glow) -->
+            <div
+                class="bg-white dark:bg-[#1e293b] p-8 rounded-xl shadow-lg border-2 border-transparent hover:border-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition duration-300 group">
+                <i class="fas fa-briefcase text-4xl text-purple-500 mb-6 group-hover:scale-110 transition"></i>
+                <h3 class="font-bold text-xl dark:text-white mb-4">Business Solutions</h3>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2 list-disc pl-4">
+                    <li>General Liability</li>
+                    <li>Workers' Comp</li>
+                    <li>Cyber Liability</li>
+                </ul>
+            </div>
+            <!-- Card 4 (Purple Glow) -->
+            <div
+                class="bg-white dark:bg-[#1e293b] p-8 rounded-xl shadow-lg border-2 border-transparent hover:border-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition duration-300 group">
+                <i class="fas fa-plane text-4xl text-green-500 mb-6 group-hover:scale-110 transition"></i>
+                <h3 class="font-bold text-xl dark:text-white mb-4">Travel & Lifestyle</h3>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2 list-disc pl-4">
+                    <li>Trip Cancellation</li>
+                    <li>Medical Evacuation</li>
+                    <li>Lost Baggage</li>
+                </ul>
+            </div>
+            <!-- Card 5 (Purple Glow) -->
+            <div
+                class="bg-white dark:bg-[#1e293b] p-8 rounded-xl shadow-lg border-2 border-transparent hover:border-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition duration-300 group">
+                <i class="fas fa-car text-4xl text-red-500 mb-6 group-hover:scale-110 transition"></i>
+                <h3 class="font-bold text-xl dark:text-white mb-4">Auto & Mobility</h3>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2 list-disc pl-4">
+                    <li>Comprehensive Auto</li>
+                    <li>EV Specialty Plans</li>
+                    <li>Roadside Assist</li>
+                </ul>
+            </div>
+            <!-- Card 6 (Purple Glow) -->
+            <div
+                class="bg-white dark:bg-[#1e293b] p-8 rounded-xl shadow-lg border-2 border-transparent hover:border-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition duration-300 group">
+                <i class="fas fa-leaf text-4xl text-blue-500 mb-6 group-hover:scale-110 transition"></i>
+                <h3 class="font-bold text-xl dark:text-white mb-4">ESG Products</h3>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2 list-disc pl-4">
+                    <li>Green Home Discounts</li>
+                    <li>Sustainable Investing</li>
+                    <li>Carbon Offsets</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 8: MILESTONES -->
+<section class="py-32 bg-white dark:bg-[#151e32]">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1">
+            <h4 class="text-rose-500 text-sm uppercase tracking-widest mb-4">Achievements</h4>
+            <h2 class="text-4xl font-serif font-bold dark:text-white mb-8">Measured by Trust</h2>
+            <div class="space-y-8">
+                <div class="flex items-center gap-6 p-4 border-b border-gray-100 dark:border-white/5">
+                    <span
+                        class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-yellow-600">$5B+</span>
+                    <div>
+                        <div class="font-bold text-xl dark:text-white">Claims Paid</div>
+                        <div class="text-sm text-gray-500">Delivering on our promises since day one.</div>
+                    </div>
+                </div>
+                <!-- 2M+ Number Colors: Dark Red & Yellow -->
+                <div class="flex items-center gap-6 p-4 border-b border-gray-100 dark:border-white/5">
+                    <span
+                        class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-yellow-500">2M+</span>
+                    <div>
+                        <div class="font-bold text-xl dark:text-white">Families Protected</div>
+                        <div class="text-sm text-gray-500">Across 50+ countries worldwide.</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6 p-4 border-b border-gray-100 dark:border-white/5">
+                    <span
+                        class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600">98%</span>
+                    <div>
+                        <div class="font-bold text-xl dark:text-white">Claim Approval Rate</div>
+                        <div class="text-sm text-gray-500">Industry-leading reliability.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order-1 md:order-2">
+            <img src="Assets/office-2.png"
+                class="rounded-2xl shadow-2xl skew-y-3 hover:skew-y-0 transition duration-700">
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 9: CLIENT TRUST (Orbit) -->
+<section class="py-32 bg-slate-50 dark:bg-primary-dark overflow-hidden transition-colors duration-300 relative">
+    <!-- Glow Background -->
+    <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-rose-500/5 rounded-full blur-3xl pointer-events-none">
+    </div>
+
+    <div class="text-center mb-16 relative z-10">
+        <h2 class="text-3xl font-serif font-bold dark:text-white">Trusted by Policyholders</h2>
+        <p class="text-gray-500 mt-2">Partnerships built on reliable protection</p>
+    </div>
+    <div class="orbit-container scale-75 md:scale-100 relative z-10">
+        <div
+            class="orbit-center shadow-xl bg-white dark:bg-[#1e293b] border-4 border-rose-100 dark:border-rose-500/20 box-glow">
+            <i class="fas fa-handshake text-4xl text-rose-500"></i>
+        </div>
+        <!-- Orbit Items (Letters/Images with Glow) -->
+        <div class="orbit-item" style="transform: rotate(0deg) translate(280px) rotate(0deg);">
+            <div
+                class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center font-bold text-lg shadow-lg border border-indigo-100 dark:border-indigo-500/30 text-indigo-600 dark:text-indigo-400 hover:scale-110 transition duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.5)]">
+                S</div>
+        </div>
+        <div class="orbit-item" style="transform: rotate(45deg) translate(280px) rotate(-45deg);">
+            <div
+                class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center font-bold text-lg shadow-lg border border-rose-100 dark:border-rose-500/30 text-rose-500 hover:scale-110 transition duration-300 hover:shadow-[0_0_20px_rgba(244,63,94,0.5)]">
+                L</div>
+        </div>
+        <div class="orbit-item" style="transform: rotate(90deg) translate(280px) rotate(-90deg);">
+            <div
+                class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center font-bold text-lg shadow-lg border border-emerald-100 dark:border-emerald-500/30 text-emerald-500 hover:scale-110 transition duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.5)]">
+                B</div>
+        </div>
+        <div class="orbit-item" style="transform: rotate(135deg) translate(280px) rotate(-135deg);">
+            <div
+                class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center font-bold text-lg shadow-lg border border-amber-100 dark:border-amber-500/30 text-amber-500 hover:scale-110 transition duration-300 hover:shadow-[0_0_20px_rgba(245,158,11,0.5)]">
+                E</div>
+        </div>
+        <div class="orbit-item" style="transform: rotate(180deg) translate(280px) rotate(-180deg);">
+            <div
+                class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center font-bold text-lg shadow-lg border border-cyan-100 dark:border-cyan-500/30 text-cyan-500 hover:scale-110 transition duration-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]">
+                T</div>
+        </div>
+        <div class="orbit-item" style="transform: rotate(225deg) translate(280px) rotate(-225deg);">
+            <div
+                class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center font-bold text-lg shadow-lg border border-purple-100 dark:border-purple-500/30 text-purple-500 hover:scale-110 transition duration-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]">
+                A</div>
+        </div>
+        <div class="orbit-item" style="transform: rotate(270deg) translate(280px) rotate(-270deg);">
+            <div
+                class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center font-bold text-lg shadow-lg border border-pink-100 dark:border-pink-500/30 text-pink-500 hover:scale-110 transition duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.5)]">
+                H</div>
+        </div>
+        <div class="orbit-item" style="transform: rotate(315deg) translate(280px) rotate(-315deg);">
+            <img src="Assets/team-1.png"
+                class="w-full h-full rounded-full object-cover border-2 border-white shadow-lg opacity-80 hover:opacity-100 transition">
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 10: CULTURE -->
+<section class="py-32 bg-white dark:bg-[#151e32]">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div>
+            <h4 class="text-rose-500 text-sm uppercase tracking-widest mb-4">Our People</h4>
+            <h2 class="text-4xl font-serif font-bold dark:text-white mb-6">Empathy in Action</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                We believe that insurance is a human business. Our team is composed of compassionate experts who are
+                dedicated to helping you navigate life's challenges.
+            </p>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-check-circle text-neon-cyan"></i>
+                    <span class="dark:text-white">Dedicated Case Managers</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-check-circle text-emerald-400"></i>
+                    <span class="dark:text-white">24/7 Crisis Response</span>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <!-- Corrected Extensions to .png based on file check -->
+            <img src="Assets/team-1.png"
+                class="rounded-xl shadow-lg hover:scale-105 transition duration-500 object-cover w-full h-64">
+            <img src="Assets/team-2.png"
+                class="rounded-xl shadow-lg mt-8 hover:scale-105 transition duration-500 object-cover w-full h-64">
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 11: TESTIMONIALS (Stories of Protection) -->
+<section class="py-32 bg-gray-50 dark:bg-primary-dark transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <i class="fas fa-quote-right text-4xl text-rose-500 mb-8 opacity-50"></i>
+        <h2 class="text-3xl font-serif font-bold dark:text-white mb-12">Stories of Protection</h2>
+
+        <!-- Carousel Container -->
+        <div class="relative">
+            <div class="overflow-hidden">
+                <div class="transition-transform duration-500 ease-in-out">
+                    <!-- Hover: Dark->Golden Glow, Light->Neon Glow -->
+                    <div
+                        class="p-10 bg-white dark:bg-[#1e293b] rounded-2xl shadow-xl relative group transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,215,0,0.3)] dark:hover:shadow-[0_0_30px_rgba(255,215,0,0.4)]">
+                        <!-- Golden Glow Attempt -->
+                        <!-- Wait, prompt says: Dark mode -> golden glow. Light mode -> soft neon glow. -->
+                        <style>
+                            /* Inline style for specific hover logic to ensure correctness */
+                            .story-card:hover {
+                                box-shadow: 0 0 30px rgba(100, 255, 218, 0.4);
+                                /* Default Neon (Light Mode context, or just general) */
+                            }
+
+                            /* Dark mode override */
+                            .dark .story-card:hover {
+                                box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+                                /* Golden Glow */
+                            }
+                        </style>
+                        <div class="story-card p-2 rounded-xl transition-all duration-300">
+                            <!-- Text always Dark Navy Blue? "Text: Dark navy blue, Always readable" -->
+                            <!-- If background is dark-[#1e293b], navy blue text might be hard to read. 
+                                  User said "Always readable". Navy Blue on Dark Blue bg is bad. 
+                                  Maybe user implies the card background should be light or text should be high brightness?
+                                  Or "Text: Dark navy blue" applies to Light Mode? 
+                                  "Always readable without changing the existing functionality"
+                                  I will use text-navy-900 for Light Mode, and White/Light for Dark Mode, unless "Dark navy blue" is a strict override.
+                                  Let's stick to safe readable defaults but prioritize Navy in Light. -->
+                            <p class="text-xl text-navy-900 dark:text-gray-200 italic mb-6 font-medium leading-relaxed">
+                                "When the flood hit, I thought we lost everything. Their team was on site within hours,
+                                and the claim was settled in days. They saved our family home."
+                            </p>
+                            <div class="font-bold text-navy-900 dark:text-white">Sarah Jenkins</div>
+                            <div class="text-sm text-gray-500">Homeowner Policyholder</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 12: FUTURE OUTLOOK -->
+<section class="py-32 bg-indigo-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('Assets/network-bg.png')] opacity-10"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <h2 class="text-4xl font-serif font-bold mb-6">The Future of Safety</h2>
+        <p class="text-xl text-indigo-200 mb-8 max-w-2xl mx-auto">
+            As risks evolve, so do we. From AI-driven risk assessment to climate change resilience, we are building the
+            insurance of tomorrow.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            <div class="p-4 border border-white/20 rounded-lg backdrop-blur-sm hover:bg-white/10 transition">
+                <div class="font-bold text-neon-cyan text-xl mb-2">AI Claims</div>
+                <p class="text-sm text-indigo-100">Zero-touch processing.</p>
+            </div>
+            <div class="p-4 border border-white/20 rounded-lg backdrop-blur-sm hover:bg-white/10 transition">
+                <div class="font-bold text-rose-500 text-xl mb-2">Parametric</div>
+                <p class="text-sm text-indigo-100">Instant geo-triggered payouts.</p>
+            </div>
+            <div class="p-4 border border-white/20 rounded-lg backdrop-blur-sm hover:bg-white/10 transition">
+                <div class="font-bold text-emerald-400 text-xl mb-2">Preventative</div>
+                <p class="text-sm text-indigo-100">IoT monitoring to stop loss.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 13: CTA / CONCLUSION -->
+<section class="py-32 bg-white dark:bg-[#151e32] text-center">
+    <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-5xl font-serif font-bold dark:text-white mb-8">Ready for Peace of Mind?</h2>
+        <p class="text-xl text-gray-500 mb-12">Join thousands of families and businesses who trust us with their future.
+        </p>
+        <a href="contact.html"
+            class="inline-block px-10 py-4 bg-rose-600 text-white font-bold uppercase tracking-widest hover:bg-rose-700 transition-all shadow-lg hover:shadow-rose-500/50 rounded-full">
+            Get Your Quote
+        </a>
+    </div>
+</section>
+
+<!-- NEW ANIMATED GRADIENT FOOTER -->
+<footer class="footer-gradient pt-24 pb-12">
+    <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <!-- Col 1: Brand -->
+        <div>
+            <a href="#" class="flex items-center gap-2 mb-6 text-white group">
+                <div
+                    class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)] transition-transform group-hover:rotate-12">
+                    <i class="fas fa-shield-alt text-lg"></i>
+                </div>
+                <span class="font-bold text-xl">SafeGuard</span>
+            </a>
+            <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                Next-generation insurance & business intelligence. Protecting your future with confidence.
+            </p>
+            <div class="flex gap-4 mt-6">
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all transform hover:-translate-y-1">
+                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                </a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-sky-500 hover:text-white transition-all transform hover:-translate-y-1">
+                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                </a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-pink-600 hover:text-white transition-all transform hover:-translate-y-1">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+            <h4 class="text-white font-bold mb-6">Quick Links</h4>
+            <ul class="space-y-4 text-sm text-slate-400">
+                <li><a href="index.html" class="footer-link hover:text-white">Home</a></li>
+                <li><a href="about.html" class="footer-link hover:text-white">About Us</a></li>
+                <li><a href="services.html" class="footer-link hover:text-white">Services</a></li>
+                <li><a href="contact.html" class="footer-link hover:text-white">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Col 3: Account -->
+        <div>
+            <h4 class="text-white font-bold mb-6">Account</h4>
+            <ul class="space-y-4 text-sm text-slate-400">
+                <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a></li>
+                <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Console</a></li>
+                <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
+                <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div>
+            <h4 class="text-white font-bold mb-6">Stay Updated</h4>
+            <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest insights.</p>
+            <div class="flex gap-2">
+                <input type="email" placeholder="Email address"
+                    class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors">
+                <button
+                    class="px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors">Go</button>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="max-w-[1920px] mx-auto px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+        <div>&copy; 2026 SafeGuard Insurance. All rights reserved.</div>
+        <div class="flex gap-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white transition-colors">Terms</a>
+            <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+            <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by SafeGuard</span>
+        </div>
+    </div>
+</footer>
+<script>
+    lucide.createIcons();
+</script>
+
+<script src="main.js"></script>
+
+<script>
+    // Reveal on scroll logic (Inline for simplicity)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-8');
+            }
+        });
+    });
+    document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+        el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-1000', 'ease-out');
+        observer.observe(el);
+    });
+</script>
+</body>
+
+</html>

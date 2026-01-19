@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claimora Insurance | Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        primaryHover: '#4338CA',
+                        secondary: '#10B981',
+                        dark: '#0F172A',
+                        'neon-cyan': '#22D3EE',
+                        'neon-violet': '#A855F7',
+                        'neon-magenta': '#FF00FF',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body
+    class="bg-gradient-to-br from-gray-50 to-gray-200 dark:from-gray-900 dark:to-black text-gray-800 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- LIQUID GLASS HEADER -->
+    <nav class="header-glass">
+        <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div
+                    class="brand-box w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-sans text-xl font-bold tracking-tight text-slate-800 dark:text-white">
+                        Claimora
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse gap-x-8">
+                <!-- Home Dropdown -->
+                <div class="relative group">
+                    <button class="nav-link flex items-center gap-1 py-4">
+                        Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                    <!-- Dropdown -->
+                    <div
+                        class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                        <a href="index.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
+                            V1 (Parallax)</a>
+                        <a href="index2.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
+                            V2 (Retro)</a>
+                    </div>
+                </div>
+
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="contact.html" class="nav-link text-indigo-600 dark:text-neon-cyan font-bold">Contact</a>
+
+                <!-- Dashboards Dropdown -->
+                <div class="relative group">
+                    <button class="nav-link flex items-center gap-1 py-4">
+                        Dashboards <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                    <div
+                        class="absolute top-full ltr:left-0 rtl:right-0 w-56 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                        <a href="user_dashboard.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white text-start">
+                            <i data-lucide="user" class="w-4 h-4 text-indigo-500"></i> User Dashboard
+                        </a>
+                        <a href="admin_dashboard.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white text-start">
+                            <i data-lucide="shield" class="w-4 h-4 text-rose-500"></i> Admin Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="hidden lg:flex items-center gap-4">
+                <button id="rtl-toggle"
+                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                    title="Toggle RTL">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
+                </button>
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                    title="Toggle Theme">
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+                <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
+                    Get Started
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER & OVERLAY -->
+    <div id="mobile-overlay"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300">
+    </div>
+    <div id="mobile-drawer"
+        class="fixed top-0 bottom-0 ltr:left-0 rtl:right-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[70] mobile-drawer mobile-drawer-closed shadow-2xl overflow-y-auto transform transition-transform duration-300 ltr:-translate-x-full rtl:translate-x-full">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <span class="font-bold text-xl dark:text-white">Menu</span>
+                <button id="close-menu-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-full">
+                    <i data-lucide="x" class="w-6 h-6 dark:text-white"></i>
+                </button>
+            </div>
+
+            <nav class="space-y-6">
+                <!-- Mobile Links -->
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Navigation</p>
+                    <a href="index.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home</a>
+                    <a href="index2.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home V2
+                        (Retro)</a>
+                    <a href="about.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">About</a>
+                    <a href="services.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Services</a>
+                    <a href="contact.html"
+                        class="block text-lg font-medium text-indigo-600 dark:text-neon-cyan font-bold text-start">Contact</a>
+                </div>
+
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Portals</p>
+                    <a href="user_dashboard.html"
+                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                        <div
+                            class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                            <i data-lucide="user" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-slate-700 dark:text-slate-300 font-medium">User Dashboard</span>
+                    </a>
+                    <a href="admin_dashboard.html"
+                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                        <div
+                            class="w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
+                            <i data-lucide="shield" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-slate-700 dark:text-slate-300 font-medium">Admin Dashboard</span>
+                    </a>
+                </div>
+
+                <hr class="border-slate-100 dark:border-slate-800">
+
+                <!-- Mobile Actions -->
+                <div class="flex gap-4">
+                    <button id="mobile-theme-toggle"
+                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
+                        <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
+                    </button>
+                    <!-- Mobile RTL Toggle -->
+                    <button id="mobile-rtl-toggle"
+                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400"
+                        onclick="document.getElementById('rtl-toggle').click()">
+                        <i data-lucide="globe" class="w-5 h-5"></i> <span>RTL</span>
+                    </button>
+                </div>
+                <a href="login.html"
+                    class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
+                    Get Started
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="pt-32 pb-16 bg-gray-50 dark:bg-[#020617] text-center transition-colors relative overflow-hidden">
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-neon-magenta/5 rounded-full blur-[120px] pointer-events-none">
+        </div>
+        <h1
+            class="text-5xl md:text-7xl font-display font-extrabold mb-6 animate-fade-in text-navy-900 dark:text-neon-cyan tracking-tight">
+            We're Here for <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-neon-magenta to-pink-500">You</span>
+        </h1>
+        <div class="max-w-3xl mx-auto px-6 relative">
+            <i
+                class="fas fa-quote-left text-4xl text-indigo-200 dark:text-neon-cyan/50 absolute -top-4 -left-4 opacity-50"></i>
+            <p class="text-2xl md:text-3xl font-serif italic text-slate-700 dark:text-cyan-300 mb-8 leading-relaxed font-light relative z-10"
+                style="font-family: 'Playfair Display', serif;">
+                "True protection isn't just about policies; it's about the promise to be there when it matters most."
+            </p>
+            <i
+                class="fas fa-quote-right text-4xl text-indigo-200 dark:text-neon-cyan/50 absolute -bottom-4 -right-4 opacity-50"></i>
+        </div>
+        <p
+            class="text-sm font-mono text-indigo-500 dark:text-neon-magenta uppercase tracking-widest mt-8 animate-fade-in animate-delay-100">
+            // 24/7 Global Claims & Support
+        </p>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                <!-- Info & Map -->
+                <div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                        <div
+                            class="p-6 bg-white dark:bg-slate-950 rounded-2xl shadow-lg border border-gray-200 dark:border-white/10 hover:border-neon-cyan/50 hover:shadow-neon-cyan/20 transition-all duration-300 group">
+                            <div
+                                class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Email</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">hello@nexgen.com</p>
+                        </div>
+                        <div
+                            class="p-6 bg-white dark:bg-slate-950 rounded-2xl shadow-lg border border-gray-200 dark:border-white/10 hover:border-neon-cyan/50 hover:shadow-neon-cyan/20 transition-all duration-300 group">
+                            <div
+                                class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3 class="font-bold mb-1 group-hover:text-primary transition-colors">Phone</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+
+                    <!-- Map Placeholder -->
+                    <div
+                        class="w-full h-80 bg-gray-200 dark:bg-slate-900 rounded-3xl flex items-center justify-center relative overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                            alt="Map"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition duration-500">
+                        <div class="z-10 bg-white dark:bg-gray-900 p-4 rounded-full shadow-xl">
+                            <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div
+                    class="glass-panel bg-white/80 dark:bg-slate-950/80 p-8 rounded-3xl shadow-xl border border-white/20 dark:border-white/5 backdrop-blur-md">
+                    <form class="space-y-6 relative group transform transition-all hover:scale-[1.01]">
+                        <!-- Progress Indicator -->
+                        <div class="h-1 w-full bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden mb-6">
+                            <div class="h-full bg-gradient-to-r from-neon-cyan to-neon-violet w-1/3 animate-pulse">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="relative">
+                                <input type="text" id="fname"
+                                    class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-navy-900 dark:text-white placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
+                                    placeholder="Jane">
+                                <label for="fname"
+                                    class="absolute left-4 top-2 text-xs text-slate-500 dark:text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-neon-cyan">First
+                                    Name</label>
+                            </div>
+                            <div class="relative">
+                                <input type="text" id="lname"
+                                    class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-navy-900 dark:text-white placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
+                                    placeholder="Doe">
+                                <label for="lname"
+                                    class="absolute left-4 top-2 text-xs text-slate-500 dark:text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-neon-cyan">Last
+                                    Name</label>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <input type="email" id="email"
+                                class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-navy-900 dark:text-white placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
+                                placeholder="jane@example.com">
+                            <label for="email"
+                                class="absolute left-4 top-2 text-xs text-slate-500 dark:text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-neon-cyan">Email
+                                Address</label>
+                        </div>
+
+                        <!-- New Insurance Fields -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="relative">
+                                <input type="text" id="policy"
+                                    class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-navy-900 dark:text-white placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
+                                    placeholder="POL-123456789">
+                                <label for="policy"
+                                    class="absolute left-4 top-2 text-xs text-slate-500 dark:text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-neon-cyan">Policy
+                                    Number (Optional)</label>
+                            </div>
+                            <div class="relative">
+                                <select id="topic"
+                                    class="peer w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-navy-900 dark:text-white shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)] appearance-none">
+                                    <option>Get a Quote</option>
+                                    <option>File a Claim</option>
+                                    <option>Policy Management</option>
+                                    <option>General Inquiry</option>
+                                </select>
+                                <label for="topic"
+                                    class="absolute left-4 -top-2 text-xs text-neon-cyan bg-white dark:bg-navy-900 px-1 transform translate-y-1/2">Topic</label>
+                                <i
+                                    class="fas fa-chevron-down absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <textarea rows="4" id="message"
+                                class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-navy-900 dark:text-white placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
+                                placeholder="How can we help?"></textarea>
+                            <label for="message"
+                                class="absolute left-4 top-2 text-xs text-slate-500 dark:text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-neon-cyan">Message</label>
+                        </div>
+                        <button type="button"
+                            class="relative overflow-hidden w-full py-4 rounded-xl bg-gradient-to-r from-neon-cyan to-neon-violet text-navy-900 font-bold text-lg shadow-[0_0_20px_rgba(100,255,218,0.4)] hover:shadow-[0_0_30px_rgba(100,255,218,0.6)] transition-all transform hover:-translate-y-1 active:scale-95 group">
+                            <span class="relative z-10 flex items-center justify-center gap-2">Submit Request <i
+                                    class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i></span>
+                            <div
+                                class="absolute inset-0 bg-white/30 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700">
+                            </div>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GRID SUPPORT TEAM (6 ITEMS) -->
+    <section class="py-24 bg-slate-50 dark:bg-black relative">
+        <div class="max-w-7xl mx-auto px-6 mb-16 text-center">
+            <h2 class="text-4xl font-display font-bold text-navy-900 dark:text-white mb-4">Dedicated Experts</h2>
+            <div class="h-1 w-24 bg-gradient-to-r from-neon-cyan to-neon-violet mx-auto rounded-full"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Item 1 -->
+            <div
+                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-neon-cyan border-dashed relative">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=200&h=200"
+                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                    <div
+                        class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white dark:border-navy-900">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-navy-900 dark:text-white mb-1">Sarah Jenkins</h3>
+                    <p class="text-xs font-mono text-neon-cyan uppercase tracking-wider mb-4">Senior Claims Specialist
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 italic mb-6">"I ensure your claims are processed with
+                        speed and empathy."</p>
+                    <div class="flex justify-center gap-3">
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-cyan hover:text-navy-900 transition-colors"><i
+                                class="fab fa-linkedin-in"></i></button>
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-cyan hover:text-navy-900 transition-colors"><i
+                                class="fas fa-envelope"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div
+                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-neon-violet border-dashed relative">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200"
+                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                    <div
+                        class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white dark:border-navy-900">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-navy-900 dark:text-white mb-1">David Chen</h3>
+                    <p class="text-xs font-mono text-neon-violet uppercase tracking-wider mb-4">Tech Support Lead</p>
+                    <p class="text-slate-600 dark:text-slate-400 italic mb-6">"Solving complex technical issues is what
+                        I do best."</p>
+                    <div class="flex justify-center gap-3">
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-violet hover:text-navy-900 transition-colors"><i
+                                class="fab fa-linkedin-in"></i></button>
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-violet hover:text-navy-900 transition-colors"><i
+                                class="fas fa-envelope"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div
+                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-blue-500 border-dashed relative">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200&h=200"
+                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                    <div
+                        class="absolute bottom-1 right-1 w-5 h-5 bg-yellow-500 rounded-full border-2 border-white dark:border-navy-900">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-navy-900 dark:text-white mb-1">Emily Rodriguez</h3>
+                    <p class="text-xs font-mono text-blue-500 uppercase tracking-wider mb-4">Customer Success</p>
+                    <p class="text-slate-600 dark:text-slate-400 italic mb-6">"Your satisfaction is my top priority."
+                    </p>
+                    <div class="flex justify-center gap-3">
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-blue-500 hover:text-white transition-colors"><i
+                                class="fab fa-linkedin-in"></i></button>
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-blue-500 hover:text-white transition-colors"><i
+                                class="fas fa-envelope"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div
+                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-purple-500 border-dashed relative">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200&h=200"
+                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                    <div
+                        class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white dark:border-navy-900">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-navy-900 dark:text-white mb-1">Marcus Johnson</h3>
+                    <p class="text-xs font-mono text-purple-500 uppercase tracking-wider mb-4">Billing Specialist</p>
+                    <p class="text-slate-600 dark:text-slate-400 italic mb-6">"Clarifying your finances with precision."
+                    </p>
+                    <div class="flex justify-center gap-3">
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-purple-500 hover:text-white transition-colors"><i
+                                class="fab fa-linkedin-in"></i></button>
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-purple-500 hover:text-white transition-colors"><i
+                                class="fas fa-envelope"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div
+                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-pink-500 border-dashed relative">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200&h=200"
+                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                    <div
+                        class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white dark:border-navy-900">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-navy-900 dark:text-white mb-1">Olivia Martinez</h3>
+                    <p class="text-xs font-mono text-pink-500 uppercase tracking-wider mb-4">Policy Advisor</p>
+                    <p class="text-slate-600 dark:text-slate-400 italic mb-6">"Helping you choose the right protection."
+                    </p>
+                    <div class="flex justify-center gap-3">
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-pink-500 hover:text-white transition-colors"><i
+                                class="fab fa-linkedin-in"></i></button>
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-pink-500 hover:text-white transition-colors"><i
+                                class="fas fa-envelope"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div
+                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-yellow-500 border-dashed relative">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=200&h=200"
+                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                    <div
+                        class="absolute bottom-1 right-1 w-5 h-5 bg-gray-400 rounded-full border-2 border-white dark:border-navy-900">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-navy-900 dark:text-white mb-1">James Wilson</h3>
+                    <p class="text-xs font-mono text-yellow-500 uppercase tracking-wider mb-4">Technical Lead</p>
+                    <p class="text-slate-600 dark:text-slate-400 italic mb-6">"Ensuring systems run smoothly for you."
+                    </p>
+                    <div class="flex justify-center gap-3">
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-yellow-500 hover:text-white transition-colors"><i
+                                class="fab fa-linkedin-in"></i></button>
+                        <button
+                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-yellow-500 hover:text-white transition-colors"><i
+                                class="fas fa-envelope"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION (NEW) -->
+    <section class="py-24 bg-white dark:bg-[#020617] relative">
+        <div class="max-w-7xl mx-auto px-6 mb-16 text-center">
+            <h2 class="text-3xl font-display font-bold text-navy-900 dark:text-white mb-4">How We Help</h2>
+            <p class="text-slate-600 dark:text-slate-400">Simple, transparent, and efficient.</p>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+            <!-- Connector Line (Desktop) -->
+            <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-slate-200 dark:bg-white/10 z-0">
+            </div>
+
+            <!-- Step 1 -->
+            <div class="text-center relative z-10 group">
+                <div
+                    class="w-24 h-24 mx-auto bg-slate-50 dark:bg-slate-950 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-white/10 mb-6 group-hover:border-neon-cyan transition-colors shadow-lg">
+                    <i class="fas fa-handshake text-3xl text-neon-cyan"></i>
+                </div>
+                <h3 class="text-xl font-bold text-navy-900 dark:text-white mb-2">1. Connect</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">Reach out via form, email, or direct call. We're
+                    always listening.</p>
+            </div>
+            <!-- Step 2 -->
+            <div class="text-center relative z-10 group">
+                <div
+                    class="w-24 h-24 mx-auto bg-slate-50 dark:bg-slate-950 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-white/10 mb-6 group-hover:border-neon-violet transition-colors shadow-lg">
+                    <i class="fas fa-search-dollar text-3xl text-neon-violet"></i>
+                </div>
+                <h3 class="text-xl font-bold text-navy-900 dark:text-white mb-2">2. Analyze</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">Our experts review your needs and identify the
+                    best solutions.</p>
+            </div>
+            <!-- Step 3 -->
+            <div class="text-center relative z-10 group">
+                <div
+                    class="w-24 h-24 mx-auto bg-slate-50 dark:bg-slate-950 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-white/10 mb-6 group-hover:border-blue-500 transition-colors shadow-lg">
+                    <i class="fas fa-shield-alt text-3xl text-blue-500"></i>
+                </div>
+                <h3 class="text-xl font-bold text-navy-900 dark:text-white mb-2">3. Protect</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">We implement your plan, ensuring comprehensive
+                    coverage.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS (NEW) -->
+    <section class="py-24 bg-white dark:bg-black border-t border-slate-100 dark:border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-display font-bold text-center text-navy-900 dark:text-white mb-16">Trusted Voices
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div
+                    class="p-8 bg-slate-50 dark:bg-slate-950 rounded-3xl relative hover:-translate-y-2 transition-transform duration-300 border border-transparent dark:border-white/5">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 mb-6 italic leading-relaxed">"The support team was
+                        incredible. They walked me through my claim step-by-step and I was paid out in 24 hours.
+                        Phenomenal service!"</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://ui-avatars.com/api/?name=Michael+B&background=random" alt="User"
+                            class="w-12 h-12 rounded-full">
+                        <div>
+                            <h4 class="font-bold text-navy-900 dark:text-white">Michael B.</h4>
+                            <span class="text-xs text-slate-500 uppercase">Business Owner</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div
+                    class="p-8 bg-slate-50 dark:bg-slate-950 rounded-3xl relative hover:-translate-y-2 transition-transform duration-300 border border-transparent dark:border-white/5">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 mb-6 italic leading-relaxed">"Finally, an insurance
+                        company that actually cares. The 24/7 global support really saved me when I was traveling
+                        abroad."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+K&background=random" alt="User"
+                            class="w-12 h-12 rounded-full">
+                        <div>
+                            <h4 class="font-bold text-navy-900 dark:text-white">Sarah K.</h4>
+                            <span class="text-xs text-slate-500 uppercase">Frequent Traveler</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div
+                    class="p-8 bg-slate-50 dark:bg-slate-950 rounded-3xl relative hover:-translate-y-2 transition-transform duration-300 border border-transparent dark:border-white/5">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 mb-6 italic leading-relaxed">"The dedicated expert
+                        assigned to my case was knowledgeable and very responsive. Highly recommended!"</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://ui-avatars.com/api/?name=James+L&background=random" alt="User"
+                            class="w-12 h-12 rounded-full">
+                        <div>
+                            <h4 class="font-bold text-navy-900 dark:text-white">James L.</h4>
+                            <span class="text-xs text-slate-500 uppercase">Freelancer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (NEW) -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-display font-bold text-center text-navy-900 dark:text-white mb-10">Common Questions
+            </h2>
+            <div class="space-y-4">
+                <details
+                    class="group bg-white dark:bg-slate-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 open:ring-1 open:ring-indigo-500">
+                    <summary
+                        class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-navy-900 dark:text-white">
+                        <span>How fast are claims processed?</span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-600 dark:text-slate-400">
+                        Most claims are reviewed within 24 hours, and payouts are often instantaneous for verified
+                        digital claims.
+                    </div>
+                </details>
+                <details
+                    class="group bg-white dark:bg-slate-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 open:ring-1 open:ring-indigo-500">
+                    <summary
+                        class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-navy-900 dark:text-white">
+                        <span>Is support available on weekends?</span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-600 dark:text-slate-400">
+                        Yes, our support team is available 24/7/365, including weekends and holidays.
+                    </div>
+                </details>
+                <details
+                    class="group bg-white dark:bg-slate-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 open:ring-1 open:ring-indigo-500">
+                    <summary
+                        class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-navy-900 dark:text-white">
+                        <span>Can I contact a specific agent?</span>
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-600 dark:text-slate-400">
+                        If you have an assigned dedicated expert, you can contact them directly via email or their
+                        profile link.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUSTED BY (NEW) -->
+    <section class="py-12 bg-slate-100 dark:bg-black/20 border-t border-slate-200 dark:border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">Trusted by industry leaders</p>
+            <div
+                class="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                <i class="fab fa-aws text-4xl hover:text-[#FF9900]"></i>
+                <i class="fab fa-google text-4xl hover:text-[#4285F4]"></i>
+                <i class="fab fa-microsoft text-4xl hover:text-[#00A4EF]"></i>
+                <i class="fab fa-stripe text-4xl hover:text-[#008CDD]"></i>
+                <i class="fab fa-airbnb text-4xl hover:text-[#FF5A5F]"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW ANIMATED GRADIENT FOOTER -->
+    <footer class="footer-gradient pt-24 pb-12">
+        <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <!-- Col 1: Brand -->
+            <div>
+                <a href="#" class="flex items-center gap-2 mb-6 text-white group">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)]">
+                        <i class="fas fa-shield-alt text-lg"></i>
+                    </div>
+                    <span class="font-display font-bold text-xl">Safe<span class="text-neon-cyan">Guard</span></span>
+                </a>
+                <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                    Next-generation insurance protection for the digital age. We help you navigate risk with confidence.
+                </p>
+                <div class="flex gap-4 mt-6">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-navy-900 transition-all transform hover:-translate-y-1">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-violet hover:text-white transition-all transform hover:-translate-y-1">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-magenta hover:text-white transition-all transform hover:-translate-y-1">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Quick Links -->
+            <div>
+                <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="index.html" class="footer-link hover:text-white">Home</a></li>
+                    <li><a href="about.html" class="footer-link hover:text-white">About Us</a></li>
+                    <li><a href="services.html" class="footer-link hover:text-white">Services</a></li>
+                    <li><a href="contact.html" class="footer-link hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Account -->
+            <div>
+                <h4 class="text-white font-bold mb-6">Portals</h4>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a></li>
+                    <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Console</a></li>
+                    <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
+                    <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Newsletter -->
+            <div>
+                <h4 class="text-white font-bold mb-6">Stay Protected</h4>
+                <p class="text-slate-400 text-sm mb-4">Subscribe for safety tips and policy updates.</p>
+                <div class="flex gap-2">
+                    <input type="email" placeholder="Email address"
+                        class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-neon-cyan transition-colors">
+                    <button
+                        class="px-6 py-3 bg-gradient-to-r from-neon-cyan to-neon-violet text-navy-900 font-bold rounded-lg hover:shadow-[0_0_15px_rgba(100,255,218,0.4)] transition-all">Go</button>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="max-w-[1920px] mx-auto px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+            <div>&copy; 2026 Claimora Insurance. All rights reserved.</div>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                <span>Designed with <i class="fas fa-shield-alt text-neon-cyan mx-1"></i> by Claimora</span>
+            </div>
+        </div>
+    </footer>
+    <script>
+        lucide.createIcons();
+    </script>
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>

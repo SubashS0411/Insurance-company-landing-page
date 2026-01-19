@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexGen Strategy | The Apex of Business Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        navy: { 950: '#020617', 900: '#0f172a', 800: '#1e293b' },
+                        platinum: { 100: '#F3F4F6', 300: '#D1D5DB', 500: '#9CA3AF' },
+                        gold: { 400: '#FFD700', 500: '#D4AF37', 600: '#C5A028' },
+                        accent: { DEFAULT: '#6366f1', dark: '#4f46e5' } // Indigo for buttons
+                    },
+                    backgroundImage: {
+                        'gradient-platinum': 'linear-gradient(135deg, #E5E7EB 0%, #9CA3AF 100%)',
+                        'gradient-gold': 'linear-gradient(135deg, #FFD700 0%, #D4AF37 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-gray-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 overflow-x-hidden selection:bg-purple-500 selection:text-white">
+
+    <!-- LIQUID GLASS HEADER -->
+    <nav class="header-glass">
+        <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div
+                    class="brand-box w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-sans text-xl font-bold tracking-tight text-slate-800 dark:text-white">
+                        Claimora
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center space-x-8">
+                <!-- Home Dropdown -->
+                <div class="relative group">
+                    <button class="nav-link flex items-center gap-1 py-4">
+                        Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                    <!-- Dropdown -->
+                    <div
+                        class="absolute top-full left-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                        <a href="index.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white">Home
+                            V1
+                            (Parallax)</a>
+                        <a href="index2.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white">Home
+                            V2
+                            (Retro)</a>
+                    </div>
+                </div>
+
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+
+                <!-- Dashboards Dropdown -->
+                <div class="relative group">
+                    <button class="nav-link flex items-center gap-1 py-4">
+                        Dashboards <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 w-56 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                        <a href="user_dashboard.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white">
+                            <i data-lucide="user" class="w-4 h-4 text-indigo-500"></i> User Dashboard
+                        </a>
+                        <a href="admin_dashboard.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white">
+                            <i data-lucide="shield" class="w-4 h-4 text-rose-500"></i> Admin Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons (Desktop) -->
+            <div class="hidden lg:flex items-center gap-4">
+                <button id="rtl-toggle"
+                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                    title="Toggle RTL">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
+                </button>
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                    title="Toggle Theme">
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+                <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
+                    Get Started
+                </a>
+            </div>
+
+            <!-- Mobile Actions (RTL + Theme + Menu) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <!-- Mobile RTL Toggle -->
+                <button onclick="document.getElementById('rtl-toggle').click()"
+                    class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
+                </button>
+
+                <!-- Mobile Theme Toggle -->
+                <button onclick="document.getElementById('theme-toggle').click()"
+                    class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                    class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER & OVERLAY -->
+    <div id="mobile-overlay"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300">
+    </div>
+    <div id="mobile-drawer"
+        class="fixed top-0 bottom-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[70] mobile-drawer mobile-drawer-closed shadow-2xl overflow-y-auto">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <span class="font-bold text-xl dark:text-white">Menu</span>
+                <button id="close-menu-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-full">
+                    <i data-lucide="x" class="w-6 h-6 dark:text-white"></i>
+                </button>
+            </div>
+
+            <nav class="space-y-6">
+                <!-- Mobile Links -->
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Navigation</p>
+                    <a href="index.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">Home</a>
+                    <a href="index2.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">Home V2
+                        (Retro)</a>
+                    <a href="about.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">About</a>
+                    <a href="services.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200">Services</a>
+                    <a href="contact.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200">Contact</a>
+                </div>
+
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Portals</p>
+                    <a href="user_dashboard.html"
+                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                        <div
+                            class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                            <i data-lucide="user" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-slate-700 dark:text-slate-300 font-medium">User Dashboard</span>
+                    </a>
+                    <a href="admin_dashboard.html"
+                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                        <div
+                            class="w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
+                            <i data-lucide="shield" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-slate-700 dark:text-slate-300 font-medium">Admin Dashboard</span>
+                    </a>
+                </div>
+
+                <hr class="border-slate-100 dark:border-slate-800">
+
+                <!-- Mobile Actions -->
+                <div class="flex gap-4">
+                    <button id="mobile-theme-toggle"
+                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
+                        <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
+                    </button>
+                    <!-- Note: RTL toggle on mobile usually less common, but added for completeness if needed, or rely on desktop -->
+                </div>
+                <a href="login.html"
+                    class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
+                    Get Started
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 1. HERO SECTION -->
+    <section class="min-h-screen relative flex items-center parallax-section"
+        style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2670&auto=format&fit=crop');">
+        <!-- Overlay for Light/Dark Differentiation -->
+        <div class="absolute inset-0 bg-white/40 dark:bg-navy-950/80 transition-colors duration-500 z-0"></div>
+
+        <!-- Video Background -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none mix-blend-overlay opacity-40">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-white-clouds-sky-loop-video-17109-large.mp4"
+                    type="video/mp4">
+            </video>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 pt-20 text-center md:text-left">
+            <h4 class="text-rose-600 dark:text-neon-red font-bold uppercase tracking-[0.3em] text-sm mb-6 reveal">
+                Protecting Life, Assets & Tomorrow</h4>
+
+            <h1 class="text-6xl md:text-8xl font-serif font-bold leading-tight mb-8 reveal text-slate-900 dark:text-white relative z-10"
+                style="transition-delay: 100ms;">
+                Securing <br>
+                <span class="text-indigo-600 dark:text-neon-purple">Your Legacy</span>
+            </h1>
+
+            <p class="text-xl text-slate-600 dark:text-slate-300 max-w-2xl font-light leading-relaxed mb-12 reveal"
+                style="transition-delay: 200ms;">
+                Life, Health, Property & Commercial Insurance. We protect what matters most with uncompromised
+                reliability.
+            </p>
+
+            <div class="flex flex-wrap gap-6 reveal justify-center md:justify-start" style="transition-delay: 300ms;">
+                <a href="#insurance-plans" class="btn-pill">
+                    Get Insured
+                </a>
+                <a href="#coverage"
+                    class="btn-outline text-slate-900 dark:text-white border-slate-900 dark:border-white">
+                    View Coverage
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-indigo-500 dark:text-neon-purple">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- 2. MISSION STATEMENT -->
+    <section id="mission" class="py-32 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-white/5 mx-auto">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-6xl font-serif font-bold leading-snug reveal text-slate-900 dark:text-white">
+                "Our promise is to replace <span class="text-rose-500 dark:text-neon-red italic">uncertainty</span> with
+                guaranteed
+                <span class="text-indigo-600 dark:text-neon-purple">peace of mind</span>."
+            </h2>
+            <div class="mt-12 w-24 h-1 bg-indigo-500 dark:bg-purple-500 mx-auto reveal"></div>
+        </div>
+    </section>
+
+    <!-- 3. THE WHY -->
+    <!-- 3. THE WHY (Revamped) -->
+    <section class="py-24 bg-gray-50 dark:bg-slate-950 relative overflow-hidden group">
+        <div class="max-w-7xl mx-auto px-6">
+            <div
+                class="relative w-full h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 glow-edge transform transition-all duration-700 hover:scale-[1.02] animate-fade-slide-up">
+                <!-- Large Insurance Relevant Image with Parallax -->
+                <div
+                    class="absolute inset-0 bg-[url('Assets/bg6.jpeg')] bg-cover bg-center parallax-bg scale-110 group-hover:scale-100 transition-transform duration-[2000ms]">
+                </div>
+
+                <!-- Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+
+                <!-- Content (Minimal) -->
+                <div class="absolute bottom-10 left-10 max-w-2xl reveal">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4 drop-shadow-lg">Risk is
+                        Inevitable.<br><span class="text-gold-500">Survival is Optional.</span></h2>
+                    <p class="text-xl text-platinum-100 drop-shadow-md">We ensure the latter is guaranteed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. COST OF UNFORESEEN EVENTS (Ticker) -->
+    <section class="py-8 bg-white dark:bg-navy-900 border-y border-slate-100 dark:border-white/5 overflow-hidden">
+        <div class="ticker-wrap">
+            <div class="ticker-move">
+                <div class="ticker-item flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <i
+                        class="fas fa-university text-3xl text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-neon-cyan"></i>
+                    <span class="text-xl font-bold text-slate-500 dark:text-slate-400">JP MORGAN</span>
+                </div>
+                <div class="ticker-item flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <i
+                        class="fas fa-chart-pie text-3xl text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-neon-cyan"></i>
+                    <span class="text-xl font-bold text-slate-500 dark:text-slate-400">GOLDMAN SACHS</span>
+                </div>
+                <div class="ticker-item flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <i
+                        class="fas fa-shield-alt text-3xl text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-neon-cyan"></i>
+                    <span class="text-xl font-bold text-slate-500 dark:text-slate-400">AIG</span>
+                </div>
+                <div class="ticker-item flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <i
+                        class="fas fa-globe text-3xl text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-neon-cyan"></i>
+                    <span class="text-xl font-bold text-slate-500 dark:text-slate-400">ALLIANZ</span>
+                </div>
+                <div class="ticker-item flex items-center gap-2">
+                    <span
+                        class="px-3 py-1 bg-indigo-100 dark:bg-navy-800 text-indigo-600 dark:text-neon-cyan rounded-full text-xs font-bold uppercase tracking-widest">Global
+                        Partners</span>
+                </div>
+
+                <!-- Duplicate for seamless loop -->
+                <div class="ticker-item flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <i
+                        class="fas fa-university text-3xl text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-neon-cyan"></i>
+                    <span class="text-xl font-bold text-slate-500 dark:text-slate-400">JP MORGAN</span>
+                </div>
+                <div class="ticker-item flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <i
+                        class="fas fa-chart-pie text-3xl text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-neon-cyan"></i>
+                    <span class="text-xl font-bold text-slate-500 dark:text-slate-400">GOLDMAN SACHS</span>
+                </div>
+                <div class="ticker-item flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <i
+                        class="fas fa-shield-alt text-3xl text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-neon-cyan"></i>
+                    <span class="text-xl font-bold text-slate-500 dark:text-slate-400">AIG</span>
+                </div>
+                <div class="ticker-item flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                    <i
+                        class="fas fa-globe text-3xl text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-neon-cyan"></i>
+                    <span class="text-xl font-bold text-slate-500 dark:text-slate-400">ALLIANZ</span>
+                </div>
+                <div class="ticker-item flex items-center gap-2">
+                    <span
+                        class="px-3 py-1 bg-indigo-100 dark:bg-navy-800 text-indigo-600 dark:text-neon-cyan rounded-full text-xs font-bold uppercase tracking-widest">Global
+                        Partners</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. GLOBAL FOOTPRINT -->
+    <section class="py-32 bg-navy-900 relative">
+        <div class="max-w-7xl mx-auto px-6 text-center mb-16">
+            <h4 class="text-gold-500 uppercase tracking-widest text-sm mb-4">Global Reach</h4>
+            <h2 class="text-4xl font-serif font-bold text-white">Operations Across 4 Continents</h2>
+        </div>
+        <div
+            class="max-w-5xl mx-auto h-[500px] bg-navy-800 rounded-2xl relative overflow-hidden border border-white/5 shadow-2xl reveal">
+            <!-- Content Image: Reverted to Local Asset as per user instruction -->
+            <div class="absolute inset-0 bg-[url('Assets/map.jpeg')] bg-cover opacity-20"></div>
+            <!-- Hotspots -->
+            <div class="absolute top-[30%] left-[25%] group">
+                <div class="w-4 h-4 bg-gold-500 rounded-full animate-ping absolute"></div>
+                <div class="w-4 h-4 bg-gold-500 rounded-full relative z-10 cursor-pointer"></div>
+                <div
+                    class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-navy-950 text-xs font-bold px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    New York</div>
+            </div>
+            <div class="absolute top-[35%] right-[45%] group">
+                <div class="w-4 h-4 bg-gold-500 rounded-full animate-ping absolute delay-300"></div>
+                <div class="w-4 h-4 bg-gold-500 rounded-full relative z-10 cursor-pointer"></div>
+                <div
+                    class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-navy-950 text-xs font-bold px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    London</div>
+            </div>
+            <div class="absolute top-[45%] right-[25%] group">
+                <div class="w-4 h-4 bg-gold-500 rounded-full animate-ping absolute delay-700"></div>
+                <div class="w-4 h-4 bg-gold-500 rounded-full relative z-10 cursor-pointer"></div>
+                <div
+                    class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-navy-950 text-xs font-bold px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    Singapore</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. METRICS -->
+    <section class="py-24 bg-indigo-900 dark:bg-slate-950 border-b border-white/10 relative overflow-hidden">
+        <!-- Overlay Pattern -->
+        <div class="absolute inset-0 opacity-10"
+            style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center relative z-10">
+            <div class="reveal">
+                <div class="text-5xl font-bold text-white dark:text-neon-white mb-2">$2B+</div>
+                <p class="text-xs uppercase tracking-widest text-indigo-200 dark:text-slate-400">Claims Paid</p>
+            </div>
+            <div class="reveal transition-delay-100">
+                <div class="text-5xl font-bold text-white dark:text-neon-white mb-2">50k+</div>
+                <p class="text-xs uppercase tracking-widest text-indigo-200 dark:text-slate-400">Families Protected</p>
+            </div>
+            <div class="reveal transition-delay-200">
+                <div class="text-5xl font-bold text-white dark:text-neon-white mb-2">100%</div>
+                <p class="text-xs uppercase tracking-widest text-indigo-200 dark:text-slate-400">Payout Reliability</p>
+            </div>
+            <div class="reveal transition-delay-300">
+                <div class="text-5xl font-bold text-white dark:text-neon-white mb-2">24/7</div>
+                <p class="text-xs uppercase tracking-widest text-indigo-200 dark:text-slate-400">Support Access</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. PILLAR 1: LIFE INSURANCE -->
+    <section id="insurance-plans"
+        class="min-h-[80vh] flex flex-col lg:flex-row items-center bg-white dark:bg-slate-900 relative overflow-hidden group">
+        <!-- Background: Family Image -->
+        <div
+            class="relative w-full h-64 lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full bg-[url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=2670&auto=format&fit=crop')] bg-cover animate-bounce">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
+            <div
+                class="max-w-xl relative bg-pastel-card dark:bg-slate-800/50 p-12 rounded-3xl backdrop-blur-sm glow-border-effect">
+                <div class="number-badge text-indigo-50 dark:text-navy-800">01</div>
+                <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6 relative z-10">Life &
+                    Health</h3>
+                <p class="text-slate-600 dark:text-slate-300 mb-8 text-lg relative z-10">Safeguard your family's future
+                    with our comprehensive life and health coverage plans. We ensure your loved ones are protected
+                    financially, no matter what.</p>
+                <ul class="space-y-4 mb-8 relative z-10">
+                    <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><i
+                            class="fas fa-check text-rose-500 dark:text-neon-red"></i> Term & Whole Life</li>
+                    <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><i
+                            class="fas fa-check text-rose-500 dark:text-neon-red"></i> Critical Illness Cover</li>
+                </ul>
+                <a href="services.html"
+                    class="text-indigo-600 dark:text-neon-purple uppercase tracking-widest text-xs font-bold hover:text-indigo-800 dark:hover:text-white transition-colors relative z-10">Compare
+                    Plans <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. PILLAR 2: ASSET PROTECTION -->
+    <section
+        class="min-h-[80vh] flex flex-col lg:flex-row items-center bg-gray-50 dark:bg-navy-950 relative overflow-hidden group text-right">
+        <!-- Background: House Image -->
+        <div
+            class="relative w-full h-64 lg:absolute lg:left-0 lg:top-0 lg:w-1/2 lg:h-full bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2573&auto=format&fit=crop')] bg-cover animate-bounce">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 flex justify-end">
+            <div
+                class="max-w-xl relative bg-white/50 dark:bg-slate-800/50 p-12 rounded-3xl backdrop-blur-sm glow-border-effect">
+                <div class="number-badge text-indigo-50 dark:text-navy-800 right-[-1.5rem] left-auto">02</div>
+                <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6 relative z-10">Asset &
+                    Property</h3>
+                <p class="text-slate-600 dark:text-slate-300 mb-8 text-lg relative z-10">Your home and vehicles are your
+                    most valuable tangible assets. We provide robust coverage against damage, theft, and liability.</p>
+                <ul class="space-y-4 mb-8 flex flex-col items-end text-slate-700 dark:text-slate-300 relative z-10">
+                    <li class="flex items-center gap-3">Homeowners Insurance <i
+                            class="fas fa-check text-rose-500 dark:text-neon-red"></i></li>
+                    <li class="flex items-center gap-3">Automotive Coverage <i
+                            class="fas fa-check text-rose-500 dark:text-neon-red"></i></li>
+                </ul>
+                <a href="services.html"
+                    class="text-indigo-600 dark:text-neon-purple uppercase tracking-widest text-xs font-bold hover:text-indigo-800 dark:hover:text-white transition-colors relative z-10">Protection
+                    Plans <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. PILLAR 3: COMMERCIAL RISK -->
+    <section
+        class="min-h-[80vh] flex flex-col lg:flex-row items-center bg-white dark:bg-slate-900 relative overflow-hidden group">
+        <!-- Background: Commercial Risk (Reusing Asset Image) -->
+        <div
+            class="relative w-full h-64 lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2573&auto=format&fit=crop')] bg-cover animate-bounce">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
+            <div
+                class="max-w-xl relative bg-pastel-card dark:bg-slate-800/50 p-12 rounded-3xl backdrop-blur-sm glow-border-effect">
+                <div class="number-badge text-indigo-50 dark:text-navy-800">03</div>
+                <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6 relative z-10">Commercial
+                    Risk</h3>
+
+                <!-- New Content Structure: Icon + Explanation + Reassurance -->
+                <div class="space-y-6 mb-8 relative z-10">
+                    <div class="flex gap-4 items-start">
+                        <div
+                            class="w-12 h-12 shrink-0 rounded-lg bg-indigo-50 dark:bg-navy-800 flex items-center justify-center text-indigo-600 dark:text-neon-purple shadow-sm">
+                            <i class="fas fa-building-shield text-xl"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-slate-900 dark:text-white mb-1">Business Continuity</h5>
+                            <p class="text-sm text-slate-600 dark:text-slate-400"> comprehensive protection against
+                                operational disruptions and liability claims.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start">
+                        <div
+                            class="w-12 h-12 shrink-0 rounded-lg bg-rose-50 dark:bg-navy-800 flex items-center justify-center text-rose-600 dark:text-neon-red shadow-sm">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-slate-900 dark:text-white mb-1">Risk Coverage Reassurance</h5>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">99.9% payout reliability on verified
+                                commercial claims within 48 hours.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="services.html"
+                    class="text-indigo-600 dark:text-neon-purple uppercase tracking-widest text-xs font-bold hover:text-indigo-800 dark:hover:text-white transition-colors relative z-10">Business
+                    Solutions <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. PILLAR 4: TRAVEL & SPECIALTY -->
+
+
+    <!-- 11. BREAK SECTION (QUOTE) -->
+    <!-- 11. BREAK SECTION (QUOTE) -->
+    <!-- 11. BREAK SECTION (QUOTE) - Flashlight Effect -->
+    <section class="py-40 flex items-center justify-center relative bg-navy-950 overflow-hidden">
+        <!-- Spotlight Container -->
+        <div id="spotlight-container"
+            class="relative max-w-5xl mx-auto px-6 p-20 border border-white/5 rounded-3xl bg-navy-900/50 backdrop-blur-sm overflow-hidden group cursor-none">
+
+            <!-- Mouse Follower Light -->
+            <div id="cursor-light"
+                class="absolute w-[300px] h-[300px] bg-gold-500/10 rounded-full blur-[80px] pointer-events-none transform -translate-x-1/2 -translate-y-1/2 z-0 mix-blend-screen transition-opacity opacity-0 group-hover:opacity-100">
+            </div>
+
+            <div class="relative z-10 text-center">
+                <i class="fas fa-quote-left text-4xl text-rose-500 dark:text-neon-red mb-8 block animate-pulse"></i>
+                <h2 class="text-4xl md:text-6xl font-serif font-bold leading-tight text-white/30 group-hover:text-white/100 transition-colors duration-500"
+                    style="text-shadow: 0 0 0px transparent;">
+                    "Claimora didn't just <span
+                        class="text-gold-500/50 group-hover:text-gold-500 transition-all duration-300 glow-text">pay our
+                        claim</span>; they saved our business."
+                </h2>
+                <div class="mt-8 border-t border-white/10 pt-8 inline-block">
+                    <p class="text-lg font-bold text-indigo-400 opacity-50 group-hover:opacity-100 transition-opacity">
+                        CFO, Global Manufacturing</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const container = document.getElementById('spotlight-container');
+            const light = document.getElementById('cursor-light');
+
+            if (container && light) {
+                container.addEventListener('mousemove', (e) => {
+                    const rect = container.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    light.style.left = `${x}px`;
+                    light.style.top = `${y}px`;
+                });
+            }
+        </script>
+    </section>
+
+    <!-- 12. INDUSTRY 1: FINTECH -->
+    <section id="industries" class="py-24 bg-navy-900 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 reveal">
+                <!-- Content Image: Local Asset -->
+                <img src="Assets/office-1.png"
+                    class="rounded-lg shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+            <div class="order-1 md:order-2 reveal">
+                <div class="text-gold-500 font-bold uppercase tracking-widest text-xs mb-2">Industry Focus</div>
+                <h3 class="text-4xl font-serif font-bold text-white mb-6">FinTech & Banking</h3>
+                <p class="text-platinum-300 mb-6">From blockchain integration to neobank strategies, we help financial
+                    institutions navigate the digital frontier while maintaining compliance and trust.</p>
+                <div class="flex gap-4">
+                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">DeFi</span>
+                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Cybersecurity</span>
+                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Payments</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. INDUSTRY 2: HEALTHCARE -->
+    <section class="py-24 bg-navy-950 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <div class="text-gold-500 font-bold uppercase tracking-widest text-xs mb-2">Industry Focus</div>
+                <h3 class="text-4xl font-serif font-bold text-white mb-6">Healthcare & Pharma</h3>
+                <p class="text-platinum-300 mb-6">Optimizing patient outcomes through data-driven operational
+                    efficiencies and accelerating R&D pipelines via AI-driven drug discovery models.</p>
+                <div class="flex gap-4">
+                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Telehealth</span>
+                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">AI Diagnostics</span>
+                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Supply Chain</span>
+                </div>
+            </div>
+            <div class="reveal">
+                <!-- Content Image: Local Asset -->
+                <img src="Assets/office-2.png"
+                    class="rounded-lg shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. INDUSTRY 3: ENERGY -->
+    <section class="py-24 bg-navy-900">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 reveal">
+                <!-- Content Image: Local Asset -->
+                <img src="Assets/map.jpeg"
+                    class="rounded-lg shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+            <div class="order-1 md:order-2 reveal">
+                <div class="text-gold-500 font-bold uppercase tracking-widest text-xs mb-2">Industry Focus</div>
+                <h3 class="text-4xl font-serif font-bold text-white mb-6">Energy & Infrastructure</h3>
+                <p class="text-platinum-300 mb-6">Guiding traditional energy giants through the green transition and
+                    helping smart city developers build sustainable, connected infrastructure.</p>
+                <div class="flex gap-4">
+                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Renewables</span>
+                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Smart Grids</span>
+                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Sustainability</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. CASE STUDY 1 -->
+    <section class="parallax py-32 flex items-center relative group"
+        style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2670&auto=format&fit=crop'); background-size: cover;">
+        <!-- Overlay: Light/Night Variation -->
+        <div
+            class="absolute inset-0 bg-navy-950/80 dark:bg-black/90 transition-opacity duration-500 group-hover:opacity-60">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div class="max-w-2xl bg-navy-900/90 p-10 border-l-4 border-gold-500 backdrop-blur reveal">
+                <div class="text-xs font-bold uppercase text-platinum-500 mb-2">Case Study: Project Alpha</div>
+                <h3 class="text-3xl font-serif font-bold text-white mb-4">Reinventing a 100-Year-Old Retailer</h3>
+                <p class="text-platinum-300 mb-6">We implemented an omnichannel strategy that increased digital revenue
+                    by 200% in 18 months, saving the client from bankruptcy.</p>
+                <a href="#" class="text-gold-500 text-sm font-bold uppercase tracking-wide">Read Case Study</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. CASE STUDY 2 -->
+    <section class="parallax py-32 flex items-center relative group"
+        style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2670&auto=format&fit=crop'); background-size: cover;">
+        <!-- Overlay: Light/Night Variation -->
+        <div
+            class="absolute inset-0 bg-navy-950/80 dark:bg-black/90 transition-opacity duration-500 group-hover:opacity-60">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full flex justify-end">
+            <div class="max-w-2xl bg-navy-900/90 p-10 border-r-4 border-platinum-500 backdrop-blur reveal">
+                <div class="text-xs font-bold uppercase text-platinum-500 mb-2">Case Study: Project Omega</div>
+                <h3 class="text-3xl font-serif font-bold text-white mb-4">Merger Integration for Logistics Giant</h3>
+                <p class="text-platinum-300 mb-6">Seamlessly integrated two global supply chains, identifying $500M in
+                    synergies and reducing redundancy by 30%.</p>
+                <a href="#"
+                    class="text-platinum-100 text-sm font-bold uppercase tracking-wide hover:text-gold-500 transition shadow-none cursor-pointer">Read
+                    Case Study</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 17. LEADERSHIP -->
+    <section class="py-24 bg-navy-950">
+        <div class="max-w-7xl mx-auto px-6 text-center mb-16">
+            <h2 class="text-4xl font-serif font-bold text-white mb-4">The Partners</h2>
+            <p class="text-platinum-500">Decades of experience at the helm of industry.</p>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-12">
+            <!-- Partner 1 -->
+            <div class="text-center group reveal">
+                <div
+                    class="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-2 border-white/10 group-hover:border-gold-500 transition-colors">
+                    <!-- Content Image: Local Asset -->
+                    <img src="Assets/13.jpeg" class="w-full h-full object-cover">
+                </div>
+                <h4 class="text-xl font-bold text-white">Eleanor Sterling</h4>
+                <p class="text-sm text-gold-500 uppercase tracking-widest">Managing Partner</p>
+            </div>
+            <!-- Partner 2 -->
+            <div class="text-center group reveal" style="transition-delay: 100ms;">
+                <div
+                    class="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-2 border-white/10 group-hover:border-gold-500 transition-colors">
+                    <!-- Content Image: Local Asset -->
+                    <img src="Assets/17.jpeg" class="w-full h-full object-cover">
+                </div>
+                <h4 class="text-xl font-bold text-white">James Vouault</h4>
+                <p class="text-sm text-gold-500 uppercase tracking-widest">Head of Strategy</p>
+            </div>
+            <!-- Partner 3 -->
+            <div class="text-center group reveal" style="transition-delay: 200ms;">
+                <div
+                    class="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-2 border-white/10 group-hover:border-gold-500 transition-colors">
+                    <!-- Content Image: Local Asset -->
+                    <img src="Assets/26.jpeg" class="w-full h-full object-cover">
+                </div>
+                <h4 class="text-xl font-bold text-white">Sarah Chen</h4>
+                <p class="text-sm text-gold-500 uppercase tracking-widest">Digital Lead</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 18. TESTIMONIALS (Carousel Style) -->
+    <section class="py-24 bg-navy-900 border-y border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 mb-12">
+            <h2 class="text-3xl font-serif font-bold text-white">Voice of the Boardroom</h2>
+        </div>
+        <div class="flex gap-8 overflow-x-auto no-scrollbar px-6 pb-12 snap-x">
+            <div class="min-w-[400px] bg-navy-950 p-8 rounded-xl border border-white/5 snap-center">
+                <div class="flex mb-4 text-gold-500 text-xs">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-platinum-300 mb-6 italic">"The level of insight NexGen brings is unmatched. They don't
+                    just see the data; they see the story behind it."</p>
+                <div class="font-bold text-white">CTO, Global Logistics</div>
+            </div>
+            <div class="min-w-[400px] bg-navy-950 p-8 rounded-xl border border-white/5 snap-center">
+                <div class="flex mb-4 text-gold-500 text-xs">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-platinum-300 mb-6 italic">"A true partnership. They were with us in the trenches during
+                    our most critical transition."</p>
+                <div class="font-bold text-white">Director, FinTech Startup</div>
+            </div>
+            <div class="min-w-[400px] bg-navy-950 p-8 rounded-xl border border-white/5 snap-center">
+                <div class="flex mb-4 text-gold-500 text-xs">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-platinum-300 mb-6 italic">"Strategic clarity that directly translated to a 15% increase
+                    in EBITDA within one year."</p>
+                <div class="font-bold text-white">VP Operations, Energy Corp</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 19. INSIGHTS -->
+    <section id="insights" class="py-24 bg-navy-950">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-end mb-12">
+            <h2 class="text-4xl font-serif font-bold text-white">Intelligence Brief</h2>
+            <a href="#" class="text-gold-500 text-sm font-bold uppercase tracking-wide hover:underline">View All</a>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <article class="group cursor-pointer">
+                <div class="h-64 overflow-hidden rounded-xl mb-4">
+                    <!-- Content Image: Local Asset -->
+                    <img src="Assets/bg5.jpeg"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="text-xs font-bold text-platinum-500 uppercase mb-2">Market Analysis</div>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-500 transition-colors">The Future of
+                    AI in Governance</h3>
+                <p class="text-sm text-platinum-300">How boardrooms are adapting to algorithmic decision making.</p>
+            </article>
+            <article class="group cursor-pointer">
+                <div class="h-64 overflow-hidden rounded-xl mb-4">
+                    <!-- Content Image: Local Asset -->
+                    <img src="Assets/bg3.jpeg"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="text-xs font-bold text-platinum-500 uppercase mb-2">Strategy</div>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-500 transition-colors">Beyond the
+                    Quarterly Report</h3>
+                <p class="text-sm text-platinum-300">Building long-term value in a short-term market.</p>
+            </article>
+            <article class="group cursor-pointer">
+                <div class="h-64 overflow-hidden rounded-xl mb-4">
+                    <!-- Content Image: Local Asset -->
+                    <img src="Assets/bg4.jpeg"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="text-xs font-bold text-platinum-500 uppercase mb-2">Economics</div>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-500 transition-colors">Navigating
+                    Rate Volatility</h3>
+                <p class="text-sm text-platinum-300">Defensive strategies for the coming fiscal year.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 20. CTA (FINAL) -->
+    <section class="min-h-[70vh] flex items-center justify-center bg-navy-900 relative overflow-hidden">
+        <!-- Background: Internet Image (Parallax) -->
+        <div
+            class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2621&auto=format&fit=crop')] bg-cover opacity-10">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-950 to-transparent"></div>
+        <div class="max-w-4xl px-6 text-center relative z-10">
+            <h2 class="text-5xl md:text-7xl font-serif font-bold text-white mb-8">Your Next Move Defines You.</h2>
+            <p class="text-xl text-platinum-300 mb-12">The market waits for no one. Let's build your legacy today.</p>
+            <a href="contact.html"
+                class="inline-block px-12 py-5 bg-gradient-gold text-navy-950 font-bold text-lg rounded-full hover:scale-105 transition-transform shadow-[0_0_30px_rgba(212,175,55,0.4)]">Schedule
+                Consultation</a>
+        </div>
+    </section>
+
+    <!-- NEW ANIMATED GRADIENT FOOTER -->
+    <footer class="footer-gradient pt-24 pb-12">
+        <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <!-- Col 1: Brand -->
+            <div>
+                <a href="#" class="flex items-center gap-2 mb-6 text-white group">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)] transition-transform group-hover:rotate-12">
+                        <i class="fas fa-shield-alt text-lg"></i>
+                    </div>
+                    <span class="font-bold text-xl">Claimora</span>
+                </a>
+                <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                    Next-generation insurance & business intelligence. Protecting your future with confidence.
+                </p>
+                <div class="flex gap-4 mt-6">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Quick Links -->
+            <div>
+                <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="index.html" class="footer-link hover:text-white">Home</a></li>
+                    <li><a href="about.html" class="footer-link hover:text-white">About Us</a></li>
+                    <li><a href="services.html" class="footer-link hover:text-white">Services</a></li>
+                    <li><a href="contact.html" class="footer-link hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Account -->
+            <div>
+                <h4 class="text-white font-bold mb-6">Account</h4>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a></li>
+                    <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Dashboard</a></li>
+                    <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
+                    <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Newsletter -->
+            <div>
+                <h4 class="text-white font-bold mb-6">Stay Updated</h4>
+                <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest insights.</p>
+                <div class="flex gap-2">
+                    <input type="email" placeholder="Email address"
+                        class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-neon-cyan transition-colors">
+                    <button
+                        class="px-6 py-3 bg-neon-cyan text-white font-bold rounded-lg hover:bg-neon-cyan/80 transition-colors">Go</button>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="max-w-[1920px] mx-auto px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+            <div>&copy; 2026 Claimora Insurance. All rights reserved.</div>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by Claimora</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexGen Strategy | Services OS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 900: '#0a192f', 800: '#112240', 700: '#233554' },
+                        neon: {
+                            cyan: '#64ffda',
+                            violet: '#b39ddb',
+                            magenta: '#f50057',
+                            orange: '#FF9F1C',
+                            gold: '#FFD700',
+                            green: '#00ff9d'
+                        },
+                        light: {
+                            'cool-cloud': '#F6F9FC',
+                            'frosted-blue': '#EBF4FF',
+                            'pearl-gray': '#F3F4F6',
+                            'lavender-ice': '#F5F3FF',
+                            'platinum-mist': '#EDEEF2'
+                        },
+                        pastel: {
+                            'lavender': '#E1BEE7',
+                            'periwinkle': '#C5CAE9',
+                            'sky': '#BBDEFB',
+                            'peach': '#FFE0B2',
+                            'rose': '#F8BBD0',
+                            'mint': '#B2DFDB',
+                            'violet': '#D1C4E9'
+                        },
+                        vibrant: {
+                            'electric-purple': '#240046',
+                            'royal-indigo': '#1A237E',
+                            'deep-neon-blue': '#0D47A1',
+                            'vibrant-orange': '#BF360C',
+                            'magenta-fusion': '#880E4F',
+                            'cyber-teal': '#004D40',
+                            'ultra-violet': '#311B92'
+                        },
+                        slate: { light: '#8892b0', lighter: '#a8b2d1', lightest: '#ccd6f6' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700;900&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <style>
+        .glass-panel {
+            background: rgba(17, 34, 64, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+        }
+
+        .box-glow:hover {
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.1);
+        }
+
+        /* Light Mode Glass Overrides */
+        html:not(.dark) .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(10, 25, 47, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Command Center Active State */
+        .cmd-tab.active {
+            position: relative;
+        }
+
+        .point-glow {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .point-glow:hover {
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 15px currentColor;
+            border-color: currentColor;
+        }
+
+        /* Services Hero Title Styling */
+        .services-hero-title {
+            background: linear-gradient(90deg, #F03096 0%, #AF1DFD 50%, #FC45F3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            /* Controlled refined glow */
+            filter: drop-shadow(0 0 15px rgba(175, 29, 253, 0.25));
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Thin Animated Underline */
+        .services-hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #F03096, #AF1DFD, #FC45F3);
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px rgba(175, 29, 253, 0.4);
+        }
+
+        /* Reveal underline on load/hover interaction - we'll simulate load via animation */
+        .services-hero-title {
+            animation: expandUnderline 1.5s ease-out forwards 0.5s;
+        }
+
+        @keyframes expandUnderline {
+            to {
+                /* Since pseudo-elements can't be directly animated by keyframes on parent without custom props or separate anims, 
+                   we'll rely on the class itself or trigger via JS? 
+                   Actually keyframes can animate pseudo-elements if defined directly.
+                   Let's stick to hover/focus for the interactive part and just let it be fully styled. 
+                   Wait, the prompt asked for "draws in". 
+                   Let's use a keyframe on the after element */
+            }
+        }
+
+        /* Better approach for ::after animation */
+        .services-hero-title::after {
+            animation: drawUnderline 1.5s ease-out forwards 0.2s;
+        }
+
+        @keyframes drawUnderline {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* Radial Glow on Hover */
+        .services-hero-title:hover {
+            letter-spacing: 0.02em;
+            /* Micro-typography expansion */
+        }
+
+        .services-hero-title::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(175, 29, 253, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+        }
+
+        .services-hero-title:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body
+    class="selection:bg-neon-cyan selection:text-navy-900 font-sans antialiased overflow-x-hidden bg-gradient-to-br from-[#3F5EFB] to-[#FC466B] text-navy-900 dark:text-slate-lightest transition-colors duration-300">
+
+    <!-- Navbar (Consistent with Index) -->
+    <!-- LIQUID GLASS HEADER -->
+    <nav class="header-glass">
+        <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div
+                    class="brand-box w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-sans text-xl font-bold tracking-tight text-slate-800 dark:text-white">
+                        Claimora
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse gap-x-8">
+                <!-- Home Dropdown -->
+                <div class="relative group">
+                    <button class="nav-link flex items-center gap-1 py-4">
+                        Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                    <!-- Dropdown -->
+                    <div
+                        class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                        <a href="index.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
+                            V1 (Parallax)</a>
+                        <a href="index2.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
+                            V2 (Retro)</a>
+                    </div>
+                </div>
+
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link text-indigo-600 dark:text-neon-cyan font-bold">Services</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+
+                <!-- Dashboards Dropdown -->
+                <div class="relative group">
+                    <button class="nav-link flex items-center gap-1 py-4">
+                        Dashboards <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                    <div
+                        class="absolute top-full ltr:left-0 rtl:right-0 w-56 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                        <a href="user_dashboard.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white text-start">
+                            <i data-lucide="user" class="w-4 h-4 text-indigo-500"></i> User Dashboard
+                        </a>
+                        <a href="admin_dashboard.html"
+                            class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm flex items-center gap-2 text-black dark:text-white text-start">
+                            <i data-lucide="shield" class="w-4 h-4 text-rose-500"></i> Admin Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="hidden lg:flex items-center gap-4">
+                <button id="rtl-toggle"
+                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                    title="Toggle RTL">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
+                </button>
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                    title="Toggle Theme">
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+                <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
+                    Get Started
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER & OVERLAY -->
+    <div id="mobile-overlay"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300">
+    </div>
+    <div id="mobile-drawer"
+        class="fixed top-0 bottom-0 ltr:left-0 rtl:right-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[70] mobile-drawer mobile-drawer-closed shadow-2xl overflow-y-auto transform transition-transform duration-300 ltr:-translate-x-full rtl:translate-x-full">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <span class="font-bold text-xl dark:text-white">Menu</span>
+                <button id="close-menu-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-full">
+                    <i data-lucide="x" class="w-6 h-6 dark:text-white"></i>
+                </button>
+            </div>
+
+            <nav class="space-y-6">
+                <!-- Mobile Links -->
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Navigation</p>
+                    <a href="index.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home</a>
+                    <a href="index2.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Home V2
+                        (Retro)</a>
+                    <a href="about.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">About</a>
+                    <a href="services.html"
+                        class="block text-lg font-medium text-indigo-600 dark:text-neon-cyan font-bold text-start">Services</a>
+                    <a href="contact.html"
+                        class="block text-lg font-medium text-slate-800 dark:text-slate-200 text-start">Contact</a>
+                </div>
+
+                <div class="space-y-3">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-start">Portals</p>
+                    <a href="user_dashboard.html"
+                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                        <div
+                            class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                            <i data-lucide="user" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-slate-700 dark:text-slate-300 font-medium">User Dashboard</span>
+                    </a>
+                    <a href="admin_dashboard.html"
+                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                        <div
+                            class="w-8 h-8 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
+                            <i data-lucide="shield" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-slate-700 dark:text-slate-300 font-medium">Admin Dashboard</span>
+                    </a>
+                </div>
+
+                <hr class="border-slate-100 dark:border-slate-800">
+
+                <!-- Mobile Actions -->
+                <div class="flex gap-4">
+                    <button id="mobile-theme-toggle"
+                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
+                        <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
+                    </button>
+                    <!-- Mobile RTL Toggle -->
+                    <button id="mobile-rtl-toggle"
+                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400"
+                        onclick="document.getElementById('rtl-toggle').click()">
+                        <i data-lucide="globe" class="w-5 h-5"></i> <span>RTL</span>
+                    </button>
+                </div>
+                <a href="login.html"
+                    class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
+                    Get Started
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- HERO SECTION (Premium Immersive Experience) -->
+    <section
+        class="relative h-[90vh] flex items-center overflow-hidden ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-blue-50 via-indigo-50 to-orange-50 dark:from-slate-900 dark:via-blue-950 dark:to-indigo-950 pt-20 transition-all duration-700">
+
+        <!-- Background Video (Mirror: Left in LTR, Right in RTL) -->
+        <div id="hero-bg-video"
+            class="absolute inset-y-0 ltr:left-0 ltr:right-auto rtl:right-0 rtl:left-auto w-full lg:w-[65%] z-0 pointer-events-none overflow-hidden mt-20 transition-all duration-500 ease-in-out">
+            <!-- Video Element -->
+            <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                <source
+                    src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-global-network-12345-large.mp4"
+                    type="video/mp4">
+                <!-- Fallback -->
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-900"></div>
+            </video>
+
+
+            <!-- Mode Overlay (Existing) -->
+            <div class="absolute inset-0 bg-white/10 dark:bg-navy-900/20 mix-blend-overlay z-0"></div>
+        </div>
+        <!-- justify-end in LTR places content on Right. justify-end in RTL places content on Left. This works for mirroring. -->
+        <div id="hero-content-zone"
+            class="relative z-10 max-w-[1920px] mx-auto px-6 w-full h-full flex items-center justify-end transition-all duration-500 ease-in-out">
+            <div
+                class="w-full lg:w-[45%] flex flex-col justify-center items-start ltr:ps-4 lg:ltr:ps-12 rtl:pe-4 lg:rtl:pe-12 mt-20 rtl:items-end rtl:text-end">
+
+                <!-- Title -->
+                <h1 class="text-4xl md:text-6xl lg:text-8xl font-display font-bold mb-8 animate-slide-in-right opacity-0 rtl:text-end"
+                    style="animation-delay: 0.3s; animation-fill-mode: forwards;">
+                    <span
+                        class="text-start rtl:text-end bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-500 dark:from-blue-400 dark:via-indigo-400 dark:to-cyan-300 drop-shadow-lg leading-tight block">Smart
+                        Insurance,<br>Built Around You</span>
+                </h1>
+
+                <!-- Buttons -->
+                <div class="animate-fade-in-up opacity-0 relative z-20 flex flex-wrap gap-4 ltr:flex-row rtl:flex-row-reverse"
+                    style="animation-delay: 0.9s; animation-fill-mode: forwards;">
+                    <!-- Primary Button -->
+                    <a href="#coverage"
+                        class="ng-btn-primary btn-magnetic btn-ripple inline-flex items-center gap-4 px-8 py-4 text-lg shadow-[0_10px_30px_rgba(34,211,238,0.4)] hover:shadow-[0_20px_40px_rgba(34,211,238,0.6)] group bg-indigo-600 text-white rounded-full transition-all duration-300">
+                        <span>Explore Coverage</span>
+                        <i
+                            class="fas fa-arrow-right transform ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl:rotate-180"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blend Effect Overlay -->
+        <div
+            class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#F6F9FC] dark:from-[#0f172a] to-transparent z-20 pointer-events-none backdrop-blur-[2px]">
+        </div>
+
+        <!-- Custom Immersive Styles -->
+        <style>
+            .mask-video-immersive {
+                -webkit-mask-image: radial-gradient(circle at 30% 50%, black 40%, transparent 85%);
+                mask-image: radial-gradient(circle at 30% 50%, black 40%, transparent 85%);
+            }
+
+            @keyframes slideInRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(60px);
+                    filter: blur(10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                    filter: blur(0);
+                }
+            }
+
+            @keyframes slowPan {
+
+                0%,
+                100% {
+                    transform: scale(1.05);
+                }
+
+                50% {
+                    transform: scale(1.1);
+                }
+            }
+
+            @keyframes pulseSlow {
+
+                0%,
+                100% {
+                    opacity: 0.6;
+                }
+
+                50% {
+                    opacity: 1;
+                }
+            }
+
+            .animate-slide-in-right {
+                animation: slideInRight 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            }
+
+            .animate-slow-pan {
+                animation: slowPan 20s ease-in-out infinite;
+            }
+
+            .animate-pulse-slow {
+                animation: pulseSlow 8s ease-in-out infinite;
+            }
+        </style>
+    </section>
+    <section class="pt-32 pb-24 bg-transparent transition-colors">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12 text-center lg:text-start">
+                <h1 class="text-4xl md:text-6xl font-display font-bold mb-4 text-[#004D40] dark:text-white">Insurance
+                    <span class="text-[#004D40] dark:text-neon-cyan">Protection Suite</span>
+                </h1>
+                <p class="font-mono text-neon-magenta dark:text-neon-magenta">// Comprehensive coverage for
+                    every aspect of life</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 mt-16">
+                <!-- Tabs List -->
+                <div class="w-full lg:w-1/3 flex flex-col gap-4">
+                    <button onclick="openCmdTab(event, 'personal', 'cyan')"
+                        class="cmd-tab w-full p-6 text-start border border-navy-700 bg-white dark:bg-navy-800/50 hover:bg-navy-50 dark:hover:bg-navy-800 transition-all duration-300 rounded-xl group relative overflow-hidden active">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <h3
+                            class="font-bold text-lg text-navy-900 dark:text-white group-hover:text-neon-cyan relative z-10 flex justify-between items-center">
+                            Personal Insurance
+                            <i
+                                class="fas fa-chevron-right opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"></i>
+                        </h3>
+                    </button>
+                    <button onclick="openCmdTab(event, 'business', 'violet')"
+                        class="cmd-tab w-full p-6 text-start border border-navy-700 bg-white dark:bg-navy-800/50 hover:bg-navy-50 dark:hover:bg-navy-800 transition-all duration-300 rounded-xl group relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-neon-violet/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <h3
+                            class="font-bold text-lg text-navy-900 dark:text-white group-hover:text-neon-violet relative z-10 flex justify-between items-center">
+                            Business Insurance
+                            <i
+                                class="fas fa-chevron-right opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"></i>
+                        </h3>
+                    </button>
+                    <button onclick="openCmdTab(event, 'life', 'magenta')"
+                        class="cmd-tab w-full p-6 text-start border border-navy-700 bg-white dark:bg-navy-800/50 hover:bg-navy-50 dark:hover:bg-navy-800 transition-all duration-300 rounded-xl group relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-neon-magenta/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <h3
+                            class="font-bold text-lg text-navy-900 dark:text-white group-hover:text-neon-magenta relative z-10 flex justify-between items-center">
+                            Life & Health
+                            <i
+                                class="fas fa-chevron-right opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"></i>
+                        </h3>
+                    </button>
+                    <button onclick="openCmdTab(event, 'specialty', 'orange')"
+                        class="cmd-tab w-full p-6 text-start border border-navy-700 bg-white dark:bg-navy-800/50 hover:bg-navy-50 dark:hover:bg-navy-800 transition-all duration-300 rounded-xl group relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-neon-orange/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <h3
+                            class="font-bold text-lg text-navy-900 dark:text-white group-hover:text-neon-orange relative z-10 flex justify-between items-center">
+                            Specialty Lines
+                            <i
+                                class="fas fa-chevron-right opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"></i>
+                        </h3>
+                    </button>
+                    <button onclick="openCmdTab(event, 'business', 'violet')"
+                        class="cmd-tab w-full p-6 text-start border border-navy-700 bg-white dark:bg-navy-800/50 hover:bg-navy-50 dark:hover:bg-navy-800 transition-all duration-300 rounded-xl group relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-neon-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <h3
+                            class="font-bold text-lg text-navy-900 dark:text-white group-hover:text-neon-green relative z-10 flex justify-between items-center">
+                            Cyber Protection
+                            <i
+                                class="fas fa-chevron-right opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"></i>
+                        </h3>
+                    </button>
+                </div>
+
+                <!-- Content Panel -->
+                <div class="w-full lg:w-2/3 relative min-h-[600px]"> <!-- Increased Height -->
+                    <div id="personal" class="cmd-content animate-fade-in absolute inset-0">
+                        <div
+                            class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-cyan/30 hover:border-neon-cyan shadow-[0_0_30px_rgba(100,255,218,0.1)] hover:shadow-[0_0_50px_rgba(100,255,218,0.2)] transition-all duration-300 group flex flex-col md:flex-row gap-8">
+
+                            <!-- Left Content -->
+                            <div class="md:w-1/2">
+                                <h2
+                                    class="text-3xl font-display font-bold mb-6 text-black dark:text-neon-cyan group-hover:scale-105 transition-transform origin-left">
+                                    <!-- Force black in Light mode -->
+                                    Personal Insurance
+                                </h2>
+                                <p class="text-xl mb-8 text-black dark:text-slate-lighter">Secure your home, vehicle,
+                                    and lifestyle with our
+                                    comprehensive personal lines.</p>
+                                <ul class="grid grid-cols-1 gap-6">
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-cyan transition-colors">
+                                        <i class="fas fa-home text-vibrant-electric-purple dark:text-neon-cyan"></i>
+                                        <span>Home & Property</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-cyan transition-colors">
+                                        <i class="fas fa-car text-vibrant-electric-purple dark:text-neon-cyan"></i>
+                                        <span>Auto & Mobility</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-cyan transition-colors">
+                                        <i class="fas fa-plane text-vibrant-electric-purple dark:text-neon-cyan"></i>
+                                        <span>Travel & Leisure</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-cyan transition-colors">
+                                        <i class="fas fa-gem text-vibrant-electric-purple dark:text-neon-cyan"></i>
+                                        <span>Valuables Coverage</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Right Images (Replaced with Abstract Cards - Interactive) -->
+                            <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
+                                <!-- Card 1 -->
+                                <div
+                                    class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent dark:from-neon-cyan/5">
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 border border-blue-200 dark:border-neon-cyan/20 rounded-xl">
+                                    </div>
+                                    <div
+                                        class="absolute -right-10 -top-10 w-40 h-40 bg-blue-400/10 dark:bg-neon-cyan/10 rounded-full blur-2xl">
+                                    </div>
+                                    <div
+                                        class="p-6 relative z-10 flex flex-col justify-center h-full ltr:items-start rtl:items-end">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-blue-100 dark:bg-neon-cyan/10 flex items-center justify-center text-blue-600 dark:text-neon-cyan mb-2">
+                                            <i class="fas fa-shield-alt text-lg"></i>
+                                        </div>
+                                        <h3 class="font-bold text-navy-900 dark:text-white">Full Protection</h3>
+                                    </div>
+                                </div>
+                                <!-- Card 2 -->
+                                <div
+                                    class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-transparent dark:from-neon-violet/5">
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 border border-indigo-200 dark:border-neon-violet/20 rounded-xl">
+                                    </div>
+                                    <div
+                                        class="absolute -left-10 -bottom-10 w-40 h-40 bg-indigo-400/10 dark:bg-neon-violet/10 rounded-full blur-2xl">
+                                    </div>
+                                    <div
+                                        class="p-6 relative z-10 flex flex-col justify-center h-full ltr:items-start rtl:items-end">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-neon-violet/10 flex items-center justify-center text-indigo-600 dark:text-neon-violet mb-2">
+                                            <i class="fas fa-bolt text-lg"></i>
+                                        </div>
+                                        <h3 class="font-bold text-navy-900 dark:text-white">Fast Claims</h3>
+                                    </div>
+                                </div>
+                                <!-- Card 3 -->
+                                <div
+                                    class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-transparent dark:from-neon-magenta/5">
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 border border-purple-200 dark:border-neon-magenta/20 rounded-xl">
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] opacity-30">
+                                    </div>
+                                    <div
+                                        class="p-6 relative z-10 flex flex-col justify-center h-full ltr:items-start rtl:items-end">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-purple-100 dark:bg-neon-magenta/10 flex items-center justify-center text-purple-600 dark:text-neon-magenta mb-2">
+                                            <i class="fas fa-gem text-lg"></i>
+                                        </div>
+                                        <h3 class="font-bold text-navy-900 dark:text-white">Premium Value</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="business" class="cmd-content hidden absolute inset-0">
+                        <div
+                            class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-violet/50 shadow-[0_0_30px_rgba(179,157,219,0.1)] hover:shadow-[0_0_50px_rgba(179,157,219,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
+                            <!-- Left Content -->
+                            <div class="md:w-1/2">
+                                <h2
+                                    class="text-3xl font-display font-bold mb-6 text-black dark:text-neon-violet group-hover:scale-105 transition-transform origin-left">
+                                    Business Insurance
+                                </h2>
+                                <p class="text-xl mb-8 text-black dark:text-slate-lighter">Protect your enterprise
+                                    against operational,
+                                    financial, and liability risks.</p>
+                                <ul class="grid grid-cols-1 gap-6">
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-violet transition-colors">
+                                        <i
+                                            class="fas fa-building text-vibrant-electric-purple dark:text-neon-violet"></i>
+                                        <span>General Liability</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-violet transition-colors">
+                                        <i
+                                            class="fas fa-users-cog text-vibrant-electric-purple dark:text-neon-violet"></i>
+                                        <span>Workers Comp</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-violet transition-colors">
+                                        <i
+                                            class="fas fa-briefcase text-vibrant-electric-purple dark:text-neon-violet"></i>
+                                        <span>Professional Indemnity</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-violet transition-colors">
+                                        <i class="fas fa-truck text-vibrant-electric-purple dark:text-neon-violet"></i>
+                                        <span>Commercial Fleet</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Right Images (Replaced with Abstract Cards - Interactive) -->
+                            <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
+                                <!-- Business Card 1 -->
+                                <div
+                                    class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-r from-slate-100 to-white dark:from-navy-800 dark:to-navy-900 border border-slate-200 dark:border-white/10">
+                                    </div>
+                                    <div
+                                        class="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-indigo-500/10 to-transparent">
+                                    </div>
+                                    <div class="p-6 relative z-10 flex items-center justify-between h-full">
+                                        <div class="ltr:text-start rtl:text-end">
+                                            <h3 class="font-bold text-navy-900 dark:text-white text-lg">Risk Analysis
+                                            </h3>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">AI-driven
+                                                insights</p>
+                                        </div>
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-indigo-50 dark:bg-navy-900 border dark:border-white/10 flex items-center justify-center text-indigo-600 dark:text-neon-violet">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Business Card 2 -->
+                                <div
+                                    class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-r from-slate-100 to-white dark:from-navy-800 dark:to-navy-900 border border-slate-200 dark:border-white/10">
+                                    </div>
+                                    <div
+                                        class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-neon-violet to-neon-cyan">
+                                    </div>
+                                    <div class="p-6 relative z-10 flex items-center justify-between h-full">
+                                        <div class="ltr:text-start rtl:text-end">
+                                            <h3 class="font-bold text-navy-900 dark:text-white text-lg">Coverage</h3>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Comprehensive
+                                                Assets</p>
+                                        </div>
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-indigo-50 dark:bg-navy-900 border dark:border-white/10 flex items-center justify-center text-indigo-600 dark:text-neon-violet">
+                                            <i class="fas fa-umbrella"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Business Card 3 -->
+                                <div
+                                    class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-r from-slate-100 to-white dark:from-navy-800 dark:to-navy-900 border border-slate-200 dark:border-white/10">
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat">
+                                    </div>
+                                    <div class="p-6 relative z-10 flex items-center justify-between h-full">
+                                        <div class="ltr:text-start rtl:text-end">
+                                            <h3 class="font-bold text-navy-900 dark:text-white text-lg">Scalability</h3>
+                                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Grows with you
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-indigo-50 dark:bg-navy-900 border dark:border-white/10 flex items-center justify-center text-indigo-600 dark:text-neon-violet">
+                                            <i class="fas fa-expand-arrows-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="life" class="cmd-content hidden absolute inset-0">
+                        <div
+                            class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-magenta/50 shadow-[0_0_30px_rgba(245,0,87,0.1)] hover:shadow-[0_0_50px_rgba(245,0,87,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
+                            <!-- Left Content -->
+                            <div class="md:w-1/2">
+                                <h2
+                                    class="text-3xl font-display font-bold mb-6 text-black dark:text-neon-magenta group-hover:scale-105 transition-transform origin-left">
+                                    Life & Health</h2>
+                                <p class="text-xl mb-8 text-black dark:text-slate-lighter">Ensuring the well-being and
+                                    financial stability
+                                    of you and your employees.</p>
+                                <ul class="grid grid-cols-1 gap-6">
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-magenta transition-colors">
+                                        <i
+                                            class="fas fa-heartbeat text-vibrant-electric-purple dark:text-neon-magenta"></i>
+                                        <span>Term & Whole Life</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-magenta transition-colors">
+                                        <i
+                                            class="fas fa-hospital-user text-vibrant-electric-purple dark:text-neon-magenta"></i>
+                                        <span>Group Health Plans</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-magenta transition-colors">
+                                        <i class="fas fa-child text-vibrant-electric-purple dark:text-neon-magenta"></i>
+                                        <span>Disability</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-magenta transition-colors">
+                                        <i
+                                            class="fas fa-piggy-bank text-vibrant-electric-purple dark:text-neon-magenta"></i>
+                                        <span>Retirement Planning</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Right Images (Replaced with Abstract Cards - Interactive) -->
+                            <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
+                                <!-- Life Card 1 -->
+                                <div
+                                    class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-orange-500/10 dark:from-neon-magenta/20 dark:to-neon-orange/20">
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 backdrop-blur-sm border border-pink-200 dark:border-neon-magenta/30 rounded-xl">
+                                    </div>
+                                    <div
+                                        class="p-6 relative z-10 flex flex-row-reverse justify-between items-center h-full">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center text-white shadow-lg shadow-pink-500/30">
+                                            <i class="fas fa-heartbeat text-xl"></i>
+                                        </div>
+                                        <div class="flex-1 ltr:text-start rtl:text-end">
+                                            <h3 class="font-bold text-navy-900 dark:text-white">Wellness</h3>
+                                            <p class="text-xs text-slate-600 dark:text-slate-300">Preventative care</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Life Card 2 -->
+                                <div
+                                    class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-bl from-purple-500/10 to-pink-500/10 dark:from-neon-violet/20 dark:to-neon-magenta/20">
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 backdrop-blur-sm border border-purple-200 dark:border-neon-violet/30 rounded-xl">
+                                    </div>
+                                    <div
+                                        class="p-6 relative z-10 flex flex-row-reverse justify-between items-center h-full">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/30">
+                                            <i class="fas fa-user-md text-xl"></i>
+                                        </div>
+                                        <div class="flex-1 ltr:text-start rtl:text-end">
+                                            <h3 class="font-bold text-navy-900 dark:text-white">Experts</h3>
+                                            <p class="text-xs text-slate-600 dark:text-slate-300">Top specialists</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Life Card 3 -->
+                                <div
+                                    class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-yellow-500/10 dark:from-neon-orange/20 dark:to-yellow-500/20">
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 backdrop-blur-sm border border-orange-200 dark:border-neon-orange/30 rounded-xl">
+                                    </div>
+                                    <div
+                                        class="p-6 relative z-10 flex flex-row-reverse justify-between items-center h-full">
+                                        <div
+                                            class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/30">
+                                            <i class="fas fa-users text-xl"></i>
+                                        </div>
+                                        <div class="flex-1 ltr:text-start rtl:text-end">
+                                            <h3 class="font-bold text-navy-900 dark:text-white">Family</h3>
+                                            <p class="text-xs text-slate-600 dark:text-slate-300">Comprehensive plans
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="specialty" class="cmd-content hidden absolute inset-0">
+                        <div
+                            class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-orange/50 shadow-[0_0_30px_rgba(255,159,28,0.1)] hover:shadow-[0_0_50px_rgba(255,159,28,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
+                            <!-- Left Content -->
+                            <div class="md:w-1/2">
+                                <h2
+                                    class="text-3xl font-display font-bold mb-6 text-black dark:text-neon-orange group-hover:scale-105 transition-transform origin-left">
+                                    Specialty Lines</h2>
+                                <p class="text-xl mb-8 text-black dark:text-slate-lighter">Bespoke coverage for unique
+                                    and complex risks.
+                                </p>
+                                <ul class="grid grid-cols-1 gap-6">
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-orange transition-colors">
+                                        <i class="fas fa-anchor text-vibrant-electric-purple dark:text-neon-orange"></i>
+                                        <span>Marine & Cargo</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-orange transition-colors">
+                                        <i
+                                            class="fas fa-plane-departure text-vibrant-electric-purple dark:text-neon-orange"></i>
+                                        <span>Aviation</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-orange transition-colors">
+                                        <i
+                                            class="fas fa-hard-hat text-vibrant-electric-purple dark:text-neon-orange"></i>
+                                        <span>Construction</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-orange transition-colors">
+                                        <i
+                                            class="fas fa-user-secret text-vibrant-electric-purple dark:text-neon-orange"></i>
+                                        <span>Kidnap & Ransom</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Right Images -->
+
+                            <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
+                                <img src="Assets/bg4.jpeg"
+                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
+                                <img src="Assets/bg5.jpeg"
+                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cyber" class="cmd-content hidden absolute inset-0">
+                    <div
+                        class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-green/50 shadow-[0_0_30px_rgba(0,255,157,0.1)] hover:shadow-[0_0_50px_rgba(0,255,157,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
+                        <!-- Left Content -->
+                        <div class="md:w-1/2">
+                            <h2
+                                class="text-3xl font-display font-bold mb-6 text-black dark:text-neon-green group-hover:scale-105 transition-transform origin-left">
+                                Cyber Protection</h2>
+                            <p class="text-xl mb-8 text-black dark:text-slate-lighter">Defending your digital assets
+                                against modern
+                                threats.</p>
+                            <ul class="grid grid-cols-1 gap-6">
+                                <li
+                                    class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
+                                    <i
+                                        class="fas fa-shield-virus text-vibrant-electric-purple dark:text-neon-green"></i>
+                                    <span>Data Breach</span>
+                                </li>
+                                <li
+                                    class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
+                                    <i class="fas fa-server text-vibrant-electric-purple dark:text-neon-green"></i>
+                                    <span>Network Interruption</span>
+                                </li>
+                                <li
+                                    class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
+                                    <i
+                                        class="fas fa-file-contract text-vibrant-electric-purple dark:text-neon-green"></i>
+                                    <span>Cyber Liability</span>
+                                </li>
+                                <li
+                                    class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
+                                    <i class="fas fa-laptop-code text-vibrant-electric-purple dark:text-neon-green"></i>
+                                    <span>Ransomware</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Right Images -->
+                        <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
+                            <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
+                                <img src="Assets/dashboard.jpeg"
+                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
+                                <img src="Assets/bg6.jpeg"
+                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
+                                <img src="Assets/bg7.jpeg"
+                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- 2. CONSULTING BY BUSINESS STAGE -->
+    <section class="py-24 bg-transparent transition-colors">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-display font-bold mb-2 text-[#004D40] dark:text-white">Coverage by <span
+                        class="text-[#004D40] dark:text-neon-cyan">Life
+                        Stage</span></h2>
+                <p class="font-mono text-neon-magenta dark:text-neon-magenta">// Protection that grows with you
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div
+                    class="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-neon-cyan via-neon-violet to-neon-magenta -z-0">
+                </div>
+
+                <!-- Card 1 -->
+                <div
+                    class="glass-panel p-6 rounded-xl relative z-10 hover:-translate-y-2 transition-transform duration-300 group bg-white dark:bg-navy-900 border border-white/5">
+                    <div
+                        class="w-12 h-12 bg-white dark:bg-navy-900 rounded-full border-2 border-neon-cyan flex items-center justify-center text-neon-cyan mb-4 group-hover:shadow-[0_0_15px_#64ffda] transition-shadow">
+                        1</div>
+                    <h3 class="font-bold text-xl mb-2 text-navy-900 dark:text-white">Young Professional</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Starting your independent journey.</p>
+                    <div class="border-t border-dashed border-gray-300 dark:border-gray-700 pt-4">
+                        <p class="text-xs font-mono text-vibrant-electric-purple dark:text-neon-cyan">PLAN: Starter Pack
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="glass-panel p-6 rounded-xl relative z-10 hover:-translate-y-2 transition-transform duration-300 group bg-white dark:bg-navy-900 border border-white/5 mt-8 lg:mt-0">
+                    <div
+                        class="w-12 h-12 bg-white dark:bg-navy-900 rounded-full border-2 border-neon-violet flex items-center justify-center text-neon-violet mb-4 group-hover:shadow-[0_0_15px_#b39ddb] transition-shadow">
+                        2</div>
+                    <h3 class="font-bold text-xl mb-2 text-navy-900 dark:text-white">Family Growth</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Securing your loved ones' future.</p>
+                    <div class="border-t border-dashed border-gray-300 dark:border-gray-700 pt-4">
+                        <p class="text-xs font-mono text-neon-violet">PLAN: Family Shield</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="glass-panel p-6 rounded-xl relative z-10 hover:-translate-y-2 transition-transform duration-300 group bg-white dark:bg-navy-900 border border-white/5">
+                    <div
+                        class="w-12 h-12 bg-white dark:bg-navy-900 rounded-full border-2 border-neon-magenta flex items-center justify-center text-neon-magenta mb-4 group-hover:shadow-[0_0_15px_#f50057] transition-shadow">
+                        3</div>
+                    <h3 class="font-bold text-xl mb-2 text-navy-900 dark:text-white">Business Owner</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Asset & Liability protection.</p>
+                    <div class="border-t border-dashed border-gray-300 dark:border-gray-700 pt-4">
+                        <p class="text-xs font-mono text-neon-magenta">PLAN: Enterprise</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="glass-panel p-6 rounded-xl relative z-10 hover:-translate-y-2 transition-transform duration-300 group bg-white dark:bg-navy-900 border border-white/5 mt-8 lg:mt-0">
+                    <div
+                        class="w-12 h-12 bg-white dark:bg-navy-900 rounded-full border-2 border-navy-900 dark:border-white flex items-center justify-center text-navy-900 dark:text-white mb-4 group-hover:shadow-[0_0_15px_rgba(0,0,0,0.2)] dark:group-hover:shadow-[0_0_15px_white] transition-shadow">
+                        4</div>
+                    <h3 class="font-bold text-xl mb-2 text-navy-900 dark:text-white">Retirement</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Pension & Health security.</p>
+                    <div class="border-t border-dashed border-gray-300 dark:border-gray-700 pt-4">
+                        <p class="text-xs font-mono text-navy-900 dark:text-white">PLAN: Golden Years</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. FRAMEWORKS (Accordion) -->
+    <!-- 3. FRAMEWORKS (Accordion) -->
+    <section class="py-24 bg-transparent">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-display font-bold mb-12 text-center text-[#004D40] dark:text-white">Streamlined
+                <span class="text-[#004D40] dark:text-neon-violet">Claims Process</span>
+            </h2>
+
+            <div class="space-y-4">
+                <!-- Item 1 -->
+                <div class="framework-item border border-navy-900/10 dark:border-white/10 rounded-lg overflow-hidden">
+                    <button onclick="toggleFw(this)"
+                        class="w-full p-6 flex justify-between items-center bg-navy-50 dark:bg-navy-800 hover:bg-neon-violet/5 transition-colors">
+                        <span class="font-bold text-lg font-mono">01. Fast-Track Claims</span>
+                        <i class="fas fa-plus text-neon-violet"></i>
+                    </button>
+                    <div
+                        class="fw-content hidden p-6 bg-white dark:bg-navy-900 border-t border-navy-900/10 dark:border-white/10">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">The Goal</h4>
+                                <p class="text-sm">Quick resolution for minor incidents.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">The Solution</h4>
+                                <p class="text-sm">AI-driven photo analysis and instant payout approval for eligible
+                                    claims.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="framework-item border border-navy-900/10 dark:border-white/10 rounded-lg overflow-hidden">
+                    <button onclick="toggleFw(this)"
+                        class="w-full p-6 flex justify-between items-center bg-navy-50 dark:bg-navy-800 hover:bg-neon-violet/5 transition-colors">
+                        <span class="font-bold text-lg font-mono">02. Risk Assessment</span>
+                        <i class="fas fa-plus text-neon-violet"></i>
+                    </button>
+                    <div
+                        class="fw-content hidden p-6 bg-white dark:bg-navy-900 border-t border-navy-900/10 dark:border-white/10">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">The Goal</h4>
+                                <p class="text-sm">Accurate premium calculation.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">The Solution</h4>
+                                <p class="text-sm">Multivariate analysis of lifestyle, assets, and historical data.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="framework-item border border-navy-900/10 dark:border-white/10 rounded-lg overflow-hidden">
+                    <button onclick="toggleFw(this)"
+                        class="w-full p-6 flex justify-between items-center bg-navy-50 dark:bg-navy-800 hover:bg-neon-violet/5 transition-colors">
+                        <span class="font-bold text-lg font-mono">03. Policy Management</span>
+                        <i class="fas fa-plus text-neon-violet"></i>
+                    </button>
+                    <div
+                        class="fw-content hidden p-6 bg-white dark:bg-navy-900 border-t border-navy-900/10 dark:border-white/10">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">The Goal</h4>
+                                <p class="text-sm">Flexible coverage that adapts to you.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-500 uppercase mb-2">The Solution</h4>
+                                <p class="text-sm">User-friendly dashboard for instant policy updates and riders.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. INDUSTRY INTELLIGENCE -->
+    <section class="py-24 bg-transparent text-navy-900 dark:text-white overflow-hidden relative transition-colors">
+        <div class="absolute inset-0 bg-[url('Assets/map.jpeg')] opacity-10 bg-cover bg-center"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl font-display font-bold mb-12 text-[#004D40] dark:text-white"><span
+                    class="text-[#004D40] dark:text-neon-cyan">Sectors</span>
+                We Cover</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Card 1 -->
+                <div
+                    class="p-6 bg-white/80 dark:bg-navy-800/80 backdrop-blur border border-white/10 rounded-lg hover:border-neon-cyan transition-all group shadow-md dark:shadow-none">
+                    <i class="fas fa-car text-3xl text-neon-cyan mb-4"></i>
+                    <h3 class="font-bold mb-2">Auto</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mb-3">Personal & Commercial fleets.</p>
+                    <span class="text-[10px] font-mono text-neon-cyan uppercase">Signal: Telematics</span>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="p-6 bg-white/80 dark:bg-navy-800/80 backdrop-blur border border-white/10 rounded-lg hover:border-neon-violet transition-all group shadow-md dark:shadow-none">
+                    <i class="fas fa-home text-3xl text-neon-violet mb-4"></i>
+                    <h3 class="font-bold mb-2">Home</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mb-3">Property & Mortgage protection.</p>
+                    <span class="text-[10px] font-mono text-neon-violet uppercase">Signal: Smart Home</span>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="p-6 bg-white/80 dark:bg-navy-800/80 backdrop-blur border border-white/10 rounded-lg hover:border-neon-magenta transition-all group shadow-md dark:shadow-none">
+                    <i class="fas fa-building text-3xl text-neon-magenta mb-4"></i>
+                    <h3 class="font-bold mb-2">Commercial</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mb-3">Liability & Asset coverage.</p>
+                    <span class="text-[10px] font-mono text-neon-magenta uppercase">Signal: Risk Mgmt</span>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class="p-6 bg-white/80 dark:bg-navy-800/80 backdrop-blur border border-white/10 rounded-lg hover:border-neon-cyan transition-all group shadow-md dark:shadow-none">
+                    <i class="fas fa-plane text-3xl text-neon-cyan mb-4"></i>
+                    <h3 class="font-bold mb-2">Travel</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mb-3">Global medical & trip cancellation.</p>
+                    <span class="text-[10px] font-mono text-neon-cyan uppercase">Signal: Real-time</span>
+                </div>
+                <!-- Card 5 -->
+                <div
+                    class="p-6 bg-white/80 dark:bg-navy-800/80 backdrop-blur border border-white/10 rounded-lg hover:border-neon-violet transition-all group shadow-md dark:shadow-none">
+                    <i class="fas fa-shield-virus text-3xl text-neon-violet mb-4"></i>
+                    <h3 class="font-bold mb-2">Cyber</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mb-3">Data breach & Ransomware.</p>
+                    <span class="text-[10px] font-mono text-neon-violet uppercase">Signal: Prevention</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. DECISION MODELING LAB -->
+    <!-- 5. DECISION MODELING LAB -->
+    <section class="py-24 bg-transparent transition-colors">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+            <div class="w-full lg:w-1/2">
+                <h2 class="text-4xl font-display font-bold mb-6 text-[#004D40] dark:text-white">Risk <span
+                        class="text-[#004D40] dark:text-neon-magenta">Analytics
+                        Engine</span></h2>
+                <h3 class="text-xl font-mono text-neon-magenta dark:text-neon-magenta mb-8">// Where data meets
+                    protection</h3>
+                <p class="mb-6 text-navy-700 dark:text-slate-light">We don't guess. We calculate.</p>
+                <ul class="space-y-4 text-navy-700 dark:text-slate-light">
+                    <li class="flex items-center gap-4">
+                        <div class="w-2 h-2 bg-neon-magenta rounded-full"></div>
+                        <span>Predictive loss modeling</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <div class="w-2 h-2 bg-neon-magenta rounded-full"></div>
+                        <span>AI-driven premium optimization</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <div class="w-2 h-2 bg-neon-magenta rounded-full"></div>
+                        <span>Catastrophe exposure mapping</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="w-full lg:w-1/2 relative h-[400px]">
+                <!-- HTML/CSS Animated Bar Chart (Histogram) -->
+                <div
+                    class="absolute inset-0 bg-navy-900 rounded-2xl overflow-hidden glass-panel border border-neon-magenta/20 p-8 flex items-end justify-between gap-4">
+
+                    <!-- Bars -->
+                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                        style="--h: 40%; animation-delay: 0s;"></div>
+                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                        style="--h: 70%; animation-delay: 0.2s;"></div>
+                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                        style="--h: 55%; animation-delay: 0.4s;"></div>
+                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                        style="--h: 90%; animation-delay: 0.6s;"></div>
+                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                        style="--h: 65%; animation-delay: 0.8s;"></div>
+                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                        style="--h: 80%; animation-delay: 1s;"></div>
+
+                    <!-- Floating Data Points -->
+                    <div
+                        class="absolute top-10 left-10 bg-white/10 p-2 rounded text-xs font-mono text-white backdrop-blur-md border border-white/10">
+                        <i class="fas fa-circle text-green-400 text-[8px] me-2"></i> Live Analysis
+                    </div>
+                </div>
+
+                <style>
+                    @keyframes growBar {
+                        0% {
+                            height: 0%;
+                            opacity: 0;
+                        }
+
+                        100% {
+                            height: var(--h);
+                            opacity: 1;
+                        }
+                    }
+
+                    .animate-chart-bar {
+                        height: 0%;
+                        animation: growBar 1.5s ease-out forwards;
+                    }
+                </style>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ENGAGEMENT MODELS -->
+    <section class="py-24 bg-transparent transition-colors">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-display font-bold mb-12 text-center text-[#004D40] dark:text-white">Policy <span
+                    class="text-[#004D40] dark:text-neon-cyan">Flexibility</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="glass-panel p-8 rounded-xl bg-white dark:bg-navy-900 border border-white/5 hover:border-[#004D40] hover:shadow-[0_0_20px_#004D40] transition-all group">
+                    <h3 class="text-2xl font-bold mb-2 text-navy-900 dark:text-white">Comprehensive Term</h3>
+                    <p class="text-sm font-mono text-[#004D40] mb-4">Duration: 10-30 Years</p>
+                    <p class="mb-6 text-slate-600 dark:text-slate-400">Long-term stability for you and your family.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#004D40]"></i> Fixed Premiums
+                        </li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#004D40]"></i> Convertible
+                            Options
+                        </li>
+                    </ul>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="glass-panel p-8 rounded-xl bg-white dark:bg-navy-900 border border-white/5 hover:border-[#004D40] hover:shadow-[0_0_20px_#004D40] transition-all group">
+                    <h3 class="text-2xl font-bold mb-2 text-navy-900 dark:text-white">Flexible Add-ons</h3>
+                    <p class="text-sm font-mono text-[#004D40] mb-4">Duration: On-Demand</p>
+                    <p class="mb-6 text-slate-600 dark:text-slate-400">Customize your coverage as needs change.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#004D40]"></i> Rider
+                            Flexibility</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#004D40]"></i> Instant
+                            activation
+                        </li>
+                    </ul>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="glass-panel p-8 rounded-xl bg-white dark:bg-navy-900 border border-white/5 hover:border-[#004D40] hover:shadow-[0_0_20px_#004D40] transition-all group">
+                    <h3 class="text-2xl font-bold mb-2 text-navy-900 dark:text-white">Bundle & Save</h3>
+                    <p class="text-sm font-mono text-[#004D40] mb-4">Duration: Annual</p>
+                    <p class="mb-6 text-slate-600 dark:text-slate-400">Combine home, auto, and life for maximum savings.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#004D40]"></i> Multi-policy
+                            discount</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#004D40]"></i> Unified
+                            billing</li>
+                    </ul>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class="glass-panel p-8 rounded-xl bg-white dark:bg-navy-900 border border-white/5 hover:border-[#004D40] hover:shadow-[0_0_20px_#004D40] transition-all group">
+                    <h3 class="text-2xl font-bold mb-2 text-navy-900 dark:text-white">Claims Concierge</h3>
+                    <p class="text-sm font-mono text-[#004D40] mb-4">Duration: 24/7</p>
+                    <p class="mb-6 text-slate-600 dark:text-slate-400">White-glove service when you need it most.</p>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#004D40]"></i>
+                            Dedicated Agent</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#004D40]"></i>
+                            Priority Processing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. DELIVERABLES -->
+    <section class="py-24 bg-transparent transition-colors border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-display font-bold mb-12 text-center text-[#004D40] dark:text-white">Your <span
+                    class="text-[#004D40] dark:text-neon-violet">Policy Documents</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Doc 1 -->
+                <div class="group h-[300px] perspective-1000 cursor-pointer"
+                    onclick="this.querySelector('.flip-inner').classList.toggle('rotate-y-180')">
+                    <div
+                        class="flip-inner relative w-full h-full transition-transform duration-700 transform-style-3d shadow-xl rounded-xl">
+                        <!-- Front (Image) -->
+                        <div
+                            class="absolute inset-0 w-full h-full backface-hidden rounded-xl overflow-hidden border border-white/5">
+                            <img src="Assets/service.jpeg" class="w-full h-full object-cover" alt="Policy Jacket">
+                            <div
+                                class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
+                                <h3 class="font-bold text-white text-lg">Policy Jacket</h3>
+                                <p class="text-xs text-slate-300">Click to view details</p>
+                            </div>
+                        </div>
+                        <!-- Back (Details) -->
+                        <div
+                            class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-white dark:bg-navy-800 p-8 flex flex-col justify-center rounded-xl border border-neon-violet">
+                            <div class="absolute top-0 right-0 p-4 opacity-50">
+                                <i class="fas fa-file-contract text-4xl text-neon-violet mb-6"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Policy Jacket</h3>
+                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start gap-2"><span class="text-neon-violet mt-1">•</span> Full
+                                    Coverage Details</li>
+                                <li class="flex items-start gap-2"><span class="text-neon-violet mt-1">•</span>
+                                    Exclusions List</li>
+                                <li class="flex items-start gap-2"><span class="text-neon-violet mt-1">•</span> Term
+                                    Definitions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doc 2 -->
+                <div class="group h-[300px] perspective-1000 cursor-pointer"
+                    onclick="this.querySelector('.flip-inner').classList.toggle('rotate-y-180')">
+                    <div
+                        class="flip-inner relative w-full h-full transition-transform duration-700 transform-style-3d shadow-xl rounded-xl">
+                        <!-- Front (Image) -->
+                        <div
+                            class="absolute inset-0 w-full h-full backface-hidden rounded-xl overflow-hidden border border-white/5">
+                            <img src="Assets/bg5.jpeg" class="w-full h-full object-cover" alt="Coverage Summary">
+                            <div
+                                class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
+                                <h3 class="font-bold text-white text-lg">Coverage Summary</h3>
+                                <p class="text-xs text-slate-300">Click to view details</p>
+                            </div>
+                        </div>
+                        <!-- Back (Details) -->
+                        <div
+                            class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-white dark:bg-navy-800 p-8 flex flex-col justify-center rounded-xl border border-neon-cyan">
+                            <div class="absolute top-0 right-0 p-4 opacity-50">
+                                <i class="fas fa-file-alt text-4xl text-neon-cyan mb-6"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Coverage Summary</h3>
+                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start gap-2"><span class="text-neon-cyan mt-1">•</span> Quick
+                                    Reference</li>
+                                <li class="flex items-start gap-2"><span class="text-neon-cyan mt-1">•</span>
+                                    Deductibles</li>
+                                <li class="flex items-start gap-2"><span class="text-neon-cyan mt-1">•</span> Limits
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doc 3 -->
+                <div class="group h-[300px] perspective-1000 cursor-pointer"
+                    onclick="this.querySelector('.flip-inner').classList.toggle('rotate-y-180')">
+                    <div
+                        class="flip-inner relative w-full h-full transition-transform duration-700 transform-style-3d shadow-xl rounded-xl">
+                        <!-- Front (Image) -->
+                        <div
+                            class="absolute inset-0 w-full h-full backface-hidden rounded-xl overflow-hidden border border-white/5">
+                            <img src="Assets/bg6.jpeg" class="w-full h-full object-cover" alt="Digital ID Card">
+                            <div
+                                class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
+                                <h3 class="font-bold text-white text-lg">Digital ID Card</h3>
+                                <p class="text-xs text-slate-300">Click to view details</p>
+                            </div>
+                        </div>
+                        <!-- Back (Details) -->
+                        <div
+                            class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-white dark:bg-navy-800 p-8 flex flex-col justify-center rounded-xl border border-neon-magenta">
+                            <div class="absolute top-0 right-0 p-4 opacity-50">
+                                <i class="fas fa-id-card text-4xl text-neon-magenta mb-6"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Digital ID Card</h3>
+                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start gap-2"><span class="text-neon-magenta mt-1">•</span> Apple
+                                    Wallet / Google Pay</li>
+                                <li class="flex items-start gap-2"><span class="text-neon-magenta mt-1">•</span> Instant
+                                    Proof</li>
+                                <li class="flex items-start gap-2"><span class="text-neon-magenta mt-1">•</span> QR
+                                    Verification</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doc 4 -->
+                <div class="group h-[300px] perspective-1000 cursor-pointer"
+                    onclick="this.querySelector('.flip-inner').classList.toggle('rotate-y-180')">
+                    <div
+                        class="flip-inner relative w-full h-full transition-transform duration-700 transform-style-3d shadow-xl rounded-xl">
+                        <!-- Front (Image) -->
+                        <div
+                            class="absolute inset-0 w-full h-full backface-hidden rounded-xl overflow-hidden border border-white/5">
+                            <img src="Assets/bg7.jpeg" class="w-full h-full object-cover" alt="Claim History">
+                            <div
+                                class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent">
+                                <h3 class="font-bold text-white text-lg">Claim History</h3>
+                                <p class="text-xs text-slate-300">Click to view details</p>
+                            </div>
+                        </div>
+                        <!-- Back (Details) -->
+                        <div
+                            class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-white dark:bg-navy-800 p-8 flex flex-col justify-center rounded-xl border border-neon-orange">
+                            <div class="absolute top-0 right-0 p-4 opacity-50">
+                                <i class="fas fa-history text-4xl text-neon-orange mb-6"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Claim History</h3>
+                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start gap-2"><span class="text-neon-orange mt-1">•</span> Past
+                                    Incidents</li>
+                                <li class="flex items-start gap-2"><span class="text-neon-orange mt-1">•</span> Payout
+                                    Records</li>
+                                <li class="flex items-start gap-2"><span class="text-neon-orange mt-1">•</span> Status
+                                    Updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <style>
+            .perspective-1000 {
+                perspective: 1000px;
+            }
+
+            .transform-style-3d {
+                transform-style: preserve-3d;
+            }
+
+            .backface-hidden {
+                backface-visibility: hidden;
+            }
+
+            .rotate-y-180 {
+                transform: rotateY(180deg);
+            }
+        </style>
+    </section>
+
+    <!-- 8. EXECUTION SUPPORT (Stepper) -->
+    <section class="py-24 bg-transparent relative overflow-hidden">
+        <div
+            class="absolute top-0 right-0 w-1/2 h-full bg-light-frosted-blue dark:bg-navy-900/50 skew-x-12 transform origin-top-right">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Left: Stepper -->
+                <div>
+                    <h2 class="text-3xl font-display font-bold mb-16 text-start text-[#004D40] dark:text-white">Policy
+                        <span class="text-[#004D40] dark:text-neon-cyan">Management & Support</span>
+                    </h2>
+
+                    <div class="relative border-l-2 border-slate-700 ms-3 space-y-12">
+                        <!-- Step 1 -->
+                        <div class="relative ps-12 group">
+                            <div
+                                class="absolute left-[-9px] top-1.5 w-4 h-4 bg-white dark:bg-navy-900 border-2 border-neon-cyan rounded-full group-hover:bg-neon-cyan group-hover:shadow-[0_0_15px_#64ffda] transition-all duration-300">
+                            </div>
+                            <h3
+                                class="text-xl font-bold mb-2 text-navy-900 dark:text-white group-hover:text-neon-cyan transition-colors">
+                                Coverage Review</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Annual checkups to ensure your protection
+                                matches your current value.</p>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="relative ps-12 group">
+                            <div
+                                class="absolute left-[-9px] top-1.5 w-4 h-4 bg-white dark:bg-navy-900 border-2 border-neon-violet rounded-full group-hover:bg-neon-violet group-hover:shadow-[0_0_15px_#b39ddb] transition-all duration-300">
+                            </div>
+                            <h3
+                                class="text-xl font-bold mb-2 text-navy-900 dark:text-white group-hover:text-neon-violet transition-colors">
+                                Claims Assistance</h3>
+                            <p class="text-slate-600 dark:text-slate-400">24/7 dedicated support to guide you through
+                                any incident efficiently.
+                            </p>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="relative ps-12 group">
+                            <div
+                                class="absolute left-[-9px] top-1.5 w-4 h-4 bg-white dark:bg-navy-900 border-2 border-neon-magenta rounded-full group-hover:bg-neon-magenta group-hover:shadow-[0_0_15px_#f50057] transition-all duration-300">
+                            </div>
+                            <h3
+                                class="text-xl font-bold mb-2 text-navy-900 dark:text-white group-hover:text-neon-magenta transition-colors">
+                                Renewal Optimization</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Automatic best-rate checks and loyalty
+                                discount application.</p>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="relative ps-12 group">
+                            <div
+                                class="absolute left-[-9px] top-1.5 w-4 h-4 bg-white dark:bg-navy-900 border-2 border-neon-orange rounded-full group-hover:bg-neon-orange group-hover:shadow-[0_0_15px_#FF9F1C] transition-all duration-300">
+                            </div>
+                            <h3
+                                class="text-xl font-bold mb-2 text-navy-900 dark:text-white group-hover:text-neon-orange transition-colors">
+                                Lifestyle Adjustments</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Seamlessly updating coverage as life changes
+                                (marriage, new home, etc).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Images -->
+                <div class="relative h-[600px] w-full hidden lg:block">
+                    <!-- Image 1 -->
+                    <div
+                        class="absolute top-0 right-10 w-3/4 h-2/3 rounded-2xl overflow-hidden border-2 border-neon-cyan/20 shadow-2xl transform hover:scale-105 transition-transform duration-500 z-10 glass-panel">
+                        <img src="Assets/office-1.png" alt="Policy Review Meeting"
+                            class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <span
+                                class="text-neon-cyan font-mono text-sm bg-navy-900/80 px-2 py-1 rounded">Policy_Active</span>
+                        </div>
+                    </div>
+                    <!-- Image 2 -->
+                    <div
+                        class="absolute bottom-0 left-0 w-3/4 h-2/3 rounded-2xl overflow-hidden border-2 border-neon-violet/20 shadow-2xl transform hover:scale-105 transition-transform duration-500 z-20 glass-panel">
+                        <div class="absolute inset-0 bg-navy-900/40 mix-blend-multiply z-10"></div>
+                        <img src="Assets/office-2.png" alt="Claims Support"
+                            class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity">
+                        <div class="absolute top-6 right-6 z-20">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-neon-magenta animate-pulse"></div>
+                                <div class="w-3 h-3 rounded-full bg-neon-cyan animate-pulse delay-75"></div>
+                                <div class="w-3 h-3 rounded-full bg-neon-violet animate-pulse delay-150"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative Elements -->
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/5 rounded-full animate-spin-slow pointer-events-none">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. ETHICS & GOVERNANCE -->
+    <section class="py-16 bg-pastel-periwinkle dark:bg-vibrant-royal-indigo border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex flex-wrap justify-center gap-12 text-sm font-mono text-slate-500 dark:text-slate-400">
+                <span class="flex items-center gap-2"><i class="fas fa-lock text-neon-cyan"></i> Data Privacy
+                    First</span>
+                <span class="flex items-center gap-2"><i class="fas fa-balance-scale text-neon-violet"></i>
+                    Regulatory Compliance</span>
+                <span class="flex items-center gap-2"><i class="fas fa-brain text-neon-magenta"></i> Transparent
+                    Pricing</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. IMPACT METRICS -->
+    <section
+        class="py-24 bg-pastel-sky dark:bg-vibrant-deep-neon-blue text-navy-900 dark:text-white relative overflow-hidden transition-colors">
+        <div
+            class="absolute inset-0 bg-gradient-to-r from-pastel-sky via-pastel-lavender to-pastel-sky dark:from-vibrant-deep-neon-blue dark:via-vibrant-royal-indigo dark:to-vibrant-deep-neon-blue">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-3xl font-display font-bold mb-16">Protection By The Numbers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <div class="text-5xl font-bold text-[#004D40] mb-2">98%</div>
+                    <p class="text-sm tracking-widest uppercase font-bold text-navy-900 dark:text-white">Claims Approval
+                        Rate</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold text-neon-violet mb-2">24/7</div>
+                    <p class="text-sm tracking-widest uppercase font-bold text-navy-900 dark:text-white">Support
+                        Availability</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold text-neon-magenta mb-2">$500M+</div>
+                    <p class="text-sm tracking-widest uppercase font-bold text-navy-900 dark:text-white">Claims Paid
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. CTA BUTTON / BUILDER -->
+    <section
+        class="py-24 relative overflow-hidden text-center bg-gradient-to-r from-pink-500 via-purple-600 to-blue-900">
+        <!-- Popping Dots Background -->
+        <div class="absolute inset-0 z-0 opacity-30">
+            <div class="dot-pop absolute top-10 left-10 w-4 h-4 rounded-full bg-white"></div>
+            <div class="dot-pop absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-white delay-200"></div>
+            <div class="dot-pop absolute bottom-20 left-1/3 w-3 h-3 rounded-full bg-white delay-500"></div>
+            <div class="dot-pop absolute bottom-10 right-10 w-5 h-5 rounded-full bg-white delay-700"></div>
+            <div class="dot-pop absolute top-1/2 left-1/4 w-4 h-4 rounded-full bg-white delay-300"></div>
+            <div class="dot-pop absolute top-20 right-1/3 w-2 h-2 rounded-full bg-white delay-100"></div>
+        </div>
+
+        <style>
+            @keyframes popScale {
+
+                0%,
+                100% {
+                    transform: scale(0);
+                    opacity: 0;
+                }
+
+                50% {
+                    transform: scale(1.5);
+                    opacity: 0.8;
+                }
+            }
+
+            .dot-pop {
+                animation: popScale 3s infinite ease-in-out;
+            }
+
+            .delay-200 {
+                animation-delay: 0.5s;
+            }
+
+            .delay-500 {
+                animation-delay: 1.2s;
+            }
+
+            .delay-700 {
+                animation-delay: 1.8s;
+            }
+
+            .delay-300 {
+                animation-delay: 0.8s;
+            }
+
+            .delay-100 {
+                animation-delay: 0.2s;
+            }
+        </style>
+
+        <div class="max-w-3xl mx-auto px-6 relative z-10">
+            <h2 class="text-4xl font-display font-bold mb-6 text-white text-shadow-lg">Secure Your Future</h2>
+            <p class="text-xl text-white/90 mb-12 font-medium">Get a personalized quote in minutes and protect
+                what matters most.</p>
+
+            <a href="contact.html"
+                class="inline-block px-12 py-5 bg-white text-indigo-700 font-bold text-lg rounded-full hover:shadow-[0_0_30px_rgba(255,255,255,0.6)] hover:-translate-y-1 transition-all">Get
+                Your Quote</a>
+        </div>
+    </section>
+
+    <!-- NEW ANIMATED GRADIENT FOOTER -->
+    <footer class="footer-gradient pt-24 pb-12">
+        <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <!-- Col 1: Brand -->
+            <div>
+                <a href="#" class="flex items-center gap-2 mb-6 text-white group">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg transition-transform group-hover:rotate-12">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-xl">Claimora</span>
+                </a>
+                <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                    Next-generation insurance & business intelligence. Protecting your future with confidence.
+                </p>
+                <div class="flex gap-4 mt-6">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all transform hover:-translate-y-1">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-sky-500 hover:text-white transition-all transform hover:-translate-y-1">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-pink-600 hover:text-white transition-all transform hover:-translate-y-1">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Quick Links -->
+            <div>
+                <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="index.html" class="footer-link hover:text-white">Home</a></li>
+                    <li><a href="about.html" class="footer-link hover:text-white">About Us</a></li>
+                    <li><a href="services.html" class="footer-link hover:text-white">Services</a></li>
+                    <li><a href="contact.html" class="footer-link hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Account -->
+            <div>
+                <h4 class="text-white font-bold mb-6">Account</h4>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a></li>
+                    <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Console</a></li>
+                    <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
+                    <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Newsletter -->
+            <div>
+                <h4 class="text-white font-bold mb-6">Stay Updated</h4>
+                <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest insights.</p>
+                <div class="flex gap-2">
+                    <input type="email" placeholder="Email address"
+                        class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors">
+                    <button
+                        class="px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors">Go</button>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="max-w-[1920px] mx-auto px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+            <div>&copy; 2026 Claimora. All rights reserved.</div>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by NexGen</span>
+            </div>
+        </div>
+    </footer>
+    <script>
+        lucide.createIcons();
+    </script>
+
+
+    <script src="main.js"></script>
+    <script>
+        // Command Center Tabs
+        function openCmdTab(evt, tabName, color) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("cmd-content");
+            // Hide all tab content
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+                x[i].classList.remove('animate-fade-in');
+            }
+
+            // Remove active state from all tabs
+            tablinks = document.getElementsByClassName("cmd-tab");
+            for (i = 0; i < tablinks.length; i++) {
+                // Reset to default dull state
+                tablinks[i].classList.remove("border-neon-cyan", "border-neon-violet", "border-neon-magenta", "border-neon-orange", "border-neon-green");
+                tablinks[i].classList.remove("shadow-[0_0_20px_rgba(100,255,218,0.3)]", "shadow-[0_0_20px_rgba(179,157,219,0.3)]", "shadow-[0_0_20px_rgba(245,0,87,0.3)]", "shadow-[0_0_20px_rgba(255,159,28,0.3)]", "shadow-[0_0_20px_rgba(0,255,157,0.3)]");
+
+                // Remove arrows
+                const arrow = tablinks[i].querySelector('.fa-chevron-right');
+                if (arrow) arrow.style.opacity = '0';
+
+                // Reset text color of heading
+                const heading = tablinks[i].querySelector('h3');
+                if (heading) {
+                    heading.classList.remove('text-neon-cyan', 'text-neon-violet', 'text-neon-magenta', 'text-neon-orange', 'text-neon-green');
+                    heading.classList.remove('dark:text-neon-cyan', 'dark:text-neon-violet', 'dark:text-neon-magenta', 'dark:text-neon-orange', 'dark:text-neon-green');
+                    heading.classList.remove('text-vibrant-electric-purple');
+                }
+            }
+
+            // Show current tab
+            const currentTab = document.getElementById(tabName);
+            currentTab.style.display = "block";
+            // Trigger reflow to restart animation
+            void currentTab.offsetWidth;
+            currentTab.classList.add('animate-fade-in');
+
+            // Set active state
+            const activeBtn = evt.currentTarget;
+            let colorClass = `text-neon-${color}`;
+            let borderClass = `border-neon-${color}`;
+            let shadowClass = `shadow-[0_0_20px_rgba(var(--color-${color}),0.3)]`; // Simplified log, using specific hex in JS logic or just classes
+
+            activeBtn.classList.add(borderClass);
+
+            // Responsive active text color
+            if (color === 'cyan') activeBtn.querySelector('h3').classList.add('text-vibrant-electric-purple', 'dark:text-neon-cyan');
+            if (color === 'violet') activeBtn.querySelector('h3').classList.add('text-vibrant-electric-purple', 'dark:text-neon-violet');
+            if (color === 'magenta') activeBtn.querySelector('h3').classList.add('text-vibrant-electric-purple', 'dark:text-neon-magenta');
+            if (color === 'orange') activeBtn.querySelector('h3').classList.add('text-vibrant-electric-purple', 'dark:text-neon-orange');
+            if (color === 'green') activeBtn.querySelector('h3').classList.add('text-vibrant-electric-purple', 'dark:text-neon-green');
+
+            // activeBtn.querySelector('h3').classList.add(colorClass); // Removed static class
+            activeBtn.querySelector('.fa-chevron-right').style.opacity = '1';
+
+            // We can add a subtle glow to the button itself matching the color
+            if (color === 'cyan') activeBtn.style.boxShadow = '0 0 15px rgba(100,255,218,0.2)';
+            if (color === 'violet') activeBtn.style.boxShadow = '0 0 15px rgba(179,157,219,0.2)';
+            if (color === 'magenta') activeBtn.style.boxShadow = '0 0 15px rgba(245,0,87,0.2)';
+            if (color === 'orange') activeBtn.style.boxShadow = '0 0 15px rgba(255,159,28,0.2)';
+            if (color === 'green') activeBtn.style.boxShadow = '0 0 15px rgba(0,255,157,0.2)';
+        }
+
+        // Init first tab (Personal - Cyan)
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simulate click on first button
+            const firstBtn = document.querySelector('.cmd-tab');
+            if (firstBtn) openCmdTab({ currentTarget: firstBtn }, 'personal', 'cyan');
+        });
+
+
+        // Accordion
+        function toggleFw(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('.fa-plus');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-45');
+        }
+    </script>
+    <script>
+        // RTL Hero Swap Logic using MutationObserver - REMOVED
+        // The CSS logical properties and flex direction defined in HTML handle the mirroring automatically.
+        // justify-end in RTL (flex-row) aligns to Left, which is desired.
+    </script>
+</body>
+
+</html>
