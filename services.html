@@ -267,10 +267,27 @@
                 </a>
             </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
+            <!-- Mobile Actions (RTL + Theme + Menu) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <!-- Mobile RTL Toggle -->
+                <button onclick="document.getElementById('rtl-toggle').click()"
+                    class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
+                </button>
+
+                <!-- Mobile Theme Toggle -->
+                <button onclick="document.getElementById('theme-toggle').click()"
+                    class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                    class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -327,19 +344,7 @@
 
                 <hr class="border-slate-100 dark:border-slate-800">
 
-                <!-- Mobile Actions -->
-                <div class="flex gap-4">
-                    <button id="mobile-theme-toggle"
-                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
-                        <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
-                    </button>
-                    <!-- Mobile RTL Toggle -->
-                    <button id="mobile-rtl-toggle"
-                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400"
-                        onclick="document.getElementById('rtl-toggle').click()">
-                        <i data-lucide="globe" class="w-5 h-5"></i> <span>RTL</span>
-                    </button>
-                </div>
+                <!-- Mobile Actions (removed) -->
                 <a href="login.html"
                     class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
                     Get Started
@@ -349,113 +354,244 @@
     </div>
 
     <!-- HERO SECTION (Premium Immersive Experience) -->
-    <section
-        class="relative h-[90vh] flex items-center overflow-hidden ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-blue-50 via-indigo-50 to-orange-50 dark:from-slate-900 dark:via-blue-950 dark:to-indigo-950 pt-20 transition-all duration-700">
+    <section class="relative min-h-[90vh] flex items-center overflow-hidden bg-slate-900 pb-20 pt-32">
 
-        <!-- Background Video (Mirror: Left in LTR, Right in RTL) -->
-        <div id="hero-bg-video"
-            class="absolute inset-y-0 ltr:left-0 ltr:right-auto rtl:right-0 rtl:left-auto w-full lg:w-[65%] z-0 pointer-events-none overflow-hidden mt-20 transition-all duration-500 ease-in-out">
-            <!-- Video Element -->
-            <video autoplay loop muted playsinline class="w-full h-full object-cover">
+        <!-- 1. Background Layer: Video + Cyber Grid Overlay -->
+        <div class="absolute inset-0 z-0 select-none">
+            <!-- Video -->
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 mix-blend-luminosity">
                 <source
                     src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-global-network-12345-large.mp4"
                     type="video/mp4">
-                <!-- Fallback -->
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-900"></div>
             </video>
-
-
-            <!-- Mode Overlay (Existing) -->
-            <div class="absolute inset-0 bg-white/10 dark:bg-navy-900/20 mix-blend-overlay z-0"></div>
-        </div>
-        <!-- justify-end in LTR places content on Right. justify-end in RTL places content on Left. This works for mirroring. -->
-        <div id="hero-content-zone"
-            class="relative z-10 max-w-[1920px] mx-auto px-6 w-full h-full flex items-center justify-end transition-all duration-500 ease-in-out">
+            <!-- Gradient Overlay -->
             <div
-                class="w-full lg:w-[45%] flex flex-col justify-center items-start ltr:ps-4 lg:ltr:ps-12 rtl:pe-4 lg:rtl:pe-12 mt-20 rtl:items-end rtl:text-end">
+                class="absolute inset-0 bg-gradient-to-br from-navy-900/90 via-navy-900/80 to-indigo-900/90 mix-blend-multiply">
+            </div>
+            <!-- Cyber Grid -->
+            <div
+                class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgNDBWMH0wIDQwIiBzdHJva2U9InJnYmEoMTAwLDI1NSwyMTgsMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-30">
+            </div>
+        </div>
 
-                <!-- Title -->
-                <h1 class="text-4xl md:text-6xl lg:text-8xl font-display font-bold mb-8 animate-slide-in-right opacity-0 rtl:text-end"
-                    style="animation-delay: 0.3s; animation-fill-mode: forwards;">
+        <!-- 2. Main Content Container -->
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Left: Typography & CTA -->
+            <div class="space-y-8 ltr:text-left rtl:text-right">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neon-cyan/30 bg-neon-cyan/10 backdrop-blur-md animate-fade-in-up">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-neon-cyan"></span>
+                    </span>
+                    <span class="text-xs font-mono text-neon-cyan uppercase tracking-wider">Next-Gen Protection</span>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-display font-bold leading-tight text-white animate-slide-in-up"
+                    style="animation-delay: 0.1s;">
+                    Secure Your <br />
                     <span
-                        class="text-start rtl:text-end bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-500 dark:from-blue-400 dark:via-indigo-400 dark:to-cyan-300 drop-shadow-lg leading-tight block">Smart
-                        Insurance,<br>Built Around You</span>
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-white to-neon-violet animate-shimmer bg-[size:200%_auto]">Digital
+                        Future</span>
                 </h1>
 
-                <!-- Buttons -->
-                <div class="animate-fade-in-up opacity-0 relative z-20 flex flex-wrap gap-4 ltr:flex-row rtl:flex-row-reverse"
-                    style="animation-delay: 0.9s; animation-fill-mode: forwards;">
-                    <!-- Primary Button -->
+                <p class="text-lg md:text-xl text-slate-300 max-w-xl leading-relaxed animate-fade-in-up"
+                    style="animation-delay: 0.2s;">
+                    Advanced insurance solutions powered by real-time data analytics and AI. Protection that evolves as
+                    fast as your business.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-4 animate-fade-in-up" style="animation-delay: 0.3s;">
                     <a href="#coverage"
-                        class="ng-btn-primary btn-magnetic btn-ripple inline-flex items-center gap-4 px-8 py-4 text-lg shadow-[0_10px_30px_rgba(34,211,238,0.4)] hover:shadow-[0_20px_40px_rgba(34,211,238,0.6)] group bg-indigo-600 text-white rounded-full transition-all duration-300">
-                        <span>Explore Coverage</span>
-                        <i
-                            class="fas fa-arrow-right transform ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl:rotate-180"></i>
+                        class="group relative px-8 py-4 bg-transparent overflow-hidden rounded-full font-bold text-white shadow-[0_0_20px_rgba(100,255,218,0.3)] hover:shadow-[0_0_40px_rgba(100,255,218,0.5)] transition-all duration-300">
+                        <span
+                            class="absolute inset-0 w-full h-full bg-gradient-to-r from-neon-cyan to-blue-600 opacity-90 group-hover:opacity-100 transition-opacity"></span>
+                        <span class="relative flex items-center gap-3">
+                            Explore Coverage
+                            <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </span>
                     </a>
+                </div>
+            </div>
+
+            <!-- Right: 3D Floating Elements -->
+            <div class="relative h-[500px] hidden lg:block perspective-1000">
+                <!-- Floating Card 1: Shield -->
+                <div class="absolute top-[10%] left-[10%] w-48 h-48 glass-panel border border-white/10 rounded-2xl p-6 flex flex-col justify-center items-center shadow-2xl animate-float-slow z-20"
+                    style="animation-delay: 0s;">
+                    <div
+                        class="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mb-4 box-glow-blue">
+                        <i class="fas fa-shield-alt text-3xl text-blue-400"></i>
+                    </div>
+                    <h3 class="font-bold text-white">Smart Security</h3>
+                    <p class="text-xs text-center text-slate-400 mt-2">Active monitoring</p>
+                </div>
+
+                <!-- Floating Card 2: Chart -->
+                <div class="absolute top-[40%] right-[5%] w-56 h-auto glass-panel border border-white/10 rounded-2xl p-6 shadow-2xl animate-float-delayed z-10 box-glow-purple"
+                    style="animation-duration: 7s;">
+                    <div class="flex justify-between items-end h-24 gap-2">
+                        <div class="w-1/4 bg-neon-violet/30 h-[40%] rounded-t-md relative overflow-hidden">
+                            <div class="absolute bottom-0 w-full bg-neon-violet h-full animate-grow-bar"
+                                style="--h:40%"></div>
+                        </div>
+                        <div class="w-1/4 bg-neon-violet/30 h-[70%] rounded-t-md relative overflow-hidden">
+                            <div class="absolute bottom-0 w-full bg-neon-violet h-full animate-grow-bar"
+                                style="--h:70%; animation-delay: 0.2s"></div>
+                        </div>
+                        <div class="w-1/4 bg-neon-violet/30 h-[50%] rounded-t-md relative overflow-hidden">
+                            <div class="absolute bottom-0 w-full bg-neon-violet h-full animate-grow-bar"
+                                style="--h:50%; animation-delay: 0.4s"></div>
+                        </div>
+                        <div class="w-1/4 bg-neon-violet/30 h-[90%] rounded-t-md relative overflow-hidden">
+                            <div class="absolute bottom-0 w-full bg-neon-violet h-full animate-grow-bar"
+                                style="--h:90%; animation-delay: 0.6s"></div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                        <span class="text-xs font-mono text-slate-300">Live Risk Assessment</span>
+                    </div>
+                </div>
+
+                <!-- Floating Card 3: Lightning -->
+                <div class="absolute bottom-[10%] left-[20%] w-40 h-40 glass-panel border border-white/10 rounded-2xl p-5 flex flex-col justify-center items-center shadow-2xl animate-float-reverse z-30"
+                    style="animation-duration: 8s;">
+                    <div class="w-14 h-14 rounded-full bg-yellow-500/20 flex items-center justify-center mb-3">
+                        <i class="fas fa-bolt text-2xl text-yellow-400"></i>
+                    </div>
+                    <h3 class="font-bold text-white">Instant</h3>
+                    <p class="text-xs text-center text-slate-400 mt-1">Claims processing</p>
+                </div>
+
+                <!-- Background Glow effects -->
+                <div
+                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[100px] pointer-events-none">
                 </div>
             </div>
         </div>
 
-        <!-- Blend Effect Overlay -->
-        <div
-            class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#F6F9FC] dark:from-[#0f172a] to-transparent z-20 pointer-events-none backdrop-blur-[2px]">
-        </div>
-
-        <!-- Custom Immersive Styles -->
         <style>
-            .mask-video-immersive {
-                -webkit-mask-image: radial-gradient(circle at 30% 50%, black 40%, transparent 85%);
-                mask-image: radial-gradient(circle at 30% 50%, black 40%, transparent 85%);
+            .perspective-1000 {
+                perspective: 1000px;
             }
 
-            @keyframes slideInRight {
+            .glass-panel {
+                background: rgba(255, 255, 255, 0.03);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+            .box-glow-blue {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            }
+
+            .box-glow-purple {
+                box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+            }
+
+            @keyframes float {
+
+                0%,
+                100% {
+                    transform: translateY(0px) rotate(0deg);
+                }
+
+                50% {
+                    transform: translateY(-20px) rotate(2deg);
+                }
+            }
+
+            @keyframes float-delayed {
+
+                0%,
+                100% {
+                    transform: translateY(0px) rotate(0deg);
+                }
+
+                50% {
+                    transform: translateY(-15px) rotate(-2deg);
+                }
+            }
+
+            @keyframes float-reverse {
+
+                0%,
+                100% {
+                    transform: translateY(0px) scale(1);
+                }
+
+                50% {
+                    transform: translateY(15px) scale(1.02);
+                }
+            }
+
+            @keyframes shimmer {
+                0% {
+                    background-position: 200% center;
+                }
+
+                100% {
+                    background-position: -200% center;
+                }
+            }
+
+            @keyframes grow-bar {
                 from {
-                    opacity: 0;
-                    transform: translateX(60px);
-                    filter: blur(10px);
+                    height: 0;
                 }
 
                 to {
+                    height: var(--h);
+                }
+            }
+
+            .animate-float-slow {
+                animation: float 6s ease-in-out infinite;
+            }
+
+            .animate-float-delayed {
+                animation: float-delayed 7s ease-in-out infinite;
+            }
+
+            .animate-float-reverse {
+                animation: float-reverse 8s ease-in-out infinite;
+            }
+
+            .animate-shimmer {
+                animation: shimmer 8s linear infinite;
+            }
+
+            .animate-grow-bar {
+                animation: grow-bar 1.5s ease-out forwards;
+            }
+
+            .animate-fade-in-up {
+                animation: fadeInUp 0.8s ease-out forwards;
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            .animate-slide-in-up {
+                animation: slideInUp 0.8s ease-out forwards;
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            @keyframes fadeInUp {
+                to {
                     opacity: 1;
-                    transform: translateX(0);
-                    filter: blur(0);
+                    transform: translateY(0);
                 }
             }
 
-            @keyframes slowPan {
-
-                0%,
-                100% {
-                    transform: scale(1.05);
-                }
-
-                50% {
-                    transform: scale(1.1);
-                }
-            }
-
-            @keyframes pulseSlow {
-
-                0%,
-                100% {
-                    opacity: 0.6;
-                }
-
-                50% {
+            @keyframes slideInUp {
+                to {
                     opacity: 1;
+                    transform: translateY(0);
                 }
-            }
-
-            .animate-slide-in-right {
-                animation: slideInRight 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-            }
-
-            .animate-slow-pan {
-                animation: slowPan 20s ease-in-out infinite;
-            }
-
-            .animate-pulse-slow {
-                animation: pulseSlow 8s ease-in-out infinite;
             }
         </style>
     </section>
@@ -520,7 +656,7 @@
                                 class="fas fa-chevron-right opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"></i>
                         </h3>
                     </button>
-                    <button onclick="openCmdTab(event, 'business', 'violet')"
+                    <button onclick="openCmdTab(event, 'cyber', 'green')"
                         class="cmd-tab w-full p-6 text-start border border-navy-700 bg-white dark:bg-navy-800/50 hover:bg-navy-50 dark:hover:bg-navy-800 transition-all duration-300 rounded-xl group relative overflow-hidden">
                         <div
                             class="absolute inset-0 bg-gradient-to-r from-neon-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
@@ -536,7 +672,7 @@
 
                 <!-- Content Panel -->
                 <div class="w-full lg:w-2/3 relative min-h-[600px]"> <!-- Increased Height -->
-                    <div id="personal" class="cmd-content animate-fade-in absolute inset-0">
+                    <div id="personal" class="cmd-content animate-fade-in relative w-full">
                         <div
                             class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-cyan/30 hover:border-neon-cyan shadow-[0_0_30px_rgba(100,255,218,0.1)] hover:shadow-[0_0_50px_rgba(100,255,218,0.2)] transition-all duration-300 group flex flex-col md:flex-row gap-8">
 
@@ -644,7 +780,7 @@
                         </div>
                     </div>
 
-                    <div id="business" class="cmd-content hidden absolute inset-0">
+                    <div id="business" class="cmd-content hidden relative w-full">
                         <div
                             class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-violet/50 shadow-[0_0_30px_rgba(179,157,219,0.1)] hover:shadow-[0_0_50px_rgba(179,157,219,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
                             <!-- Left Content -->
@@ -752,7 +888,7 @@
                         </div>
                     </div>
 
-                    <div id="life" class="cmd-content hidden absolute inset-0">
+                    <div id="life" class="cmd-content hidden relative w-full">
                         <div
                             class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-magenta/50 shadow-[0_0_30px_rgba(245,0,87,0.1)] hover:shadow-[0_0_50px_rgba(245,0,87,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
                             <!-- Left Content -->
@@ -859,7 +995,7 @@
                         </div>
                     </div>
 
-                    <div id="specialty" class="cmd-content hidden absolute inset-0">
+                    <div id="specialty" class="cmd-content hidden relative w-full">
                         <div
                             class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-orange/50 shadow-[0_0_30px_rgba(255,159,28,0.1)] hover:shadow-[0_0_50px_rgba(255,159,28,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
                             <!-- Left Content -->
@@ -897,72 +1033,79 @@
                                 </ul>
                             </div>
                             <!-- Right Images -->
-
-                            <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
-                                <img src="Assets/bg4.jpeg"
-                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                            </div>
-                            <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
-                                <img src="Assets/bg5.jpeg"
-                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="cyber" class="cmd-content hidden absolute inset-0">
-                    <div
-                        class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-green/50 shadow-[0_0_30px_rgba(0,255,157,0.1)] hover:shadow-[0_0_50px_rgba(0,255,157,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
-                        <!-- Left Content -->
-                        <div class="md:w-1/2">
-                            <h2
-                                class="text-3xl font-display font-bold mb-6 text-black dark:text-neon-green group-hover:scale-105 transition-transform origin-left">
-                                Cyber Protection</h2>
-                            <p class="text-xl mb-8 text-black dark:text-slate-lighter">Defending your digital assets
-                                against modern
-                                threats.</p>
-                            <ul class="grid grid-cols-1 gap-6">
-                                <li
-                                    class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
-                                    <i
-                                        class="fas fa-shield-virus text-vibrant-electric-purple dark:text-neon-green"></i>
-                                    <span>Data Breach</span>
-                                </li>
-                                <li
-                                    class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
-                                    <i class="fas fa-server text-vibrant-electric-purple dark:text-neon-green"></i>
-                                    <span>Network Interruption</span>
-                                </li>
-                                <li
-                                    class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
-                                    <i
-                                        class="fas fa-file-contract text-vibrant-electric-purple dark:text-neon-green"></i>
-                                    <span>Cyber Liability</span>
-                                </li>
-                                <li
-                                    class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
-                                    <i class="fas fa-laptop-code text-vibrant-electric-purple dark:text-neon-green"></i>
-                                    <span>Ransomware</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Right Images -->
-                        <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
-                            <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
-                                <img src="Assets/dashboard.jpeg"
-                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                            </div>
-                            <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
-                                <img src="Assets/bg6.jpeg"
-                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                            </div>
-                            <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
-                                <img src="Assets/bg7.jpeg"
-                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                            <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
+                                <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
+                                    <img src="Assets/bg4.jpeg"
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
+                                    <img src="Assets/bg5.jpeg"
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
+                                    <img src="Assets/bg3.jpeg"
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <!-- Moved closing div to include Cyber tab -->
+
+                    <div id="cyber" class="cmd-content hidden relative w-full">
+                        <div
+                            class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-green/50 shadow-[0_0_30px_rgba(0,255,157,0.1)] hover:shadow-[0_0_50px_rgba(0,255,157,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
+                            <!-- Left Content -->
+                            <div class="md:w-1/2">
+                                <h2
+                                    class="text-3xl font-display font-bold mb-6 text-black dark:text-neon-green group-hover:scale-105 transition-transform origin-left">
+                                    Cyber Protection</h2>
+                                <p class="text-xl mb-8 text-black dark:text-slate-lighter">Defending your digital assets
+                                    against modern
+                                    threats.</p>
+                                <ul class="grid grid-cols-1 gap-6">
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
+                                        <i
+                                            class="fas fa-shield-virus text-vibrant-electric-purple dark:text-neon-green"></i>
+                                        <span>Data Breach</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
+                                        <i class="fas fa-server text-vibrant-electric-purple dark:text-neon-green"></i>
+                                        <span>Network Interruption</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
+                                        <i
+                                            class="fas fa-file-contract text-vibrant-electric-purple dark:text-neon-green"></i>
+                                        <span>Cyber Liability</span>
+                                    </li>
+                                    <li
+                                        class="point-glow flex items-center gap-3 text-black dark:text-slate-300 hover:text-vibrant-electric-purple dark:hover:text-neon-green transition-colors">
+                                        <i
+                                            class="fas fa-laptop-code text-vibrant-electric-purple dark:text-neon-green"></i>
+                                        <span>Ransomware</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Right Images -->
+                            <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
+                                <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
+                                    <img src="Assets/dashboard.jpeg"
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
+                                    <img src="Assets/bg6.jpeg"
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                                </div>
+                                <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
+                                    <img src="Assets/bg7.jpeg"
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End Cyber -->
+                </div> <!-- End Content Panel -->
             </div>
         </div>
         </div>
