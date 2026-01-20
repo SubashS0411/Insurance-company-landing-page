@@ -1047,6 +1047,35 @@ html[dir="rtl"] .mobile-drawer-closed {
     }
 }
 
+/* Force accessible text colors in footer section */
+.footer-gradient h4,
+.footer-gradient .text-white {
+    color: #ffffff !important;
+}
+
+.footer-gradient p,
+.footer-gradient li,
+.footer-gradient a,
+.footer-gradient span,
+.footer-gradient div,
+.footer-gradient .text-slate-400,
+.footer-gradient .text-slate-500 {
+    color: #e2e8f0 !important; /* Slate-200 for better contrast */
+}
+
+.footer-gradient .footer-link:hover {
+    color: #ffffff !important;
+}
+
+.footer-gradient input {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.footer-gradient input::placeholder {
+    color: #94a3b8 !important;
+}
+
 /* Link Hover Effect in Footer */
 .footer-link {
     transition: all 0.2s ease;
