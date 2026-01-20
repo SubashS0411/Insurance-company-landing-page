@@ -39,6 +39,14 @@
                 }
             }
         </script>
+        <script>
+            // Init Theme immediately to prevent flash
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        </script>
         <link rel="stylesheet" href="style.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     </head>
@@ -122,10 +130,19 @@
                     </a>
                 </div>
 
-                <!-- Mobile Menu Toggle -->
-                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-teal-400">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
+                <!-- Mobile Actions (Visible) -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <button id="rtl-toggle-mobile" class="p-2 text-slate-600 dark:text-teal-400">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                    </button>
+                    <button id="theme-toggle-mobile" class="p-2 text-slate-600 dark:text-teal-400">
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 text-slate-800 dark:text-teal-400">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
             </div>
         </nav>
 
