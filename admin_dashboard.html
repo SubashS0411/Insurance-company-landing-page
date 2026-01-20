@@ -24,6 +24,8 @@
                         sans: ['Outfit', 'sans-serif'],
                     },
                     colors: {
+                        navy: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
+                        slate: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
                         primary: '#4f46e5',
                         secondary: '#64748b',
                     }
@@ -55,8 +57,8 @@
         }
 
         .dark .chart-card {
-            background-color: #1e293b;
-            border-color: #334155;
+            background-color: #000000;
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         .chart-card:hover {
@@ -73,7 +75,7 @@
         }
 
         .dark .skeleton {
-            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+            background: linear-gradient(90deg, #111111 25%, #222222 50%, #111111 75%);
         }
 
         @keyframes shimmer {
@@ -88,8 +90,7 @@
     </style>
 </head>
 
-<body
-    class="bg-gradient-to-br from-slate-50 to-slate-200 dark:from-navy-900 dark:to-navy-950 text-slate-800 dark:text-slate-100 transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-black text-slate-800 dark:text-slate-100 transition-colors duration-300">
 
     <!-- LIQUID GLASS HEADER -->
     <nav class="header-glass">
@@ -116,7 +117,7 @@
                     </button>
                     <!-- Dropdown -->
                     <div
-                        class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                        class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-neutral-950 rounded-xl shadow-xl border border-slate-100 dark:border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
                         <a href="index.html"
                             class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
                             V1 (Parallax)</a>
@@ -255,7 +256,7 @@
         <!-- Sidebar -->
         <!-- Sidebar -->
         <aside id="sidebar"
-            class="fixed top-20 bottom-0 ltr:left-0 rtl:right-0 z-40 w-64 bg-white dark:bg-slate-950 ltr:border-r rtl:border-l border-gray-200 dark:border-gray-800 transform ltr:-translate-x-full rtl:translate-x-full lg:ltr:translate-x-0 lg:rtl:translate-x-0 transition-transform duration-300 flex flex-col">
+            class="fixed top-20 bottom-0 ltr:left-0 rtl:right-0 z-40 w-64 lg:w-[18%] bg-white dark:bg-black ltr:border-r rtl:border-l border-gray-200 dark:border-white/10 transform ltr:-translate-x-full rtl:translate-x-full lg:ltr:translate-x-0 lg:rtl:translate-x-0 transition-transform duration-300 flex flex-col">
             <div class="p-6">
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Main Menu</h3>
                 <nav class="space-y-2">
@@ -299,7 +300,8 @@
             class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden glass backdrop-blur-sm transition-opacity"></div>
 
         <!-- Main Content -->
-        <main class="flex-1 ltr:lg:ml-64 rtl:lg:mr-64 h-full overflow-y-auto bg-slate-50 dark:bg-slate-900 p-4 md:p-8">
+        <!-- Main Content -->
+        <main class="flex-1 lg:ms-[18%] h-full overflow-y-auto bg-slate-50 dark:bg-black p-4 md:p-8">
 
             <!-- Mobile Toggle -->
             <button id="sidebar-toggle" class="lg:hidden mb-6 flex items-center gap-2 text-gray-500">
@@ -415,7 +417,7 @@
             <div id="view-users" class="view-section hidden animate-fade-in">
                 <h1 class="text-3xl font-bold mb-6 text-navy-900 dark:text-white">Policyholder Management</h1>
                 <div
-                    class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                    class="bg-white dark:bg-neutral-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/10 overflow-hidden">
                     <table class="w-full text-left border-collapse">
                         <thead class="bg-slate-50 dark:bg-slate-900/50 text-xs uppercase text-slate-500 font-semibold">
                             <tr>
@@ -538,7 +540,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- Risk Dashboard Interface -->
                     <div
-                        class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 group">
+                        class="bg-white dark:bg-neutral-950 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-white/10 group">
                         <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white flex items-center gap-2">
                             <i class="fas fa-tachometer-alt text-neon-cyan"></i> Real-time Risk Monitoring
                         </h3>
@@ -564,7 +566,7 @@
 
                     <!-- Risk Heatmap -->
                     <div
-                        class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 group">
+                        class="bg-white dark:bg-neutral-950 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-white/10 group">
                         <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white flex items-center gap-2">
                             <i class="fas fa-map-marked-alt text-neon-magenta"></i> Geospatial Risk Heatmap
                         </h3>
@@ -598,7 +600,7 @@
             <div id="view-settings" class="view-section hidden animate-fade-in">
                 <h1 class="text-3xl font-bold mb-6">System Settings</h1>
                 <div
-                    class="bg-white dark:bg-slate-800 rounded-3xl p-8 max-w-2xl shadow-sm border border-gray-100 dark:border-slate-700">
+                    class="bg-white dark:bg-neutral-950 rounded-3xl p-8 max-w-2xl shadow-sm border border-gray-100 dark:border-white/10">
                     <form onsubmit="event.preventDefault();" class="space-y-6">
                         <div>
                             <label class="block text-sm font-bold mb-2">Platform Name</label>
@@ -644,8 +646,8 @@
             <!-- Footer -->
             <!-- NEW ANIMATED GRADIENT FOOTER -->
             <!-- NEW ANIMATED GRADIENT FOOTER -->
-            <footer class="footer-gradient pt-24 pb-12 mt-12 w-full">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 px-6">
+            <footer class="footer-gradient pt-12 pb-12 mt-8 w-full">
+                <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
                     <!-- Col 1: Brand -->
                     <div>
                         <a href="#" class="flex items-center gap-2 mb-6 text-white group">
@@ -656,7 +658,8 @@
                             <span class="font-bold text-xl">Claimora</span>
                         </a>
                         <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
-                            Next-generation insurance & business intelligence. Protecting your future with confidence.
+                            Next-generation insurance & business intelligence. Protecting your future with
+                            confidence.
                         </p>
                         <div class="flex gap-4 mt-6">
                             <a href="#"
@@ -677,7 +680,7 @@
                     <!-- Col 2: Quick Links -->
                     <div>
                         <h4 class="text-white font-bold mb-6">Quick Links</h4>
-                        <ul class="space-y-4 text-sm text-slate-400">
+                        <ul class="space-y-2 text-sm text-slate-400">
                             <li><a href="index.html" class="footer-link hover:text-white">Home</a></li>
                             <li><a href="about.html" class="footer-link hover:text-white">About Us</a></li>
                             <li><a href="services.html" class="footer-link hover:text-white">Services</a></li>
@@ -688,10 +691,12 @@
                     <!-- Col 3: Account -->
                     <div>
                         <h4 class="text-white font-bold mb-6">Account</h4>
-                        <ul class="space-y-4 text-sm text-slate-400">
-                            <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a>
+                        <ul class="space-y-2 text-sm text-slate-400">
+                            <li><a href="user_dashboard.html" class="footer-link hover:text-white">User
+                                    Dashboard</a>
                             </li>
-                            <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Dashboard</a>
+                            <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin
+                                    Dashboard</a>
                             </li>
                             <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
                             <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
@@ -701,7 +706,8 @@
                     <!-- Col 4: Newsletter -->
                     <div>
                         <h4 class="text-white font-bold mb-6">Stay Updated</h4>
-                        <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest insights.</p>
+                        <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest insights.
+                        </p>
                         <div class="flex gap-2">
                             <input type="email" placeholder="Email address"
                                 class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-neon-cyan transition-colors">
@@ -712,7 +718,7 @@
                 </div>
 
                 <div
-                    class="px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                    class="max-w-[1920px] mx-auto px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
                     <div>&copy; 2026 Claimora Insurance. All rights reserved.</div>
                     <div class="flex gap-6 mt-4 md:mt-0">
                         <a href="#" class="hover:text-white transition-colors">Terms</a>
@@ -776,19 +782,31 @@
         // --- 3. ApexCharts Initialization ---
         document.addEventListener('DOMContentLoaded', () => {
 
-            // Common Options
-            const commonOptions = {
+            // Store chart instances
+            const chartInstances = {};
+
+            // Dynamic Options Getter
+            const getChartOptions = (isDark) => ({
                 chart: {
                     fontFamily: 'Outfit, sans-serif',
                     toolbar: { show: false },
                     background: 'transparent',
-                    animations: { enabled: true }
+                    animations: { enabled: true },
+                    foreColor: isDark ? '#ffffff' : '#475569'
                 },
-                theme: { mode: 'light' }, // will update dynamically
+                theme: { mode: isDark ? 'dark' : 'light' },
                 stroke: { curve: 'smooth' },
-                grid: { show: false, padding: { left: 0, right: 0 } },
+                grid: {
+                    show: false,
+                    padding: { left: 0, right: 0 },
+                    borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : '#e2e8f0'
+                },
                 dataLabels: { enabled: false }
-            };
+            });
+
+            // Initial Options
+            const initialDark = document.documentElement.classList.contains('dark');
+            const commonOptions = getChartOptions(initialDark);
 
             // 1. Revenue (Line) -> Total Premiums
             const revenueOptions = {
@@ -814,12 +832,6 @@
                 chart: { type: 'area', height: 250, ...commonOptions.chart },
                 colors: ['#bc13fe']
             };
-
-            // 4. Users vs Sellers (Multi-Line) -> REMOVED
-
-
-            // 5. Activity Heatmap -> REMOVED
-
 
             // 6. Funnel -> Quote to Policy
             const funnelOptions = {
@@ -854,7 +866,7 @@
                 series: [98],
                 chart: { type: 'radialBar', height: 250, ...commonOptions.chart },
                 colors: ['#00f3ff'],
-                plotOptions: { radialBar: { dataLabels: { name: { show: true, fontSize: '14px' }, value: { fontSize: '24px', fontWeight: 'bold' } } } },
+                plotOptions: { radialBar: { dataLabels: { name: { show: true, fontSize: '14px' }, value: { fontSize: '24px', fontWeight: 'bold', color: initialDark ? '#fff' : '#333' } } } },
                 labels: ['Uptime']
             };
 
@@ -887,68 +899,48 @@
 
                     const chart = new ApexCharts(el, options);
                     chart.render();
-                }, Math.random() * 1500 + 500); // Random delay 0.5s - 2s
+                    chartInstances[id] = chart; // Store instance
+                }, Math.random() * 1500 + 500);
             };
 
             // Init All Charts
             renderChart('chart-revenue', revenueOptions);
             renderChart('chart-category', categoryOptions);
             renderChart('chart-traffic', trafficOptions);
-            // renderChart('chart-users-sellers', usOptions); // REMOVED
-            // renderChart('chart-activity', heatmapOptions); // REMOVED
             renderChart('chart-funnel', funnelOptions);
             renderChart('chart-scatter', scatterOptions);
             renderChart('chart-top-cat', hBarOptions);
             renderChart('chart-health', gaugeOptions);
             renderChart('chart-radar', radarOptions);
             renderChart('chart-device', pieOptions);
+
+            // Theme Observer
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.attributeName === 'class') {
+                        const isDark = document.documentElement.classList.contains('dark');
+                        const newOptions = getChartOptions(isDark);
+
+                        // Update all active charts
+                        Object.values(chartInstances).forEach(chart => {
+                            chart.updateOptions({
+                                theme: { mode: isDark ? 'dark' : 'light' },
+                                chart: { foreColor: newOptions.chart.foreColor },
+                                grid: { borderColor: newOptions.grid.borderColor },
+                                // Special handling for RadialBar value color
+                                plotOptions: { radialBar: { dataLabels: { value: { color: isDark ? '#fff' : '#333' } } } }
+                            });
+                        });
+                    }
+                });
+            });
+
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
         });
     </script>
-    <!-- Mobile Navigation Drawer -->
-    <div id="mobile-overlay"
-        class="fixed inset-0 bg-black/60 z-[60] opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
-    </div>
-    <div id="mobile-menu"
-        class="fixed top-0 left-0 h-full w-80 bg-white dark:bg-royal-900 z-[70] transform -translate-x-full transition-transform duration-300 shadow-2xl flex flex-col rtl:left-auto rtl:right-0 rtl:translate-x-full">
-        <div class="p-6 flex items-center justify-between border-b border-gray-100 dark:border-white/10">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded bg-royal-900 dark:bg-gold-500 flex items-center justify-center text-white">
-                    <i class="fas fa-chess-knight"></i>
-                </div>
-                <span class="text-lg font-serif font-bold text-royal-900 dark:text-white">NextGen</span>
-            </div>
-            <button id="close-menu-btn" class="text-gray-500 hover:text-red-500 transition"><i
-                    class="fas fa-times text-xl"></i></button>
-        </div>
-        <div class="flex-1 overflow-y-auto p-4 space-y-2">
-            <a href="index.html"
-                class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-royal-900 dark:text-white font-bold border-l-4 border-gold-600 pl-4">Home</a>
-            <a href="about.html"
-                class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-gray-600 dark:text-gray-300 font-medium">About
-                The Firm</a>
-            <a href="services.html"
-                class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-gray-600 dark:text-gray-300 font-medium">Expertise</a>
-            <a href="contact.html"
-                class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-gray-600 dark:text-gray-300 font-medium">Contact</a>
-            <div class="border-t border-gray-100 dark:border-white/10 my-4 pt-4">
-                <div class="px-3 text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">My Account</div>
-                <a href="user_dashboard.html"
-                    class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-gray-600 dark:text-gray-300 font-medium"><i
-                        class="fas fa-user w-6"></i> Client Portal</a>
-                <a href="admin_dashboard.html"
-                    class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-gray-600 dark:text-gray-300 font-medium"><i
-                        class="fas fa-lock w-6"></i> Partner Login</a>
-            </div>
-        </div>
-        <div class="p-6 border-t border-gray-100 dark:border-white/10 bg-gray-50 dark:bg-black/20">
-            <button id="mobile-theme-toggle"
-                class="w-full mb-3 py-3 border border-gray-300 dark:border-white/10 rounded text-gray-600 dark:text-white font-bold uppercase text-xs">Switch
-                Theme</button>
-            <a href="contact.html"
-                class="w-full block text-center py-3 rounded bg-indigo-600 text-white font-bold shadow-lg uppercase tracking-widest text-xs">Inquire
-                Now</a>
-        </div>
-    </div>
 </body>
 
 </html>

@@ -17,9 +17,9 @@
     --light-text-primary: #0F172A;
     --light-text-secondary: #111827;
 
-    /* Dark Mode Palette (Neon/Navy) */
-    --dark-bg-navy: #020617;
-    /* Dark Navy */
+    /* Dark Mode Palette (Pure Black) */
+    --dark-bg-navy: #000000;
+    /* Pure Black */
     --dark-text-primary: #FFFFFF;
     --dark-text-secondary: #EAEAFF;
 
@@ -42,20 +42,34 @@ body {
 
 /* Light Mode Global Background */
 body:not(.dark) {
-    background: linear-gradient(135deg, var(--light-bg-start), var(--light-bg-mid), var(--light-bg-end));
-    background-color: var(--light-bg-start);
-    /* Fallback */
+    /* Pink, Purple, Blue, Red - Light/Pastel Mix */
+    background: linear-gradient(135deg, #fce7f3 0%, #e0e7ff 33%, #fae8ff 66%, #fee2e2 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     color: var(--light-text-primary);
     background-attachment: fixed;
-    /* Parallax feel */
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Dark Mode Global Background */
 .dark body {
     background-color: #000000;
     background-image:
-        radial-gradient(circle at 50% 0%, rgba(34, 211, 238, 0.15), transparent 50%),
-        linear-gradient(to bottom, #020617 0%, #000000 100%);
+        radial-gradient(circle at 50% 0%, rgba(30, 30, 30, 0.15), transparent 50%),
+        linear-gradient(to bottom, #000000 0%, #000000 100%);
     background-attachment: fixed;
     color: var(--dark-text-primary);
 }
@@ -169,8 +183,8 @@ body:not(.dark) {
 }
 
 .dark .glass {
-    background: rgba(2, 6, 23, 0.95);
-    /* Very dark navy/black */
+    background: rgba(0, 0, 0, 0.95);
+    /* Pure black */
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -182,7 +196,7 @@ body:not(.dark) {
 }
 
 .dark .glass-panel {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(2, 6, 23, 0.95));
+    background: linear-gradient(135deg, #000000, #0a0a0a);
     border: 1px solid rgba(168, 85, 247, 0.5);
     /* Purple border in dark mode */
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
@@ -369,9 +383,13 @@ body:not(.dark) .glow-card:hover {
 
 /* Footer Gradient */
 .footer-gradient {
-    background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0, #f1f5f9);
     background-size: 200% 200%;
     animation: gradientShift 15s ease infinite;
+}
+
+.dark .footer-gradient {
+    background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
 }
 
 @keyframes gradientShift {
@@ -1045,35 +1063,6 @@ html[dir="rtl"] .mobile-drawer-closed {
     100% {
         background-position: 0% 50%;
     }
-}
-
-/* Force accessible text colors in footer section */
-.footer-gradient h4,
-.footer-gradient .text-white {
-    color: #ffffff !important;
-}
-
-.footer-gradient p,
-.footer-gradient li,
-.footer-gradient a,
-.footer-gradient span,
-.footer-gradient div,
-.footer-gradient .text-slate-400,
-.footer-gradient .text-slate-500 {
-    color: #e2e8f0 !important; /* Slate-200 for better contrast */
-}
-
-.footer-gradient .footer-link:hover {
-    color: #ffffff !important;
-}
-
-.footer-gradient input {
-    color: #ffffff !important;
-    border-color: rgba(255, 255, 255, 0.2) !important;
-}
-
-.footer-gradient input::placeholder {
-    color: #94a3b8 !important;
 }
 
 /* Link Hover Effect in Footer */

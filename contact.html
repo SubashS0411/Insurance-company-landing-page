@@ -13,10 +13,12 @@
             theme: {
                 extend: {
                     colors: {
+                        navy: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
+                        slate: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
                         primary: '#4F46E5',
                         primaryHover: '#4338CA',
                         secondary: '#10B981',
-                        dark: '#0F172A',
+                        dark: '#000000',
                         'neon-cyan': '#22D3EE',
                         'neon-violet': '#A855F7',
                         'neon-magenta': '#FF00FF',
@@ -41,8 +43,8 @@
             <!-- Brand -->
             <a href="index.html" class="flex items-center gap-3 group">
                 <div
-                    class="brand-box w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
-                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    class="brand-box w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="shield-check" class="w-7 h-7"></i>
                 </div>
                 <div class="flex flex-col">
                     <span class="font-sans text-xl font-bold tracking-tight text-slate-800 dark:text-white">
@@ -106,15 +108,36 @@
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                 </button>
+                <a href="login.html"
+                    class="px-6 py-2 border-2 border-indigo-600 dark:border-neon-cyan text-indigo-600 dark:text-neon-cyan rounded-full font-bold hover:bg-indigo-600 hover:text-white dark:hover:bg-neon-cyan dark:hover:text-navy-900 transition-all text-sm">
+                    Log In
+                </a>
                 <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
                     Get Started
                 </a>
             </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
+            <!-- Mobile Actions (RTL + Theme + Menu) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <!-- Mobile RTL Toggle -->
+                <button onclick="document.getElementById('rtl-toggle').click()"
+                    class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
+                </button>
+
+                <!-- Mobile Theme Toggle -->
+                <button onclick="document.getElementById('theme-toggle').click()"
+                    class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn"
+                    class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -171,19 +194,7 @@
 
                 <hr class="border-slate-100 dark:border-slate-800">
 
-                <!-- Mobile Actions -->
-                <div class="flex gap-4">
-                    <button id="mobile-theme-toggle"
-                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
-                        <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
-                    </button>
-                    <!-- Mobile RTL Toggle -->
-                    <button id="mobile-rtl-toggle"
-                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400"
-                        onclick="document.getElementById('rtl-toggle').click()">
-                        <i data-lucide="globe" class="w-5 h-5"></i> <span>RTL</span>
-                    </button>
-                </div>
+                <!-- Mobile Actions (removed) -->
                 <a href="login.html"
                     class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
                     Get Started
@@ -214,7 +225,7 @@
         </div>
         <p
             class="text-sm font-mono text-indigo-500 dark:text-neon-magenta uppercase tracking-widest mt-8 animate-fade-in animate-delay-100">
-            // 24/7 Global Claims & Support
+            24/7 Global Claims & Support
         </p>
     </header>
 
@@ -271,7 +282,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="relative">
                                 <input type="text" id="fname"
-                                    class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-navy-900 dark:text-white placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
+                                    class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-black dark:text-black placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
                                     placeholder="Jane">
                                 <label for="fname"
                                     class="absolute left-4 top-2 text-xs text-slate-500 dark:text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-neon-cyan">First
@@ -288,7 +299,7 @@
                         </div>
                         <div class="relative">
                             <input type="email" id="email"
-                                class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-navy-900 dark:text-white placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
+                                class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-black dark:text-black placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
                                 placeholder="jane@example.com">
                             <label for="email"
                                 class="absolute left-4 top-2 text-xs text-slate-500 dark:text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-neon-cyan">Email
@@ -299,7 +310,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="relative">
                                 <input type="text" id="policy"
-                                    class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-navy-900 dark:text-white placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
+                                    class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-black dark:text-black placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
                                     placeholder="POL-123456789">
                                 <label for="policy"
                                     class="absolute left-4 top-2 text-xs text-slate-500 dark:text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-neon-cyan">Policy
@@ -307,14 +318,14 @@
                             </div>
                             <div class="relative">
                                 <select id="topic"
-                                    class="peer w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-navy-900 dark:text-white shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)] appearance-none">
+                                    class="peer w-full pl-4 pr-10 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-slate-200 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-black dark:text-black shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)] appearance-none">
                                     <option>Get a Quote</option>
                                     <option>File a Claim</option>
                                     <option>Policy Management</option>
                                     <option>General Inquiry</option>
                                 </select>
                                 <label for="topic"
-                                    class="absolute left-4 -top-2 text-xs text-neon-cyan bg-white dark:bg-navy-900 px-1 transform translate-y-1/2">Topic</label>
+                                    class="absolute left-4 top-2 text-xs text-slate-500 dark:text-slate-400 peer-focus:text-neon-cyan transition-colors">Topic</label>
                                 <i
                                     class="fas fa-chevron-down absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none"></i>
                             </div>
@@ -322,7 +333,7 @@
 
                         <div class="relative">
                             <textarea rows="4" id="message"
-                                class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-navy-900 dark:text-white placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
+                                class="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 dark:bg-navy-950 border border-gray-200 dark:border-navy-700 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all text-black dark:text-black placeholder-transparent shadow-sm focus:shadow-[0_0_15px_rgba(100,255,218,0.3)]"
                                 placeholder="How can we help?"></textarea>
                             <label for="message"
                                 class="absolute left-4 top-2 text-xs text-slate-500 dark:text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-neon-cyan">Message</label>
@@ -680,31 +691,31 @@
     </section>
 
     <!-- NEW ANIMATED GRADIENT FOOTER -->
-    <footer class="footer-gradient pt-24 pb-12">
+    <footer class="footer-gradient pt-24 pb-12 w-full">
         <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <!-- Col 1: Brand -->
             <div>
                 <a href="#" class="flex items-center gap-2 mb-6 text-white group">
                     <div
-                        class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)]">
+                        class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)] transition-transform group-hover:rotate-12">
                         <i class="fas fa-shield-alt text-lg"></i>
                     </div>
-                    <span class="font-display font-bold text-xl">Safe<span class="text-neon-cyan">Guard</span></span>
+                    <span class="font-bold text-xl">Claimora</span>
                 </a>
                 <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
-                    Next-generation insurance protection for the digital age. We help you navigate risk with confidence.
+                    Next-generation insurance & business intelligence. Protecting your future with confidence.
                 </p>
                 <div class="flex gap-4 mt-6">
                     <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-navy-900 transition-all transform hover:-translate-y-1">
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
                         <i data-lucide="facebook" class="w-5 h-5"></i>
                     </a>
                     <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-violet hover:text-white transition-all transform hover:-translate-y-1">
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
                         <i data-lucide="twitter" class="w-5 h-5"></i>
                     </a>
                     <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-magenta hover:text-white transition-all transform hover:-translate-y-1">
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
                         <i data-lucide="instagram" class="w-5 h-5"></i>
                     </a>
                 </div>
@@ -723,10 +734,10 @@
 
             <!-- Col 3: Account -->
             <div>
-                <h4 class="text-white font-bold mb-6">Portals</h4>
+                <h4 class="text-white font-bold mb-6">Account</h4>
                 <ul class="space-y-4 text-sm text-slate-400">
                     <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a></li>
-                    <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Console</a></li>
+                    <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Dashboard</a></li>
                     <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
                     <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
                 </ul>
@@ -734,13 +745,13 @@
 
             <!-- Col 4: Newsletter -->
             <div>
-                <h4 class="text-white font-bold mb-6">Stay Protected</h4>
-                <p class="text-slate-400 text-sm mb-4">Subscribe for safety tips and policy updates.</p>
+                <h4 class="text-white font-bold mb-6">Stay Updated</h4>
+                <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest insights.</p>
                 <div class="flex gap-2">
                     <input type="email" placeholder="Email address"
                         class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-neon-cyan transition-colors">
                     <button
-                        class="px-6 py-3 bg-gradient-to-r from-neon-cyan to-neon-violet text-navy-900 font-bold rounded-lg hover:shadow-[0_0_15px_rgba(100,255,218,0.4)] transition-all">Go</button>
+                        class="px-6 py-3 bg-neon-cyan text-white font-bold rounded-lg hover:bg-neon-cyan/80 transition-colors">Go</button>
                 </div>
             </div>
         </div>
@@ -751,7 +762,7 @@
             <div class="flex gap-6 mt-4 md:mt-0">
                 <a href="#" class="hover:text-white transition-colors">Terms</a>
                 <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-                <span>Designed with <i class="fas fa-shield-alt text-neon-cyan mx-1"></i> by Claimora</span>
+                <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by Claimora</span>
             </div>
         </div>
     </footer>

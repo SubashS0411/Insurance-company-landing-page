@@ -23,11 +23,8 @@
                             'neon-magenta': '#F50057',
                             'neon-violet': '#A855F7',
                             'neon-orange': '#F97316',
-                            navy: {
-                                800: '#1e293b',
-                                900: '#0f172a',
-                                950: '#020617',
-                            },
+                            navy: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
+                            slate: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
                             teal: {
                                 100: '#ccfbf1',
                                 200: '#99f6e4',
@@ -212,7 +209,7 @@
             <!-- Sidebar -->
             <!-- Sidebar -->
             <aside id="sidebar"
-                class="fixed top-20 bottom-0 ltr:left-0 rtl:right-0 z-40 w-64 bg-white dark:bg-black ltr:border-r rtl:border-l border-gray-200 dark:border-gray-800 transform ltr:-translate-x-full rtl:translate-x-full md:ltr:translate-x-0 md:rtl:translate-x-0 transition-transform duration-300 ease-in-out">
+                class="fixed top-20 bottom-0 ltr:left-0 rtl:right-0 z-40 w-64 md:w-[18%] bg-white dark:bg-black border-e border-gray-200 dark:border-gray-800 transform ltr:-translate-x-full rtl:translate-x-full md:ltr:translate-x-0 md:rtl:translate-x-0 transition-transform duration-300 ease-in-out">
                 <div class="flex items-center justify-center h-20 border-b border-gray-200 dark:border-gray-800">
                     <a href="index.html"
                         class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan to-indigo-500">
@@ -220,6 +217,11 @@
                     </a>
                 </div>
                 <nav class="mt-8 px-4 space-y-2">
+                    <a href="create_listing.html"
+                        class="nav-item w-full flex items-center px-4 py-3 bg-indigo-600 text-white shadow-lg shadow-indigo-500/30 rounded-xl transition hover:bg-indigo-700 mb-6 group">
+                        <i class="fas fa-plus-circle w-6"></i>
+                        <span class="font-bold">Post New Ad</span>
+                    </a>
                     <button data-target="view-overview"
                         class="nav-item w-full flex items-center px-4 py-3 bg-neon-cyan/20 text-neon-magenta dark:text-teal-400 border border-neon-cyan/50 rounded-xl transition shadow-[0_0_15px_rgba(100,255,218,0.3)]">
                         <i class="fas fa-home w-6 text-neon-cyan"></i>
@@ -260,11 +262,11 @@
             <div id="sidebar-overlay" class="fixed inset-0 top-20 bg-black/50 z-30 hidden md:hidden glass"></div>
 
             <!-- Main Content -->
-            <div class="flex-1 flex flex-col ltr:md:ml-64 rtl:md:mr-64 h-screen overflow-y-auto">
+            <div class="flex-1 flex flex-col md:ms-[18%] h-screen overflow-y-auto">
 
                 <!-- Mobile Sidebar Toggle -->
                 <div
-                    class="md:hidden p-4 pb-0 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
+                    class="md:hidden p-4 pb-0 bg-white dark:bg-black border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
                     <button id="sidebar-toggle"
                         class="text-slate-500 hover:text-primary focus:outline-none flex items-center gap-2">
                         <i class="fas fa-bars text-xl"></i> <span class="font-bold">Dashboard Menu</span>
@@ -294,9 +296,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                             <!-- Stat 1 -->
                             <div
-                                class="p-6 bg-white dark:bg-navy-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 flex items-center hover:border-neon-cyan hover:shadow-[0_0_20px_rgba(100,255,218,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                                class="p-5 bg-white dark:bg-neutral-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/10 flex items-center gap-5 hover:border-neon-cyan hover:shadow-[0_0_20px_rgba(100,255,218,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
                                 <div
-                                    class="p-4 bg-neon-cyan/10 rounded-xl text-neon-cyan text-2xl mr-4 group-hover:bg-neon-cyan group-hover:text-neon-magenta transition-colors">
+                                    class="p-4 bg-neon-cyan/10 rounded-xl text-neon-cyan text-2xl group-hover:bg-neon-cyan group-hover:text-neon-magenta transition-colors">
                                     <i class="fas fa-shield-alt"></i>
                                 </div>
                                 <div>
@@ -306,9 +308,9 @@
                             </div>
                             <!-- Stat 2 -->
                             <div
-                                class="p-6 bg-white dark:bg-navy-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 flex items-center hover:border-neon-violet hover:shadow-[0_0_20px_rgba(179,157,219,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                                class="p-5 bg-white dark:bg-neutral-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/10 flex items-center gap-5 hover:border-neon-violet hover:shadow-[0_0_20px_rgba(179,157,219,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
                                 <div
-                                    class="p-4 bg-neon-violet/10 rounded-xl text-neon-violet text-2xl mr-4 group-hover:bg-neon-violet group-hover:text-white transition-colors">
+                                    class="p-4 bg-neon-violet/10 rounded-xl text-neon-violet text-2xl group-hover:bg-neon-violet group-hover:text-white transition-colors">
                                     <i class="fas fa-clipboard-check"></i>
                                 </div>
                                 <div>
@@ -318,9 +320,9 @@
                             </div>
                             <!-- Stat 3 -->
                             <div
-                                class="p-6 bg-white dark:bg-navy-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 flex items-center hover:border-neon-magenta hover:shadow-[0_0_20px_rgba(245,0,87,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                                class="p-5 bg-white dark:bg-neutral-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/10 flex items-center gap-5 hover:border-neon-magenta hover:shadow-[0_0_20px_rgba(245,0,87,0.2)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
                                 <div
-                                    class="p-4 bg-neon-magenta/10 rounded-xl text-neon-magenta text-2xl mr-4 group-hover:bg-neon-magenta group-hover:text-white transition-colors">
+                                    class="p-4 bg-neon-magenta/10 rounded-xl text-neon-magenta text-2xl group-hover:bg-neon-magenta group-hover:text-white transition-colors">
                                     <i class="fas fa-wallet"></i>
                                 </div>
                                 <div>
@@ -334,7 +336,7 @@
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <!-- Activities -->
                             <div
-                                class="bg-white dark:bg-navy-950 p-6 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm">
+                                class="bg-white dark:bg-navy-950 p-5 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm">
                                 <h3 class="text-xl font-bold mb-6 text-neon-magenta dark:text-teal-400">Recent Activity
                                 </h3>
                                 <div class="space-y-6">
@@ -387,11 +389,9 @@
                             </div>
 
                             <!-- Promo/Upgrade -->
-                            <!-- Promo/Upgrade -->
                             <div
-                                class="bg-gradient-to-br from-neon-violet to-neon-magenta text-white dark:bg-black p-8 rounded-2xl shadow-xl flex flex-col justify-between relative overflow-hidden">
-                                <div
-                                    class="absolute inset-0 bg-[url('Assets/network-bg.png')] opacity-20 dark:opacity-10">
+                                class="bg-gradient-to-br from-neon-violet to-neon-magenta text-white dark:bg-none dark:bg-black p-5 rounded-2xl shadow-xl flex flex-col justify-between relative overflow-hidden">
+                                <div class="absolute inset-0 bg-[url('Assets/bg6.jpeg')] opacity-20 dark:opacity-10">
                                 </div>
                                 <div class="relative z-10">
                                     <h3 class="text-2xl font-bold mb-2 text-black dark:text-neon-magenta">Bundle & Save
@@ -420,37 +420,37 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <!-- Chart 1 -->
                                 <div
-                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-5 shadow-sm">
                                     <h4 class="font-bold text-slate-700 dark:text-white mb-2">Premium History</h4>
                                     <div id="chart-premium" class="h-60"></div>
                                 </div>
                                 <!-- Chart 2 -->
                                 <div
-                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-5 shadow-sm">
                                     <h4 class="font-bold text-slate-700 dark:text-white mb-2">Coverage Breakdown</h4>
                                     <div id="chart-coverage" class="h-60"></div>
                                 </div>
                                 <!-- Chart 3 -->
                                 <div
-                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-5 shadow-sm">
                                     <h4 class="font-bold text-slate-700 dark:text-white mb-2">Claims Timeline</h4>
                                     <div id="chart-claims" class="h-60"></div>
                                 </div>
                                 <!-- Chart 4 -->
                                 <div
-                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-5 shadow-sm">
                                     <h4 class="font-bold text-slate-700 dark:text-white mb-2">Risk Score Trend</h4>
                                     <div id="chart-risk" class="h-60"></div>
                                 </div>
                                 <!-- Chart 5 -->
                                 <div
-                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-5 shadow-sm">
                                     <h4 class="font-bold text-slate-700 dark:text-white mb-2">Savings Analysis</h4>
                                     <div id="chart-savings" class="h-60"></div>
                                 </div>
                                 <!-- Chart 6 -->
                                 <div
-                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-4 shadow-sm">
+                                    class="border border-slate-100 dark:border-white/5 bg-white dark:bg-navy-950 rounded-2xl p-5 shadow-sm">
                                     <h4 class="font-bold text-slate-700 dark:text-white mb-2">Renewal Projection</h4>
                                     <div id="chart-renewal" class="h-60 flex justify-center"></div>
                                 </div>
@@ -460,99 +460,18 @@
 
                     <!-- VIEW: Policies -->
                     <div id="view-policies" class="view-section hidden">
-                        <div class="flex justify-between items-center mb-6">
-                            <div>
-                                <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400">My Policies</h2>
-                                <p class="text-slate-500 dark:text-teal-200">Manage your active insurance coverage</p>
-                            </div>
-                            <button
-                                class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition">
-                                <i class="fas fa-plus"></i> Add Policy
-                            </button>
-                        </div>
-
+                        <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">My Policies</h2>
+                        <p class="text-slate-500 mb-6">View and manage all your active policies here.</p>
                         <div
-                            class="bg-white dark:bg-navy-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 overflow-hidden">
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-left border-collapse">
-                                    <thead>
-                                        <tr
-                                            class="bg-slate-50 dark:bg-navy-900 text-slate-500 dark:text-teal-200 text-sm uppercase">
-                                            <th class="p-4 font-semibold">Policy Type</th>
-                                            <th class="p-4 font-semibold">Policy Number</th>
-                                            <th class="p-4 font-semibold">Status</th>
-                                            <th class="p-4 font-semibold">Renewal Date</th>
-                                            <th class="p-4 font-semibold">Premium</th>
-                                            <th class="p-4 font-semibold text-right">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody
-                                        class="divide-y divide-slate-100 dark:divide-white/5 text-slate-700 dark:text-teal-100">
-                                        <tr class="hover:bg-slate-50 dark:hover:bg-navy-900/50 transition">
-                                            <td class="p-4 flex items-center gap-3">
-                                                <div
-                                                    class="w-10 h-10 rounded-lg bg-neon-cyan/10 flex items-center justify-center text-neon-cyan">
-                                                    <i class="fas fa-car"></i>
-                                                </div>
-                                                <span class="font-bold">Auto Insurance</span>
-                                            </td>
-                                            <td class="p-4 font-mono text-sm">POL-982374-AU</td>
-                                            <td class="p-4"><span
-                                                    class="px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full text-xs font-bold uppercase">Active</span>
-                                            </td>
-                                            <td class="p-4">Oct 24, 2026</td>
-                                            <td class="p-4 font-bold">$145.00/mo</td>
-                                            <td class="p-4 text-right">
-                                                <button class="text-indigo-500 hover:text-indigo-600 px-2 py-1"><i
-                                                        class="fas fa-download"></i></button>
-                                                <button class="text-indigo-500 hover:text-indigo-600 px-2 py-1"><i
-                                                        class="fas fa-eye"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr class="hover:bg-slate-50 dark:hover:bg-navy-900/50 transition">
-                                            <td class="p-4 flex items-center gap-3">
-                                                <div
-                                                    class="w-10 h-10 rounded-lg bg-neon-magenta/10 flex items-center justify-center text-neon-magenta">
-                                                    <i class="fas fa-home"></i>
-                                                </div>
-                                                <span class="font-bold">Home Insurance</span>
-                                            </td>
-                                            <td class="p-4 font-mono text-sm">POL-112938-HO</td>
-                                            <td class="p-4"><span
-                                                    class="px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full text-xs font-bold uppercase">Active</span>
-                                            </td>
-                                            <td class="p-4">Feb 12, 2027</td>
-                                            <td class="p-4 font-bold">$850.00/yr</td>
-                                            <td class="p-4 text-right">
-                                                <button class="text-indigo-500 hover:text-indigo-600 px-2 py-1"><i
-                                                        class="fas fa-download"></i></button>
-                                                <button class="text-indigo-500 hover:text-indigo-600 px-2 py-1"><i
-                                                        class="fas fa-eye"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr class="hover:bg-slate-50 dark:hover:bg-navy-900/50 transition">
-                                            <td class="p-4 flex items-center gap-3">
-                                                <div
-                                                    class="w-10 h-10 rounded-lg bg-neon-violet/10 flex items-center justify-center text-neon-violet">
-                                                    <i class="fas fa-heartbeat"></i>
-                                                </div>
-                                                <span class="font-bold">Life Insurance</span>
-                                            </td>
-                                            <td class="p-4 font-mono text-sm">POL-554210-LI</td>
-                                            <td class="p-4"><span
-                                                    class="px-3 py-1 bg-amber-100 text-amber-600 rounded-full text-xs font-bold uppercase">Pending
-                                                    Review</span></td>
-                                            <td class="p-4">--</td>
-                                            <td class="p-4 font-bold">$42.00/mo</td>
-                                            <td class="p-4 text-right">
-                                                <button class="text-indigo-500 hover:text-indigo-600 px-2 py-1"><i
-                                                        class="fas fa-download"></i></button>
-                                                <button class="text-indigo-500 hover:text-indigo-600 px-2 py-1"><i
-                                                        class="fas fa-eye"></i></button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+                            <img src="Assets/14.jpeg" alt="Policies" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-5">
+                                <div>
+                                    <h3 class="text-white font-bold text-2xl mb-2">Active Coverage</h3>
+                                    <p class="text-slate-300">Review your policy details, download documents, and check
+                                        renewal dates.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -560,542 +479,322 @@
                     <!-- VIEW: Billing -->
                     <div id="view-billing" class="view-section hidden">
                         <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Billing & Payments</h2>
-
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-                            <!-- Balance Card -->
-                            <div
-                                class="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl p-6 text-white shadow-lg">
-                                <p class="text-indigo-200 text-sm font-bold uppercase tracking-wider mb-1">Current
-                                    Balance</p>
-                                <h3 class="text-4xl font-bold mb-4">$145.00</h3>
-                                <p class="text-sm text-indigo-100 mb-6">Due on Jan 28, 2026</p>
-                                <button
-                                    class="w-full py-3 bg-white text-indigo-700 font-bold rounded-xl hover:bg-indigo-50 transition">Pay
-                                    Now</button>
-                            </div>
-
-                            <!-- Payment Method -->
-                            <div
-                                class="lg:col-span-2 bg-white dark:bg-navy-950 rounded-2xl p-6 border border-slate-100 dark:border-white/5">
-                                <div class="flex justify-between items-center mb-6">
-                                    <h3 class="font-bold text-slate-800 dark:text-white">Payment Methods</h3>
-                                    <button
-                                        class="text-indigo-600 dark:text-neon-cyan text-sm font-bold hover:underline">Manage</button>
-                                </div>
-                                <div class="flex gap-4 flex-wrap">
-                                    <div
-                                        class="flex items-center gap-4 p-4 border border-indigo-500 bg-indigo-50 dark:bg-navy-900/50 rounded-xl min-w-[200px]">
-                                        <i class="fab fa-cc-visa text-2xl text-indigo-700 dark:text-indigo-400"></i>
-                                        <div>
-                                            <p class="font-bold text-slate-800 dark:text-white">Visa •••• 4242</p>
-                                            <p class="text-xs text-slate-500">Expires 12/28</p>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="flex items-center gap-4 p-4 border border-slate-200 dark:border-slate-700 rounded-xl min-w-[200px] opacity-60">
-                                        <i class="fab fa-cc-mastercard text-2xl text-slate-600"></i>
-                                        <div>
-                                            <p class="font-bold text-slate-800 dark:text-white">Mastercard •••• 8899</p>
-                                            <p class="text-xs text-slate-500">Expires 09/25</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h3 class="font-bold text-slate-800 dark:text-white mb-4">Payment History</h3>
+                        <p class="text-slate-500 mb-6">Manage your payment methods and view history.</p>
                         <div
-                            class="bg-white dark:bg-navy-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 overflow-hidden">
-                            <table class="w-full text-left">
-                                <thead class="bg-slate-50 dark:bg-navy-900 text-slate-500 dark:text-teal-200 text-sm">
-                                    <tr>
-                                        <th class="p-4">Date</th>
-                                        <th class="p-4">Description</th>
-                                        <th class="p-4">Amount</th>
-                                        <th class="p-4">Status</th>
-                                        <th class="p-4 text-right">Invoice</th>
-                                    </tr>
-                                </thead>
-                                <tbody
-                                    class="divide-y divide-slate-100 dark:divide-white/5 text-slate-700 dark:text-teal-100">
-                                    <tr>
-                                        <td class="p-4">Dec 28, 2025</td>
-                                        <td class="p-4">Auto Insurance Monthly</td>
-                                        <td class="p-4 font-bold">$145.00</td>
-                                        <td class="p-4"><span class="text-emerald-500 font-bold text-xs">PAID</span>
-                                        </td>
-                                        <td class="p-4 text-right"><button class="text-slate-400 hover:text-primary"><i
-                                                    class="fas fa-download"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-4">Nov 28, 2025</td>
-                                        <td class="p-4">Auto Insurance Monthly</td>
-                                        <td class="p-4 font-bold">$145.00</td>
-                                        <td class="p-4"><span class="text-emerald-500 font-bold text-xs">PAID</span>
-                                        </td>
-                                        <td class="p-4 text-right"><button class="text-slate-400 hover:text-primary"><i
-                                                    class="fas fa-download"></i></button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+                            <img src="Assets/15.jpeg" alt="Billing" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-5">
+                                <div>
+                                    <h3 class="text-white font-bold text-2xl mb-2">Payment Center</h3>
+                                    <p class="text-slate-300">View transaction history, update payment methods, and
+                                        download
+                                        invoices.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- VIEW: Support -->
                     <div id="view-support" class="view-section hidden">
                         <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Support Center</h2>
-
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                            <div
-                                class="p-6 bg-white dark:bg-navy-950 rounded-2xl border border-slate-100 dark:border-white/5 text-center hover:shadow-lg transition cursor-pointer">
-                                <div
-                                    class="w-12 h-12 mx-auto bg-neon-cyan/20 text-neon-cyan rounded-full flex items-center justify-center mb-4">
-                                    <i class="fas fa-book-open"></i>
-                                </div>
-                                <h3 class="font-bold text-slate-800 dark:text-white mb-2">Knowledge Base</h3>
-                                <p class="text-sm text-slate-500">Browse FAQs and guides.</p>
-                            </div>
-                            <div
-                                class="p-6 bg-white dark:bg-navy-950 rounded-2xl border border-slate-100 dark:border-white/5 text-center hover:shadow-lg transition cursor-pointer">
-                                <div
-                                    class="w-12 h-12 mx-auto bg-neon-violet/20 text-neon-violet rounded-full flex items-center justify-center mb-4">
-                                    <i class="fas fa-comments"></i>
-                                </div>
-                                <h3 class="font-bold text-slate-800 dark:text-white mb-2">Live Chat</h3>
-                                <p class="text-sm text-slate-500">Chat with a support agent.</p>
-                            </div>
-                            <div
-                                class="p-6 bg-white dark:bg-navy-950 rounded-2xl border border-slate-100 dark:border-white/5 text-center hover:shadow-lg transition cursor-pointer">
-                                <div
-                                    class="w-12 h-12 mx-auto bg-neon-magenta/20 text-neon-magenta rounded-full flex items-center justify-center mb-4">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <h3 class="font-bold text-slate-800 dark:text-white mb-2">Call Us</h3>
-                                <p class="text-sm text-slate-500">24/7 Priority Support.</p>
-                            </div>
-                        </div>
-
+                        <p class="text-slate-500 mb-6">Get help with claims, coverage, and account issues.</p>
                         <div
-                            class="max-w-2xl bg-white dark:bg-navy-950 rounded-2xl border border-slate-100 dark:border-white/5 p-8">
-                            <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-6">Send us a message</h3>
-                            <form class="space-y-4">
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label
-                                            class="block text-sm font-medium text-slate-500 dark:text-teal-200 mb-1">Name</label>
-                                        <input type="text" value="John Doe"
-                                            class="w-full px-4 py-2 rounded-lg bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:outline-none focus:border-neon-cyan">
-                                    </div>
-                                    <div>
-                                        <label
-                                            class="block text-sm font-medium text-slate-500 dark:text-teal-200 mb-1">Email</label>
-                                        <input type="email" value="john@example.com"
-                                            class="w-full px-4 py-2 rounded-lg bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:outline-none focus:border-neon-cyan">
-                                    </div>
-                                </div>
+                            class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+                            <img src="Assets/service.jpeg" alt="Support" class="w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-5">
                                 <div>
-                                    <label
-                                        class="block text-sm font-medium text-slate-500 dark:text-teal-200 mb-1">Topic</label>
-                                    <select
-                                        class="w-full px-4 py-2 rounded-lg bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:outline-none focus:border-neon-cyan">
-                                        <option>Claims Issue</option>
-                                        <option>Billing Question</option>
-                                        <option>Policy Update</option>
-                                        <option>Technical Support</option>
-                                    </select>
+                                    <h3 class="text-white font-bold text-2xl mb-2">We're Here to Help</h3>
+                                    <p class="text-slate-300">Get 24/7 assistance with claims, policy questions, or
+                                        technical issues.</p>
                                 </div>
-                                <div>
-                                    <label
-                                        class="block text-sm font-medium text-slate-500 dark:text-teal-200 mb-1">Message</label>
-                                    <textarea rows="4"
-                                        class="w-full px-4 py-2 rounded-lg bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white focus:outline-none focus:border-neon-cyan"></textarea>
-                                </div>
-                                <button type="button"
-                                    class="px-6 py-2 bg-neon-cyan text-white font-bold rounded-lg hover:bg-neon-cyan/80 transition">Send
-                                    Message</button>
-                            </form>
+                            </div>
                         </div>
                     </div>
 
                     <!-- VIEW: Settings -->
                     <div id="view-settings" class="view-section hidden">
                         <h2 class="text-3xl font-bold text-neon-magenta dark:text-teal-400 mb-6">Account Settings</h2>
-
-                        <div class="max-w-3xl space-y-8">
-                            <!-- Profile -->
+                        <p class="text-slate-500 mb-6">Update your profile, security preference, and notifications.</p>
+                        <div
+                            class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 relative group h-80">
+                            <img src="Assets/dashboard.jpeg" alt="Settings" class="w-full h-full object-cover">
                             <div
-                                class="bg-white dark:bg-navy-950 p-8 rounded-2xl border border-slate-100 dark:border-white/5">
-                                <h3
-                                    class="text-xl font-bold text-slate-800 dark:text-white mb-6 border-b border-gray-100 dark:border-gray-800 pb-2">
-                                    Profile Information</h3>
-                                <div class="flex items-center gap-6 mb-8">
-                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=random&size=128"
-                                        class="w-20 h-20 rounded-full">
-                                    <button
-                                        class="text-indigo-600 dark:text-neon-cyan font-bold text-sm hover:underline">Change
-                                        Photo</button>
+                                class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent flex items-end p-5">
+                                <div>
+                                    <h3 class="text-white font-bold text-2xl mb-2">Profile & Security</h3>
+                                    <p class="text-slate-300">Manage your personal information, login credentials, and
+                                        notification preferences.</p>
                                 </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label
-                                            class="block text-sm font-medium text-slate-500 dark:text-teal-200 mb-1">Full
-                                            Name</label>
-                                        <input type="text" value="John Doe"
-                                            class="w-full px-4 py-2 rounded-lg bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white">
-                                    </div>
-                                    <div>
-                                        <label
-                                            class="block text-sm font-medium text-slate-500 dark:text-teal-200 mb-1">Phone</label>
-                                        <input type="text" value="+1 (555) 000-0000"
-                                            class="w-full px-4 py-2 rounded-lg bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Notifications -->
-                            <div
-                                class="bg-white dark:bg-navy-950 p-8 rounded-2xl border border-slate-100 dark:border-white/5">
-                                <h3
-                                    class="text-xl font-bold text-slate-800 dark:text-white mb-6 border-b border-gray-100 dark:border-gray-800 pb-2">
-                                    Notifications</h3>
-                                <div class="space-y-4">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="font-bold text-slate-800 dark:text-white">Policy Updates</p>
-                                            <p class="text-xs text-slate-500">Receive alerts about renewals and coverage
-                                                changes.</p>
-                                        </div>
-                                        <label class="relative inline-flex items-center cursor-pointer">
-                                            <input type="checkbox" checked class="sr-only peer">
-                                            <div
-                                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-cyan">
-                                            </div>
-                                        </label>
-                                    </div>
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="font-bold text-slate-800 dark:text-white">Billing Alerts</p>
-                                            <p class="text-xs text-slate-500">Get notified before payments are
-                                                processed.</p>
-                                        </div>
-                                        <label class="relative inline-flex items-center cursor-pointer">
-                                            <input type="checkbox" checked class="sr-only peer">
-                                            <div
-                                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-cyan">
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex justify-end gap-4">
-                                <button
-                                    class="px-6 py-2 text-slate-500 hover:text-slate-800 font-bold transition">Cancel</button>
-                                <button
-                                    class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition">Save
-                                    Changes</button>
                             </div>
                         </div>
-                    </div> <button
-                        class="w-full py-3 bg-white text-neon-magenta font-bold rounded-xl hover:bg-neon-cyan transition relative z-10">
-                        Check Eligibility
-                    </button>
+                    </div>
+
+
+
+                </main>
+                <!-- Footer -->
+                <!-- NEW ANIMATED GRADIENT FOOTER -->
+                <footer class="footer-gradient pt-12 pb-12 mt-8 w-full">
+                    <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+                        <!-- Col 1: Brand -->
+                        <div>
+                            <a href="#" class="flex items-center gap-2 mb-6 text-white group">
+                                <div
+                                    class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)] transition-transform group-hover:rotate-12">
+                                    <i class="fas fa-shield-alt text-lg"></i>
+                                </div>
+                                <span class="font-bold text-xl">Claimora</span>
+                            </a>
+                            <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                                Next-generation insurance & business intelligence. Protecting your future with
+                                confidence.
+                            </p>
+                            <div class="flex gap-4 mt-6">
+                                <a href="#"
+                                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
+                                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
+                                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
+                                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Col 2: Quick Links -->
+                        <div>
+                            <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                            <ul class="space-y-2 text-sm text-slate-400">
+                                <li><a href="index.html" class="footer-link hover:text-white">Home</a></li>
+                                <li><a href="about.html" class="footer-link hover:text-white">About Us</a></li>
+                                <li><a href="services.html" class="footer-link hover:text-white">Services</a></li>
+                                <li><a href="contact.html" class="footer-link hover:text-white">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Col 3: Account -->
+                        <div>
+                            <h4 class="text-white font-bold mb-6">Account</h4>
+                            <ul class="space-y-2 text-sm text-slate-400">
+                                <li><a href="user_dashboard.html" class="footer-link hover:text-white">User
+                                        Dashboard</a>
+                                </li>
+                                <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin
+                                        Dashboard</a>
+                                </li>
+                                <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
+                                <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Col 4: Newsletter -->
+                        <div>
+                            <h4 class="text-white font-bold mb-6">Stay Updated</h4>
+                            <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest insights.
+                            </p>
+                            <div class="flex gap-2">
+                                <input type="email" placeholder="Email address"
+                                    class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-neon-cyan transition-colors">
+                                <button
+                                    class="px-6 py-3 bg-neon-cyan text-white font-bold rounded-lg hover:bg-neon-cyan/80 transition-colors">Go</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="max-w-[1920px] mx-auto px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                        <div>&copy; 2026 Claimora Insurance. All rights reserved.</div>
+                        <div class="flex gap-6 mt-4 md:mt-0">
+                            <a href="#" class="hover:text-white transition-colors">Terms</a>
+                            <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                            <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by Claimora</span>
+                        </div>
+                    </div>
+                </footer>
+                <script>
+                    lucide.createIcons();
+                </script>
             </div>
         </div>
-</div>
 
+        <!-- Scripts -->
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Common Options for Theme and Config
+                const isDark = document.documentElement.classList.contains('dark');
 
-</main>
-<!-- Footer -->
-<!-- NEW ANIMATED GRADIENT FOOTER -->
-<footer class="footer-gradient pt-24 pb-12 mt-12 w-full ltr:md:ml-64 rtl:md:mr-64">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 px-6">
-        <!-- Col 1: Brand -->
-        <div>
-            <a href="#" class="flex items-center gap-2 mb-6 text-white group">
-                <div
-                    class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)] transition-transform group-hover:rotate-12">
-                    <i class="fas fa-shield-alt text-lg"></i>
-                </div>
-                <span class="font-bold text-xl">Claimora</span>
-            </a>
-            <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
-                Next-generation insurance & business intelligence. Protecting your future with confidence.
-            </p>
-            <div class="flex gap-4 mt-6">
-                <a href="#"
-                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
-                    <i data-lucide="facebook" class="w-5 h-5"></i>
-                </a>
-                <a href="#"
-                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
-                    <i data-lucide="twitter" class="w-5 h-5"></i>
-                </a>
-                <a href="#"
-                    class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-neon-cyan hover:text-white transition-all transform hover:-translate-y-1">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                </a>
-            </div>
-        </div>
+                // Note: In real app, listen to theme change event to update charts. 
+                // For now, we init with current state.
 
-        <!-- Col 2: Quick Links -->
-        <div>
-            <h4 class="text-white font-bold mb-6">Quick Links</h4>
-            <ul class="space-y-4 text-sm text-slate-400">
-                <li><a href="index.html" class="footer-link hover:text-white">Home</a></li>
-                <li><a href="about.html" class="footer-link hover:text-white">About Us</a></li>
-                <li><a href="services.html" class="footer-link hover:text-white">Services</a></li>
-                <li><a href="contact.html" class="footer-link hover:text-white">Contact</a></li>
-            </ul>
-        </div>
-
-        <!-- Col 3: Account -->
-        <div>
-            <h4 class="text-white font-bold mb-6">Account</h4>
-            <ul class="space-y-4 text-sm text-slate-400">
-                <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a>
-                </li>
-                <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Dashboard</a>
-                </li>
-                <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
-                <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
-            </ul>
-        </div>
-
-        <!-- Col 4: Newsletter -->
-        <div>
-            <h4 class="text-white font-bold mb-6">Stay Updated</h4>
-            <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest insights.</p>
-            <div class="flex gap-2">
-                <input type="email" placeholder="Email address"
-                    class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-neon-cyan transition-colors">
-                <button
-                    class="px-6 py-3 bg-neon-cyan text-white font-bold rounded-lg hover:bg-neon-cyan/80 transition-colors">Go</button>
-            </div>
-        </div>
-    </div>
-
-    <div
-        class="px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
-        <div>&copy; 2026 Claimora Insurance. All rights reserved.</div>
-        <div class="flex gap-6 mt-4 md:mt-0">
-            <a href="#" class="hover:text-white transition-colors">Terms</a>
-            <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-            <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by Claimora</span>
-        </div>
-    </div>
-</footer>
-<script>
-    lucide.createIcons();
-</script>
-</div>
-</div>
-
-<!-- Scripts -->
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Common Options for Theme and Config
-        const isDark = document.documentElement.classList.contains('dark');
-
-        // Note: In real app, listen to theme change event to update charts. 
-        // For now, we init with current state.
-
-        const commonOptions = {
-            chart: {
-                background: 'transparent',
-                toolbar: { show: false },
-                fontFamily: 'Outfit, sans-serif',
-                animations: { enabled: true }
-            },
-            theme: { mode: 'light' }, // ApexCharts handles dark mode colors better manually usually, or via palette
-            dataLabels: { enabled: false },
-            grid: {
-                borderColor: isDark ? 'rgba(255,255,255,0.1)' : '#f1f5f9',
-                strokeDashArray: 4
-            },
-            xaxis: {
-                labels: { style: { colors: '#94a3b8', fontSize: '12px' } },
-                axisBorder: { show: false },
-                axisTicks: { show: false }
-            },
-            yaxis: {
-                labels: { style: { colors: '#94a3b8', fontSize: '12px' } }
-            }
-        };
-
-        // 1. Premium History (Area)
-        new ApexCharts(document.querySelector("#chart-premium"), {
-            ...commonOptions,
-            series: [{ name: 'Premium', data: [850, 900, 850, 950, 900, 920] }],
-            chart: { type: 'area', height: 240, toolbar: { show: false }, parentHeightOffset: 0 },
-            colors: ['#22d3ee'],
-            stroke: { curve: 'smooth', width: 3 },
-            fill: {
-                type: 'gradient',
-                gradient: { shadeIntensity: 1, opacityFrom: 0.4, opacityTo: 0.05, stops: [0, 90, 100] }
-            },
-            xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], labels: { style: { colors: '#64748b' } } }
-        }).render();
-
-        // 2. Coverage Breakdown (Donut)
-        new ApexCharts(document.querySelector("#chart-coverage"), {
-            ...commonOptions,
-            series: [45, 30, 25],
-            labels: ['Auto', 'Home', 'Life'],
-            chart: { type: 'donut', height: 240 },
-            colors: ['#22d3ee', '#f50057', '#a855f7'],
-            legend: { position: 'bottom', labels: { colors: '#64748b' } },
-            stroke: { show: false },
-            dataLabels: { enabled: false }
-        }).render();
-
-        // 3. Claims Timeline (Bar)
-        new ApexCharts(document.querySelector("#chart-claims"), {
-            ...commonOptions,
-            series: [{ name: 'Claims', data: [1, 0, 0, 2, 0, 1] }],
-            chart: { type: 'bar', height: 240, toolbar: { show: false } },
-            colors: ['#a855f7'],
-            plotOptions: { bar: { borderRadius: 4, columnWidth: '50%' } },
-            xaxis: { categories: ['2020', '2021', '2022', '2023', '2024', '2025'], labels: { style: { colors: '#64748b' } } }
-        }).render();
-
-        // 4. Risk Score Trend (Line)
-        new ApexCharts(document.querySelector("#chart-risk"), {
-            ...commonOptions,
-            series: [{ name: 'Risk', data: [45, 42, 38, 35, 30, 28] }],
-            chart: { type: 'line', height: 240, toolbar: { show: false } },
-            colors: ['#f50057'],
-            stroke: { curve: 'straight', width: 3 },
-            markers: { size: 4, colors: ['#fff'], strokeColors: '#f50057', strokeWidth: 2 }
-        }).render();
-
-        // 5. Savings Analysis (Bar Horizontal)
-        new ApexCharts(document.querySelector("#chart-savings"), {
-            ...commonOptions,
-            series: [{ name: 'Savings ($)', data: [120, 85, 200, 150] }],
-            chart: { type: 'bar', height: 240, toolbar: { show: false } },
-            colors: ['#10b981'],
-            plotOptions: { bar: { horizontal: true, borderRadius: 4, barHeight: '50%' } },
-            xaxis: { categories: ['Bundle', 'Safe Driver', 'Loyalty', 'No Claim'], labels: { style: { colors: '#64748b' } } }
-        }).render();
-
-        // 6. Renewal Projection (Radial)
-        new ApexCharts(document.querySelector("#chart-renewal"), {
-            ...commonOptions,
-            series: [92],
-            chart: { type: 'radialBar', height: 260 },
-            colors: ['#F97316'],
-            plotOptions: {
-                radialBar: {
-                    hollow: { size: '70%' },
-                    dataLabels: {
-                        name: { show: true, fontSize: '12px', color: '#64748b', offsetY: -5 },
-                        value: { show: true, fontSize: '24px', fontWeight: 'bold', color: isDark ? '#fff' : '#1e293b', offsetY: 5 }
+                const commonOptions = {
+                    chart: {
+                        background: 'transparent',
+                        toolbar: { show: false },
+                        fontFamily: 'Outfit, sans-serif',
+                        animations: { enabled: true }
+                    },
+                    theme: { mode: 'light' }, // ApexCharts handles dark mode colors better manually usually, or via palette
+                    dataLabels: { enabled: false },
+                    grid: {
+                        borderColor: isDark ? 'rgba(255,255,255,0.1)' : '#f1f5f9',
+                        strokeDashArray: 4
+                    },
+                    xaxis: {
+                        labels: { style: { colors: '#94a3b8', fontSize: '12px' } },
+                        axisBorder: { show: false },
+                        axisTicks: { show: false }
+                    },
+                    yaxis: {
+                        labels: { style: { colors: '#94a3b8', fontSize: '12px' } }
                     }
-                }
-            },
-            labels: ['Renewal Prob.'],
-            stroke: { lineCap: 'round' }
-        }).render();
+                };
 
-        // ------------------------------------------
-        // DASHBOARD NAVIGATION LOGIC
-        // ------------------------------------------
-        const navItems = document.querySelectorAll('.nav-item');
-        const sections = document.querySelectorAll('.view-section');
+                // 1. Premium History (Area)
+                new ApexCharts(document.querySelector("#chart-premium"), {
+                    ...commonOptions,
+                    series: [{ name: 'Premium', data: [850, 900, 850, 950, 900, 920] }],
+                    chart: { type: 'area', height: 240, toolbar: { show: false }, parentHeightOffset: 0 },
+                    colors: ['#22d3ee'],
+                    stroke: { curve: 'smooth', width: 3 },
+                    fill: {
+                        type: 'gradient',
+                        gradient: { shadeIntensity: 1, opacityFrom: 0.4, opacityTo: 0.05, stops: [0, 90, 100] }
+                    },
+                    xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], labels: { style: { colors: '#64748b' } } }
+                }).render();
 
-        // Sidebar Mobile Toggle Logic
-        const sidebar = document.getElementById('sidebar');
-        const sidebarToggle = document.getElementById('sidebar-toggle');
-        const overlay = document.getElementById('sidebar-overlay');
+                // 2. Coverage Breakdown (Donut)
+                new ApexCharts(document.querySelector("#chart-coverage"), {
+                    ...commonOptions,
+                    series: [45, 30, 25],
+                    labels: ['Auto', 'Home', 'Life'],
+                    chart: { type: 'donut', height: 240 },
+                    colors: ['#22d3ee', '#f50057', '#a855f7'],
+                    legend: { position: 'bottom', labels: { colors: '#64748b' } },
+                    stroke: { show: false },
+                    dataLabels: { enabled: false }
+                }).render();
 
-        function toggleSidebar() {
-            if (sidebar) sidebar.classList.toggle('!translate-x-0');
-            if (overlay) overlay.classList.toggle('hidden');
-        }
+                // 3. Claims Timeline (Bar)
+                new ApexCharts(document.querySelector("#chart-claims"), {
+                    ...commonOptions,
+                    series: [{ name: 'Claims', data: [1, 0, 0, 2, 0, 1] }],
+                    chart: { type: 'bar', height: 240, toolbar: { show: false } },
+                    colors: ['#a855f7'],
+                    plotOptions: { bar: { borderRadius: 4, columnWidth: '50%' } },
+                    xaxis: { categories: ['2020', '2021', '2022', '2023', '2024', '2025'], labels: { style: { colors: '#64748b' } } }
+                }).render();
 
-        if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
-        if (overlay) overlay.addEventListener('click', toggleSidebar);
+                // 4. Risk Score Trend (Line)
+                new ApexCharts(document.querySelector("#chart-risk"), {
+                    ...commonOptions,
+                    series: [{ name: 'Risk', data: [45, 42, 38, 35, 30, 28] }],
+                    chart: { type: 'line', height: 240, toolbar: { show: false } },
+                    colors: ['#f50057'],
+                    stroke: { curve: 'straight', width: 3 },
+                    markers: { size: 4, colors: ['#fff'], strokeColors: '#f50057', strokeWidth: 2 }
+                }).render();
 
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const targetId = item.getAttribute('data-target');
+                // 5. Savings Analysis (Bar Horizontal)
+                new ApexCharts(document.querySelector("#chart-savings"), {
+                    ...commonOptions,
+                    series: [{ name: 'Savings ($)', data: [120, 85, 200, 150] }],
+                    chart: { type: 'bar', height: 240, toolbar: { show: false } },
+                    colors: ['#10b981'],
+                    plotOptions: { bar: { horizontal: true, borderRadius: 4, barHeight: '50%' } },
+                    xaxis: { categories: ['Bundle', 'Safe Driver', 'Loyalty', 'No Claim'], labels: { style: { colors: '#64748b' } } }
+                }).render();
 
-                // 1. Update Sidebar Active State
-                navItems.forEach(nav => {
-                    nav.classList.remove('bg-neon-cyan/20', 'text-neon-magenta', 'border', 'border-neon-cyan/50', 'shadow-[0_0_15px_rgba(100,255,218,0.3)]');
-                    nav.classList.add('text-slate-600', 'dark:text-teal-200', 'hover:bg-gray-100', 'dark:hover:bg-navy-800');
-
-                    // Restore icons
-                    const icon = nav.querySelector('i');
-                    if (nav.getAttribute('data-target') === 'view-overview') icon.className = 'fas fa-home w-6 group-hover:text-neon-cyan transition-colors';
-                });
-
-                // Set Active Style
-                item.classList.remove('text-slate-600', 'dark:text-teal-200', 'hover:bg-gray-100', 'dark:hover:bg-navy-800');
-                item.classList.add('bg-neon-cyan/20', 'text-neon-magenta', 'border', 'border-neon-cyan/50', 'rounded-xl', 'shadow-[0_0_15px_rgba(100,255,218,0.3)]');
-
-                // 2. Show Target Section
-                sections.forEach(section => {
-                    section.classList.add('hidden');
-                });
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) targetSection.classList.remove('hidden');
-
-                // 3. Close mobile sidebar on selection
-                if (window.innerWidth < 768) {
-                    toggleSidebar();
-                }
+                // 6. Renewal Projection (Radial)
+                new ApexCharts(document.querySelector("#chart-renewal"), {
+                    ...commonOptions,
+                    series: [92],
+                    chart: { type: 'radialBar', height: 280 },
+                    plotOptions: {
+                        radialBar: {
+                            hollow: { size: '65%' },
+                            track: { background: '#f1f5f9' },
+                            dataLabels: {
+                                show: true,
+                                name: { show: true, fontSize: '14px', color: '#64748b', offsetY: -10 },
+                                value: { show: true, fontSize: '24px', color: '#0f172a', fontWeight: 'bold', offsetY: 5, formatter: function (val) { return val + '%' } }
+                            }
+                        }
+                    },
+                    colors: ['#f97316'],
+                    labels: ['Renewal Prob.']
+                }).render();
             });
-        });
-    });
-</script>
-<script src="main.js"></script>
-<div id="mobile-menu"
-    class="fixed top-0 left-0 h-full w-80 bg-white dark:bg-navy-900 z-[70] transform -translate-x-full transition-transform duration-300 shadow-2xl flex flex-col rtl:left-auto rtl:right-0 rtl:translate-x-full">
-    <div class="p-6 flex items-center justify-between border-b border-slate-100 dark:border-white/10">
-        <div class="flex items-center gap-2">
-            <div
-                class="w-8 h-8 rounded bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan">
-                <i class="fas fa-shield-alt"></i>
-            </div>
-            <span class="text-lg font-serif font-bold text-navy-900 dark:text-white">Claim<span
-                    class="text-neon-cyan">ora</span></span>
-        </div>
-        <button id="close-menu-btn" class="text-slate-500 hover:text-red-500 transition"><i
-                class="fas fa-times text-xl"></i></button>
-    </div>
-    <div class="flex-1 overflow-y-auto p-4 space-y-2">
-        <a href="index.html"
-            class="block p-3 rounded hover:bg-gray-50 dark:hover:bg-white/5 text-royal-900 dark:text-white font-bold border-l-4 border-gold-600 pl-4">Home</a>
-        <a href="about.html"
-            class="block p-3 rounded hover:bg-slate-50 dark:hover:bg-white/5 text-slate-600 dark:text-slate-300 font-medium">About
-            The Firm</a>
-        <a href="services.html"
-            class="block p-3 rounded hover:bg-slate-50 dark:hover:bg-white/5 text-slate-600 dark:text-slate-300 font-medium">Expertise</a>
-        <a href="contact.html"
-            class="block p-3 rounded hover:bg-slate-50 dark:hover:bg-white/5 text-slate-600 dark:text-slate-300 font-medium">Contact</a>
-        <div class="border-t border-slate-100 dark:border-white/10 my-4 pt-4">
-            <div class="px-3 text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">My Account</div>
-            <a href="user_dashboard.html"
-                class="block p-3 rounded hover:bg-slate-50 dark:hover:bg-white/5 text-slate-600 dark:text-slate-300 font-medium"><i
-                    class="fas fa-user w-6"></i> Client Portal</a>
-            <a href="admin_dashboard.html"
-                class="block p-3 rounded hover:bg-slate-50 dark:hover:bg-white/5 text-slate-600 dark:text-slate-300 font-medium"><i
-                    class="fas fa-lock w-6"></i> Partner Login</a>
-        </div>
-    </div>
-    <div class="p-6 border-t border-slate-100 dark:border-white/10 bg-slate-50 dark:bg-black/20">
-        <button id="mobile-theme-toggle"
-            class="w-full mb-3 py-3 border border-slate-300 dark:border-white/10 rounded text-slate-600 dark:text-white font-bold uppercase text-xs">Switch
-            Theme</button>
-        <a href="contact.html"
-            class="w-full block text-center py-3 rounded bg-indigo-600 text-white font-bold shadow-lg uppercase tracking-widest text-xs">Inquire
-            Now</a>
-    </div>
-</div>
-</body>
+        </script>
+        <script src="main.js"></script>
+        <script>
+            // Sidebar Toggle Logic for Dashboard
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const overlay = document.getElementById('sidebar-overlay');
 
-</html>
+            function toggleSidebar() {
+                sidebar.classList.toggle('!translate-x-0');
+                overlay.classList.toggle('hidden');
+            }
+
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', toggleSidebar);
+            }
+            if (overlay) {
+                overlay.addEventListener('click', toggleSidebar);
+            }
+
+            // --- SPA Navigation (Ported from Admin Dashboard) ---
+            const navItems = document.querySelectorAll('.nav-item');
+            const views = document.querySelectorAll('.view-section');
+
+            // Styles for Active State (Neon Cyan Glow + Border)
+            const activeClasses = ['bg-neon-cyan/20', 'text-navy-900', 'dark:text-teal-400', 'border', 'border-neon-cyan/50', 'shadow-[0_0_15px_rgba(100,255,218,0.3)]'];
+            // Styles for Inactive State (Default Hover)
+            const inactiveClasses = ['text-slate-600', 'dark:text-teal-200', 'hover:bg-gray-100', 'dark:hover:bg-navy-800'];
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const targetId = item.dataset.target;
+
+                    // 1. Hide all views
+                    views.forEach(view => view.classList.add('hidden'));
+
+                    // 2. Show target view
+                    const targetView = document.getElementById(targetId);
+                    if (targetView) targetView.classList.remove('hidden');
+
+                    // 3. Reset all Core Icons colors (optional, if we want strict color switching)
+                    // Note: The specific icon colors (neon-cyan, purple, orange) are hardcoded in the HTML icons.
+                    // We'll primarily focus on the CONTAINER styling.
+
+                    // 4. Update Nav Item Styling
+                    navItems.forEach(nav => {
+                        // Remove active styles
+                        nav.classList.remove(...activeClasses);
+                        // Add inactive styles
+                        nav.classList.add(...inactiveClasses);
+                    });
+
+                    // Apply active styles to clicked item
+                    item.classList.remove(...inactiveClasses);
+                    item.classList.add(...activeClasses);
+
+                    // Mobile: Close sidebar after click
+                    if (window.innerWidth < 768 && typeof toggleSidebar === 'function') {
+                        toggleSidebar();
+                    }
+                });
+            });
+        </script>
+    </body>
+
+    </html>

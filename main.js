@@ -104,4 +104,71 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
+
+    // --- 6. COUNTING ANIMATION (Global) ---
+    const counters = document.querySelectorAll('.counter-num');
+    if (counters.length > 0) {
+        const duration = 2000; // 2 seconds
+        const animateCounters = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    // Support removing non-digits for parsing
+                    const rawTarget = counter.getAttribute('data-target');
+                    const target = parseFloat(rawTarget);
+                    const startTime = performance.now();
+
+                    const updateCount = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeProgress = 1 - (1 - progress) * (1 - progress); // Ease out
+
+                        const currentCount = Math.floor(easeProgress * target);
+
+                        const suffix = counter.getAttribute('data-suffix') || '';
+                        const prefix = counter.getAttribute('data-prefix') || '';
+
+                        counter.innerText = prefix + currentCount + suffix;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            counter.innerText = prefix + target + suffix;
+                        }
+                    };
+                    requestAnimationFrame(updateCount);
+                    observer.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => animateCounters.observe(c));
+    }
+
+    // --- 7. INTERACTIVE MAP (Index Only) ---
+    const mapContainer = document.getElementById('map-container');
+    const mapTooltip = document.getElementById('map-tooltip');
+
+    if (mapContainer && mapTooltip) {
+        mapContainer.addEventListener('click', (e) => {
+            const rect = mapContainer.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Show tooltip at click
+            mapTooltip.style.left = `${x}px`;
+            mapTooltip.style.top = `${y}px`;
+            mapTooltip.classList.remove('opacity-0', 'scale-75'); // Show
+            mapTooltip.classList.add('opacity-100', 'scale-100');
+
+            // Simulate "Live" data
+            const randomActive = Math.floor(Math.random() * 500) + 100;
+            mapTooltip.querySelector('.tooltip-content').innerText = `Active Users: ${randomActive}`;
+
+            // Hide after 2 seconds
+            setTimeout(() => {
+                mapTooltip.classList.add('opacity-0', 'scale-75');
+                mapTooltip.classList.remove('opacity-100', 'scale-100');
+            }, 2000);
+        });
+    }
 });

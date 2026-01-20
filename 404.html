@@ -17,9 +17,15 @@
                         primaryHover: '#4338CA',
                         secondary: '#10B981',
                         dark: '#0F172A',
+                        slate: {
+                            850: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
                     },
                     fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
                     }
                 }
             }
@@ -29,22 +35,21 @@
 </head>
 
 <body
-    class="bg-gray-50 dark:bg-royal-900 text-gray-800 dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+    class="bg-gray-50 dark:bg-slate-900 font-sans transition-colors duration-300 overflow-x-hidden flex flex-col min-h-screen">
 
     <!-- LIQUID GLASS HEADER -->
-    <nav class="header-glass">
-        <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
+    <nav
+        class="fixed w-full z-50 transition-all duration-300 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-gray-100 dark:border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <!-- Brand -->
-            <a href="index.html" class="flex items-center gap-3 group">
+            <a href="index.html" class="flex items-center gap-3">
                 <div
-                    class="brand-box w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)]">
+                    class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
                     <i class="fas fa-shield-alt text-lg"></i>
                 </div>
-                <div class="flex flex-col">
-                    <span class="font-display text-xl font-bold tracking-tight text-navy-900 dark:text-white">
-                        Safe<span class="text-neon-cyan">Guard</span>
-                    </span>
-                </div>
+                <span class="font-display text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                    Claimora
+                </span>
             </a>
 
             <!-- Desktop Nav -->
@@ -217,17 +222,16 @@
     <footer class="footer-gradient pt-24 pb-12">
         <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <!-- Col 1: Brand -->
-            <div>
-                <a href="#" class="flex items-center gap-2 mb-6 text-white group">
-                    <div
-                        class="w-10 h-10 rounded-xl bg-neon-cyan/20 border border-neon-cyan/50 flex items-center justify-center text-neon-cyan shadow-[0_0_15px_rgba(100,255,218,0.3)]">
-                        <i class="fas fa-shield-alt text-lg"></i>
+            <div class="col-span-1 md:col-span-2">
+                <a href="index.html" class="flex items-center gap-3 mb-6">
+                    <div class="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-white">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <span class="font-display font-bold text-xl">Safe<span class="text-neon-cyan">Guard</span></span>
+                    <span class="font-display text-xl font-bold text-white">Claimora</span>
                 </a>
-                <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
-                    Next-generation insurance protection for the digital age. We help you navigate risk with
-                    confidence.
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Next-generation risk protection for the digital age. Smart, secure, and always there when you need
+                    it.
                 </p>
                 <div class="flex gap-4 mt-6">
                     <a href="#"

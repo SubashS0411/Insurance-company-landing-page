@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexGen Strategy | The Apex of Business Intelligence</title>
+    <title>Claimora Insurance | The Apex of Business Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link
@@ -22,7 +22,8 @@
                         serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        navy: { 950: '#020617', 900: '#0f172a', 800: '#1e293b' },
+                        navy: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
+                        slate: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
                         platinum: { 100: '#F3F4F6', 300: '#D1D5DB', 500: '#9CA3AF' },
                         gold: { 400: '#FFD700', 500: '#D4AF37', 600: '#C5A028' },
                         accent: { DEFAULT: '#6366f1', dark: '#4f46e5' } // Indigo for buttons
@@ -46,8 +47,8 @@
             <!-- Brand -->
             <a href="index.html" class="flex items-center gap-3 group">
                 <div
-                    class="brand-box w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
-                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    class="brand-box w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="shield-check" class="w-7 h-7"></i>
                 </div>
                 <div class="flex flex-col">
                     <span class="font-sans text-xl font-bold tracking-tight text-slate-800 dark:text-white">
@@ -57,7 +58,7 @@
             </a>
 
             <!-- Desktop Nav -->
-            <div class="hidden lg:flex items-center space-x-8">
+            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
                 <!-- Home Dropdown -->
                 <div class="relative group">
                     <button class="nav-link flex items-center gap-1 py-4">
@@ -113,6 +114,10 @@
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                 </button>
+                <a href="login.html"
+                    class="px-6 py-2 border-2 border-indigo-600 dark:border-neon-cyan text-indigo-600 dark:text-neon-cyan rounded-full font-bold hover:bg-indigo-600 hover:text-white dark:hover:bg-neon-cyan dark:hover:text-navy-900 transition-all text-sm">
+                    Log In
+                </a>
                 <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
                     Get Started
                 </a>
@@ -192,25 +197,23 @@
 
                 <hr class="border-slate-100 dark:border-slate-800">
 
-                <!-- Mobile Actions -->
-                <div class="flex gap-4">
-                    <button id="mobile-theme-toggle"
-                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
-                        <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
-                    </button>
-                    <!-- Note: RTL toggle on mobile usually less common, but added for completeness if needed, or rely on desktop -->
+                <div class="mt-6 border-t border-slate-100 dark:border-slate-800 pt-6 space-y-3">
+                    <a href="login.html"
+                        class="block w-full py-4 text-center font-bold text-indigo-600 dark:text-neon-cyan border-2 border-indigo-600 dark:border-neon-cyan rounded-xl hover:bg-indigo-50 dark:hover:bg-neon-cyan/10 transition-all">
+                        Log In
+                    </a>
+                    <a href="login.html"
+                        class="block w-full py-4 text-center font-bold text-white bg-indigo-600 dark:bg-neon-cyan dark:text-navy-900 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all">
+                        Get Started
+                    </a>
                 </div>
-                <a href="login.html"
-                    class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
-                    Get Started
-                </a>
             </nav>
         </div>
     </div>
 
     <!-- 1. HERO SECTION -->
     <section class="min-h-screen relative flex items-center parallax-section"
-        style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2670&auto=format&fit=crop');">
+        style="background-image: url('Assets/hero_bg.jpeg');">
         <!-- Overlay for Light/Dark Differentiation -->
         <div class="absolute inset-0 bg-white/40 dark:bg-navy-950/80 transition-colors duration-500 z-0"></div>
 
@@ -222,7 +225,7 @@
             </video>
         </div>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10 pt-20 pb-20 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 pt-20 text-center md:text-left">
             <h4 class="text-rose-600 dark:text-neon-red font-bold uppercase tracking-[0.3em] text-sm mb-6 reveal">
                 Protecting Life, Assets & Tomorrow</h4>
 
@@ -250,13 +253,14 @@
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce text-indigo-500 dark:text-neon-purple">
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-indigo-500 dark:text-neon-purple">
             <i class="fas fa-chevron-down text-2xl"></i>
         </div>
     </section>
 
     <!-- 2. MISSION STATEMENT -->
-    <section id="mission" class="py-32 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-white/5 mx-auto">
+    <section id="mission"
+        class="py-12 md:py-32 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-white/5 mx-auto">
         <div class="max-w-5xl mx-auto px-6 text-center">
             <h2 class="text-4xl md:text-6xl font-serif font-bold leading-snug reveal text-slate-900 dark:text-white">
                 "Our promise is to replace <span class="text-rose-500 dark:text-neon-red italic">uncertainty</span> with
@@ -269,7 +273,7 @@
 
     <!-- 3. THE WHY -->
     <!-- 3. THE WHY (Revamped) -->
-    <section class="py-24 bg-gray-50 dark:bg-slate-950 relative overflow-hidden group">
+    <section class="py-12 md:py-24 bg-gray-50 dark:bg-slate-950 relative overflow-hidden group">
         <div class="max-w-7xl mx-auto px-6">
             <div
                 class="relative w-full h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 glow-edge transform transition-all duration-700 hover:scale-[1.02] animate-fade-slide-up">
@@ -352,15 +356,31 @@
     </section>
 
     <!-- 5. GLOBAL FOOTPRINT -->
-    <section class="py-32 bg-navy-900 relative">
+    <section class="py-12 md:py-32 bg-white dark:bg-navy-900 relative">
         <div class="max-w-7xl mx-auto px-6 text-center mb-16">
             <h4 class="text-gold-500 uppercase tracking-widest text-sm mb-4">Global Reach</h4>
-            <h2 class="text-4xl font-serif font-bold text-white">Operations Across 4 Continents</h2>
+            <h2 class="text-4xl font-serif font-bold text-slate-900 dark:text-white">Operations Across 4 Continents</h2>
         </div>
-        <div
-            class="max-w-5xl mx-auto h-[500px] bg-navy-800 rounded-2xl relative overflow-hidden border border-white/5 shadow-2xl reveal">
+        <div id="map-container"
+            class="max-w-5xl mx-auto h-[300px] md:h-[500px] bg-slate-100 dark:bg-navy-800 rounded-2xl relative overflow-hidden border border-slate-200 dark:border-white/5 shadow-2xl reveal">
+
             <!-- Content Image: Reverted to Local Asset as per user instruction -->
-            <div class="absolute inset-0 bg-[url('Assets/map.jpeg')] bg-cover opacity-20"></div>
+            <!-- Content Image: Reverted to Local Asset as per user instruction -->
+            <div
+                class="absolute inset-0 bg-[url('Assets/map.jpeg')] bg-cover opacity-100 pointer-events-none mix-blend-normal">
+            </div>
+
+            <!-- Dynamic Tooltip (Hidden by default) -->
+            <div id="map-tooltip"
+                class="absolute z-20 pointer-events-none transform -translate-x-1/2 -translate-y-12 transition-all duration-300 opacity-0 scale-75">
+                <div
+                    class="bg-navy-900 text-white text-xs font-bold px-3 py-2 rounded shadow-lg border border-gold-500">
+                    <span class="tooltip-content">Scanning...</span>
+                    <div
+                        class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-navy-900">
+                    </div>
+                </div>
+            </div>
             <!-- Hotspots -->
             <div class="absolute top-[30%] left-[25%] group">
                 <div class="w-4 h-4 bg-gold-500 rounded-full animate-ping absolute"></div>
@@ -387,22 +407,25 @@
     </section>
 
     <!-- 6. METRICS -->
-    <section class="py-24 bg-indigo-900 dark:bg-slate-950 border-b border-white/10 relative overflow-hidden">
+    <section class="py-12 md:py-24 bg-indigo-900 dark:bg-slate-950 border-b border-white/10 relative overflow-hidden">
         <!-- Overlay Pattern -->
         <div class="absolute inset-0 opacity-10"
             style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
 
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center relative z-10">
             <div class="reveal">
-                <div class="text-5xl font-bold text-white dark:text-neon-white mb-2">$2B+</div>
+                <div class="text-5xl font-bold text-white dark:text-neon-white mb-2 counter-num" data-target="2"
+                    data-prefix="$" data-suffix="B+">0</div>
                 <p class="text-xs uppercase tracking-widest text-indigo-200 dark:text-slate-400">Claims Paid</p>
             </div>
             <div class="reveal transition-delay-100">
-                <div class="text-5xl font-bold text-white dark:text-neon-white mb-2">50k+</div>
+                <div class="text-5xl font-bold text-white dark:text-neon-white mb-2 counter-num" data-target="50"
+                    data-suffix="k+">0</div>
                 <p class="text-xs uppercase tracking-widest text-indigo-200 dark:text-slate-400">Families Protected</p>
             </div>
             <div class="reveal transition-delay-200">
-                <div class="text-5xl font-bold text-white dark:text-neon-white mb-2">100%</div>
+                <div class="text-5xl font-bold text-white dark:text-neon-white mb-2 counter-num" data-target="100"
+                    data-suffix="%">0</div>
                 <p class="text-xs uppercase tracking-widest text-indigo-200 dark:text-slate-400">Payout Reliability</p>
             </div>
             <div class="reveal transition-delay-300">
@@ -414,9 +437,10 @@
 
     <!-- 7. PILLAR 1: LIFE INSURANCE -->
     <section id="insurance-plans"
-        class="min-h-[80vh] flex flex-col lg:flex-row items-center bg-white dark:bg-slate-900 relative overflow-hidden group">
-        <div
-            class="relative w-full h-64 lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full bg-[url('Assets/bg1.jpeg')] bg-cover animate-bounce rounded-3xl">
+        class="min-h-0 md:min-h-[80vh] flex flex-col lg:flex-row items-center bg-white dark:bg-slate-900 relative overflow-hidden group">
+        <!-- Background: Family Image -->
+        <div <div
+            class="relative w-full h-64 lg:absolute lg:right-0 lg:rtl:left-0 lg:rtl:right-auto lg:top-0 lg:w-1/2 lg:h-full bg-[url('Assets/health.jpeg')] bg-cover shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(99,102,241,0.6)]">
         </div>
         <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
             <div
@@ -442,9 +466,10 @@
 
     <!-- 8. PILLAR 2: ASSET PROTECTION -->
     <section
-        class="min-h-[80vh] flex flex-col lg:flex-row items-center bg-gray-50 dark:bg-navy-950 relative overflow-hidden group text-right">
-        <div
-            class="relative w-full h-64 lg:absolute lg:left-0 lg:top-0 lg:w-1/2 lg:h-full bg-[url('Assets/bg3.jpeg')] bg-cover animate-bounce rounded-3xl">
+        class="min-h-0 md:min-h-[80vh] flex flex-col lg:flex-row items-center bg-gray-50 dark:bg-navy-950 relative overflow-hidden group text-right rtl:text-left">
+        <!-- Background: House Image -->
+        <div <div
+            class="relative w-full h-64 lg:absolute lg:left-0 lg:rtl:right-0 lg:rtl:left-auto lg:top-0 lg:w-1/2 lg:h-full bg-[url('Assets/home1.jpeg')] bg-cover shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(99,102,241,0.6)]">
         </div>
         <div class="max-w-7xl mx-auto px-6 w-full relative z-10 flex justify-end">
             <div
@@ -469,9 +494,10 @@
 
     <!-- 9. PILLAR 3: COMMERCIAL RISK -->
     <section
-        class="min-h-[80vh] flex flex-col lg:flex-row items-center bg-white dark:bg-slate-900 relative overflow-hidden group">
+        class="min-h-0 md:min-h-[80vh] flex flex-col lg:flex-row items-center bg-white dark:bg-slate-900 relative overflow-hidden group">
+        <!-- Background: Commercial Risk (Reusing Asset Image) -->
         <div
-            class="relative w-full h-64 lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full bg-[url('Assets/office-2.png')] bg-cover animate-bounce rounded-3xl">
+            class="relative w-full h-64 lg:absolute lg:right-0 lg:rtl:left-0 lg:rtl:right-auto lg:top-0 lg:w-1/2 lg:h-full bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop')] bg-cover shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(99,102,241,0.6)]">
         </div>
         <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
             <div
@@ -520,10 +546,12 @@
     <!-- 11. BREAK SECTION (QUOTE) -->
     <!-- 11. BREAK SECTION (QUOTE) -->
     <!-- 11. BREAK SECTION (QUOTE) - Flashlight Effect -->
-    <section class="py-40 flex items-center justify-center relative bg-navy-950 overflow-hidden">
+    <!-- 11. BREAK SECTION (QUOTE) - Flashlight Effect -->
+    <section
+        class="py-20 md:py-40 flex items-center justify-center relative bg-gray-50 dark:bg-navy-950 overflow-hidden">
         <!-- Spotlight Container -->
         <div id="spotlight-container"
-            class="relative max-w-5xl mx-auto px-6 p-20 border border-white/5 rounded-3xl bg-navy-900/50 backdrop-blur-sm overflow-hidden group cursor-none">
+            class="relative max-w-5xl mx-auto px-6 p-20 border border-slate-200 dark:border-white/5 rounded-3xl bg-white/50 dark:bg-navy-900/50 backdrop-blur-sm overflow-hidden group cursor-none">
 
             <!-- Mouse Follower Light -->
             <div id="cursor-light"
@@ -532,7 +560,7 @@
 
             <div class="relative z-10 text-center">
                 <i class="fas fa-quote-left text-4xl text-rose-500 dark:text-neon-red mb-8 block animate-pulse"></i>
-                <h2 class="text-4xl md:text-6xl font-serif font-bold leading-tight text-white/30 group-hover:text-white/100 transition-colors duration-500"
+                <h2 class="text-4xl md:text-6xl font-serif font-bold leading-tight text-slate-400 dark:text-white/30 group-hover:text-slate-900 dark:group-hover:text-white/100 transition-colors duration-500"
                     style="text-shadow: 0 0 0px transparent;">
                     "Claimora didn't just <span
                         class="text-gold-500/50 group-hover:text-gold-500 transition-all duration-300 glow-text">pay our
@@ -562,7 +590,8 @@
     </section>
 
     <!-- 12. INDUSTRY 1: FINTECH -->
-    <section id="industries" class="py-24 bg-navy-900 border-b border-white/5">
+    <section id="industries"
+        class="py-12 md:py-24 bg-white dark:bg-navy-900 border-b border-slate-200 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div class="order-2 md:order-1 reveal">
                 <!-- Content Image: Local Asset -->
@@ -571,30 +600,41 @@
             </div>
             <div class="order-1 md:order-2 reveal">
                 <div class="text-gold-500 font-bold uppercase tracking-widest text-xs mb-2">Industry Focus</div>
-                <h3 class="text-4xl font-serif font-bold text-white mb-6">FinTech & Banking</h3>
-                <p class="text-platinum-300 mb-6">From blockchain integration to neobank strategies, we help financial
+                <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6">FinTech & Banking</h3>
+                <p class="text-slate-600 dark:text-platinum-300 mb-6">From blockchain integration to neobank strategies,
+                    we help financial
                     institutions navigate the digital frontier while maintaining compliance and trust.</p>
                 <div class="flex gap-4">
-                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">DeFi</span>
-                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Cybersecurity</span>
-                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Payments</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">DeFi</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Cybersecurity</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Payments</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 13. INDUSTRY 2: HEALTHCARE -->
-    <section class="py-24 bg-navy-950 border-b border-white/5">
+    <!-- 13. INDUSTRY 2: HEALTHCARE -->
+    <section class="py-12 md:py-24 bg-gray-50 dark:bg-navy-950 border-b border-slate-200 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div class="reveal">
                 <div class="text-gold-500 font-bold uppercase tracking-widest text-xs mb-2">Industry Focus</div>
-                <h3 class="text-4xl font-serif font-bold text-white mb-6">Healthcare & Pharma</h3>
-                <p class="text-platinum-300 mb-6">Optimizing patient outcomes through data-driven operational
+                <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6">Healthcare & Pharma</h3>
+                <p class="text-slate-600 dark:text-platinum-300 mb-6">Optimizing patient outcomes through data-driven
+                    operational
                     efficiencies and accelerating R&D pipelines via AI-driven drug discovery models.</p>
                 <div class="flex gap-4">
-                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Telehealth</span>
-                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">AI Diagnostics</span>
-                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Supply Chain</span>
+                    <span
+                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Telehealth</span>
+                    <span
+                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">AI
+                        Diagnostics</span>
+                    <span
+                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Supply
+                        Chain</span>
                 </div>
             </div>
             <div class="reveal">
@@ -606,30 +646,36 @@
     </section>
 
     <!-- 14. INDUSTRY 3: ENERGY -->
-    <section class="py-24 bg-navy-900">
+    <section class="py-12 md:py-24 bg-white dark:bg-navy-900">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div class="order-2 md:order-1 reveal">
                 <!-- Content Image: Local Asset -->
-                <img src="Assets/map.jpeg"
+                <img src="Assets/energy.jpeg"
                     class="rounded-lg shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700">
             </div>
             <div class="order-1 md:order-2 reveal">
                 <div class="text-gold-500 font-bold uppercase tracking-widest text-xs mb-2">Industry Focus</div>
-                <h3 class="text-4xl font-serif font-bold text-white mb-6">Energy & Infrastructure</h3>
-                <p class="text-platinum-300 mb-6">Guiding traditional energy giants through the green transition and
+                <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6">Energy & Infrastructure
+                </h3>
+                <p class="text-slate-600 dark:text-platinum-300 mb-6">Guiding traditional energy giants through the
+                    green transition and
                     helping smart city developers build sustainable, connected infrastructure.</p>
                 <div class="flex gap-4">
-                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Renewables</span>
-                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Smart Grids</span>
-                    <span class="px-4 py-2 bg-white/5 rounded text-xs text-white">Sustainability</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Renewables</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Smart
+                        Grids</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Sustainability</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 15. CASE STUDY 1 -->
-    <section class="parallax py-32 flex items-center relative group"
-        style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2670&auto=format&fit=crop'); background-size: cover;">
+    <section class="parallax py-16 md:py-32 flex items-center relative group"
+        style="background-image: url('Assets/case1.jpeg'); background-size: cover;">
         <!-- Overlay: Light/Night Variation -->
         <div
             class="absolute inset-0 bg-navy-950/80 dark:bg-black/90 transition-opacity duration-500 group-hover:opacity-60">
@@ -646,8 +692,8 @@
     </section>
 
     <!-- 16. CASE STUDY 2 -->
-    <section class="parallax py-32 flex items-center relative group"
-        style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2670&auto=format&fit=crop'); background-size: cover;">
+    <section class="parallax py-16 md:py-32 flex items-center relative group"
+        style="background-image: url('Assets/case2.jpeg'); background-size: cover;">
         <!-- Overlay: Light/Night Variation -->
         <div
             class="absolute inset-0 bg-navy-950/80 dark:bg-black/90 transition-opacity duration-500 group-hover:opacity-60">
@@ -666,85 +712,92 @@
     </section>
 
     <!-- 17. LEADERSHIP -->
-    <section class="py-24 bg-navy-950">
+    <section class="py-12 md:py-24 bg-gray-50 dark:bg-navy-950">
         <div class="max-w-7xl mx-auto px-6 text-center mb-16">
-            <h2 class="text-4xl font-serif font-bold text-white mb-4">The Partners</h2>
-            <p class="text-platinum-500">Decades of experience at the helm of industry.</p>
+            <h2 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-4">The Partners</h2>
+            <p class="text-slate-500 dark:text-platinum-500">Decades of experience at the helm of industry.</p>
         </div>
-        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-nowrap justify-center gap-12 overflow-x-auto">
             <!-- Partner 1 -->
-            <div class="text-center group reveal">
+            <div class="text-center group reveal min-w-[200px]">
                 <div
                     class="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-2 border-white/10 group-hover:border-gold-500 transition-colors">
                     <!-- Content Image: Local Asset -->
                     <img src="Assets/13.jpeg" class="w-full h-full object-cover">
                 </div>
-                <h4 class="text-xl font-bold text-white">Eleanor Sterling</h4>
+                <h4 class="text-xl font-bold text-slate-900 dark:text-white">Eleanor Sterling</h4>
                 <p class="text-sm text-gold-500 uppercase tracking-widest">Managing Partner</p>
             </div>
             <!-- Partner 2 -->
-            <div class="text-center group reveal" style="transition-delay: 100ms;">
+            <div class="text-center group reveal min-w-[200px]" style="transition-delay: 100ms;">
                 <div
-                    class="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-2 border-white/10 group-hover:border-gold-500 transition-colors">
+                    class="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-2 border-slate-200 dark:border-white/10 group-hover:border-gold-500 transition-colors">
                     <!-- Content Image: Local Asset -->
                     <img src="Assets/17.jpeg" class="w-full h-full object-cover">
                 </div>
-                <h4 class="text-xl font-bold text-white">James Vouault</h4>
+                <h4 class="text-xl font-bold text-slate-900 dark:text-white">James Vouault</h4>
                 <p class="text-sm text-gold-500 uppercase tracking-widest">Head of Strategy</p>
             </div>
             <!-- Partner 3 -->
-            <div class="text-center group reveal" style="transition-delay: 200ms;">
+            <div class="text-center group reveal min-w-[200px]" style="transition-delay: 200ms;">
                 <div
-                    class="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-2 border-white/10 group-hover:border-gold-500 transition-colors">
+                    class="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-2 border-slate-200 dark:border-white/10 group-hover:border-gold-500 transition-colors">
                     <!-- Content Image: Local Asset -->
-                    <img src="Assets/26.jpeg" class="w-full h-full object-cover">
+                    <img src="Assets/1.jpeg" class="w-full h-full object-cover">
                 </div>
-                <h4 class="text-xl font-bold text-white">Sarah Chen</h4>
+                <h4 class="text-xl font-bold text-slate-900 dark:text-white">Sarah Chen</h4>
                 <p class="text-sm text-gold-500 uppercase tracking-widest">Digital Lead</p>
             </div>
         </div>
     </section>
 
     <!-- 18. TESTIMONIALS (Carousel Style) -->
-    <section class="py-24 bg-navy-900 border-y border-white/5 overflow-hidden">
+    <section
+        class="py-12 md:py-24 bg-white dark:bg-navy-900 border-y border-slate-200 dark:border-white/5 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 mb-12">
-            <h2 class="text-3xl font-serif font-bold text-white">Voice of the Boardroom</h2>
+            <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white">Voice of the Boardroom</h2>
         </div>
         <div class="flex gap-8 overflow-x-auto no-scrollbar px-6 pb-12 snap-x">
-            <div class="min-w-[400px] bg-navy-950 p-8 rounded-xl border border-white/5 snap-center">
+            <div
+                class="min-w-[400px] bg-slate-50 dark:bg-navy-950 p-8 rounded-xl border border-slate-200 dark:border-white/5 snap-center">
                 <div class="flex mb-4 text-gold-500 text-xs">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                         class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <p class="text-platinum-300 mb-6 italic">"The level of insight NexGen brings is unmatched. They don't
+                <p class="text-slate-600 dark:text-platinum-300 mb-6 italic">"The level of insight NexGen brings is
+                    unmatched. They don't
                     just see the data; they see the story behind it."</p>
-                <div class="font-bold text-white">CTO, Global Logistics</div>
+                <div class="font-bold text-slate-900 dark:text-white">CTO, Global Logistics</div>
             </div>
-            <div class="min-w-[400px] bg-navy-950 p-8 rounded-xl border border-white/5 snap-center">
+            <div
+                class="min-w-[400px] bg-slate-50 dark:bg-navy-950 p-8 rounded-xl border border-slate-200 dark:border-white/5 snap-center">
                 <div class="flex mb-4 text-gold-500 text-xs">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                         class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <p class="text-platinum-300 mb-6 italic">"A true partnership. They were with us in the trenches during
+                <p class="text-slate-600 dark:text-platinum-300 mb-6 italic">"A true partnership. They were with us in
+                    the trenches during
                     our most critical transition."</p>
-                <div class="font-bold text-white">Director, FinTech Startup</div>
+                <div class="font-bold text-slate-900 dark:text-white">Director, FinTech Startup</div>
             </div>
-            <div class="min-w-[400px] bg-navy-950 p-8 rounded-xl border border-white/5 snap-center">
+            <div
+                class="min-w-[400px] bg-slate-50 dark:bg-navy-950 p-8 rounded-xl border border-slate-200 dark:border-white/5 snap-center">
                 <div class="flex mb-4 text-gold-500 text-xs">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                         class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <p class="text-platinum-300 mb-6 italic">"Strategic clarity that directly translated to a 15% increase
+                <p class="text-slate-600 dark:text-platinum-300 mb-6 italic">"Strategic clarity that directly translated
+                    to a 15% increase
                     in EBITDA within one year."</p>
-                <div class="font-bold text-white">VP Operations, Energy Corp</div>
+                <div class="font-bold text-slate-900 dark:text-white">VP Operations, Energy Corp</div>
             </div>
         </div>
     </section>
 
     <!-- 19. INSIGHTS -->
-    <section id="insights" class="py-24 bg-navy-950">
+    <section id="insights" class="py-12 md:py-24 bg-gray-50 dark:bg-navy-950">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-end mb-12">
-            <h2 class="text-4xl font-serif font-bold text-white">Intelligence Brief</h2>
+            <h2 class="text-4xl font-serif font-bold text-slate-900 dark:text-white">Intelligence Brief</h2>
             <a href="#" class="text-gold-500 text-sm font-bold uppercase tracking-wide hover:underline">View All</a>
         </div>
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -755,9 +808,12 @@
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                 </div>
                 <div class="text-xs font-bold text-platinum-500 uppercase mb-2">Market Analysis</div>
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-500 transition-colors">The Future of
+                <h3
+                    class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-gold-500 transition-colors">
+                    The Future of
                     AI in Governance</h3>
-                <p class="text-sm text-platinum-300">How boardrooms are adapting to algorithmic decision making.</p>
+                <p class="text-sm text-slate-600 dark:text-platinum-300">How boardrooms are adapting to algorithmic
+                    decision making.</p>
             </article>
             <article class="group cursor-pointer">
                 <div class="h-64 overflow-hidden rounded-xl mb-4">
@@ -766,9 +822,12 @@
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                 </div>
                 <div class="text-xs font-bold text-platinum-500 uppercase mb-2">Strategy</div>
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-500 transition-colors">Beyond the
+                <h3
+                    class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-gold-500 transition-colors">
+                    Beyond the
                     Quarterly Report</h3>
-                <p class="text-sm text-platinum-300">Building long-term value in a short-term market.</p>
+                <p class="text-sm text-slate-600 dark:text-platinum-300">Building long-term value in a short-term
+                    market.</p>
             </article>
             <article class="group cursor-pointer">
                 <div class="h-64 overflow-hidden rounded-xl mb-4">
@@ -777,23 +836,28 @@
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                 </div>
                 <div class="text-xs font-bold text-platinum-500 uppercase mb-2">Economics</div>
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-gold-500 transition-colors">Navigating
+                <h3
+                    class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-gold-500 transition-colors">
+                    Navigating
                     Rate Volatility</h3>
-                <p class="text-sm text-platinum-300">Defensive strategies for the coming fiscal year.</p>
+                <p class="text-sm text-slate-600 dark:text-platinum-300">Defensive strategies for the coming fiscal
+                    year.</p>
             </article>
         </div>
     </section>
 
     <!-- 20. CTA (FINAL) -->
-    <section class="min-h-[70vh] flex items-center justify-center bg-navy-900 relative overflow-hidden">
+    <section class="min-h-[70vh] flex items-center justify-center bg-white dark:bg-navy-900 relative overflow-hidden">
         <!-- Background: Internet Image (Parallax) -->
         <div
             class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2621&auto=format&fit=crop')] bg-cover opacity-10">
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-navy-950 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-100 dark:from-navy-950 to-transparent"></div>
         <div class="max-w-4xl px-6 text-center relative z-10">
-            <h2 class="text-5xl md:text-7xl font-serif font-bold text-white mb-8">Your Next Move Defines You.</h2>
-            <p class="text-xl text-platinum-300 mb-12">The market waits for no one. Let's build your legacy today.</p>
+            <h2 class="text-5xl md:text-7xl font-serif font-bold text-slate-900 dark:text-white mb-8">Your Next Move
+                Defines You.</h2>
+            <p class="text-xl text-slate-600 dark:text-platinum-300 mb-12">The market waits for no one. Let's build your
+                legacy today.</p>
             <a href="contact.html"
                 class="inline-block px-12 py-5 bg-gradient-gold text-navy-950 font-bold text-lg rounded-full hover:scale-105 transition-transform shadow-[0_0_30px_rgba(212,175,55,0.4)]">Schedule
                 Consultation</a>
