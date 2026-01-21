@@ -19,10 +19,14 @@
                             primaryHover: '#4338CA',
                             secondary: '#10B981',
                             dark: '#0F172A',
-                            'neon-cyan': '#22D3EE',
-                            'neon-magenta': '#F50057',
-                            'neon-violet': '#A855F7',
-                            'neon-orange': '#F97316',
+                            neon: {
+                                cyan: '#64ffda',
+                                violet: '#b39ddb',
+                                magenta: '#f50057',
+                                orange: '#FF9F1C',
+                                gold: '#FFD700',
+                                green: '#00ff9d'
+                            },
                             navy: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
                             slate: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
                             teal: {
@@ -126,7 +130,7 @@
                         <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                     </button>
                     <a href="login.html"
-                        class="font-medium text-slate-600 dark:text-teal-200 hover:text-indigo-600 dark:hover:text-neon-cyan transition-colors">
+                        class="px-6 py-2 border-2 border-indigo-600 dark:border-neon-cyan text-indigo-600 dark:text-neon-cyan rounded-full font-bold hover:bg-indigo-600 hover:text-white dark:hover:bg-neon-cyan dark:hover:text-navy-900 transition-all text-sm">
                         Log In
                     </a>
                     <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
