@@ -1,4 +1,3 @@
-
 // NexGen Global Logic
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -10,8 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('theme') === 'dark' ||
         (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         htmlEl.classList.add('dark');
+        htmlEl.style.backgroundColor = 'black'; // Set initial dark mode background
     } else {
         htmlEl.classList.remove('dark');
+        htmlEl.style.backgroundColor = ''; // Reset background color
     }
 
     themeToggleBtns.forEach(btn => {
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             htmlEl.classList.toggle('dark');
             const isDark = htmlEl.classList.contains('dark');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            htmlEl.style.backgroundColor = isDark ? 'black' : ''; // Toggle background color
         });
     });
 
@@ -171,4 +173,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 2000);
         });
     }
+
+    // --- 8. NAVBAR ACTIVE INDICATOR ---
+    // --- 8. NAVBAR ACTIVE INDICATOR ---
+    /* Indicator logic removed as per user request */
+
+    // --- 9. MOBILE ACTIVE STATE ---
+    const mobileDrawerLinks = document.querySelectorAll('#mobile-drawer a');
+    const path = window.location.pathname;
+    const page = path.split('/').pop() || 'index.html';
+
+    mobileDrawerLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === page ||
+            (page === 'index.html' && href === 'index.html') ||
+            (page === 'index2.html' && href === 'index2.html') ||
+            (page === '' && href === 'index.html')) {
+            // Add active class
+            link.classList.add('text-indigo-600', 'dark:text-neon-cyan', 'font-bold');
+            link.classList.remove('text-slate-800', 'dark:text-slate-200');
+        }
+        // Dashboard special case (mobile links are exact matches usually)
+        if (page.includes('user_dashboard') && href === 'user_dashboard.html') link.classList.add('bg-indigo-50', 'dark:bg-indigo-900/30');
+        if (page.includes('admin_dashboard') && href === 'admin_dashboard.html') link.classList.add('bg-indigo-50', 'dark:bg-indigo-900/30');
+    });
+
 });

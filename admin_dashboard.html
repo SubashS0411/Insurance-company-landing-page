@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" class="scroll-smooth">
 
 <head>
@@ -101,13 +101,14 @@
 <body class="bg-slate-50 dark:bg-black text-slate-800 dark:text-slate-100 transition-colors duration-300">
 
     <!-- LIQUID GLASS HEADER -->
+    <!-- LIQUID GLASS HEADER -->
     <nav class="header-glass">
         <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
             <!-- Brand -->
             <a href="index.html" class="flex items-center gap-3 group">
                 <div
-                    class="brand-box w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
-                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    class="brand-box w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="shield-check" class="w-7 h-7"></i>
                 </div>
                 <div class="flex flex-col">
                     <span class="font-sans text-xl font-bold tracking-tight text-slate-800 dark:text-white">
@@ -117,7 +118,7 @@
             </a>
 
             <!-- Desktop Nav -->
-            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse gap-x-8">
+            <div id="desktop-menu" class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse relative gap-x-8">
                 <!-- Home Dropdown -->
                 <div class="relative group">
                     <button class="nav-link flex items-center gap-1 py-4">
@@ -125,23 +126,25 @@
                     </button>
                     <!-- Dropdown -->
                     <div
-                        class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-neutral-950 rounded-xl shadow-xl border border-slate-100 dark:border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                        class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
                         <a href="index.html"
                             class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
-                            V1 (Parallax)</a>
+                            V1
+                            (Parallax)</a>
                         <a href="index2.html"
                             class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
-                            V2 (Retro)</a>
+                            V2
+                            (Retro)</a>
                     </div>
                 </div>
 
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="about.html" class="nav-link py-4">About</a>
+                <a href="services.html" class="nav-link py-4">Services</a>
+                <a href="contact.html" class="nav-link py-4">Contact</a>
 
                 <!-- Dashboards Dropdown -->
                 <div class="relative group">
-                    <button class="nav-link flex items-center gap-1 py-4">
+                    <button class="nav-link nav-link-active flex items-center gap-1 py-4">
                         Dashboards <i data-lucide="chevron-down" class="w-4 h-4"></i>
                     </button>
                     <div
@@ -171,19 +174,33 @@
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                 </button>
-                <a href="login.html"
-                    class="px-6 py-2 border-2 border-indigo-600 dark:border-neon-cyan text-indigo-600 dark:text-neon-cyan rounded-full font-bold hover:bg-indigo-600 hover:text-white dark:hover:bg-neon-cyan dark:hover:text-navy-900 transition-all text-sm">
-                    Log In
-                </a>
-                <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
+
+                <a href="signup.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
                     Get Started
                 </a>
             </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
+            <!-- Mobile Actions & Menu (Visible on Mobile Only) -->
+            <div class="lg:hidden flex items-center gap-3">
+                <!-- Mobile RTL Toggle -->
+                <button onclick="document.getElementById('rtl-toggle').click()"
+                    class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
+                </button>
+
+                <!-- Mobile Theme Toggle -->
+                <button onclick="document.getElementById('theme-toggle').click()"
+                    class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-btn"
+                    class="p-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 text-white dark:text-white hover:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -240,27 +257,13 @@
 
                 <hr class="border-slate-100 dark:border-slate-800">
 
-                <!-- Mobile Actions -->
-                <div class="flex gap-4">
-                    <button id="mobile-theme-toggle"
-                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
-                        <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
-                    </button>
-                    <!-- Mobile RTL Toggle -->
-                    <button id="mobile-rtl-toggle"
-                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400"
-                        onclick="document.getElementById('rtl-toggle').click()">
-                        <i data-lucide="globe" class="w-5 h-5"></i> <span>RTL</span>
-                    </button>
+                <div class="mt-6 border-t border-slate-100 dark:border-slate-800 pt-6 space-y-3">
+
+                    <a href="login.html"
+                        class="block w-full py-4 text-center font-bold text-white bg-indigo-600 dark:bg-neon-cyan dark:text-navy-900 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all">
+                        Get Started
+                    </a>
                 </div>
-                <a href="login.html"
-                    class="block w-full py-4 text-center font-bold text-indigo-600 dark:text-white border-2 border-indigo-600 dark:border-white/20 rounded-xl hover:bg-indigo-50 dark:hover:bg-white/5 transition-all mb-3">
-                    Log In
-                </a>
-                <a href="login.html"
-                    class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
-                    Get Started
-                </a>
             </nav>
         </div>
     </div>
@@ -272,9 +275,13 @@
         <!-- Sidebar -->
         <!-- Sidebar -->
         <aside id="sidebar"
-            class="fixed top-20 bottom-0 ltr:left-0 rtl:right-0 z-40 w-64 lg:w-[18%] bg-white dark:bg-black ltr:border-r rtl:border-l border-gray-200 dark:border-white/10 transform ltr:-translate-x-full rtl:translate-x-full lg:ltr:translate-x-0 lg:rtl:translate-x-0 transition-transform duration-300 flex flex-col">
+            class="fixed top-20 bottom-0 ltr:left-0 rtl:right-0 z-40 w-64 md:w-[18%] bg-white dark:bg-black border-e border-gray-200 dark:border-gray-800 transform ltr:-translate-x-full rtl:translate-x-full md:ltr:translate-x-0 md:rtl:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col">
+            <div class="flex items-center justify-center h-20 border-b border-gray-200 dark:border-gray-800 lg:hidden">
+                <span
+                    class="text-2xl font-bold bg-clip-text text-transparent bg-indigo-600 dark:text-white">ADMIN</span>
+            </div>
             <div class="p-6">
-                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Main Menu</h3>
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 hidden lg:block">ADMIN</h3>
                 <nav class="space-y-2">
                     <button
                         class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-indigo-600 bg-indigo-50 dark:bg-indigo-900/20 dark:text-indigo-400 font-medium transition-all"
@@ -312,353 +319,466 @@
         </aside>
 
         <!-- Overlay -->
-        <div id="sidebar-overlay"
-            class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden glass backdrop-blur-sm transition-opacity"></div>
+        <div id="sidebar-overlay" class="fixed inset-0 top-20 bg-black/50 z-30 hidden md:hidden glass"></div>
 
         <!-- Main Content -->
-        <!-- Main Content -->
-        <main class="flex-1 lg:ms-[18%] h-full overflow-y-auto bg-slate-50 dark:bg-black p-4 md:p-8">
+        <div class="flex-1 flex flex-col md:ms-[18%] h-full overflow-y-auto">
 
-            <!-- Mobile Toggle -->
-            <button id="sidebar-toggle" class="lg:hidden mb-6 flex items-center gap-2 text-gray-500">
-                <i class="fas fa-bars text-xl"></i> <span class="font-bold">Menu</span>
-            </button>
-
-            <!-- VIEW: OVERVIEW -->
-            <div id="view-overview" class="view-section animate-fade-in">
-                <!-- Header -->
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                    <div>
-                        <h1 class="text-3xl font-bold text-navy-900 dark:text-white">Admin Console</h1>
-                        <p class="text-slate-500">Overview of system health and policy metrics.</p>
-                    </div>
-                    <div class="flex gap-3">
-                        <button
-                            class="px-4 py-2 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg text-sm font-medium shadow-sm hover:shadow transition"><i
-                                class="fas fa-download mr-2"></i> Export</button>
-                        <button
-                            class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 transition"><i
-                                class="fas fa-sync-alt mr-2"></i> Refresh</button>
-                    </div>
-                </div>
-
-                <!-- Charts Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
-
-                    <!-- 1. Revenue (Line) - Large -->
-                    <div class="chart-card">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="font-bold text-lg text-navy-900 dark:text-white">Total Premiums</h3>
-                            <span class="text-neon-cyan text-sm font-bold">+12.5% <i class="fas fa-arrow-up"></i></span>
-                        </div>
-                        <div id="chart-revenue" class="h-64 w-full relative">
-                            <div class="absolute inset-0 skeleton rounded-xl"></div>
-                        </div>
-                    </div>
-
-                    <!-- Moved: Claim Sources (Pie) -->
-                    <div class="chart-card">
-                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Claim Sources</h3>
-                        <div id="chart-device" class="h-64 relative">
-                            <div class="absolute inset-0 skeleton rounded-xl"></div>
-                        </div>
-                    </div>
-
-                    <!-- 2. Category Sales (Stacked Bar) -->
-                    <div class="chart-card">
-                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Policies by Type</h3>
-                        <div id="chart-category" class="h-80 relative">
-                            <div class="absolute inset-0 skeleton rounded-xl"></div>
-                        </div>
-                    </div>
-
-                    <!-- 3. Traffic Growth (Area) -->
-                    <div class="chart-card">
-                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Claims Volume</h3>
-                        <div id="chart-traffic" class="h-64 relative">
-                            <div class="absolute inset-0 skeleton rounded-xl"></div>
-                        </div>
-                    </div>
-
-
-
-
-
-                    <!-- 6. Conversion Funnel -->
-                    <div class="chart-card">
-                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Quote to Policy</h3>
-                        <div id="chart-funnel" class="h-64 relative">
-                            <div class="absolute inset-0 skeleton rounded-xl"></div>
-                        </div>
-                    </div>
-
-                    <!-- 7. Price vs Demand (Scatter) -->
-                    <div class="chart-card">
-                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Risk vs Premium</h3>
-                        <div id="chart-scatter" class="h-64 relative">
-                            <div class="absolute inset-0 skeleton rounded-xl"></div>
-                        </div>
-                    </div>
-
-                    <!-- 8. Top Categories (Horizontal Bar) -->
-                    <div class="chart-card">
-                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Top Coverages</h3>
-                        <div id="chart-top-cat" class="h-64 relative">
-                            <div class="absolute inset-0 skeleton rounded-xl"></div>
-                        </div>
-                    </div>
-
-                    <!-- 9. System Health (Gauge) -->
-                    <div class="chart-card">
-                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Platform Status</h3>
-                        <div id="chart-health" class="h-64 relative flex items-center justify-center">
-                            <div class="absolute inset-0 skeleton rounded-xl"></div>
-                        </div>
-                    </div>
-
-                    <!-- 10. Platform Metrics (Radar) -->
-                    <div class="chart-card">
-                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Operational Metrics</h3>
-                        <div id="chart-radar" class="h-64 relative">
-                            <div class="absolute inset-0 skeleton rounded-xl"></div>
-                        </div>
-                    </div>
-
-
-
-                </div>
+            <!-- Mobile Sidebar Toggle -->
+            <div
+                class="md:hidden p-4 pb-0 bg-white dark:bg-black border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
+                <button id="sidebar-toggle"
+                    class="text-slate-500 hover:text-indigo-600 focus:outline-none flex items-center gap-2">
+                    <i class="fas fa-bars text-xl"></i> <span class="font-bold">Dashboard Menu</span>
+                </button>
             </div>
 
-            <!-- VIEW: USERS -->
-            <div id="view-users" class="view-section hidden animate-fade-in">
-                <h1 class="text-3xl font-bold mb-6 text-navy-900 dark:text-white">Policyholder Management</h1>
-                <div
-                    class="bg-white dark:bg-neutral-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/10 overflow-hidden">
-                    <table class="w-full text-left border-collapse">
-                        <thead class="bg-slate-50 dark:bg-slate-900/50 text-xs uppercase text-slate-500 font-semibold">
-                            <tr>
-                                <th class="p-4">Policyholder</th>
-                                <th class="p-4">Status</th>
-                                <th class="p-4">Plan Type</th>
-                                <th class="p-4">Renewal Date</th>
-                                <th class="p-4 text-right">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-100 dark:divide-slate-700 text-sm">
-                            <tr class="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
-                                <td class="p-4 flex items-center gap-3">
-                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=random"
-                                        class="w-8 h-8 rounded-full">
-                                    <div>
-                                        <div class="font-bold text-navy-900 dark:text-white">John Doe</div>
-                                        <div class="text-xs text-slate-500">john@example.com</div>
-                                    </div>
-                                </td>
-                                <td class="p-4"><span
-                                        class="px-2 py-1 bg-neon-cyan/20 text-neon-cyan rounded-full text-xs font-bold border border-neon-cyan/50">Active</span>
-                                </td>
-                                <td class="p-4">Auto + Home</td>
-                                <td class="p-4 text-slate-500">Jan 12, 2027</td>
-                                <td class="p-4 text-right">
-                                    <button class="text-slate-400 hover:text-neon-cyan px-2"><i
-                                            class="fas fa-edit"></i></button>
-                                    <button class="text-slate-400 hover:text-red-600 px-2"><i
-                                            class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <!-- More rows... -->
-                            <tr class="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
-                                <td class="p-4 flex items-center gap-3">
-                                    <img src="https://ui-avatars.com/api/?name=Sarah+Smith&background=random"
-                                        class="w-8 h-8 rounded-full">
-                                    <div>
-                                        <div class="font-bold text-navy-900 dark:text-white">Sarah Smith</div>
-                                        <div class="text-xs text-slate-500">sarah@example.com</div>
-                                    </div>
-                                </td>
-                                <td class="p-4"><span
-                                        class="px-2 py-1 bg-yellow-100 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-400 rounded-full text-xs font-bold">Pending</span>
-                                </td>
-                                <td class="p-4">Life Insurance</td>
-                                <td class="p-4 text-slate-500">Feb 15, 2026</td>
-                                <td class="p-4 text-right">
-                                    <button class="text-slate-400 hover:text-neon-cyan px-2"><i
-                                            class="fas fa-edit"></i></button>
-                                    <button class="text-slate-400 hover:text-red-600 px-2"><i
-                                            class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <!-- Main Content -->
+            <main class="p-4 md:p-8">
 
-            <!-- VIEW: LISTINGS -->
-            <div id="view-listings" class="view-section hidden animate-fade-in">
-                <h1 class="text-3xl font-bold mb-6 text-navy-900 dark:text-white">Claims Review</h1>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Claim Card 1 -->
-                    <div
-                        class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-red-100 dark:border-red-900/30 relative">
-                        <div class="absolute top-4 right-4 text-red-500" title="High Priority"><i
-                                class="fas fa-exclamation-circle"></i>
-                        </div>
-                        <div class="h-40 bg-slate-100 dark:bg-slate-700 rounded-xl mb-4 overflow-hidden relative group">
-                            <img src="Assets/14.jpeg" alt="Car Accident"
-                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        </div>
-                        <h3 class="font-bold text-lg mb-1 text-navy-900 dark:text-white">Claim #4002</h3>
-                        <p class="text-sm text-slate-500 mb-4">Auto Accident - Frontal Impact</p>
-                        <div class="flex gap-2">
-                            <button
-                                class="flex-1 py-2 bg-neon-cyan/20 text-navy-900 dark:text-white rounded-lg hover:bg-neon-cyan/40 transition font-bold text-sm">Approve</button>
-                            <button
-                                class="flex-1 py-2 bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 rounded-lg hover:bg-red-100 transition font-bold text-sm">Deny</button>
-                        </div>
-                    </div>
-                    <!-- Claim Card 2 -->
-                    <div
-                        class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-yellow-100 dark:border-yellow-900/30 relative">
-                        <div class="absolute top-4 right-4 text-yellow-500" title="Under Investigation"><i
-                                class="fas fa-search"></i>
-                        </div>
-                        <div class="h-40 bg-slate-100 dark:bg-slate-700 rounded-xl mb-4 overflow-hidden relative group">
-                            <img src="Assets/15.jpeg" alt="Water Damage"
-                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        </div>
-                        <h3 class="font-bold text-lg mb-1 text-navy-900 dark:text-white">Claim #4005</h3>
-                        <p class="text-sm text-slate-500 mb-4">Property - Water Damage</p>
-                        <div class="flex gap-2">
-                            <button
-                                class="flex-1 py-2 bg-neon-cyan/20 text-navy-900 dark:text-white rounded-lg hover:bg-neon-cyan/40 transition font-bold text-sm">Approve</button>
-                            <button
-                                class="flex-1 py-2 bg-gray-100 text-gray-600 dark:bg-slate-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 transition font-bold text-sm">Hold</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- VIEW: RISK ANALYSIS -->
-            <div id="view-analytics" class="view-section hidden animate-fade-in">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                    <div>
-                        <h1 class="text-3xl font-bold text-navy-900 dark:text-white">Risk Analysis & Projections</h1>
-                        <p class="text-slate-500">AI-driven risk assessment and future modeling.</p>
-                    </div>
-                    <div class="flex gap-3">
-                        <button
-                            class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 transition">
-                            <i class="fas fa-brain mr-2"></i> Run Simulation
-                        </button>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Risk Dashboard Interface -->
-                    <div
-                        class="bg-white dark:bg-neutral-950 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-white/10 group">
-                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white flex items-center gap-2">
-                            <i class="fas fa-tachometer-alt text-neon-cyan"></i> Real-time Risk Monitoring
-                        </h3>
-                        <div
-                            class="aspect-video rounded-xl overflow-hidden bg-slate-900 relative border border-slate-200 dark:border-slate-700">
-                            <img src="Assets/dashboard.jpeg" alt="Risk Dashboard Interface"
-                                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent pointer-events-none">
-                            </div>
-                            <div class="absolute bottom-4 left-4 right-4">
-                                <div class="flex items-center justify-between text-white/80 text-xs">
-                                    <span>System Status: <span class="text-emerald-400">Optimal</span></span>
-                                    <span>Last Updated: Just now</span>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-slate-500 text-sm">
-                            Comprehensive dashboard showing real-time risk vectors, exposure levels, and predictive
-                            anomalies across our entire portfolio.
-                        </p>
-                    </div>
-
-                    <!-- Risk Heatmap -->
-                    <div
-                        class="bg-white dark:bg-neutral-950 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-white/10 group">
-                        <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white flex items-center gap-2">
-                            <i class="fas fa-map-marked-alt text-neon-magenta"></i> Geospatial Risk Heatmap
-                        </h3>
-                        <div
-                            class="aspect-video rounded-xl overflow-hidden bg-slate-900 relative border border-slate-200 dark:border-slate-700">
-                            <img src="Assets/map.jpeg" alt="Risk Heatmap"
-                                class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent pointer-events-none">
-                            </div>
-                            <div class="absolute bottom-4 left-4 right-4">
-                                <div class="flex items-center gap-4 text-white/80 text-xs">
-                                    <span class="flex items-center gap-1"><span
-                                            class="w-2 h-2 rounded-full bg-red-500"></span> High</span>
-                                    <span class="flex items-center gap-1"><span
-                                            class="w-2 h-2 rounded-full bg-yellow-400"></span> Medium</span>
-                                    <span class="flex items-center gap-1"><span
-                                            class="w-2 h-2 rounded-full bg-green-500"></span> Low</span>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-slate-500 text-sm">
-                            Geographic distribution of claims and risk factors, utilizing historical data and climate
-                            models to predict future hotspots.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- VIEW: SETTINGS -->
-            <div id="view-settings" class="view-section hidden animate-fade-in">
-                <h1 class="text-3xl font-bold mb-6">System Settings</h1>
-                <div
-                    class="bg-white dark:bg-neutral-950 rounded-3xl p-8 max-w-2xl shadow-sm border border-gray-100 dark:border-white/10">
-                    <form onsubmit="event.preventDefault();" class="space-y-6">
+                <!-- VIEW: OVERVIEW -->
+                <div id="view-overview" class="view-section scroll-mt-24 pb-12 animate-fade-in">
+                    <!-- Header -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                         <div>
-                            <label class="block text-sm font-bold mb-2">Platform Name</label>
-                            <input type="text" value="Claimora"
-                                class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 focus:ring-2 focus:ring-neon-cyan outline-none transition">
+                            <h1 class="text-3xl font-bold text-navy-900 dark:text-white">Admin Console</h1>
+                            <p class="text-slate-500">Overview of system health and policy metrics.</p>
                         </div>
+                        <div class="flex gap-3">
+                            <button
+                                class="px-4 py-2 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg text-sm font-medium shadow-sm hover:shadow transition"><i
+                                    class="fas fa-download mr-2"></i> Export</button>
+                            <button
+                                class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 transition"><i
+                                    class="fas fa-sync-alt mr-2"></i> Refresh</button>
+                        </div>
+                    </div>
 
-                        <div
-                            class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
-                            <div>
-                                <h4 class="font-bold">Maintenance Mode</h4>
-                                <p class="text-xs text-slate-500">Disable platform for all users</p>
+                    <!-- Charts Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+
+                        <!-- 1. Revenue (Line) - Large -->
+                        <div class="chart-card">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="font-bold text-lg text-navy-900 dark:text-white">Total Premiums</h3>
+                                <span class="text-neon-cyan text-sm font-bold">+12.5% <i
+                                        class="fas fa-arrow-up"></i></span>
                             </div>
-                            <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" value="" class="sr-only peer">
-                                <div
-                                    class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600">
-                                </div>
-                            </label>
-                        </div>
-
-                        <div
-                            class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
-                            <div>
-                                <h4 class="font-bold">Allow New Registrations</h4>
-                                <p class="text-xs text-slate-500">Toggle sign-up capability</p>
+                            <div id="chart-revenue" class="h-64 w-full relative">
+                                <div class="absolute inset-0 skeleton rounded-xl"></div>
                             </div>
-                            <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" value="" class="sr-only peer" checked>
-                                <div
-                                    class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500">
-                                </div>
-                            </label>
                         </div>
 
-                        <button
-                            class="w-full py-3 bg-indigo-600 text-white rounded-xl font-bold shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 transition">Save
-                            Changes</button>
-                    </form>
+                        <!-- Moved: Claim Sources (Pie) -->
+                        <div class="chart-card">
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Claim Sources</h3>
+                            <div id="chart-device" class="h-64 relative">
+                                <div class="absolute inset-0 skeleton rounded-xl"></div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Category Sales (Stacked Bar) -->
+                        <div class="chart-card">
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Policies by Type</h3>
+                            <div id="chart-category" class="h-80 relative">
+                                <div class="absolute inset-0 skeleton rounded-xl"></div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Traffic Growth (Area) -->
+                        <div class="chart-card">
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Claims Volume</h3>
+                            <div id="chart-traffic" class="h-64 relative">
+                                <div class="absolute inset-0 skeleton rounded-xl"></div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <!-- 6. Conversion Funnel -->
+                        <div class="chart-card">
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Quote to Policy</h3>
+                            <div id="chart-funnel" class="h-64 relative">
+                                <div class="absolute inset-0 skeleton rounded-xl"></div>
+                            </div>
+                        </div>
+
+                        <!-- 7. Price vs Demand (Scatter) -->
+                        <div class="chart-card">
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Risk vs Premium</h3>
+                            <div id="chart-scatter" class="h-64 relative">
+                                <div class="absolute inset-0 skeleton rounded-xl"></div>
+                            </div>
+                        </div>
+
+                        <!-- 8. Top Categories (Horizontal Bar) -->
+                        <div class="chart-card">
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Top Coverages</h3>
+                            <div id="chart-top-cat" class="h-64 relative">
+                                <div class="absolute inset-0 skeleton rounded-xl"></div>
+                            </div>
+                        </div>
+
+                        <!-- 9. System Health (Gauge) -->
+                        <div class="chart-card">
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Platform Status</h3>
+                            <div id="chart-health" class="h-64 relative flex items-center justify-center">
+                                <div class="absolute inset-0 skeleton rounded-xl"></div>
+                            </div>
+                        </div>
+
+                        <!-- 10. Platform Metrics (Radar) -->
+                        <div class="chart-card">
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Operational Metrics</h3>
+                            <div id="chart-radar" class="h-64 relative">
+                                <div class="absolute inset-0 skeleton rounded-xl"></div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
                 </div>
-            </div>
 
+                <!-- VIEW: USERS -->
+                <div id="view-users"
+                    class="view-section min-h-[80vh] scroll-mt-24 border-t border-slate-200 dark:border-white/5 pt-12 animate-fade-in">
+                    <h1 class="text-3xl font-bold mb-6 text-navy-900 dark:text-white">Policyholder Management</h1>
+                    <div
+                        class="bg-white dark:bg-neutral-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/10 overflow-hidden">
+                        <table class="w-full text-left border-collapse">
+                            <thead
+                                class="bg-slate-50 dark:bg-slate-900/50 text-xs uppercase text-slate-500 font-semibold">
+                                <tr>
+                                    <th class="p-4">Policyholder</th>
+                                    <th class="p-4">Status</th>
+                                    <th class="p-4">Plan Type</th>
+                                    <th class="p-4">Renewal Date</th>
+                                    <th class="p-4 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 dark:divide-slate-700 text-sm">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
+                                    <td class="p-4 flex items-center gap-3">
+                                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=random"
+                                            class="w-8 h-8 rounded-full">
+                                        <div>
+                                            <div class="font-bold text-navy-900 dark:text-white">John Doe</div>
+                                            <div class="text-xs text-slate-500">john@example.com</div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4"><span
+                                            class="px-2 py-1 bg-neon-cyan/20 text-neon-cyan rounded-full text-xs font-bold border border-neon-cyan/50">Active</span>
+                                    </td>
+                                    <td class="p-4">Auto + Home</td>
+                                    <td class="p-4 text-slate-500">Jan 12, 2027</td>
+                                    <td class="p-4 text-right">
+                                        <button class="text-slate-400 hover:text-neon-cyan px-2"><i
+                                                class="fas fa-edit"></i></button>
+                                        <button class="text-slate-400 hover:text-red-600 px-2"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- More rows... -->
+                                <tr class="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
+                                    <td class="p-4 flex items-center gap-3">
+                                        <img src="https://ui-avatars.com/api/?name=Sarah+Smith&background=random"
+                                            class="w-8 h-8 rounded-full">
+                                        <div>
+                                            <div class="font-bold text-navy-900 dark:text-white">Sarah Smith</div>
+                                            <div class="text-xs text-slate-500">sarah@example.com</div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4"><span
+                                            class="px-2 py-1 bg-yellow-100 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-400 rounded-full text-xs font-bold">Pending</span>
+                                    </td>
+                                    <td class="p-4">Life Insurance</td>
+                                    <td class="p-4 text-slate-500">Feb 15, 2026</td>
+                                    <td class="p-4 text-right">
+                                        <button class="text-slate-400 hover:text-neon-cyan px-2"><i
+                                                class="fas fa-edit"></i></button>
+                                        <button class="text-slate-400 hover:text-red-600 px-2"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody
+                                class="divide-y divide-gray-100 dark:divide-slate-700 text-sm border-t border-gray-100 dark:border-slate-700">
+                                <!-- New Row 1 -->
+                                <tr class="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
+                                    <td class="p-4 flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold">
+                                            MB</div>
+                                        <div>
+                                            <div class="font-bold text-navy-900 dark:text-white">Michael Brown</div>
+                                            <div class="text-xs text-slate-500">m.brown@example.com</div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4"><span
+                                            class="px-2 py-1 bg-neon-cyan/20 text-neon-cyan rounded-full text-xs font-bold border border-neon-cyan/50">Active</span>
+                                    </td>
+                                    <td class="p-4">Health Plus</td>
+                                    <td class="p-4 text-slate-500">Mar 20, 2026</td>
+                                    <td class="p-4 text-right">
+                                        <button class="text-slate-400 hover:text-neon-cyan px-2"><i
+                                                class="fas fa-edit"></i></button>
+                                        <button class="text-slate-400 hover:text-red-600 px-2"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- New Row 2 -->
+                                <tr class="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
+                                    <td class="p-4 flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-pink-100 dark:bg-pink-900/50 flex items-center justify-center text-pink-600 dark:text-pink-400 font-bold">
+                                            ED</div>
+                                        <div>
+                                            <div class="font-bold text-navy-900 dark:text-white">Emily Davis</div>
+                                            <div class="text-xs text-slate-500">emily.d@example.com</div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4"><span
+                                            class="px-2 py-1 bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 rounded-full text-xs font-bold">Expiring</span>
+                                    </td>
+                                    <td class="p-4">Auto Standard</td>
+                                    <td class="p-4 text-slate-500">Jan 30, 2026</td>
+                                    <td class="p-4 text-right">
+                                        <button class="text-slate-400 hover:text-neon-cyan px-2"><i
+                                                class="fas fa-edit"></i></button>
+                                        <button class="text-slate-400 hover:text-red-600 px-2"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- New Row 3 -->
+                                <tr class="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
+                                    <td class="p-4 flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center text-orange-600 dark:text-orange-400 font-bold">
+                                            DW</div>
+                                        <div>
+                                            <div class="font-bold text-navy-900 dark:text-white">David Wilson</div>
+                                            <div class="text-xs text-slate-500">david.w@example.com</div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4"><span
+                                            class="px-2 py-1 bg-neon-cyan/20 text-neon-cyan rounded-full text-xs font-bold border border-neon-cyan/50">Active</span>
+                                    </td>
+                                    <td class="p-4">Home Shield</td>
+                                    <td class="p-4 text-slate-500">Jul 15, 2027</td>
+                                    <td class="p-4 text-right">
+                                        <button class="text-slate-400 hover:text-neon-cyan px-2"><i
+                                                class="fas fa-edit"></i></button>
+                                        <button class="text-slate-400 hover:text-red-600 px-2"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- VIEW: LISTINGS -->
+                <div id="view-listings"
+                    class="view-section min-h-[80vh] scroll-mt-24 border-t border-slate-200 dark:border-white/5 pt-12 animate-fade-in">
+                    <h1 class="text-3xl font-bold mb-6 text-navy-900 dark:text-white">Claims Review</h1>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Claim Card 1 -->
+                        <div
+                            class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-red-100 dark:border-red-900/30 relative">
+                            <div class="absolute top-4 right-4 text-red-500" title="High Priority"><i
+                                    class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div
+                                class="h-40 bg-slate-100 dark:bg-slate-700 rounded-xl mb-4 overflow-hidden relative group">
+                                <img src="Assets/14.jpeg" alt="Car Accident"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            </div>
+                            <h3 class="font-bold text-lg mb-1 text-navy-900 dark:text-white">Claim #4002</h3>
+                            <p class="text-sm text-slate-500 mb-4">Auto Accident - Frontal Impact</p>
+                            <div class="flex gap-2">
+                                <button
+                                    class="flex-1 py-2 bg-neon-cyan/20 text-navy-900 dark:text-white rounded-lg hover:bg-neon-cyan/40 transition font-bold text-sm">Approve</button>
+                                <button
+                                    class="flex-1 py-2 bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 rounded-lg hover:bg-red-100 transition font-bold text-sm">Deny</button>
+                            </div>
+                        </div>
+                        <!-- Claim Card 2 -->
+                        <div
+                            class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-yellow-100 dark:border-yellow-900/30 relative">
+                            <div class="absolute top-4 right-4 text-yellow-500" title="Under Investigation"><i
+                                    class="fas fa-search"></i>
+                            </div>
+                            <div
+                                class="h-40 bg-slate-100 dark:bg-slate-700 rounded-xl mb-4 overflow-hidden relative group">
+                                <img src="Assets/15.jpeg" alt="Water Damage"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            </div>
+                            <h3 class="font-bold text-lg mb-1 text-navy-900 dark:text-white">Claim #4005</h3>
+                            <p class="text-sm text-slate-500 mb-4">Property - Water Damage</p>
+                            <div class="flex gap-2">
+                                <button
+                                    class="flex-1 py-2 bg-neon-cyan/20 text-navy-900 dark:text-white rounded-lg hover:bg-neon-cyan/40 transition font-bold text-sm">Approve</button>
+                                <button
+                                    class="flex-1 py-2 bg-gray-100 text-gray-600 dark:bg-slate-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 transition font-bold text-sm">Hold</button>
+                            </div>
+                        </div>
+                        <!-- Claim Card 3 (New) -->
+                        <div
+                            class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-white/10 relative">
+                            <!-- Status Icon moved out of absolute overlay to prevent blocking content -->
+                            <div class="flex justify-between items-start mb-2">
+                                <div
+                                    class="h-40 w-full bg-slate-100 dark:bg-slate-700 rounded-xl overflow-hidden relative group">
+                                    <img src="Assets/13.jpeg" alt="Business Claim"
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="font-bold text-lg text-navy-900 dark:text-white">Claim #4008</h3>
+                                <span class="text-neon-cyan text-sm font-bold" title="New Claim"><i
+                                        class="fas fa-star"></i> New</span>
+                            </div>
+                            <p class="text-sm text-slate-500 mb-4">Business Liability - Slip & Fall</p>
+                            <div class="flex gap-2">
+                                <button
+                                    class="flex-1 py-2 bg-neon-cyan/20 text-navy-900 dark:text-white rounded-lg hover:bg-neon-cyan/40 transition font-bold text-sm">Approve</button>
+                                <button
+                                    class="flex-1 py-2 bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400 rounded-lg hover:bg-blue-100 transition font-bold text-sm">Investigate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: RISK ANALYSIS -->
+                <div id="view-analytics"
+                    class="view-section min-h-[80vh] scroll-mt-24 border-t border-slate-200 dark:border-white/5 pt-12 animate-fade-in">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                        <div>
+                            <h1 class="text-3xl font-bold text-navy-900 dark:text-white">Risk Analysis & Projections
+                            </h1>
+                            <p class="text-slate-500">AI-driven risk assessment and future modeling.</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <button
+                                class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 transition">
+                                <i class="fas fa-brain mr-2"></i> Run Simulation
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Risk Dashboard Interface -->
+                        <div
+                            class="bg-white dark:bg-neutral-950 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-white/10 group">
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white flex items-center gap-2">
+                                <i class="fas fa-tachometer-alt text-neon-cyan"></i> Real-time Risk Monitoring
+                            </h3>
+                            <div
+                                class="aspect-video rounded-xl overflow-hidden bg-slate-900 relative border border-slate-200 dark:border-slate-700">
+                                <img src="Assets/dashboard.jpeg" alt="Risk Dashboard Interface"
+                                    class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent pointer-events-none">
+                                </div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <div class="flex items-center justify-between text-white/80 text-xs">
+                                        <span>System Status: <span class="text-emerald-400">Optimal</span></span>
+                                        <span>Last Updated: Just now</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-slate-500 text-sm">
+                                Comprehensive dashboard showing real-time risk vectors, exposure levels, and predictive
+                                anomalies across our entire portfolio.
+                            </p>
+                        </div>
+
+                        <!-- Risk Heatmap -->
+                        <div
+                            class="bg-white dark:bg-neutral-950 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-white/10 group">
+                            <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white flex items-center gap-2">
+                                <i class="fas fa-map-marked-alt text-neon-magenta"></i> Geospatial Risk Heatmap
+                            </h3>
+                            <div
+                                class="aspect-video rounded-xl overflow-hidden bg-slate-900 relative border border-slate-200 dark:border-slate-700">
+                                <img src="Assets/map.jpeg" alt="Risk Heatmap"
+                                    class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent pointer-events-none">
+                                </div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <div class="flex items-center gap-4 text-white/80 text-xs">
+                                        <span class="flex items-center gap-1"><span
+                                                class="w-2 h-2 rounded-full bg-red-500"></span> High</span>
+                                        <span class="flex items-center gap-1"><span
+                                                class="w-2 h-2 rounded-full bg-yellow-400"></span> Medium</span>
+                                        <span class="flex items-center gap-1"><span
+                                                class="w-2 h-2 rounded-full bg-green-500"></span> Low</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-4 text-slate-500 text-sm">
+                                Geographic distribution of claims and risk factors, utilizing historical data and
+                                climate
+                                models to predict future hotspots.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: SETTINGS -->
+                <div id="view-settings"
+                    class="view-section min-h-[80vh] scroll-mt-24 border-t border-slate-200 dark:border-white/5 pt-12 animate-fade-in">
+                    <h1 class="text-3xl font-bold mb-6">System Settings</h1>
+                    <div
+                        class="bg-white dark:bg-neutral-950 rounded-3xl p-8 max-w-2xl shadow-sm border border-gray-100 dark:border-white/10">
+                        <form onsubmit="event.preventDefault();" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-bold mb-2">Platform Name</label>
+                                <input type="text" value="Claimora"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 focus:ring-2 focus:ring-neon-cyan outline-none transition">
+                            </div>
+
+                            <div
+                                class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <div>
+                                    <h4 class="font-bold">Maintenance Mode</h4>
+                                    <p class="text-xs text-slate-500">Disable platform for all users</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" value="" class="sr-only peer">
+                                    <div
+                                        class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600">
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div
+                                class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <div>
+                                    <h4 class="font-bold">Allow New Registrations</h4>
+                                    <p class="text-xs text-slate-500">Toggle sign-up capability</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" value="" class="sr-only peer" checked>
+                                    <div
+                                        class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500">
+                                    </div>
+                                </label>
+                            </div>
+
+                            <button
+                                class="w-full py-3 bg-indigo-600 text-white rounded-xl font-bold shadow-lg shadow-indigo-500/30 hover:bg-indigo-700 transition">Save
+                                Changes</button>
+                        </form>
+                    </div>
+                </div>
+
+            </main>
             <!-- Footer -->
             <!-- NEW ANIMATED GRADIENT FOOTER -->
             <!-- NEW ANIMATED GRADIENT FOOTER -->
@@ -739,14 +859,14 @@
                     <div class="flex gap-6 mt-4 md:mt-0">
                         <a href="#" class="hover:text-white transition-colors">Terms</a>
                         <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-                        <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by Claimora</span>
+
                     </div>
                 </div>
             </footer>
             <script>
                 lucide.createIcons();
             </script>
-        </main>
+        </div>
     </div>
 
     <!-- Scripts -->
@@ -766,33 +886,77 @@
         if (sidebarToggle) sidebarToggle.addEventListener('click', toggleAdminSidebar);
         if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleAdminSidebar);
 
-        // --- 2. SPA Navigation ---
+        // --- 2. SCROLL SPY & SMOOTH SCROLL LOGIC ---
         const navItems = document.querySelectorAll('.nav-item');
-        const views = document.querySelectorAll('.view-section');
+        const sections = document.querySelectorAll('.view-section');
 
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const targetId = item.dataset.target;
+        // Styles
+        const activeClasses = ['bg-indigo-50', 'text-indigo-600', 'dark:bg-indigo-900/20', 'dark:text-indigo-400'];
+        const inactiveClasses = ['text-slate-600', 'dark:text-slate-400', 'hover:bg-slate-50', 'dark:hover:bg-slate-900'];
 
-                // Hide all views
-                views.forEach(view => view.classList.add('hidden'));
+        function setActive(targetId) {
+            navItems.forEach(item => {
+                const id = item.dataset.target;
 
-                // Show target view
-                document.getElementById(targetId).classList.remove('hidden');
-
-                // Update Active State
-                navItems.forEach(nav => {
-                    nav.classList.remove('bg-indigo-50', 'text-indigo-600', 'dark:bg-indigo-900/20', 'dark:text-indigo-400');
-                    nav.classList.add('text-gray-600', 'dark:text-gray-400');
-                });
-                item.classList.remove('text-gray-600', 'dark:text-gray-400');
-                item.classList.add('bg-indigo-50', 'text-indigo-600', 'dark:bg-indigo-900/20', 'dark:text-indigo-400');
-
-                // Close sidebar on mobile
-                if (window.innerWidth < 1024) {
-                    toggleAdminSidebar();
+                if (id === targetId) {
+                    // Activate
+                    item.classList.remove(...inactiveClasses);
+                    item.classList.add(...activeClasses);
+                } else {
+                    // Deactivate
+                    item.classList.remove(...activeClasses);
+                    item.classList.add(...inactiveClasses);
                 }
             });
+        }
+
+        // 1. CLICK SCROLLING
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = item.dataset.target;
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    // Mobile: Close sidebar
+                    if (window.innerWidth < 1024 && typeof toggleAdminSidebar === 'function') {
+                        toggleAdminSidebar();
+                    }
+
+                    // Smooth Scroll
+                    // Offset for header (h-20 = 5rem = 80px) + spacing
+                    const headerOffset = 100;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+
+                    // Manually set active state immediately
+                    setActive(targetId);
+                }
+            });
+        });
+
+        // 2. SCROLL SPY
+        const observerOptions = {
+            root: null,
+            rootMargin: '-30% 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActive(entry.target.id);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
         });
 
         // --- 3. ApexCharts Initialization ---

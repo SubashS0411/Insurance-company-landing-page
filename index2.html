@@ -76,18 +76,68 @@
     </script>
     <style>
         /* Custom Utilities for Neon Theme */
-        /* Light Mode Gradient for All Sections (except Footer) */
+        /* Custom Utilities for Neon Theme */
+        /* Light Mode Background Image (Fixed) */
+        body:not(.dark)::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1614850523060-8da1d56ae167?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -2;
+            opacity: 0.9;
+        }
+
+        /* Ensure sections are transparent to show background */
         body:not(.dark) section:not(.footer-gradient) {
-            background: linear-gradient(135deg, #fdfbf7 0%, #eef2ff 50%, #fff1f2 100%) !important;
-            /* Pastel Ivory -> Lavender -> Rose */
+            background: transparent !important;
         }
 
         body {
-            background-color: #f8fafc;
+            background-color: #000000;
         }
 
         .dark body {
             background-color: #000000;
+            position: relative;
+            /* Image handled by ::before for blur */
+        }
+
+        /* Blurred Background Image */
+        .dark body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Assets/home2.jpeg');
+            background-size: cover;
+            background-attachment: fixed;
+            filter: blur(8px);
+            z-index: -2;
+            transform: scale(1.05);
+            /* Prevent blur edges from showing */
+            pointer-events: none;
+        }
+
+        /* Black Shadow / Vignette Overlay */
+        .dark body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: inset 0 0 150px 50px #000000;
+            z-index: -1;
+            pointer-events: none;
         }
 
         body {
@@ -326,10 +376,10 @@
             </a>
 
             <!-- Desktop Nav -->
-            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+            <div id="desktop-menu" class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse relative">
                 <!-- Home Dropdown -->
                 <div class="relative group">
-                    <button class="nav-link flex items-center gap-1 py-4">
+                    <button class="nav-link nav-link-active flex items-center gap-1 py-4">
                         Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
                     </button>
                     <!-- Dropdown -->
@@ -369,7 +419,7 @@
                 </div>
             </div>
 
-            <!-- Action Buttons -->
+            <!-- Action Buttons (Desktop) -->
             <div class="hidden lg:flex items-center gap-4">
                 <button id="rtl-toggle"
                     class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
@@ -386,7 +436,7 @@
                     class="px-6 py-2 border-2 border-indigo-600 dark:border-neon-cyan text-indigo-600 dark:text-neon-cyan rounded-full font-bold hover:bg-indigo-600 hover:text-white dark:hover:bg-neon-cyan dark:hover:text-navy-900 transition-all text-sm">
                     Log In
                 </a>
-                <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
+                <a href="signup.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
                     Get Started
                 </a>
             </div>
@@ -465,13 +515,12 @@
 
                 <hr class="border-slate-100 dark:border-slate-800">
 
-                <!-- Mobile Actions -->
                 <div class="mt-6 border-t border-slate-100 dark:border-slate-800 pt-6 space-y-3">
                     <a href="login.html"
                         class="block w-full py-4 text-center font-bold text-indigo-600 dark:text-neon-cyan border-2 border-indigo-600 dark:border-neon-cyan rounded-xl hover:bg-indigo-50 dark:hover:bg-neon-cyan/10 transition-all">
                         Log In
                     </a>
-                    <a href="login.html"
+                    <a href="signup.html"
                         class="block w-full py-4 text-center font-bold text-white bg-indigo-600 dark:bg-neon-cyan dark:text-navy-900 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all">
                         Get Started
                     </a>
@@ -483,7 +532,7 @@
     <!-- 1. STRATEGIC INTELLIGENCE HUB (HERO) -->
     <section class="min-h-screen pt-20 relative flex items-center justify-center overflow-hidden">
         <!-- Background Elements -->
-        <div class="absolute inset-0 bg-white dark:bg-navy-900 z-0 transition-colors duration-500"></div>
+        <div class="absolute inset-0 bg-white dark:bg-navy-900/50 z-0 transition-colors duration-500"></div>
         <div
             class="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-100 dark:bg-neon-cyan/5 rounded-full blur-[100px] pointer-events-none transition-colors duration-500">
         </div>
@@ -542,6 +591,7 @@
                                 <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: 6px">
                                 <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: 8px">
                                 <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: 10px">
+
                                 <!-- Inner Core Glow -->
                                 <div class="absolute inset-0 bg-purple-500/20 rounded-full blur-2xl animate-pulse">
                                 </div>
@@ -585,11 +635,13 @@
     </section>
 
     <!-- 2. MARKET SIGNALS (HORIZONTAL SCROLL) -->
-    <section id="signals" class="py-24 bg-slate-50 dark:bg-black overflow-hidden transition-colors duration-500">
+    <section id="signals" class="py-24 bg-slate-50 dark:bg-navy-900/50 overflow-hidden transition-colors duration-500">
         <div class="text-center w-full mb-16">
-            <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-slate-lightest">
+            <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-slate-lightest mb-4">
                 Risk We Monitor</h2>
-
+            <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                Comprehensive analysis of potential threats to your personal and professional stability.
+            </p>
         </div>
 
         <!-- Static Grid Container -->
@@ -598,8 +650,9 @@
             <div class="min-w-[220px] h-[320px] flip-card group cursor-pointer hover:scale-105 transition-transform duration-300"
                 onclick="this.classList.toggle('flipped')">
                 <div class="flip-card-inner">
-                    <div
-                        class="flip-card-front bg-white/5 dark:bg-black/50 backdrop-blur-md border border-slate-200 dark:border-white/5 box-glow rounded-[18px] p-4 shadow-sm hover:shadow-neon-cyan/20 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                    <div class="flip-card-front bg-gradient-to-br from-white to-indigo-50 dark:from-black dark:to-black backdrop-blur-md border border-slate-200
+                    dark:border-white/5 box-glow rounded-[18px] p-4 shadow-sm hover:shadow-neon-cyan/20 transition-all
+                    duration-300 flex flex-col justify-between overflow-hidden">
                         <div class="w-full h-32 rounded-xl overflow-hidden mb-4">
                             <img src="Assets/book.jpeg"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -612,7 +665,7 @@
                         </div>
                     </div>
                     <div
-                        class="flip-card-back bg-white dark:bg-black rounded-[18px] p-6 border border-slate-200 dark:border-neon-cyan flex flex-col items-center">
+                        class="flip-card-back bg-gradient-to-br from-white to-slate-100 dark:from-black dark:to-black rounded-[18px] p-6 border border-slate-200 dark:border-neon-cyan flex flex-col items-center">
                         <div class="flex items-center gap-2 mb-4 opacity-80">
                             <div
                                 class="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center text-white text-[10px]">
@@ -621,7 +674,7 @@
                             <span class="font-bold text-sm text-slate-900 dark:text-white">Claimora</span>
                         </div>
                         <h4
-                            class="font-mono text-indigo-600 dark:text-neon-cyan mb-2 text-sm border-b border-slate-200 dark:border-white/10 w-full pb-1">
+                            class="font-mono text-indigo-600 dark:text-neon-cyan mb-2 text-sm border-b border-slate-200 dark:border-white/10 w-full pb-1 text-center">
                             Life Changes</h4>
                         <ul
                             class="text-left text-xs space-y-2 text-slate-600 dark:text-slate-light list-disc pl-4 w-full">
@@ -638,8 +691,9 @@
             <div class="min-w-[220px] h-[320px] flip-card group cursor-pointer hover:scale-105 transition-transform duration-300"
                 onclick="this.classList.toggle('flipped')">
                 <div class="flip-card-inner">
-                    <div
-                        class="flip-card-front bg-white/5 dark:bg-black/50 backdrop-blur-md border border-slate-200 dark:border-white/5 box-glow rounded-[18px] p-4 shadow-sm hover:shadow-neon-violet/20 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                    <div class="flip-card-front bg-gradient-to-br from-white to-purple-50 dark:from-black dark:to-black backdrop-blur-md border border-slate-200
+                    dark:border-white/5 box-glow rounded-[18px] p-4 shadow-sm hover:shadow-neon-violet/20 transition-all
+                    duration-300 flex flex-col justify-between overflow-hidden">
                         <div class="w-full h-32 rounded-xl overflow-hidden mb-4">
                             <img src="Assets/money.jpeg"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -652,19 +706,19 @@
                         </div>
                     </div>
                     <div
-                        class="flip-card-back bg-slate-900 dark:bg-black rounded-[18px] p-6 border border-purple-500 dark:border-neon-violet flex flex-col items-center">
+                        class="flip-card-back bg-gradient-to-br from-white to-purple-50 dark:from-black dark:to-black rounded-[18px] p-6 border border-purple-500 dark:border-neon-violet flex flex-col items-center">
                         <div class="flex items-center gap-2 mb-4 opacity-80">
                             <div
                                 class="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center text-white text-[10px]">
                                 <i class="fas fa-shield-check"></i>
                             </div>
-                            <span class="font-bold text-sm text-white">Claimora</span>
+                            <span class="font-bold text-sm text-slate-900 dark:text-white">Claimora</span>
                         </div>
                         <h4
-                            class="font-mono text-purple-400 dark:text-neon-violet mb-2 text-sm border-b border-white/10 w-full pb-1">
+                            class="font-mono text-purple-600 dark:text-neon-violet mb-2 text-sm border-b border-slate-200 dark:border-white/10 w-full pb-1 text-center">
                             Wealth Pres.</h4>
                         <ul
-                            class="text-left text-xs space-y-2 text-slate-300 dark:text-slate-light list-disc pl-4 w-full">
+                            class="text-left text-xs space-y-2 text-slate-600 dark:text-slate-light list-disc pl-4 w-full">
                             <li>Asset Protection</li>
                             <li>Legacy Planning</li>
                             <li>Inflation Hedging</li>
@@ -678,8 +732,9 @@
             <div class="min-w-[220px] h-[320px] flip-card group cursor-pointer hover:scale-105 transition-transform duration-300"
                 onclick="this.classList.toggle('flipped')">
                 <div class="flip-card-inner">
-                    <div
-                        class="flip-card-front bg-white/5 dark:bg-black/50 backdrop-blur-md border border-slate-200 dark:border-white/5 box-glow rounded-[18px] p-4 shadow-sm hover:shadow-neon-magenta/20 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                    <div class="flip-card-front bg-gradient-to-br from-white to-rose-50 dark:from-black dark:to-black backdrop-blur-md border border-slate-200
+                    dark:border-white/5 box-glow rounded-[18px] p-4 shadow-sm hover:shadow-neon-magenta/20 transition-all
+                    duration-300 flex flex-col justify-between overflow-hidden">
                         <div class="w-full h-32 rounded-xl overflow-hidden mb-4">
                             <img src="Assets/chip.jpeg"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -692,19 +747,19 @@
                         </div>
                     </div>
                     <div
-                        class="flip-card-back bg-slate-900 dark:bg-black rounded-[18px] p-6 border border-rose-500 dark:border-neon-magenta flex flex-col items-center">
+                        class="flip-card-back bg-gradient-to-br from-white to-rose-50 dark:from-black dark:to-black rounded-[18px] p-6 border border-rose-500 dark:border-neon-magenta flex flex-col items-center">
                         <div class="flex items-center gap-2 mb-4 opacity-80">
                             <div
                                 class="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center text-white text-[10px]">
                                 <i class="fas fa-shield-check"></i>
                             </div>
-                            <span class="font-bold text-sm text-white">Claimora</span>
+                            <span class="font-bold text-sm text-slate-900 dark:text-white">Claimora</span>
                         </div>
                         <h4
-                            class="font-mono text-rose-400 dark:text-neon-magenta mb-2 text-sm border-b border-white/10 w-full pb-1">
+                            class="font-mono text-rose-600 dark:text-neon-magenta mb-2 text-sm border-b border-slate-200 dark:border-white/10 w-full pb-1 text-center">
                             Cyber Risks</h4>
                         <ul
-                            class="text-left text-xs space-y-2 text-slate-300 dark:text-slate-light list-disc pl-4 w-full">
+                            class="text-left text-xs space-y-2 text-slate-600 dark:text-slate-light list-disc pl-4 w-full">
                             <li>Data Breach</li>
                             <li>Identity Theft</li>
                             <li>Ransomware</li>
@@ -718,8 +773,9 @@
             <div class="min-w-[220px] h-[320px] flip-card group cursor-pointer hover:scale-105 transition-transform duration-300"
                 onclick="this.classList.toggle('flipped')">
                 <div class="flip-card-inner">
-                    <div
-                        class="flip-card-front bg-white/5 dark:bg-black/50 backdrop-blur-md border border-slate-200 dark:border-white/5 box-glow rounded-[18px] p-4 shadow-sm hover:shadow-neon-cyan/20 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                    <div class="flip-card-front bg-gradient-to-br from-white to-teal-50 dark:from-black dark:to-black backdrop-blur-md border border-slate-200
+                    dark:border-white/5 box-glow rounded-[18px] p-4 shadow-sm hover:shadow-neon-cyan/20 transition-all
+                    duration-300 flex flex-col justify-between overflow-hidden">
                         <div class="w-full h-32 rounded-xl overflow-hidden mb-4">
                             <img src="Assets/travel.jpeg"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -732,19 +788,19 @@
                         </div>
                     </div>
                     <div
-                        class="flip-card-back bg-slate-900 dark:bg-black rounded-[18px] p-6 border border-indigo-500 dark:border-neon-cyan flex flex-col items-center">
+                        class="flip-card-back bg-gradient-to-br from-white to-teal-50 dark:from-black dark:to-black rounded-[18px] p-6 border border-indigo-500 dark:border-neon-cyan flex flex-col items-center">
                         <div class="flex items-center gap-2 mb-4 opacity-80">
                             <div
                                 class="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center text-white text-[10px]">
                                 <i class="fas fa-shield-check"></i>
                             </div>
-                            <span class="font-bold text-sm text-white">Claimora</span>
+                            <span class="font-bold text-sm text-slate-900 dark:text-white">Claimora</span>
                         </div>
                         <h4
-                            class="font-mono text-indigo-400 dark:text-neon-cyan mb-2 text-sm border-b border-white/10 w-full pb-1">
+                            class="font-mono text-teal-600 dark:text-neon-cyan mb-2 text-sm border-b border-slate-200 dark:border-white/10 w-full pb-1 text-center">
                             Travel</h4>
                         <ul
-                            class="text-left text-xs space-y-2 text-slate-300 dark:text-slate-light list-disc pl-4 w-full">
+                            class="text-left text-xs space-y-2 text-slate-600 dark:text-slate-light list-disc pl-4 w-full">
                             <li>Trip Cancellation</li>
                             <li>Medical Evac</li>
                             <li>Lost Baggage</li>
@@ -759,7 +815,7 @@
 
     <!-- 3. INSURANCE PRODUCTS (GRID) -->
     <section id="engines"
-        class="py-24 relative bg-slate-50 dark:bg-black overflow-hidden transition-colors duration-500">
+        class="py-24 relative bg-slate-50 dark:bg-black/50 overflow-hidden transition-colors duration-500">
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
             <img src="Assets/bg3.jpeg" class="w-full h-full object-cover opacity-5 dark:opacity-20" alt="Background">
@@ -768,7 +824,7 @@
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-slate-lightest mb-2">
                 Insurance Products</h2>
-            <p class="font-mono text-indigo-700 dark:text-neon-cyan mb-12">// Modular coverage, measurable peace of mind
+            <p class="font-mono text-indigo-700 dark:text-neon-cyan mb-12"> Modular coverage, measurable peace of mind
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -907,7 +963,7 @@
     </section>
 
     <!-- 3. STRATEGIC TECH (NEW) -->
-    <section class="py-24 bg-white dark:bg-black overflow-hidden">
+    <section class="py-24 bg-white dark:bg-black/50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
             <!-- Image Side (Left LTR, Right RTL) -->
             <div class="w-full lg:w-1/2 relative lg:order-1 rtl:lg:order-2">
@@ -924,14 +980,14 @@
             </div>
             <!-- Text Side (Right LTR, Left RTL) -->
             <div class="w-full lg:w-1/2 lg:order-2 rtl:lg:order-1 text-left rtl:text-right">
-                <h2 class="text-3xl font-display font-bold text-navy-900 dark:text-slate-lightest mb-6"><span
-                        class="text-neon-cyan">03.</span> Powered by AI & Speed</h2>
+                <h2 class="text-3xl font-display font-bold text-navy-900 dark:text-slate-lightest mb-6">
+                    Powered by AI & Speed</h2>
                 <p class="text-slate-600 dark:text-slate-light mb-8 text-lg leading-relaxed">
                     We leverage cutting-edge AI to assess risks instantly. Our proprietary tech ensures your coverage is
                     precise, affordable, and approved in seconds.
                 </p>
                 <ul class="space-y-6">
-                    <li class="flex items-start gap-4 rtl:flex-row-reverse">
+                    <li class="flex items-start gap-4">
                         <div
                             class="w-12 h-12 rounded bg-navy-800 border border-neon-cyan flex items-center justify-center text-neon-cyan shrink-0 shadow-[0_0_15px_rgba(100,255,218,0.2)]">
                             <i class="fas fa-microchip text-xl"></i>
@@ -943,7 +999,7 @@
                             </p>
                         </div>
                     </li>
-                    <li class="flex items-start gap-4 rtl:flex-row-reverse">
+                    <li class="flex items-start gap-4">
                         <div
                             class="w-12 h-12 rounded bg-navy-800 border border-neon-violet flex items-center justify-center text-neon-violet shrink-0 shadow-[0_0_15px_rgba(179,157,219,0.2)]">
                             <i class="fas fa-shield-alt text-xl"></i>
@@ -961,7 +1017,7 @@
     </section>
 
     <!-- 5. INDUSTRIES (SECTOR WE COVER - WAVE LAYOUT) -->
-    <section id="industries" class="py-24 bg-slate-50 dark:bg-black transition-colors duration-500 overflow-visible">
+    <section id="industries" class="py-24 bg-slate-50 dark:bg-black/50 transition-colors duration-500 overflow-visible">
         <div class="max-w-7xl mx-auto px-6 text-center mb-24">
             <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-slate-lightest">
                 Sectors We Cover</h2>
@@ -1094,7 +1150,7 @@
     </section>
 
     <!-- 6. TIMELINE (From Quote to Claim) -->
-    <section class="py-24 bg-white dark:bg-black relative overflow-hidden transition-colors duration-500">
+    <section class="py-24 bg-white dark:bg-black/50 relative overflow-hidden transition-colors duration-500">
         <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-16 items-center justify-center">
 
             <!-- Image Side (Vertical Staggered Stack) -->
@@ -1244,7 +1300,7 @@
     </section>
 
     <!-- 7. INTELLIGENCE DASHBOARD -->
-    <section class="py-24 bg-slate-50 dark:bg-black">
+    <section class="py-24 bg-slate-50 dark:bg-black/50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex items-center justify-between mb-12">
                 <h2 class="text-3xl font-display font-bold text-navy-900 dark:text-slate-lightest">
@@ -1428,33 +1484,37 @@
     </section>
 
     <!-- 8. PROOF (NUMBERS) - Merged into Dashboard above partially, adding distinct section as requested -->
-    <section class="py-24 bg-white dark:bg-black border-t border-navy-900/5 dark:border-white/5">
+    <section class="py-24 bg-white dark:bg-black/50 border-t border-navy-900/5 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-display font-bold text-navy-900 dark:text-slate-lightest mb-16"> Outcomes that
                 Speak</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
                 <div>
-                    <div class="text-5xl font-bold text-navy-900 dark:text-white mb-2">$10B+</div>
-                    <p class="text-neon-cyan font-mono text-xs">Value Created</p>
+                    <div class="text-5xl font-bold text-neon-magenta mb-2">$<span class="counter-num"
+                            data-target="10">0</span>B+</div>
+                    <p class="text-neon-magenta font-mono text-xs">Value Created</p>
                 </div>
                 <div>
-                    <div class="text-5xl font-bold text-navy-900 dark:text-white mb-2">500+</div>
-                    <p class="text-neon-violet font-mono text-xs">Strategies Deployed</p>
+                    <div class="text-5xl font-bold text-green-700 dark:text-green-500 mb-2"><span class="counter-num"
+                            data-target="500">0</span>+</div>
+                    <p class="text-green-700 dark:text-green-500 font-mono text-xs">Strategies Deployed</p>
                 </div>
                 <div>
-                    <div class="text-5xl font-bold text-navy-900 dark:text-white mb-2">40</div>
+                    <div class="text-5xl font-bold text-neon-magenta mb-2"><span class="counter-num"
+                            data-target="40">0</span>+</div>
                     <p class="text-neon-magenta font-mono text-xs">Years Legacy</p>
                 </div>
                 <div>
-                    <div class="text-5xl font-bold text-navy-900 dark:text-white mb-2">120</div>
-                    <p class="text-navy-900 dark:text-white font-mono text-xs">Partner Firms</p>
+                    <div class="text-5xl font-bold text-green-700 dark:text-green-500 mb-2"><span class="counter-num"
+                            data-target="120">0</span>+</div>
+                    <p class="text-green-700 dark:text-green-500 font-mono text-xs">Partner Firms</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 9. ENGAGEMENT MODELS (TABS) -->
-    <section id="engagement-section" class="py-24 bg-slate-50 dark:bg-black transition-colors duration-700">
+    <section id="engagement-section" class="py-24 bg-slate-50 dark:bg-black/50 transition-colors duration-700">
         <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-16 items-center">
             <div class="w-full lg:w-1/2">
                 <h2 class="text-3xl font-display font-bold text-navy-900 dark:text-slate-lightest mb-12 text-left">
@@ -1577,20 +1637,20 @@
                         // If we wanted to change the section bg, we'd target the parent section. 
                         // But the prompt says "Background changes... Smooth animated transition".
                         // I'll assume the section ID 9 has an ID or class to target.
-                        document.getElementById('engagement-section').className = "py-24 transition-colors duration-700 bg-pastel-violet dark:bg-vibrant-ultra-violet";
+                        document.getElementById('engagement-section').className = "py-24 transition-colors duration-700 bg-pastel-violet dark:bg-black";
                     } else if (tabName === 'transform') {
                         evt.currentTarget.classList.add("text-neon-violet", "border-neon-violet");
-                        document.getElementById('engagement-section').className = "py-24 transition-colors duration-700 bg-pastel-sky dark:bg-vibrant-royal-indigo";
+                        document.getElementById('engagement-section').className = "py-24 transition-colors duration-700 bg-pastel-sky dark:bg-black";
                     } else if (tabName === 'embedded') {
                         evt.currentTarget.classList.add("text-neon-magenta", "border-neon-magenta");
-                        document.getElementById('engagement-section').className = "py-24 transition-colors duration-700 bg-pastel-rose dark:bg-vibrant-magenta-fusion";
+                        document.getElementById('engagement-section').className = "py-24 transition-colors duration-700 bg-pastel-rose dark:bg-black";
                     }
                 }
             </script>
     </section>
 
     <!-- 10. CLIENT GALAXY (TESTIMONIALS) -->
-    <section class="py-24 bg-white dark:bg-black transition-colors duration-500">
+    <section class="py-24 bg-white dark:bg-black/50 transition-colors duration-500">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h4 class="font-mono text-indigo-600 dark:text-neon-cyan mb-4"></h4>
@@ -1670,7 +1730,7 @@
 
 
     <!-- 11. KNOWLEDGE DROPS -->
-    <section class="py-24 bg-slate-50 dark:bg-black transition-colors duration-500">
+    <section class="py-24 bg-slate-50 dark:bg-black/50 transition-colors duration-500">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex items-center justify-between mb-12">
                 <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-slate-lightest">Knowledge Drops</h2>
@@ -1681,46 +1741,71 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Drop 1 -->
                 <div
-                    class="glass-panel p-8 rounded-xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-white/5 hover:border-indigo-400 dark:hover:border-neon-cyan hover:shadow-[0_0_20px_rgba(100,255,218,0.1)] transition duration-300 group cursor-pointer relative overflow-hidden">
-                    <div class="text-indigo-600 dark:text-neon-cyan font-mono text-xs mb-4">// REPORT</div>
-                    <h3
-                        class="text-xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-neon-cyan transition-colors">
-                        The Future of Algorithmic Risk
-                    </h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">How AI is rewriting the rules of
-                        underwriting.</p>
-                    <div
-                        class="mt-4 w-12 h-1 bg-indigo-500 dark:bg-neon-cyan group-hover:w-full transition-all duration-500 rounded-full">
+                    class="glass-panel rounded-xl bg-white dark:bg-black border border-slate-200 dark:border-white/5 hover:border-indigo-400 dark:hover:border-neon-cyan hover:shadow-[0_0_20px_rgba(100,255,218,0.1)] transition duration-300 group cursor-pointer relative overflow-hidden flex flex-col">
+                    <div class="h-48 w-full overflow-hidden relative">
+                        <img src="Assets/case1.jpeg"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 left-4 bg-indigo-600/90 backdrop-blur-sm text-white font-mono text-xs px-2 py-1 rounded">
+                            // REPORT</div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3
+                            class="text-xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-neon-cyan transition-colors">
+                            The Future of Algorithmic Risk
+                        </h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-1">How AI is rewriting the rules
+                            of
+                            underwriting in the modern era.</p>
+                        <div
+                            class="w-12 h-1 bg-indigo-500 dark:bg-neon-cyan group-hover:w-full transition-all duration-500 rounded-full">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Drop 2 -->
                 <div
-                    class="glass-panel p-8 rounded-xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-white/5 hover:border-purple-400 dark:hover:border-neon-violet hover:shadow-[0_0_20px_rgba(179,157,219,0.1)] transition duration-300 group cursor-pointer relative overflow-hidden">
-                    <div class="text-purple-600 dark:text-neon-violet font-mono text-xs mb-4">// STRATEGY</div>
-                    <h3
-                        class="text-xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-neon-violet transition-colors">
-                        Supply Chain Resilience 2026
-                    </h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Decoupling supply from geopolitical risk.
-                    </p>
-                    <div
-                        class="mt-4 w-12 h-1 bg-purple-500 dark:bg-neon-violet group-hover:w-full transition-all duration-500 rounded-full">
+                    class="glass-panel rounded-xl bg-white dark:bg-black border border-slate-200 dark:border-white/5 hover:border-purple-400 dark:hover:border-neon-violet hover:shadow-[0_0_20px_rgba(179,157,219,0.1)] transition duration-300 group cursor-pointer relative overflow-hidden flex flex-col">
+                    <div class="h-48 w-full overflow-hidden relative">
+                        <img src="Assets/case2.jpeg"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 left-4 bg-purple-600/90 backdrop-blur-sm text-white font-mono text-xs px-2 py-1 rounded">
+                            // STRATEGY</div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3
+                            class="text-xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-neon-violet transition-colors">
+                            Supply Chain Resilience 2026
+                        </h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-1">Decoupling supply from
+                            geopolitical risk strategies.</p>
+                        <div
+                            class="w-12 h-1 bg-purple-500 dark:bg-neon-violet group-hover:w-full transition-all duration-500 rounded-full">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Drop 3 -->
                 <div
-                    class="glass-panel p-8 rounded-xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-white/5 hover:border-rose-400 dark:hover:border-neon-magenta hover:shadow-[0_0_20px_rgba(245,0,87,0.1)] transition duration-300 group cursor-pointer relative overflow-hidden">
-                    <div class="text-rose-600 dark:text-neon-magenta font-mono text-xs mb-4">// PEOPLE</div>
-                    <h3
-                        class="text-xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-rose-600 dark:group-hover:text-neon-magenta transition-colors">
-                        Cognitive Diversity in Leadership
-                    </h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Building teams that think differently.
-                    </p>
-                    <div
-                        class="mt-4 w-12 h-1 bg-rose-500 dark:bg-neon-magenta group-hover:w-full transition-all duration-500 rounded-full">
+                    class="glass-panel rounded-xl bg-white dark:bg-black border border-slate-200 dark:border-white/5 hover:border-rose-400 dark:hover:border-neon-magenta hover:shadow-[0_0_20px_rgba(245,0,87,0.1)] transition duration-300 group cursor-pointer relative overflow-hidden flex flex-col">
+                    <div class="h-48 w-full overflow-hidden relative">
+                        <img src="Assets/bg7.jpeg"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 left-4 bg-rose-600/90 backdrop-blur-sm text-white font-mono text-xs px-2 py-1 rounded">
+                            // PEOPLE</div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3
+                            class="text-xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-rose-600 dark:group-hover:text-neon-magenta transition-colors">
+                            Cognitive Diversity in Leadership
+                        </h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-1">Building teams that think
+                            differently and innovate.</p>
+                        <div
+                            class="w-12 h-1 bg-rose-500 dark:bg-neon-magenta group-hover:w-full transition-all duration-500 rounded-full">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1740,7 +1825,8 @@
     <!-- 13. CTA -->
     <section class="py-24 bg-black border-t border-white/5">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-display font-bold text-slate-lightest mb-6">Let's Design Your Advantage</h2>
+            <h2 class="text-3xl font-display font-bold text-pink-500 dark:text-slate-lightest mb-6">Let's Design Your
+                Advantage</h2>
             <p class="text-slate-light mb-12">The gap between strategy and execution is where we live.</p>
             <a href="contact.html"
                 class="inline-block px-12 py-5 bg-neon-cyan text-navy-900 font-bold uppercase tracking-widest text-lg rounded shadow-[0_0_30px_rgba(100,255,218,0.4)] hover:shadow-[0_0_50px_rgba(100,255,218,0.6)] hover:-translate-y-1 transition duration-300 animate-pulse-slow">
@@ -1824,7 +1910,7 @@
             <div class="flex gap-6 mt-4 md:mt-0">
                 <a href="#" class="hover:text-white transition-colors">Terms</a>
                 <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-                <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by Claimora</span>
+
             </div>
         </div>
     </footer>

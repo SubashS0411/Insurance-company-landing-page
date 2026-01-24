@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" class="scroll-smooth dark">
 
 <head>
@@ -209,7 +209,7 @@
             </a>
 
             <!-- Desktop Nav -->
-            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse gap-x-8">
+            <div id="desktop-menu" class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse relative gap-x-8">
                 <!-- Home Dropdown -->
                 <div class="relative group">
                     <button class="nav-link flex items-center gap-1 py-4">
@@ -220,16 +220,19 @@
                         class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
                         <a href="index.html"
                             class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
-                            V1 (Parallax)</a>
+                            V1
+                            (Parallax)</a>
                         <a href="index2.html"
                             class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
-                            V2 (Retro)</a>
+                            V2
+                            (Retro)</a>
                     </div>
                 </div>
 
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link text-indigo-600 dark:text-neon-cyan font-bold">Services</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="about.html" class="nav-link py-4">About</a>
+                <a href="services.html"
+                    class="nav-link nav-link-active text-indigo-600 dark:text-neon-cyan font-bold py-4">Services</a>
+                <a href="contact.html" class="nav-link py-4">Contact</a>
 
                 <!-- Dashboards Dropdown -->
                 <div class="relative group">
@@ -267,30 +270,30 @@
                     class="px-6 py-2 border-2 border-indigo-600 dark:border-neon-cyan text-indigo-600 dark:text-neon-cyan rounded-full font-bold hover:bg-indigo-600 hover:text-white dark:hover:bg-neon-cyan dark:hover:text-navy-900 transition-all text-sm">
                     Log In
                 </a>
-                <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
+                <a href="signup.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
                     Get Started
                 </a>
             </div>
 
-            <!-- Mobile Actions (RTL + Theme + Menu) -->
+            <!-- Mobile Actions & Menu (Visible on Mobile Only) -->
             <div class="lg:hidden flex items-center gap-3">
                 <!-- Mobile RTL Toggle -->
                 <button onclick="document.getElementById('rtl-toggle').click()"
-                    class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                    class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
                     <i data-lucide="globe" class="w-5 h-5"></i>
                 </button>
 
                 <!-- Mobile Theme Toggle -->
                 <button onclick="document.getElementById('theme-toggle').click()"
-                    class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                    class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                 </button>
 
-                <!-- Mobile Menu Button -->
+                <!-- Mobile Menu Toggle -->
                 <button id="mobile-menu-btn"
-                    class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/30">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                    class="p-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 text-white dark:text-white hover:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
             </div>
         </div>
@@ -354,7 +357,7 @@
                         class="block w-full py-4 text-center font-bold text-indigo-600 dark:text-neon-cyan border-2 border-indigo-600 dark:border-neon-cyan rounded-xl hover:bg-indigo-50 dark:hover:bg-neon-cyan/10 transition-all">
                         Log In
                     </a>
-                    <a href="login.html"
+                    <a href="signup.html"
                         class="block w-full py-4 text-center font-bold text-white bg-indigo-600 dark:bg-neon-cyan dark:text-navy-900 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all">
                         Get Started
                     </a>
@@ -397,7 +400,9 @@
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-neon-cyan"></span>
                     </span>
-                    <span class="text-xs font-mono text-neon-cyan uppercase tracking-wider">Next-Gen Protection</span>
+                    <span
+                        class="text-xs font-mono text-black dark:text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] uppercase tracking-wider">Next-Gen
+                        Protection</span>
                 </div>
 
                 <h1 class="text-5xl md:text-7xl font-display font-bold leading-tight text-vibrant-electric-purple dark:text-white animate-slide-in-up"
@@ -948,7 +953,7 @@
                                         class="absolute inset-0 backdrop-blur-sm border border-pink-200 dark:border-neon-magenta/30 rounded-xl">
                                     </div>
                                     <div
-                                        class="p-6 relative z-10 flex flex-row-reverse justify-between items-center h-full">
+                                        class="p-6 relative z-10 flex flex-row-reverse justify-between items-center h-full gap-4">
                                         <div
                                             class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center text-white shadow-lg shadow-pink-500/30">
                                             <i class="fas fa-heartbeat text-3xl"></i>
@@ -969,7 +974,7 @@
                                         class="absolute inset-0 backdrop-blur-sm border border-purple-200 dark:border-neon-violet/30 rounded-xl">
                                     </div>
                                     <div
-                                        class="p-6 relative z-10 flex flex-row-reverse justify-between items-center h-full">
+                                        class="p-6 relative z-10 flex flex-row-reverse justify-between items-center h-full gap-4">
                                         <div
                                             class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/30">
                                             <i class="fas fa-user-md text-3xl"></i>
@@ -990,7 +995,7 @@
                                         class="absolute inset-0 backdrop-blur-sm border border-orange-200 dark:border-neon-orange/30 rounded-xl">
                                     </div>
                                     <div
-                                        class="p-6 relative z-10 flex flex-row-reverse justify-between items-center h-full">
+                                        class="p-6 relative z-10 flex flex-row-reverse justify-between items-center h-full gap-4">
                                         <div
                                             class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/30">
                                             <i class="fas fa-users text-3xl"></i>
@@ -1374,7 +1379,9 @@
                     <!-- Floating Data Points -->
                     <div
                         class="absolute top-10 left-10 bg-white/10 p-2 rounded text-xs font-mono text-white backdrop-blur-md border border-white/10">
-                        <i class="fas fa-circle text-green-400 text-[8px] me-2"></i> Live Analysis
+                        <i class="fas fa-circle text-green-400 text-[8px] me-2"></i> <span
+                            class="text-black dark:text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">Live
+                            Analysis</span>
                     </div>
                 </div>
 
@@ -1403,8 +1410,8 @@
     <!-- 6. ENGAGEMENT MODELS -->
     <section class="py-24 bg-transparent transition-colors">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-display font-bold mb-12 text-center text-[#004D40] dark:text-white">Policy <span
-                    class="text-[#004D40] dark:text-neon-cyan">Flexibility</span></h2>
+            <h2 class="text-3xl font-display font-bold mb-12 text-center text-[#004D40] dark:text-white">Your policy
+                <span class="text-[#004D40] dark:text-neon-cyan">documents</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Card 1 -->
                 <div
@@ -1496,11 +1503,11 @@
                             </div>
                             <h3 class="font-bold text-lg mb-4 text-navy-900 dark:text-white">Policy Jacket</h3>
                             <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                                <li class="flex items-start gap-2"><span class="text-neon-violet mt-1">•</span> Full
+                                <li class="flex items-start gap-2"><span class="text-neon-violet mt-1"></span> Full
                                     Coverage Details</li>
-                                <li class="flex items-start gap-2"><span class="text-neon-violet mt-1">•</span>
+                                <li class="flex items-start gap-2"><span class="text-neon-violet mt-1"></span>
                                     Exclusions List</li>
-                                <li class="flex items-start gap-2"><span class="text-neon-violet mt-1">•</span> Term
+                                <li class="flex items-start gap-2"><span class="text-neon-violet mt-1"></span> Term
                                     Definitions</li>
                             </ul>
                         </div>
@@ -1530,11 +1537,11 @@
                             </div>
                             <h3 class="font-bold text-lg mb-4 text-white">Coverage Summary</h3>
                             <ul class="space-y-2 text-sm text-gray-300">
-                                <li class="flex items-start gap-2"><span class="text-neon-cyan mt-1">•</span> Quick
+                                <li class="flex items-start gap-2"><span class="text-neon-cyan mt-1"></span> Quick
                                     Reference</li>
-                                <li class="flex items-start gap-2"><span class="text-neon-cyan mt-1">•</span>
+                                <li class="flex items-start gap-2"><span class="text-neon-cyan mt-1"></span>
                                     Deductibles</li>
-                                <li class="flex items-start gap-2"><span class="text-neon-cyan mt-1">•</span> Limits
+                                <li class="flex items-start gap-2"><span class="text-neon-cyan mt-1"></span> Limits
                                 </li>
                             </ul>
                         </div>
@@ -1564,11 +1571,12 @@
                             </div>
                             <h3 class="font-bold text-lg mb-4 text-white">Digital ID Card</h3>
                             <ul class="space-y-2 text-sm text-gray-300">
-                                <li class="flex items-start gap-2"><span class="text-neon-magenta mt-1">•</span> Apple
+                                <li class="flex items-start gap-2"><span class="text-neon-magenta mt-1"></span> Apple
                                     Wallet / Google Pay</li>
-                                <li class="flex items-start gap-2"><span class="text-neon-magenta mt-1">•</span> Instant
+                                <li class="flex items-start gap-2"><span class="text-neon-magenta mt-1"></span>
+                                    Instant
                                     Proof</li>
-                                <li class="flex items-start gap-2"><span class="text-neon-magenta mt-1">•</span> QR
+                                <li class="flex items-start gap-2"><span class="text-neon-magenta mt-1"></span> QR
                                     Verification</li>
                             </ul>
                         </div>
@@ -1598,11 +1606,11 @@
                             </div>
                             <h3 class="font-bold text-lg mb-4 text-white">Claim History</h3>
                             <ul class="space-y-2 text-sm text-gray-300">
-                                <li class="flex items-start gap-2"><span class="text-neon-orange mt-1">•</span> Past
+                                <li class="flex items-start gap-2"><span class="text-neon-orange mt-1"></span> Past
                                     Incidents</li>
-                                <li class="flex items-start gap-2"><span class="text-neon-orange mt-1">•</span> Payout
+                                <li class="flex items-start gap-2"><span class="text-neon-orange mt-1"></span> Payout
                                     Records</li>
-                                <li class="flex items-start gap-2"><span class="text-neon-orange mt-1">•</span> Status
+                                <li class="flex items-start gap-2"><span class="text-neon-orange mt-1"></span> Status
                                     Updates</li>
                             </ul>
                         </div>
@@ -1753,17 +1761,20 @@
             <h2 class="text-3xl font-display font-bold mb-16">Protection By The Numbers</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div>
-                    <div class="text-5xl font-bold text-[#004D40] mb-2">98%</div>
+                    <div class="text-5xl font-bold text-neon-magenta mb-2"><span class="counter"
+                            data-target="98">0</span>%
+                    </div>
                     <p class="text-sm tracking-widest uppercase font-bold text-navy-900 dark:text-white">Claims Approval
                         Rate</p>
                 </div>
                 <div>
-                    <div class="text-5xl font-bold text-neon-violet mb-2">24/7</div>
+                    <div class="text-5xl font-bold text-neon-magenta mb-2">24/7</div>
                     <p class="text-sm tracking-widest uppercase font-bold text-navy-900 dark:text-white">Support
                         Availability</p>
                 </div>
                 <div>
-                    <div class="text-5xl font-bold text-neon-magenta mb-2">$500M+</div>
+                    <div class="text-5xl font-bold text-neon-magenta mb-2">$<span class="counter"
+                            data-target="500">0</span>M+</div>
                     <p class="text-sm tracking-widest uppercase font-bold text-navy-900 dark:text-white">Claims Paid
                     </p>
                 </div>
@@ -1907,7 +1918,7 @@
             <div class="flex gap-6 mt-4 md:mt-0">
                 <a href="#" class="hover:text-white transition-colors">Terms</a>
                 <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-                <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by Claimora</span>
+
             </div>
         </div>
     </footer>
@@ -2001,6 +2012,43 @@
         // RTL Hero Swap Logic using MutationObserver - REMOVED
         // The CSS logical properties and flex direction defined in HTML handle the mirroring automatically.
         // justify-end in RTL (flex-row) aligns to Left, which is desired.
+    </script>
+    <script>
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16); // 60fps
+
+                    let current = 0;
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCounter();
+                    observer.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
     </script>
 </body>
 

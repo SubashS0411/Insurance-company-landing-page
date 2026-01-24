@@ -66,10 +66,10 @@
             </a>
 
             <!-- Desktop Nav -->
-            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+            <div id="desktop-menu" class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse relative">
                 <!-- Home Dropdown -->
                 <div class="relative group">
-                    <button class="nav-link flex items-center gap-1 py-4">
+                    <button class="nav-link nav-link-active flex items-center gap-1 py-4">
                         Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
                     </button>
                     <!-- Dropdown -->
@@ -126,7 +126,7 @@
                     class="px-6 py-2 border-2 border-indigo-600 dark:border-neon-cyan text-indigo-600 dark:text-neon-cyan rounded-full font-bold hover:bg-indigo-600 hover:text-white dark:hover:bg-neon-cyan dark:hover:text-navy-900 transition-all text-sm">
                     Log In
                 </a>
-                <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
+                <a href="signup.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
                     Get Started
                 </a>
             </div>
@@ -210,7 +210,7 @@
                         class="block w-full py-4 text-center font-bold text-indigo-600 dark:text-neon-cyan border-2 border-indigo-600 dark:border-neon-cyan rounded-xl hover:bg-indigo-50 dark:hover:bg-neon-cyan/10 transition-all">
                         Log In
                     </a>
-                    <a href="login.html"
+                    <a href="signup.html"
                         class="block w-full py-4 text-center font-bold text-white bg-indigo-600 dark:bg-neon-cyan dark:text-navy-900 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all">
                         Get Started
                     </a>
@@ -260,10 +260,7 @@
             </div>
         </div>
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-indigo-500 dark:text-neon-purple">
-            <i class="fas fa-chevron-down text-2xl"></i>
-        </div>
+
     </section>
 
     <!-- 2. MISSION STATEMENT -->
@@ -411,6 +408,30 @@
                     class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-navy-950 text-xs font-bold px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                     Singapore</div>
             </div>
+            <!-- New Dot: Sao Paulo -->
+            <div class="absolute top-[65%] left-[32%] group">
+                <div class="w-4 h-4 bg-gold-500 rounded-full animate-ping absolute delay-500"></div>
+                <div class="w-4 h-4 bg-gold-500 rounded-full relative z-10 cursor-pointer"></div>
+                <div
+                    class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-navy-950 text-xs font-bold px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    Sao Paulo</div>
+            </div>
+            <!-- New Dot: Sydney -->
+            <div class="absolute top-[75%] right-[15%] group">
+                <div class="w-4 h-4 bg-gold-500 rounded-full animate-ping absolute delay-1000"></div>
+                <div class="w-4 h-4 bg-gold-500 rounded-full relative z-10 cursor-pointer"></div>
+                <div
+                    class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-navy-950 text-xs font-bold px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    Sydney</div>
+            </div>
+            <!-- New Dot: Tokyo -->
+            <div class="absolute top-[38%] right-[18%] group">
+                <div class="w-4 h-4 bg-gold-500 rounded-full animate-ping absolute delay-200"></div>
+                <div class="w-4 h-4 bg-gold-500 rounded-full relative z-10 cursor-pointer"></div>
+                <div
+                    class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-navy-950 text-xs font-bold px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    Tokyo</div>
+            </div>
         </div>
     </section>
 
@@ -444,106 +465,121 @@
     </section>
 
     <!-- 7. PILLAR 1: LIFE INSURANCE -->
-    <section id="insurance-plans"
-        class="min-h-0 md:min-h-[80vh] flex flex-col lg:flex-row items-center bg-white dark:bg-slate-900 relative overflow-hidden group">
-        <!-- Background: Family Image -->
-        <div
-            class="relative w-full h-64 lg:absolute lg:right-0 lg:rtl:left-0 lg:rtl:right-auto lg:top-0 lg:w-1/2 lg:h-full bg-[url('Assets/health.jpeg')] bg-cover shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(99,102,241,0.6)]">
-        </div>
-        <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
-            <div
-                class="max-w-xl relative bg-pastel-card dark:bg-slate-800/50 p-12 rounded-3xl backdrop-blur-sm glow-border-effect">
-                <div class="number-badge text-indigo-50 dark:text-navy-800">01</div>
-                <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6 relative z-10">Life &
-                    Health</h3>
-                <p class="text-slate-600 dark:text-slate-300 mb-8 text-lg relative z-10">Safeguard your family's future
-                    with our comprehensive life and health coverage plans. We ensure your loved ones are protected
-                    financially, no matter what.</p>
-                <ul class="space-y-4 mb-8 relative z-10">
-                    <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><i
-                            class="fas fa-check text-rose-500 dark:text-neon-red"></i> Term & Whole Life</li>
-                    <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><i
-                            class="fas fa-check text-rose-500 dark:text-neon-red"></i> Critical Illness Cover</li>
-                </ul>
-                <a href="services.html"
-                    class="text-indigo-600 dark:text-neon-purple uppercase tracking-widest text-xs font-bold hover:text-indigo-800 dark:hover:text-white transition-colors relative z-10">Compare
-                    Plans <i class="fas fa-arrow-right ml-2"></i></a>
+    <section id="insurance-plans" class="py-12 lg:py-24 bg-white dark:bg-slate-900 overflow-hidden group">
+        <div class="max-w-7xl mx-auto px-6 w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+            <!-- Text Side -->
+            <div class="lg:w-1/2 order-2 lg:order-1">
+                <div
+                    class="relative bg-pastel-card dark:bg-slate-800/50 p-12 rounded-3xl backdrop-blur-sm glow-border-effect w-full">
+                    <div class="number-badge text-indigo-50 dark:text-navy-800">01</div>
+                    <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6 relative z-10">Life &
+                        Health</h3>
+                    <p class="text-slate-600 dark:text-slate-300 mb-8 text-lg relative z-10">Safeguard your family's
+                        future with our comprehensive life and health coverage plans. We ensure your loved ones are
+                        protected financially, no matter what.</p>
+                    <ul class="space-y-4 mb-8 relative z-10">
+                        <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><i
+                                class="fas fa-check text-rose-500 dark:text-neon-red"></i> Term & Whole Life</li>
+                        <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><i
+                                class="fas fa-check text-rose-500 dark:text-neon-red"></i> Critical Illness Cover</li>
+                    </ul>
+                    <a href="services.html"
+                        class="text-indigo-600 dark:text-neon-purple uppercase tracking-widest text-xs font-bold hover:text-indigo-800 dark:hover:text-white transition-colors relative z-10">Compare
+                        Plans <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+            <!-- Image Side -->
+            <div class="lg:w-1/2 w-full order-1 lg:order-2">
+                <div
+                    class="w-full h-64 lg:h-[28rem] bg-[url('Assets/health.jpeg')] bg-cover shadow-[0_0_30px_rgba(99,102,241,0.4)] transform transition-transform duration-700 ease-in-out group-hover:scale-105 rounded-3xl group-hover:shadow-[0_0_50px_rgba(244,114,182,0.6)]">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 8. PILLAR 2: ASSET PROTECTION -->
-    <section
-        class="min-h-0 md:min-h-[80vh] flex flex-col lg:flex-row items-center bg-gray-50 dark:bg-navy-950 relative overflow-hidden group text-right rtl:text-left">
-        <!-- Background: House Image -->
-        <div
-            class="relative w-full h-64 lg:absolute lg:left-0 lg:rtl:right-0 lg:rtl:left-auto lg:top-0 lg:w-1/2 lg:h-full bg-[url('Assets/home1.jpeg')] bg-cover shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(99,102,241,0.6)]">
-        </div>
-        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 flex justify-end">
-            <div
-                class="max-w-xl relative bg-white/50 dark:bg-slate-800/50 p-12 rounded-3xl backdrop-blur-sm glow-border-effect">
-                <div class="number-badge text-indigo-50 dark:text-navy-800 right-[-1.5rem] left-auto">02</div>
-                <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6 relative z-10">Asset &
-                    Property</h3>
-                <p class="text-slate-600 dark:text-slate-300 mb-8 text-lg relative z-10">Your home and vehicles are your
-                    most valuable tangible assets. We provide robust coverage against damage, theft, and liability.</p>
-                <ul class="space-y-4 mb-8 flex flex-col items-end text-slate-700 dark:text-slate-300 relative z-10">
-                    <li class="flex items-center gap-3">Homeowners Insurance <i
-                            class="fas fa-check text-rose-500 dark:text-neon-red"></i></li>
-                    <li class="flex items-center gap-3">Automotive Coverage <i
-                            class="fas fa-check text-rose-500 dark:text-neon-red"></i></li>
-                </ul>
-                <a href="services.html"
-                    class="text-indigo-600 dark:text-neon-purple uppercase tracking-widest text-xs font-bold hover:text-indigo-800 dark:hover:text-white transition-colors relative z-10">Protection
-                    Plans <i class="fas fa-arrow-right ml-2"></i></a>
+    <section class="py-12 lg:py-24 bg-gray-50 dark:bg-navy-950 overflow-hidden group text-right rtl:text-left">
+        <div class="max-w-7xl mx-auto px-6 w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+            <!-- Image Side (Left on Desktop) -->
+            <div class="lg:w-1/2 w-full order-1">
+                <div
+                    class="w-full h-64 lg:h-[28rem] bg-[url('Assets/home1.jpeg')] bg-cover shadow-[0_0_30px_rgba(99,102,241,0.4)] transform transition-transform duration-700 ease-in-out group-hover:scale-105 rounded-3xl group-hover:shadow-[0_0_50px_rgba(96,165,250,0.6)]">
+                </div>
+            </div>
+            <!-- Text Side -->
+            <div class="lg:w-1/2 order-2">
+                <div
+                    class="relative bg-white/50 dark:bg-slate-800/50 p-12 rounded-3xl backdrop-blur-sm glow-border-effect w-full ml-auto">
+                    <div class="number-badge text-indigo-50 dark:text-navy-800 right-[-1.5rem] left-auto">02</div>
+                    <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6 relative z-10">Asset &
+                        Property</h3>
+                    <p class="text-slate-600 dark:text-slate-300 mb-8 text-lg relative z-10">Your home and vehicles are
+                        your most valuable tangible assets. We provide robust coverage against damage, theft, and
+                        liability.</p>
+                    <ul class="space-y-4 mb-8 flex flex-col items-end text-slate-700 dark:text-slate-300 relative z-10">
+                        <li class="flex items-center gap-3">Homeowners Insurance <i
+                                class="fas fa-check text-rose-500 dark:text-neon-red"></i></li>
+                        <li class="flex items-center gap-3">Automotive Coverage <i
+                                class="fas fa-check text-rose-500 dark:text-neon-red"></i></li>
+                    </ul>
+                    <a href="services.html"
+                        class="text-indigo-600 dark:text-neon-purple uppercase tracking-widest text-xs font-bold hover:text-indigo-800 dark:hover:text-white transition-colors relative z-10">Protection
+                        Plans <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 9. PILLAR 3: COMMERCIAL RISK -->
-    <section
-        class="min-h-0 md:min-h-[80vh] flex flex-col lg:flex-row items-center bg-white dark:bg-slate-900 relative overflow-hidden group">
-        <!-- Background: Commercial Risk (Reusing Asset Image) -->
-        <div
-            class="relative w-full h-64 lg:absolute lg:right-0 lg:rtl:left-0 lg:rtl:right-auto lg:top-0 lg:w-1/2 lg:h-full bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop')] bg-cover shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all duration-300 hover:shadow-[0_0_50px_rgba(99,102,241,0.6)]">
-        </div>
-        <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
-            <div
-                class="max-w-xl relative bg-pastel-card dark:bg-slate-800/50 p-12 rounded-3xl backdrop-blur-sm glow-border-effect">
-                <div class="number-badge text-indigo-50 dark:text-navy-800">03</div>
-                <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6 relative z-10">Commercial
-                    Risk</h3>
+    <section class="py-12 lg:py-24 bg-white dark:bg-slate-900 overflow-hidden group">
+        <div class="max-w-7xl mx-auto px-6 w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+            <!-- Text Side -->
+            <div class="lg:w-1/2 order-2 lg:order-1">
+                <div
+                    class="relative bg-pastel-card dark:bg-slate-800/50 p-12 rounded-3xl backdrop-blur-sm glow-border-effect w-full">
+                    <div class="number-badge text-indigo-50 dark:text-navy-800">03</div>
+                    <h3 class="text-4xl font-serif font-bold text-slate-900 dark:text-white mb-6 relative z-10">
+                        Commercial
+                        Risk</h3>
 
-                <!-- New Content Structure: Icon + Explanation + Reassurance -->
-                <div class="space-y-6 mb-8 relative z-10">
-                    <div class="flex gap-4 items-start">
-                        <div
-                            class="w-12 h-12 shrink-0 rounded-lg bg-indigo-50 dark:bg-navy-800 flex items-center justify-center text-indigo-600 dark:text-neon-purple shadow-sm">
-                            <i class="fas fa-building-shield text-xl"></i>
+                    <!-- New Content Structure: Icon + Explanation + Reassurance -->
+                    <div class="space-y-6 mb-8 relative z-10">
+                        <div class="flex gap-4 items-start">
+                            <div
+                                class="w-12 h-12 shrink-0 rounded-lg bg-indigo-50 dark:bg-navy-800 flex items-center justify-center text-indigo-600 dark:text-neon-purple shadow-sm">
+                                <i class="fas fa-building-shield text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 dark:text-white mb-1">Business Continuity</h5>
+                                <p class="text-sm text-slate-600 dark:text-slate-400"> comprehensive protection against
+                                    operational disruptions and liability claims.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h5 class="font-bold text-slate-900 dark:text-white mb-1">Business Continuity</h5>
-                            <p class="text-sm text-slate-600 dark:text-slate-400"> comprehensive protection against
-                                operational disruptions and liability claims.</p>
+
+                        <div class="flex gap-4 items-start">
+                            <div
+                                class="w-12 h-12 shrink-0 rounded-lg bg-rose-50 dark:bg-navy-800 flex items-center justify-center text-rose-600 dark:text-neon-red shadow-sm">
+                                <i class="fas fa-chart-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 dark:text-white mb-1">Risk Coverage Reassurance</h5>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">99.9% payout reliability on
+                                    verified
+                                    commercial claims within 48 hours.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="flex gap-4 items-start">
-                        <div
-                            class="w-12 h-12 shrink-0 rounded-lg bg-rose-50 dark:bg-navy-800 flex items-center justify-center text-rose-600 dark:text-neon-red shadow-sm">
-                            <i class="fas fa-chart-line text-xl"></i>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-slate-900 dark:text-white mb-1">Risk Coverage Reassurance</h5>
-                            <p class="text-sm text-slate-600 dark:text-slate-400">99.9% payout reliability on verified
-                                commercial claims within 48 hours.</p>
-                        </div>
-                    </div>
+                    <a href="services.html"
+                        class="text-indigo-600 dark:text-neon-purple uppercase tracking-widest text-xs font-bold hover:text-indigo-800 dark:hover:text-white transition-colors relative z-10">Business
+                        Solutions <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
-
-                <a href="services.html"
-                    class="text-indigo-600 dark:text-neon-purple uppercase tracking-widest text-xs font-bold hover:text-indigo-800 dark:hover:text-white transition-colors relative z-10">Business
-                    Solutions <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+            <!-- Image Side -->
+            <div class="lg:w-1/2 w-full order-1 lg:order-2">
+                <div
+                    class="w-full h-64 lg:h-[28rem] bg-[url('Assets/money.jpeg')] bg-cover shadow-[0_0_30px_rgba(99,102,241,0.4)] transform transition-transform duration-700 ease-in-out group-hover:scale-105 rounded-3xl group-hover:shadow-[0_0_50px_rgba(167,139,250,0.6)]">
+                </div>
             </div>
         </div>
     </section>
@@ -612,13 +648,28 @@
                 <p class="text-slate-600 dark:text-platinum-300 mb-6">From blockchain integration to neobank strategies,
                     we help financial
                     institutions navigate the digital frontier while maintaining compliance and trust.</p>
-                <div class="flex gap-4">
+                <ul
+                    class="space-y-3 mb-6 text-sm text-slate-700 dark:text-slate-300 list-disc pl-5 marker:text-gold-500">
+                    <li class="pl-2">Advanced AI Fraud Detection Systems</li>
+                    <li class="pl-2">Secure Blockchain Ledger Integration</li>
+                    <li class="pl-2">Seamless Cross-Border Digital Payments</li>
+                </ul>
+                <div class="flex gap-4 flex-wrap">
                     <span
-                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">DeFi</span>
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">DeFi</span>
                     <span
-                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Cybersecurity</span>
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Cybersecurity</span>
                     <span
-                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Payments</span>
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Payments</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Blockchain</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">InsurTech</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">RegTech</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Digital
+                        Assets</span>
                 </div>
             </div>
         </div>
@@ -634,15 +685,30 @@
                 <p class="text-slate-600 dark:text-platinum-300 mb-6">Optimizing patient outcomes through data-driven
                     operational
                     efficiencies and accelerating R&D pipelines via AI-driven drug discovery models.</p>
-                <div class="flex gap-4">
+                <ul
+                    class="space-y-3 mb-6 text-sm text-slate-700 dark:text-slate-300 list-disc pl-5 marker:text-gold-500">
+                    <li class="pl-2">AI-Driven Diagnostic Imaging Analysis</li>
+                    <li class="pl-2">Secure Telehealth Infrastructure</li>
+                    <li class="pl-2">Patient Data Privacy & Security</li>
+                </ul>
+                <div class="flex gap-4 flex-wrap">
                     <span
-                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Telehealth</span>
+                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Telehealth</span>
                     <span
-                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">AI
+                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">AI
                         Diagnostics</span>
                     <span
-                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Supply
+                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Supply
                         Chain</span>
+                    <span
+                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Genomics</span>
+                    <span
+                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">IoMT</span>
+                    <span
+                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Biotech</span>
+                    <span
+                        class="px-4 py-2 bg-slate-200 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Clinical
+                        Trials</span>
                 </div>
             </div>
             <div class="reveal">
@@ -668,14 +734,32 @@
                 <p class="text-slate-600 dark:text-platinum-300 mb-6">Guiding traditional energy giants through the
                     green transition and
                     helping smart city developers build sustainable, connected infrastructure.</p>
-                <div class="flex gap-4">
+                <ul
+                    class="space-y-3 mb-6 text-sm text-slate-700 dark:text-slate-300 list-disc pl-5 marker:text-gold-500">
+                    <li class="pl-2">Renewable Energy Grid Optimization</li>
+                    <li class="pl-2">Smart City IoT Integration</li>
+                    <li class="pl-2">Carbon Footprint Reduction Analytics</li>
+                </ul>
+                <div class="flex gap-4 flex-wrap">
                     <span
-                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Renewables</span>
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Renewables</span>
                     <span
-                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Smart
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Smart
                         Grids</span>
                     <span
-                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white">Sustainability</span>
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Sustainability</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Carbon
+                        Capture</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Green
+                        Hydrogen</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">EV
+                        Infrastructure</span>
+                    <span
+                        class="px-4 py-2 bg-slate-100 dark:bg-white/5 rounded text-xs text-slate-800 dark:text-white glow-btn-border">Smart
+                        Cities</span>
                 </div>
             </div>
         </div>
@@ -944,7 +1028,7 @@
             <div class="flex gap-6 mt-4 md:mt-0">
                 <a href="#" class="hover:text-white transition-colors">Terms</a>
                 <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-                <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by Claimora</span>
+
             </div>
         </div>
     </footer>

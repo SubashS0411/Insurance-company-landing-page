@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" class="scroll-smooth">
 
 <head>
@@ -38,6 +38,32 @@
     </script>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Targeted Glow Effect */
+        .contact-glow {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Light Mode: Purple Glow */
+        body:not(.dark) .contact-glow {
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5) !important;
+        }
+
+        /* Dark Mode: Neon Cyan Glow */
+        .dark .contact-glow {
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.6) !important;
+        }
+
+        /* Hover Enhancement */
+        .contact-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.7) !important;
+        }
+
+        .dark .contact-glow:hover {
+            box-shadow: 0 0 25px rgba(34, 211, 238, 0.8) !important;
+        }
+    </style>
 </head>
 
 <body
@@ -60,7 +86,7 @@
             </a>
 
             <!-- Desktop Nav -->
-            <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse gap-x-8">
+            <div id="desktop-menu" class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse relative gap-x-8">
                 <!-- Home Dropdown -->
                 <div class="relative group">
                     <button class="nav-link flex items-center gap-1 py-4">
@@ -71,16 +97,19 @@
                         class="absolute top-full ltr:left-0 rtl:right-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
                         <a href="index.html"
                             class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
-                            V1 (Parallax)</a>
+                            V1
+                            (Parallax)</a>
                         <a href="index2.html"
                             class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white text-start">Home
-                            V2 (Retro)</a>
+                            V2
+                            (Retro)</a>
                     </div>
                 </div>
 
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="contact.html" class="nav-link text-indigo-600 dark:text-neon-cyan font-bold">Contact</a>
+                <a href="about.html" class="nav-link py-4">About</a>
+                <a href="services.html" class="nav-link py-4">Services</a>
+                <a href="contact.html"
+                    class="nav-link nav-link-active text-indigo-600 dark:text-neon-cyan font-bold py-4">Contact</a>
 
                 <!-- Dashboards Dropdown -->
                 <div class="relative group">
@@ -118,30 +147,30 @@
                     class="px-6 py-2 border-2 border-indigo-600 dark:border-neon-cyan text-indigo-600 dark:text-neon-cyan rounded-full font-bold hover:bg-indigo-600 hover:text-white dark:hover:bg-neon-cyan dark:hover:text-navy-900 transition-all text-sm">
                     Log In
                 </a>
-                <a href="login.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
+                <a href="signup.html" class="ng-btn-primary text-sm shadow-lg shadow-blue-500/20">
                     Get Started
                 </a>
             </div>
 
-            <!-- Mobile Actions (RTL + Theme + Menu) -->
+            <!-- Mobile Actions & Menu (Visible on Mobile Only) -->
             <div class="lg:hidden flex items-center gap-3">
                 <!-- Mobile RTL Toggle -->
                 <button onclick="document.getElementById('rtl-toggle').click()"
-                    class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                    class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
                     <i data-lucide="globe" class="w-5 h-5"></i>
                 </button>
 
                 <!-- Mobile Theme Toggle -->
                 <button onclick="document.getElementById('theme-toggle').click()"
-                    class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                    class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
                     <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                     <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                 </button>
 
-                <!-- Mobile Menu Button -->
+                <!-- Mobile Menu Toggle -->
                 <button id="mobile-menu-btn"
-                    class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/30">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                    class="p-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 text-white dark:text-white hover:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
             </div>
         </div>
@@ -200,15 +229,16 @@
 
                 <hr class="border-slate-100 dark:border-slate-800">
 
-                <!-- Mobile Actions -->
-                <a href="login.html"
-                    class="block w-full py-4 text-center font-bold text-indigo-600 dark:text-neon-cyan border-2 border-indigo-600 dark:border-neon-cyan rounded-xl hover:bg-indigo-50 dark:hover:bg-neon-cyan/10 transition-all mb-3">
-                    Log In
-                </a>
-                <a href="login.html"
-                    class="block w-full py-4 text-center font-bold text-white bg-indigo-600 dark:bg-neon-cyan dark:text-navy-900 rounded-xl shadow-lg shadow-indigo-500/30">
-                    Get Started
-                </a>
+                <div class="mt-6 border-t border-slate-100 dark:border-slate-800 pt-6 space-y-3">
+                    <a href="login.html"
+                        class="block w-full py-4 text-center font-bold text-indigo-600 dark:text-neon-cyan border-2 border-indigo-600 dark:border-neon-cyan rounded-xl hover:bg-indigo-50 dark:hover:bg-neon-cyan/10 transition-all">
+                        Log In
+                    </a>
+                    <a href="signup.html"
+                        class="block w-full py-4 text-center font-bold text-white bg-indigo-600 dark:bg-neon-cyan dark:text-navy-900 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all">
+                        Get Started
+                    </a>
+                </div>
             </nav>
         </div>
     </div>
@@ -248,7 +278,7 @@
                 <div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                         <div
-                            class="p-6 bg-white dark:bg-slate-950 rounded-2xl shadow-lg border border-gray-200 dark:border-white/10 hover:border-neon-cyan/50 hover:shadow-neon-cyan/20 transition-all duration-300 group">
+                            class="contact-glow p-6 bg-white dark:bg-slate-950 rounded-2xl shadow-lg border border-gray-200 dark:border-white/10 hover:border-neon-cyan/50 transition-all duration-300 group">
                             <div
                                 class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
                                 <i class="fas fa-envelope"></i>
@@ -269,19 +299,18 @@
 
                     <!-- Map Placeholder -->
                     <div
-                        class="w-full h-80 bg-gray-200 dark:bg-slate-900 rounded-3xl flex items-center justify-center relative overflow-hidden group">
-                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                            alt="Map"
-                            class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition duration-500">
-                        <div class="z-10 bg-white dark:bg-gray-900 p-4 rounded-full shadow-xl">
-                            <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
-                        </div>
+                        class="contact-glow w-full h-80 bg-gray-200 dark:bg-slate-900 rounded-3xl overflow-hidden shadow-xl border border-gray-200 dark:border-white/10 relative group">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1710338000000!5m2!1sen!2sin"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="grayscale-0 hover:grayscale-0 transition-all duration-500 filter dark:invert-[.85] dark:hue-rotate-180 dark:contrast-125 dark:opacity-80"></iframe>
                     </div>
                 </div>
 
                 <!-- Form -->
                 <div
-                    class="glass-panel bg-white/80 dark:bg-slate-950/80 p-8 rounded-3xl shadow-xl border border-white/20 dark:border-white/5 backdrop-blur-md">
+                    class="contact-glow glass-panel bg-white/80 dark:bg-slate-950/80 p-8 rounded-3xl shadow-xl border border-white/20 dark:border-white/5 backdrop-blur-md">
                     <form class="space-y-6 relative group transform transition-all hover:scale-[1.01]">
                         <!-- Progress Indicator -->
                         <div class="h-1 w-full bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden mb-6">
@@ -349,7 +378,7 @@
                                 class="absolute left-4 top-2 text-xs text-slate-500 dark:text-slate-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-neon-cyan">Message</label>
                         </div>
                         <button type="button"
-                            class="relative overflow-hidden w-full py-4 rounded-xl bg-gradient-to-r from-neon-cyan to-neon-violet text-navy-900 font-bold text-lg shadow-[0_0_20px_rgba(100,255,218,0.4)] hover:shadow-[0_0_30px_rgba(100,255,218,0.6)] transition-all transform hover:-translate-y-1 active:scale-95 group">
+                            class="contact-glow relative overflow-hidden w-full py-4 rounded-xl bg-gradient-to-r from-neon-cyan to-neon-violet text-navy-900 font-bold text-lg transition-all transform hover:-translate-y-1 active:scale-95 group">
                             <span class="relative z-10 flex items-center justify-center gap-2">Submit Request <i
                                     class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i></span>
                             <div
@@ -373,10 +402,10 @@
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Item 1 -->
             <div
-                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                class="contact-glow contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 hover:-translate-y-2">
                 <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-neon-cyan border-dashed relative">
                     <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=200&h=200"
-                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                        alt="Support Agent" class="contact-glow w-full h-full rounded-full object-cover">
                     <div
                         class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white dark:border-navy-900">
                     </div>
@@ -389,10 +418,10 @@
                         speed and empathy."</p>
                     <div class="flex justify-center gap-3">
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-cyan hover:text-navy-900 transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-cyan hover:text-navy-900 transition-colors"><i
                                 class="fab fa-linkedin-in"></i></button>
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-cyan hover:text-navy-900 transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-cyan hover:text-navy-900 transition-colors"><i
                                 class="fas fa-envelope"></i></button>
                     </div>
                 </div>
@@ -400,10 +429,10 @@
 
             <!-- Item 2 -->
             <div
-                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                class="contact-glow contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 hover:-translate-y-2">
                 <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-neon-violet border-dashed relative">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200"
-                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                        alt="Support Agent" class="contact-glow w-full h-full rounded-full object-cover">
                     <div
                         class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white dark:border-navy-900">
                     </div>
@@ -415,10 +444,10 @@
                         I do best."</p>
                     <div class="flex justify-center gap-3">
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-violet hover:text-navy-900 transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-violet hover:text-navy-900 transition-colors"><i
                                 class="fab fa-linkedin-in"></i></button>
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-violet hover:text-navy-900 transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-neon-violet hover:text-navy-900 transition-colors"><i
                                 class="fas fa-envelope"></i></button>
                     </div>
                 </div>
@@ -426,10 +455,10 @@
 
             <!-- Item 3 -->
             <div
-                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                class="contact-glow contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 hover:-translate-y-2">
                 <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-blue-500 border-dashed relative">
                     <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200&h=200"
-                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                        alt="Support Agent" class="contact-glow w-full h-full rounded-full object-cover">
                     <div
                         class="absolute bottom-1 right-1 w-5 h-5 bg-yellow-500 rounded-full border-2 border-white dark:border-navy-900">
                     </div>
@@ -441,10 +470,10 @@
                     </p>
                     <div class="flex justify-center gap-3">
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-blue-500 hover:text-white transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-blue-500 hover:text-white transition-colors"><i
                                 class="fab fa-linkedin-in"></i></button>
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-blue-500 hover:text-white transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-blue-500 hover:text-white transition-colors"><i
                                 class="fas fa-envelope"></i></button>
                     </div>
                 </div>
@@ -452,10 +481,10 @@
 
             <!-- Item 4 -->
             <div
-                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                class="contact-glow contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 hover:-translate-y-2">
                 <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-purple-500 border-dashed relative">
                     <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200&h=200"
-                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                        alt="Support Agent" class="contact-glow w-full h-full rounded-full object-cover">
                     <div
                         class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white dark:border-navy-900">
                     </div>
@@ -467,10 +496,10 @@
                     </p>
                     <div class="flex justify-center gap-3">
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-purple-500 hover:text-white transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-purple-500 hover:text-white transition-colors"><i
                                 class="fab fa-linkedin-in"></i></button>
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-purple-500 hover:text-white transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-purple-500 hover:text-white transition-colors"><i
                                 class="fas fa-envelope"></i></button>
                     </div>
                 </div>
@@ -478,10 +507,10 @@
 
             <!-- Item 5 -->
             <div
-                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                class="contact-glow contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 hover:-translate-y-2">
                 <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-pink-500 border-dashed relative">
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200&h=200"
-                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                        alt="Support Agent" class="contact-glow w-full h-full rounded-full object-cover">
                     <div
                         class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white dark:border-navy-900">
                     </div>
@@ -493,10 +522,10 @@
                     </p>
                     <div class="flex justify-center gap-3">
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-pink-500 hover:text-white transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-pink-500 hover:text-white transition-colors"><i
                                 class="fab fa-linkedin-in"></i></button>
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-pink-500 hover:text-white transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-pink-500 hover:text-white transition-colors"><i
                                 class="fas fa-envelope"></i></button>
                     </div>
                 </div>
@@ -504,10 +533,10 @@
 
             <!-- Item 6 -->
             <div
-                class="contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group hover:shadow-neon-cyan/20 transition-all duration-500 hover:-translate-y-2">
+                class="contact-glow contact-card glass-panel p-8 rounded-3xl relative overflow-hidden group transition-all duration-500 hover:-translate-y-2">
                 <div class="w-28 h-28 mx-auto mb-6 rounded-full p-1 border-2 border-yellow-500 border-dashed relative">
                     <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=200&h=200"
-                        alt="Support Agent" class="w-full h-full rounded-full object-cover">
+                        alt="Support Agent" class="contact-glow w-full h-full rounded-full object-cover">
                     <div
                         class="absolute bottom-1 right-1 w-5 h-5 bg-gray-400 rounded-full border-2 border-white dark:border-navy-900">
                     </div>
@@ -519,10 +548,10 @@
                     </p>
                     <div class="flex justify-center gap-3">
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-yellow-500 hover:text-white transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-yellow-500 hover:text-white transition-colors"><i
                                 class="fab fa-linkedin-in"></i></button>
                         <button
-                            class="p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-yellow-500 hover:text-white transition-colors"><i
+                            class="contact-glow p-2 rounded-full bg-slate-100 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:bg-yellow-500 hover:text-white transition-colors"><i
                                 class="fas fa-envelope"></i></button>
                     </div>
                 </div>
@@ -544,7 +573,7 @@
             <!-- Step 1 -->
             <div class="text-center relative z-10 group">
                 <div
-                    class="w-24 h-24 mx-auto bg-slate-50 dark:bg-slate-950 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-white/10 mb-6 group-hover:border-neon-cyan transition-colors shadow-lg">
+                    class="contact-glow w-24 h-24 mx-auto bg-slate-50 dark:bg-slate-950 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-white/10 mb-6 group-hover:border-neon-cyan transition-colors shadow-lg">
                     <i class="fas fa-handshake text-3xl text-neon-cyan"></i>
                 </div>
                 <h3 class="text-xl font-bold text-navy-900 dark:text-white mb-2">1. Connect</h3>
@@ -554,7 +583,7 @@
             <!-- Step 2 -->
             <div class="text-center relative z-10 group">
                 <div
-                    class="w-24 h-24 mx-auto bg-slate-50 dark:bg-slate-950 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-white/10 mb-6 group-hover:border-neon-violet transition-colors shadow-lg">
+                    class="contact-glow w-24 h-24 mx-auto bg-slate-50 dark:bg-slate-950 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-white/10 mb-6 group-hover:border-neon-violet transition-colors shadow-lg">
                     <i class="fas fa-search-dollar text-3xl text-neon-violet"></i>
                 </div>
                 <h3 class="text-xl font-bold text-navy-900 dark:text-white mb-2">2. Analyze</h3>
@@ -564,7 +593,7 @@
             <!-- Step 3 -->
             <div class="text-center relative z-10 group">
                 <div
-                    class="w-24 h-24 mx-auto bg-slate-50 dark:bg-slate-950 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-white/10 mb-6 group-hover:border-blue-500 transition-colors shadow-lg">
+                    class="contact-glow w-24 h-24 mx-auto bg-slate-50 dark:bg-slate-950 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-white/10 mb-6 group-hover:border-blue-500 transition-colors shadow-lg">
                     <i class="fas fa-shield-alt text-3xl text-blue-500"></i>
                 </div>
                 <h3 class="text-xl font-bold text-navy-900 dark:text-white mb-2">3. Protect</h3>
@@ -582,7 +611,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
                 <div
-                    class="p-8 bg-slate-50 dark:bg-slate-950 rounded-3xl relative hover:-translate-y-2 transition-transform duration-300 border border-transparent dark:border-white/5">
+                    class="contact-glow p-8 bg-slate-50 dark:bg-slate-950 rounded-3xl relative hover:-translate-y-2 transition-transform duration-300 border border-transparent dark:border-white/5">
                     <div class="flex text-yellow-400 mb-4">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -592,7 +621,7 @@
                         Phenomenal service!"</p>
                     <div class="flex items-center gap-4">
                         <img src="https://ui-avatars.com/api/?name=Michael+B&background=random" alt="User"
-                            class="w-12 h-12 rounded-full">
+                            class="contact-glow w-12 h-12 rounded-full">
                         <div>
                             <h4 class="font-bold text-navy-900 dark:text-white">Michael B.</h4>
                             <span class="text-xs text-slate-500 uppercase">Business Owner</span>
@@ -601,7 +630,7 @@
                 </div>
                 <!-- Testimonial 2 -->
                 <div
-                    class="p-8 bg-slate-50 dark:bg-slate-950 rounded-3xl relative hover:-translate-y-2 transition-transform duration-300 border border-transparent dark:border-white/5">
+                    class="contact-glow p-8 bg-slate-50 dark:bg-slate-950 rounded-3xl relative hover:-translate-y-2 transition-transform duration-300 border border-transparent dark:border-white/5">
                     <div class="flex text-yellow-400 mb-4">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -611,7 +640,7 @@
                         abroad."</p>
                     <div class="flex items-center gap-4">
                         <img src="https://ui-avatars.com/api/?name=Sarah+K&background=random" alt="User"
-                            class="w-12 h-12 rounded-full">
+                            class="contact-glow w-12 h-12 rounded-full">
                         <div>
                             <h4 class="font-bold text-navy-900 dark:text-white">Sarah K.</h4>
                             <span class="text-xs text-slate-500 uppercase">Frequent Traveler</span>
@@ -620,7 +649,7 @@
                 </div>
                 <!-- Testimonial 3 -->
                 <div
-                    class="p-8 bg-slate-50 dark:bg-slate-950 rounded-3xl relative hover:-translate-y-2 transition-transform duration-300 border border-transparent dark:border-white/5">
+                    class="contact-glow p-8 bg-slate-50 dark:bg-slate-950 rounded-3xl relative hover:-translate-y-2 transition-transform duration-300 border border-transparent dark:border-white/5">
                     <div class="flex text-yellow-400 mb-4">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -629,7 +658,7 @@
                         assigned to my case was knowledgeable and very responsive. Highly recommended!"</p>
                     <div class="flex items-center gap-4">
                         <img src="https://ui-avatars.com/api/?name=James+L&background=random" alt="User"
-                            class="w-12 h-12 rounded-full">
+                            class="contact-glow w-12 h-12 rounded-full">
                         <div>
                             <h4 class="font-bold text-navy-900 dark:text-white">James L.</h4>
                             <span class="text-xs text-slate-500 uppercase">Freelancer</span>
@@ -647,7 +676,7 @@
             </h2>
             <div class="space-y-4">
                 <details
-                    class="group bg-white dark:bg-slate-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 open:ring-1 open:ring-indigo-500">
+                    class="contact-glow group bg-white dark:bg-slate-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 open:ring-1 open:ring-indigo-500">
                     <summary
                         class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-navy-900 dark:text-white">
                         <span>How fast are claims processed?</span>
@@ -659,7 +688,7 @@
                     </div>
                 </details>
                 <details
-                    class="group bg-white dark:bg-slate-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 open:ring-1 open:ring-indigo-500">
+                    class="contact-glow group bg-white dark:bg-slate-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 open:ring-1 open:ring-indigo-500">
                     <summary
                         class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-navy-900 dark:text-white">
                         <span>Is support available on weekends?</span>
@@ -670,7 +699,7 @@
                     </div>
                 </details>
                 <details
-                    class="group bg-white dark:bg-slate-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 open:ring-1 open:ring-indigo-500">
+                    class="contact-glow group bg-white dark:bg-slate-950 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5 open:ring-1 open:ring-indigo-500">
                     <summary
                         class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-navy-900 dark:text-white">
                         <span>Can I contact a specific agent?</span>
@@ -772,7 +801,7 @@
             <div class="flex gap-6 mt-4 md:mt-0">
                 <a href="#" class="hover:text-white transition-colors">Terms</a>
                 <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-                <span>Designed with <i class="fas fa-heart text-rose-500 mx-1"></i> by Claimora</span>
+
             </div>
         </div>
     </footer>
