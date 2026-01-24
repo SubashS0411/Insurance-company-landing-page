@@ -9,8 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     rtlToggleBtns.forEach(btn => {
         btn.addEventListener('click', () => {
+            // Disable transitions
+            const style = document.createElement('style');
+            style.innerHTML = '* { transition: none !important; }';
+            document.head.appendChild(style);
+
             const newDir = htmlSelect.getAttribute('dir') === 'ltr' ? 'rtl' : 'ltr';
             applyDir(newDir);
+
+            // Re-enable transitions after a short delay
+            setTimeout(() => {
+                document.head.removeChild(style);
+            }, 50);
         });
     });
 

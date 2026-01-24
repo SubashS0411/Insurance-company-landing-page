@@ -50,12 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     rtlToggleBtns.forEach(btn => {
         btn.addEventListener('click', () => {
+            // Disable transitions globally
+            const style = document.createElement('style');
+            style.innerHTML = '*, *::before, *::after { transition: none !important; animation: none !important; }';
+            document.head.appendChild(style);
+
             const currentDir = htmlEl.getAttribute('dir') || 'ltr';
             const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
             applyDirection(newDir);
 
             // Close mobile menu if open to reset transform (and prevent visual glitches)
             closeMobileMenu();
+
+            // Re-enable transitions after a short delay (enough for layout repaint)
+            setTimeout(() => {
+                document.head.removeChild(style);
+            }, 50);
         });
     });
 
