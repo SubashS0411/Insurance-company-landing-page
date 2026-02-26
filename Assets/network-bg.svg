@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <style>
+      .node { fill: rgba(255,255,255,0.6); }
+      .line { stroke: rgba(255,255,255,0.3); stroke-width: 1; }
+    </style>
+  </defs>
+  <!-- Network nodes -->
+  <circle class="node" cx="50" cy="50" r="3"/>
+  <circle class="node" cx="150" cy="30" r="4"/>
+  <circle class="node" cx="250" cy="60" r="3"/>
+  <circle class="node" cx="350" cy="40" r="4"/>
+  <circle class="node" cx="100" cy="120" r="4"/>
+  <circle class="node" cx="200" cy="100" r="3"/>
+  <circle class="node" cx="300" cy="130" r="4"/>
+  <circle class="node" cx="50" cy="200" r="3"/>
+  <circle class="node" cx="150" cy="180" r="4"/>
+  <circle class="node" cx="250" cy="210" r="3"/>
+  <circle class="node" cx="350" cy="190" r="4"/>
+  <circle class="node" cx="100" cy="280" r="4"/>
+  <circle class="node" cx="200" cy="260" r="3"/>
+  <circle class="node" cx="300" cy="290" r="4"/>
+  <circle class="node" cx="50" cy="350" r="3"/>
+  <circle class="node" cx="150" cy="330" r="4"/>
+  <circle class="node" cx="250" cy="360" r="3"/>
+  <circle class="node" cx="350" cy="340" r="4"/>
+  <!-- Network lines -->
+  <line class="line" x1="50" y1="50" x2="150" y2="30"/>
+  <line class="line" x1="150" y1="30" x2="250" y2="60"/>
+  <line class="line" x1="250" y1="60" x2="350" y2="40"/>
+  <line class="line" x1="50" y1="50" x2="100" y2="120"/>
+  <line class="line" x1="150" y1="30" x2="200" y2="100"/>
+  <line class="line" x1="250" y1="60" x2="300" y2="130"/>
+  <line class="line" x1="100" y1="120" x2="200" y2="100"/>
+  <line class="line" x1="200" y1="100" x2="300" y2="130"/>
+  <line class="line" x1="100" y1="120" x2="150" y2="180"/>
+  <line class="line" x1="200" y1="100" x2="250" y2="210"/>
+  <line class="line" x1="300" y1="130" x2="350" y2="190"/>
+  <line class="line" x1="50" y1="200" x2="150" y2="180"/>
+  <line class="line" x1="150" y1="180" x2="250" y2="210"/>
+  <line class="line" x1="250" y1="210" x2="350" y2="190"/>
+  <line class="line" x1="50" y1="200" x2="100" y2="280"/>
+  <line class="line" x1="150" y1="180" x2="200" y2="260"/>
+  <line class="line" x1="250" y1="210" x2="300" y2="290"/>
+  <line class="line" x1="100" y1="280" x2="200" y2="260"/>
+  <line class="line" x1="200" y1="260" x2="300" y2="290"/>
+  <line class="line" x1="100" y1="280" x2="150" y2="330"/>
+  <line class="line" x1="200" y1="260" x2="250" y2="360"/>
+  <line class="line" x1="300" y1="290" x2="350" y2="340"/>
+  <line class="line" x1="50" y1="350" x2="150" y2="330"/>
+  <line class="line" x1="150" y1="330" x2="250" y2="360"/>
+  <line class="line" x1="250" y1="360" x2="350" y2="340"/>
+  <line class="line" x1="350" y1="40" x2="350" y2="190"/>
+  <line class="line" x1="50" y1="50" x2="50" y2="200"/>
+  <line class="line" x1="50" y1="200" x2="50" y2="350"/>
+  <line class="line" x1="350" y1="190" x2="350" y2="340"/>
+</svg>

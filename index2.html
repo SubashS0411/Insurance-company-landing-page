@@ -1,265 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="scroll-smooth">
+<html lang="en" dir="ltr" class="scroll-smooth dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claimora Insurance | Strategic Coverage</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
                     colors: {
-                        navy: { 950: '#000000', 900: '#000000', 800: '#0a0a0a', 700: '#111111' },
-                        slate: { 950: '#000000', 900: '#000000', 800: '#0a0a0a', 700: '#111111' },
+                        navy: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
+                        slate: { 950: '#000000', 900: '#020617', 800: '#0f172a', 700: '#1e293b' },
                         neon: {
                             cyan: '#64ffda',
                             violet: '#b39ddb',
                             magenta: '#f50057',
                             orange: '#FF9F1C',
-                            green: '#00ff9d',
                             gold: '#FFD700',
+                            green: '#00ff9d'
                         },
-                        pastel: {
-                            lavender: '#E6E6FA',
-                            pink: '#FFD1DC',
-                            sky: '#BFEFFF',
-                            peach: '#FFDAB9',
-                            ivory: '#FFFFF0',
-                            mint: '#98FF98',
-                        },
-                        slate: {
-                            light: '#8892b0',
-                            lighter: '#a8b2d1',
-                            lightest: '#ccd6f6',
-                        }
+                        platinum: { 100: '#F3F4F6', 300: '#D1D5DB', 500: '#9CA3AF' },
+                        gold: { 400: '#FFD700', 500: '#D4AF37', 600: '#C5A028' },
+                        accent: { DEFAULT: '#6366f1', dark: '#4f46e5' }
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                        display: ['Outfit', 'sans-serif'],
-                    },
-                    animation: {
-                        'spin-slow': 'spin 20s linear infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'shimmer': 'shimmer 2s linear infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        shimmer: {
-                            '0%': { backgroundPosition: '-1000px 0' },
-                            '100%': { backgroundPosition: '1000px 0' }
-                        }
+                    backgroundImage: {
+                        'gradient-platinum': 'linear-gradient(135deg, #E5E7EB 0%, #9CA3AF 100%)',
+                        'gradient-gold': 'linear-gradient(135deg, #FFD700 0%, #D4AF37 100%)',
                     }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700;900&family=Fira+Code&display=swap"
-        rel="stylesheet">
-    <script>
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
+    <link rel="icon" type="image/svg+xml" href="Assets/favicon.svg">
     <style>
-        /* Custom Utilities for Neon Theme */
-        /* Custom Utilities for Neon Theme */
-        /* Light Mode Background Image (Fixed) */
-        body:not(.dark)::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1614850523060-8da1d56ae167?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            z-index: -2;
-            opacity: 0.9;
-        }
-
-        /* Ensure sections are transparent to show background */
-        body:not(.dark) section:not(.footer-gradient) {
-            background: transparent !important;
-        }
-
-        body {
-            background-color: #000000;
-        }
-
-        .dark body {
-            background-color: #000000;
-            position: relative;
-            /* Image handled by ::before for blur */
-        }
-
-        /* Blurred Background Image */
-        .dark body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-attachment: fixed;
-            filter: blur(8px);
-            z-index: -2;
-            transform: scale(1.05);
-            /* Prevent blur edges from showing */
-            pointer-events: none;
-        }
-
-        /* Black Shadow / Vignette Overlay */
-        .dark body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            box-shadow: inset 0 0 150px 50px #000000;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        body {
-            color: #475569;
-        }
-
-        .dark body {
-            color: #8892b0;
-        }
-
-        .neon-glow {
-            text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
-        }
-
-        .box-glow {
-            box-shadow: 0 0 20px rgba(100, 255, 218, 0.1);
-        }
-
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .dark .glass-panel {
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .hex-card {
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
-
-        .pentagon-card {
-            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-        }
-
-        .pentagon-outline {
-            filter: drop-shadow(0 0 5px rgba(255, 165, 0, 0.5));
-            transition: all 0.3s ease;
-        }
-
-        .pentagon-outline:hover {
-            filter: drop-shadow(0 0 15px rgba(255, 165, 0, 0.8));
-        }
-
-        /* Hero Title Gradient & Animation */
-        .hero-title-gradient {
-            background: linear-gradient(90deg, #4f46e5 0%, #6366f1 50%, #818cf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% auto;
-            /* Outer glow using drop-shadow filter on the text shape */
-            filter: drop-shadow(0 0 10px rgba(240, 48, 150, 0.15)) drop-shadow(0 0 20px rgba(175, 29, 253, 0.1));
-            /* Animation: Reveal then Shimmer */
-            opacity: 0;
-            transform: translateY(20px);
-            animation: revealTitle 1.2s ease-out forwards, shimmerGradient 8s linear infinite 1.2s;
-        }
-
-        @keyframes revealTitle {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes shimmerGradient {
-            0% {
-                background-position: 0% center;
-            }
-
-            100% {
-                background-position: 200% center;
-            }
-        }
-
-        .orbit-container {
-            position: relative;
-            width: 600px;
-            height: 600px;
-            animation: spin 60s linear infinite;
-        }
-
-        .orbit-item {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-top: -25px;
-            /* Half of item height */
-            margin-left: -25px;
-            /* Half of item width */
-        }
-
-        .orbit-item img {
-            transform: rotate(0deg);
-            /* Counter-rotate in JS if needed */
-        }
-
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
         /* Flip Card Styles */
         .flip-card {
             background-color: transparent;
             perspective: 1000px;
         }
-
         .flip-card-inner {
             position: relative;
             width: 100%;
@@ -268,11 +60,9 @@
             transition: transform 0.6s;
             transform-style: preserve-3d;
         }
-
         .flip-card.flipped .flip-card-inner {
             transform: rotateY(180deg);
         }
-
         .flip-card-front,
         .flip-card-back {
             position: absolute;
@@ -280,125 +70,31 @@
             height: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            border-radius: 0.75rem;
+            border-radius: 1rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 1.5rem;
         }
-
         .flip-card-back {
             transform: rotateY(180deg);
-            /* Background handled by Tailwind classes now */
         }
 
-        /* 3D Logo Styles - Premium Stacked Animation */
-        .logo-3d-container {
-            perspective: 1000px;
-            width: 320px;
-            height: 320px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Tab active product */
+        .active-product {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
         }
-
-        .logo-3d {
-            width: 250px;
-            height: 250px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rotate3d 15s linear infinite;
-        }
-
-        @keyframes rotate3d {
-            0% {
-                transform: rotateY(0deg);
-            }
-
-            100% {
-                transform: rotateY(360deg);
-            }
-        }
-
-        .logo-layer {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            object-fit: contain;
-            /* Layer thickness simulation */
-            transform: translateZ(var(--z));
-            pointer-events: none;
-        }
-
-        /* Light Mode Styles */
-        .logo-layer {
-            filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.4));
-        }
-
-        /* Dark Mode Styles */
-        .dark .logo-layer {
-            filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.8)) drop-shadow(0 0 40px rgba(124, 58, 237, 0.4));
-        }
-
-        /* Center filling to prevent gaps if angle is steep */
-        .logo-core {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotateY(90deg);
-            width: 10px;
-            height: 200px;
-            background: rgba(168, 85, 247, 0.5);
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
-        }
-
-        /* Glowy Border Effects */
-        .glow-border-cyan {
-            border: 1px solid rgba(100, 255, 218, 0.6) !important;
-            box-shadow: 0 0 15px rgba(100, 255, 218, 0.4), inset 0 0 10px rgba(100, 255, 218, 0.1);
-        }
-
-        .glow-border-magenta {
-            border: 1px solid rgba(245, 0, 87, 0.6) !important;
-            box-shadow: 0 0 15px rgba(245, 0, 87, 0.4), inset 0 0 10px rgba(245, 0, 87, 0.1);
-        }
-
-        .glow-border-indigo {
-            border: 1px solid rgba(99, 102, 241, 0.6) !important;
-            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4), inset 0 0 10px rgba(99, 102, 241, 0.1);
-        }
-
-        .glow-border-violet {
-            border: 1px solid rgba(179, 157, 219, 0.6) !important;
-            box-shadow: 0 0 15px rgba(179, 157, 219, 0.4), inset 0 0 10px rgba(179, 157, 219, 0.1);
-        }
-
-        .glow-border-rose {
-            border: 1px solid rgba(244, 63, 94, 0.6) !important;
-            box-shadow: 0 0 15px rgba(244, 63, 94, 0.4), inset 0 0 10px rgba(244, 63, 94, 0.1);
-        }
-
-        .glow-img {
-            filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
-            transition: all 0.5s ease;
-        }
-
-        .dark .glow-img {
-            filter: drop-shadow(0 0 8px rgba(100, 255, 218, 0.3));
-        }
-
-        .glow-img:hover {
-            filter: drop-shadow(0 0 15px rgba(100, 255, 218, 0.6));
-            transform: scale(1.02);
+        .dark .active-product {
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+            border-color: #6366f1 !important;
         }
     </style>
-    <link rel="icon" type="image/svg+xml" href="Assets/favicon.svg">
 </head>
 
-<body class="selection:bg-indigo-400 selection:text-navy-900 font-sans antialiased overflow-x-hidden">
+<body class="bg-gray-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 overflow-x-hidden selection:bg-indigo-500
+selection:text-white">
 
     <!-- LIQUID GLASS HEADER -->
     <nav class="header-glass">
@@ -423,17 +119,14 @@
                     <button class="nav-link nav-link-active flex items-center gap-1 py-4">
                         Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
                     </button>
-                    <!-- Dropdown -->
                     <div
                         class="absolute top-full left-0 w-48 py-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
                         <a href="index.html"
                             class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white">Home
-                            V1
-                            (Parallax)</a>
+                            V1 (Parallax)</a>
                         <a href="index2.html"
                             class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 text-sm text-black dark:text-white">Home
-                            V2
-                            (Retro)</a>
+                            V2 (Classic)</a>
                     </div>
                 </div>
 
@@ -483,7 +176,7 @@
                 </a>
             </div>
 
-            <!-- Mobile Actions (Menu Only) -->
+            <!-- Mobile Actions -->
             <div class="lg:hidden flex items-center gap-3">
                 <button id="mobile-menu-btn"
                     class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/30">
@@ -508,12 +201,11 @@
             </div>
 
             <nav class="space-y-6">
-                <!-- Mobile Links -->
                 <div class="space-y-3">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Navigation</p>
                     <a href="index.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">Home</a>
                     <a href="index2.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">Home V2
-                        (Retro)</a>
+                        (Classic)</a>
                     <a href="about.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">About</a>
                     <a href="services.html"
                         class="block text-lg font-medium text-slate-800 dark:text-slate-200">Services</a>
@@ -573,485 +265,325 @@
         </div>
     </div>
 
-    <!-- 1. STRATEGIC INTELLIGENCE HUB (HERO) -->
+    <!-- ============================== -->
+    <!-- 1. HERO SECTION -->
+    <!-- ============================== -->
     <section class="min-h-screen pt-20 relative flex items-center justify-center overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute inset-0 bg-white dark:bg-navy-900/50 z-0 transition-colors duration-500"></div>
-        <div
-            class="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-100 dark:bg-indigo-400/5 rounded-full blur-[100px] pointer-events-none transition-colors duration-500">
-        </div>
-        <div
-            class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-100 dark:bg-indigo-400/5 rounded-full blur-[100px] pointer-events-none transition-colors duration-500">
-        </div>
-
-        <script>
-            // Simple parallax for background text
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const parallax = document.querySelector('.hero-parallax');
-                if (parallax) parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-            });
-        </script>
-
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 w-full">
-            <div class="order-2 lg:order-1">
-                <h4 class="font-mono text-indigo-600 dark:text-indigo-400 mb-5">Hi, we are Claimora.</h4>
-                <h1 class="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight hero-title-gradient pb-2">
-                    Turning Risk into <br>
-                    <span>Reliable Protection.</span>
-                </h1>
-                <p class="text-slate-800 dark:text-slate-light text-lg mb-10 max-w-xl leading-relaxed font-medium">
-                    We decode life's uncertainties to build adaptable, future-proof insurance coverage for the world's
-                    most
-                    ambitious individuals.
-                </p>
-                <div class="flex gap-6">
-                    <a href="#contact"
-                        class="flex items-center gap-3 px-8 py-4 bg-transparent glow-border-cyan text-indigo-700 dark:text-indigo-400 font-mono font-bold rounded-full hover:bg-indigo-50 dark:hover:bg-indigo-400/10 transition duration-300 group">
-                        Get Insured
-                    </a>
-                    <a href="#cases"
-                        class="px-8 py-4 bg-transparent text-slate-900 dark:text-slate-lightest font-mono font-bold rounded-full hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 flex items-center gap-2 group">
-                        View Coverage <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
-                <!-- 3D Symbol Container -->
-                <div class="relative w-full max-w-sm md:max-w-lg aspect-square" id="hero-model-container">
-                    <!-- 3D Shield Element with Tilt Interaction -->
-                    <!-- 3D Rotating Logo Element -->
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="logo-3d-container">
-                            <div class="logo-3d">
-                                <!-- Stacked Layers for Volume -->
-                                <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: -10px">
-                                <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: -8px">
-                                <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: -6px">
-                                <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: -4px">
-                                <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: -2px">
-                                <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: 0px">
-                                <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: 2px">
-                                <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: 4px">
-                                <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: 6px">
-                                <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: 8px">
-                                <img src="Assets/hero_shield_3d.png" class="logo-layer" style="--z: 10px">
-
-                                <!-- Inner Core Glow -->
-                                <div class="absolute inset-0 bg-indigo-500/20 rounded-full blur-2xl animate-pulse">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-                const heroContainer = document.getElementById('hero-model-container');
-                const heroElement = heroContainer.querySelector('.tilt-element');
-
-                document.addEventListener('mousemove', (e) => {
-                    if (!heroContainer || window.innerWidth < 1024) return; // Desktop only
-
-                    const rect = heroContainer.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    // Calculate center relative to the container
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-
-                    // Calculate rotation (max 15 deg)
-                    // Inverse logic: Mouse Left -> Rotate Y Negative (Tilt Left)
-                    const rotateY = ((x - centerX) / centerX) * 15;
-                    const rotateX = ((y - centerY) / centerY) * -15;
-
-                    // Apply transform
-                    heroElement.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                });
-
-                // Reset on mouse leave
-                heroContainer.addEventListener('mouseleave', () => {
-                    if (heroElement) heroElement.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-                });
-            </script>
-        </div>
-        </div>
-    </section>
-
-    <!-- 2. MARKET SIGNALS (HORIZONTAL SCROLL) -->
-    <section id="signals" class="py-24 bg-slate-50 dark:bg-navy-900/50 overflow-hidden transition-colors duration-500">
-        <div class="text-center w-full mb-16">
-            <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-slate-lightest mb-4">
-                Risk We Monitor</h2>
-            <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                Comprehensive analysis of potential threats to your personal and professional stability.
-            </p>
-        </div>
-
-        <!-- Static Grid Container -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6 lg:px-16 pb-12 max-w-[1440px] mx-auto">
-            <!-- Card 1 -->
-            <div class="min-w-[220px] h-[320px] flip-card group cursor-pointer hover:scale-105 transition-transform duration-300"
-                onclick="this.classList.toggle('flipped')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front bg-gradient-to-br from-white to-indigo-50 dark:from-black dark:to-black backdrop-blur-md glow-border-indigo box-glow rounded-[18px] p-4 shadow-sm hover:shadow-indigo-400/20 transition-all
-                    duration-300 flex flex-col justify-between overflow-hidden">
-                        <div class="w-full h-32 rounded-xl overflow-hidden mb-4">
-                            <img src="https://images.unsplash.com/photo-1542382156909-9ae37b3f56fd?q=80&w=800&auto=format&fit=crop"
-                                class="w-full h-full object-cover glow-img group-hover:scale-110 transition-transform duration-700">
-                        </div>
-                        <div class="text-center">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-slate-lightest mb-2">Life Changes</h3>
-                            <p
-                                class="text-sm font-mono text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition">
-                                View Plans</p>
-                        </div>
-                    </div>
-                    <div
-                        class="flip-card-back bg-gradient-to-br from-white to-slate-100 dark:from-black dark:to-black rounded-[18px] p-6 border border-slate-200 dark:border-indigo-400 flex flex-col items-center">
-                        <div class="flex items-center gap-2 mb-4 opacity-80">
-                            <div
-                                class="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center text-white text-[10px]">
-                                <i class="fas fa-shield-check"></i>
-                            </div>
-                            <span class="font-bold text-sm text-slate-900 dark:text-white">Claimora</span>
-                        </div>
-                        <h4
-                            class="font-mono text-indigo-600 dark:text-indigo-400 mb-2 text-sm border-b border-slate-200 dark:border-white/10 w-full pb-1 text-center">
-                            Life Changes</h4>
-                        <ul
-                            class="text-left text-xs space-y-2 text-slate-600 dark:text-slate-light list-disc pl-4 w-full">
-                            <li>Marriage & Family</li>
-                            <li>New Home Purchase</li>
-                            <li>Career Mobility</li>
-                            <li>Retirement Planning</li>
-                            <li>Child Education</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="min-w-[220px] h-[320px] flip-card group cursor-pointer hover:scale-105 transition-transform duration-300"
-                onclick="this.classList.toggle('flipped')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front bg-gradient-to-br from-white to-indigo-50 dark:from-black dark:to-black backdrop-blur-md glow-border-violet box-glow rounded-[18px] p-4 shadow-sm hover:shadow-indigo-400/20 transition-all
-                    duration-300 flex flex-col justify-between overflow-hidden">
-                        <div class="w-full h-32 rounded-xl overflow-hidden mb-4">
-                            <img src="https://images.unsplash.com/photo-1579621970588-a3528b9cc860?q=80&w=800&auto=format&fit=crop"
-                                class="w-full h-full object-cover glow-img group-hover:scale-110 transition-transform duration-700">
-                        </div>
-                        <div class="text-center">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-slate-lightest mb-2">Wealth Pres.</h3>
-                            <p
-                                class="text-sm font-mono text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition">
-                                View Plans</p>
-                        </div>
-                    </div>
-                    <div
-                        class="flip-card-back bg-gradient-to-br from-white to-indigo-50 dark:from-black dark:to-black rounded-[18px] p-6 border border-indigo-500 dark:border-indigo-400 flex flex-col items-center">
-                        <div class="flex items-center gap-2 mb-4 opacity-80">
-                            <div
-                                class="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center text-white text-[10px]">
-                                <i class="fas fa-shield-check"></i>
-                            </div>
-                            <span class="font-bold text-sm text-slate-900 dark:text-white">Claimora</span>
-                        </div>
-                        <h4
-                            class="font-mono text-indigo-600 dark:text-indigo-400 mb-2 text-sm border-b border-slate-200 dark:border-white/10 w-full pb-1 text-center">
-                            Wealth Pres.</h4>
-                        <ul
-                            class="text-left text-xs space-y-2 text-slate-600 dark:text-slate-light list-disc pl-4 w-full">
-                            <li>Asset Protection</li>
-                            <li>Legacy Planning</li>
-                            <li>Inflation Hedging</li>
-                            <li>Tax Efficiency</li>
-                            <li>Estate Management</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="min-w-[220px] h-[320px] flip-card group cursor-pointer hover:scale-105 transition-transform duration-300"
-                onclick="this.classList.toggle('flipped')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front bg-gradient-to-br from-white to-indigo-50 dark:from-black dark:to-black backdrop-blur-md glow-border-magenta box-glow rounded-[18px] p-4 shadow-sm hover:shadow-indigo-600/20 transition-all
-                    duration-300 flex flex-col justify-between overflow-hidden">
-                        <div class="w-full h-32 rounded-xl overflow-hidden mb-4">
-                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop"
-                                class="w-full h-full object-cover glow-img group-hover:scale-110 transition-transform duration-700">
-                        </div>
-                        <div class="text-center">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-slate-lightest mb-2">Cyber Risks</h3>
-                            <p
-                                class="text-sm font-mono text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition">
-                                View Plans</p>
-                        </div>
-                    </div>
-                    <div
-                        class="flip-card-back bg-gradient-to-br from-white to-indigo-50 dark:from-black dark:to-black rounded-[18px] p-6 border border-indigo-500 dark:border-indigo-600 flex flex-col items-center">
-                        <div class="flex items-center gap-2 mb-4 opacity-80">
-                            <div
-                                class="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center text-white text-[10px]">
-                                <i class="fas fa-shield-check"></i>
-                            </div>
-                            <span class="font-bold text-sm text-slate-900 dark:text-white">Claimora</span>
-                        </div>
-                        <h4
-                            class="font-mono text-indigo-600 dark:text-indigo-600 mb-2 text-sm border-b border-slate-200 dark:border-white/10 w-full pb-1 text-center">
-                            Cyber Risks</h4>
-                        <ul
-                            class="text-left text-xs space-y-2 text-slate-600 dark:text-slate-light list-disc pl-4 w-full">
-                            <li>Data Breach</li>
-                            <li>Identity Theft</li>
-                            <li>Ransomware</li>
-                            <li>System Failure</li>
-                            <li>Cloud Security</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 4 -->
-            <div class="min-w-[220px] h-[320px] flip-card group cursor-pointer hover:scale-105 transition-transform duration-300"
-                onclick="this.classList.toggle('flipped')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front bg-gradient-to-br from-white to-indigo-50 dark:from-black dark:to-black backdrop-blur-md glow-border-cyan box-glow rounded-[18px] p-4 shadow-sm hover:shadow-indigo-400/20 transition-all
-                    duration-300 flex flex-col justify-between overflow-hidden">
-                        <div class="w-full h-32 rounded-xl overflow-hidden mb-4">
-                            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop"
-                                class="w-full h-full object-cover glow-img group-hover:scale-110 transition-transform duration-700">
-                        </div>
-                        <div class="text-center">
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-slate-lightest mb-2">Travel</h3>
-                            <p
-                                class="text-sm font-mono text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition">
-                                View Plans</p>
-                        </div>
-                    </div>
-                    <div
-                        class="flip-card-back bg-gradient-to-br from-white to-indigo-50 dark:from-black dark:to-black rounded-[18px] p-6 border border-indigo-500 dark:border-indigo-400 flex flex-col items-center">
-                        <div class="flex items-center gap-2 mb-4 opacity-80">
-                            <div
-                                class="w-6 h-6 rounded bg-indigo-600 flex items-center justify-center text-white text-[10px]">
-                                <i class="fas fa-shield-check"></i>
-                            </div>
-                            <span class="font-bold text-sm text-slate-900 dark:text-white">Claimora</span>
-                        </div>
-                        <h4
-                            class="font-mono text-indigo-600 dark:text-indigo-400 mb-2 text-sm border-b border-slate-200 dark:border-white/10 w-full pb-1 text-center">
-                            Travel</h4>
-                        <ul
-                            class="text-left text-xs space-y-2 text-slate-600 dark:text-slate-light list-disc pl-4 w-full">
-                            <li>Trip Cancellation</li>
-                            <li>Medical Evac</li>
-                            <li>Lost Baggage</li>
-                            <li>Flight Delay</li>
-                            <li>Adventure Sports</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. INSURANCE PRODUCTS (GRID) -->
-    <section id="engines"
-        class="py-24 relative bg-slate-50 dark:bg-black/50 overflow-hidden transition-colors duration-500">
-        <!-- Background Image with Overlay -->
+        <!-- Background -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2000&auto=format&fit=crop"
-                class="w-full h-full object-cover opacity-5 dark:opacity-20" alt="Background">
-            <div class="absolute inset-0 bg-white/90 dark:bg-black/90 transition-colors duration-500"></div>
+            <img src="Assets/hero_bg.jpeg" alt="Insurance" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/80 to-indigo-950/70"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 w-full py-20">
+            <div class="reveal">
+                <p class="text-indigo-400 font-medium tracking-widest uppercase text-sm mb-6">
+                    Welcome to Claimora
+                </p>
+                <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight text-white">
+                    Turning Risk into <br>
+                    <span class="text-indigo-400">Reliable Protection.</span>
+                </h1>
+                <p class="text-slate-300 text-lg mb-10 max-w-xl leading-relaxed">
+                    We decode life's uncertainties to build adaptable, future-proof insurance coverage for the world's
+                    most ambitious individuals.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="contact.html"
+                        class="btn-pill bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-500/30">
+                        Get Insured <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
+                    <a href="#products"
+                        class="btn-pill border-2 border-white/30 text-white hover:bg-white/10">
+                        View Coverage <i data-lucide="chevron-down" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hidden lg:flex justify-center lg:justify-end relative reveal">
+                <div class="relative">
+                    <img src="Assets/hero_shield_3d.png" alt="Claimora Shield"
+                        class="w-80 h-80 object-contain drop-shadow-[0_0_40px_rgba(99,102,241,0.3)] animate-[float_6s_ease-in-out_infinite]">
+                    <div class="absolute inset-0 bg-indigo-500/10 rounded-full blur-3xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- 2. RISK WE MONITOR (FLIP CARDS) -->
+    <!-- ============================== -->
+    <section id="signals" class="py-24 bg-white dark:bg-slate-950 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-indigo-600 dark:text-indigo-400 font-medium tracking-widest uppercase text-sm mb-4">Comprehensive Analysis</p>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-4">
+                    Risks We Monitor</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                    Comprehensive analysis of potential threats to your personal and professional stability.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 reveal">
+                <!-- Card 1: Life Changes -->
+                <div class="h-[340px] flip-card group cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                            <div class="w-full h-36 overflow-hidden">
+                                <img src="Assets/health.jpeg"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Life Changes">
+                            </div>
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Life Changes</h3>
+                                <p class="text-sm text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition">
+                                    Click to View Plans</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back bg-indigo-600 dark:bg-indigo-700 rounded-2xl p-6 flex flex-col items-center text-white">
+                            <div class="flex items-center gap-2 mb-4">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                <span class="font-bold text-sm">Claimora</span>
+                            </div>
+                            <h4 class="font-serif font-bold mb-3 border-b border-white/20 w-full pb-2 text-center">Life Changes</h4>
+                            <ul class="text-left text-sm space-y-2 list-disc pl-4 w-full">
+                                <li>Marriage & Family</li>
+                                <li>New Home Purchase</li>
+                                <li>Career Mobility</li>
+                                <li>Retirement Planning</li>
+                                <li>Child Education</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Wealth Preservation -->
+                <div class="h-[340px] flip-card group cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                            <div class="w-full h-36 overflow-hidden">
+                                <img src="Assets/money.jpeg"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Wealth">
+                            </div>
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Wealth Preservation</h3>
+                                <p class="text-sm text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition">
+                                    Click to View Plans</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back bg-indigo-600 dark:bg-indigo-700 rounded-2xl p-6 flex flex-col items-center text-white">
+                            <div class="flex items-center gap-2 mb-4">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                <span class="font-bold text-sm">Claimora</span>
+                            </div>
+                            <h4 class="font-serif font-bold mb-3 border-b border-white/20 w-full pb-2 text-center">Wealth Preservation</h4>
+                            <ul class="text-left text-sm space-y-2 list-disc pl-4 w-full">
+                                <li>Asset Protection</li>
+                                <li>Legacy Planning</li>
+                                <li>Inflation Hedging</li>
+                                <li>Tax Efficiency</li>
+                                <li>Estate Management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Cyber Risks -->
+                <div class="h-[340px] flip-card group cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                            <div class="w-full h-36 overflow-hidden">
+                                <img src="Assets/chip.jpeg"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Cyber">
+                            </div>
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Cyber Risks</h3>
+                                <p class="text-sm text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition">
+                                    Click to View Plans</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back bg-indigo-600 dark:bg-indigo-700 rounded-2xl p-6 flex flex-col items-center text-white">
+                            <div class="flex items-center gap-2 mb-4">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                <span class="font-bold text-sm">Claimora</span>
+                            </div>
+                            <h4 class="font-serif font-bold mb-3 border-b border-white/20 w-full pb-2 text-center">Cyber Risks</h4>
+                            <ul class="text-left text-sm space-y-2 list-disc pl-4 w-full">
+                                <li>Data Breach</li>
+                                <li>Identity Theft</li>
+                                <li>Ransomware</li>
+                                <li>System Failure</li>
+                                <li>Cloud Security</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Travel -->
+                <div class="h-[340px] flip-card group cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                            <div class="w-full h-36 overflow-hidden">
+                                <img src="Assets/travel.jpeg"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Travel">
+                            </div>
+                            <div class="p-6 text-center">
+                                <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Travel</h3>
+                                <p class="text-sm text-indigo-600 dark:text-indigo-400 opacity-0 group-hover:opacity-100 transition">
+                                    Click to View Plans</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back bg-indigo-600 dark:bg-indigo-700 rounded-2xl p-6 flex flex-col items-center text-white">
+                            <div class="flex items-center gap-2 mb-4">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                <span class="font-bold text-sm">Claimora</span>
+                            </div>
+                            <h4 class="font-serif font-bold mb-3 border-b border-white/20 w-full pb-2 text-center">Travel</h4>
+                            <ul class="text-left text-sm space-y-2 list-disc pl-4 w-full">
+                                <li>Trip Cancellation</li>
+                                <li>Medical Evacuation</li>
+                                <li>Lost Baggage</li>
+                                <li>Flight Delay</li>
+                                <li>Adventure Sports</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- 3. INSURANCE PRODUCTS GRID -->
+    <!-- ============================== -->
+    <section id="products" class="py-24 relative bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="Assets/home1.jpeg" class="w-full h-full object-cover opacity-5 dark:opacity-10" alt="Background">
+            <div class="absolute inset-0 bg-slate-50/95 dark:bg-slate-950/95"></div>
         </div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-slate-lightest mb-2">
-                Insurance Products</h2>
-            <p class="font-mono text-indigo-700 dark:text-indigo-400 mb-12"> Modular coverage, measurable peace of mind
-            </p>
+            <div class="mb-12 reveal">
+                <p class="text-indigo-600 dark:text-indigo-400 font-medium tracking-widest uppercase text-sm mb-4">Solutions</p>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-3">
+                    Insurance Products</h2>
+                <p class="text-slate-600 dark:text-slate-400">Modular coverage, measurable peace of mind.</p>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
                 <!-- Product 1 -->
-                <div class="p-8 bg-gradient-to-br from-white to-slate-50 dark:from-black dark:to-black border-2 rounded-2xl cursor-pointer transition-all duration-300 group
-                            border-indigo-500 dark:border-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-400
-                            shadow-lg hover:shadow-indigo-400/20 hover:-translate-y-2"
+                <div class="p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl cursor-pointer transition-all duration-300 group hover:shadow-xl hover:-translate-y-2 hover:border-indigo-300 dark:hover:border-indigo-600"
                     onclick="this.classList.toggle('active-product')">
-                    <div
-                        class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-black flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-shield-alt text-2xl text-indigo-600 dark:text-indigo-400"></i>
                     </div>
-                    <h3
-                        class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                         Comprehensive Coverage</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">All-in-one protection for life, health,
-                        and assets.</p>
-                    <div
-                        class="h-1 w-12 bg-indigo-200 dark:bg-black group-hover:w-full transition-all duration-500 rounded-full">
-                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">All-in-one protection for life, health, and assets.</p>
+                    <div class="h-1 w-12 bg-indigo-200 dark:bg-indigo-900 group-hover:w-full transition-all duration-500 rounded-full"></div>
                 </div>
 
                 <!-- Product 2 -->
-                <div class="p-8 bg-gradient-to-br from-white to-slate-50 dark:from-black dark:to-black border rounded-2xl cursor-pointer transition-all duration-300 group
-                            border-indigo-500 dark:border-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-400
-                            shadow-lg hover:shadow-indigo-400/20 hover:-translate-y-2"
+                <div class="p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl cursor-pointer transition-all duration-300 group hover:shadow-xl hover:-translate-y-2 hover:border-indigo-300 dark:hover:border-indigo-600"
                     onclick="this.classList.toggle('active-product')">
-                    <div
-                        class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-black flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                        <i class="fas fa-mobile-alt text-2xl text-indigo-500 dark:text-indigo-400"></i>
+                    <div class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-mobile-alt text-2xl text-indigo-600 dark:text-indigo-400"></i>
                     </div>
-                    <h3
-                        class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
+                    <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                         Digital Claims</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">File and track claims instantly through
-                        our app.</p>
-                    <div
-                        class="h-1 w-12 bg-indigo-200 dark:bg-black group-hover:w-full transition-all duration-500 rounded-full">
-                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">File and track claims instantly through our app.</p>
+                    <div class="h-1 w-12 bg-indigo-200 dark:bg-indigo-900 group-hover:w-full transition-all duration-500 rounded-full"></div>
                 </div>
 
                 <!-- Product 3 -->
-                <div class="p-8 bg-gradient-to-br from-white to-slate-50 dark:from-black dark:to-black border rounded-2xl cursor-pointer transition-all duration-300 group
-                            border-orange-500 dark:border-indigo-600 hover:border-orange-300 dark:hover:border-indigo-600
-                            shadow-lg hover:shadow-indigo-600/20 hover:-translate-y-2"
+                <div class="p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl cursor-pointer transition-all duration-300 group hover:shadow-xl hover:-translate-y-2 hover:border-gold-500 dark:hover:border-gold-600"
                     onclick="this.classList.toggle('active-product')">
-                    <div
-                        class="w-14 h-14 rounded-xl bg-orange-50 dark:bg-black flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                        <i class="fas fa-file-contract text-2xl text-orange-500 dark:text-indigo-600"></i>
+                    <div class="w-14 h-14 rounded-xl bg-amber-50 dark:bg-amber-950/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-file-contract text-2xl text-gold-500 dark:text-gold-400"></i>
                     </div>
-                    <h3
-                        class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-orange-500 dark:group-hover:text-indigo-600 transition-colors">
+                    <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2 group-hover:text-gold-500 dark:group-hover:text-gold-400 transition-colors">
                         Risk Assessment</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">AI-driven analysis of your personal and
-                        business risks.</p>
-                    <div
-                        class="h-1 w-12 bg-orange-200 dark:bg-black group-hover:w-full transition-all duration-500 rounded-full">
-                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">AI-driven analysis of your personal and business risks.</p>
+                    <div class="h-1 w-12 bg-amber-200 dark:bg-amber-900 group-hover:w-full transition-all duration-500 rounded-full"></div>
                 </div>
 
                 <!-- Product 4 -->
-                <div class="p-8 bg-gradient-to-br from-white to-slate-50 dark:from-black dark:to-black border rounded-2xl cursor-pointer transition-all duration-300 group
-                            border-indigo-500 dark:border-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-400
-                            shadow-lg hover:shadow-indigo-400/20 hover:-translate-y-2"
+                <div class="p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl cursor-pointer transition-all duration-300 group hover:shadow-xl hover:-translate-y-2 hover:border-indigo-300 dark:hover:border-indigo-600"
                     onclick="this.classList.toggle('active-product')">
-                    <div
-                        class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-black flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-leaf text-2xl text-indigo-600 dark:text-indigo-400"></i>
                     </div>
-                    <h3
-                        class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                         Sustainable Life</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Green investment options for your life
-                        insurance portfolio.</p>
-                    <div
-                        class="h-1 w-12 bg-indigo-200 dark:bg-black group-hover:w-full transition-all duration-500 rounded-full">
-                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Green investment options for your life insurance portfolio.</p>
+                    <div class="h-1 w-12 bg-indigo-200 dark:bg-indigo-900 group-hover:w-full transition-all duration-500 rounded-full"></div>
                 </div>
 
                 <!-- Product 5 -->
-                <div class="p-8 bg-gradient-to-br from-white to-slate-50 dark:from-black dark:to-black border rounded-2xl cursor-pointer transition-all duration-300 group
-                            border-indigo-500 dark:border-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-400
-                            shadow-lg hover:shadow-indigo-400/20 hover:-translate-y-2"
+                <div class="p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl cursor-pointer transition-all duration-300 group hover:shadow-xl hover:-translate-y-2 hover:border-indigo-300 dark:hover:border-indigo-600"
                     onclick="this.classList.toggle('active-product')">
-                    <div
-                        class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-black flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                        <i class="fas fa-heartbeat text-2xl text-indigo-500 dark:text-indigo-400"></i>
+                    <div class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-heartbeat text-2xl text-indigo-600 dark:text-indigo-400"></i>
                     </div>
-                    <h3
-                        class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors">
+                    <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                         Health Plus</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Premium health coverage with global
-                        access.</p>
-                    <div
-                        class="h-1 w-12 bg-indigo-200 dark:bg-black group-hover:w-full transition-all duration-500 rounded-full">
-                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Premium health coverage with global access.</p>
+                    <div class="h-1 w-12 bg-indigo-200 dark:bg-indigo-900 group-hover:w-full transition-all duration-500 rounded-full"></div>
                 </div>
 
                 <!-- Product 6 -->
-                <div class="p-8 bg-gradient-to-br from-white to-slate-50 dark:from-black dark:to-black border rounded-2xl cursor-pointer transition-all duration-300 group
-                            border-orange-500 dark:border-indigo-600 hover:border-orange-300 dark:hover:border-indigo-600
-                            shadow-lg hover:shadow-indigo-600/20 hover:-translate-y-2"
+                <div class="p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl cursor-pointer transition-all duration-300 group hover:shadow-xl hover:-translate-y-2 hover:border-gold-500 dark:hover:border-gold-600"
                     onclick="this.classList.toggle('active-product')">
-                    <div
-                        class="w-14 h-14 rounded-xl bg-orange-50 dark:bg-black flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                        <i class="fas fa-piggy-bank text-2xl text-orange-500 dark:text-indigo-600"></i>
+                    <div class="w-14 h-14 rounded-xl bg-amber-50 dark:bg-amber-950/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-piggy-bank text-2xl text-gold-500 dark:text-gold-400"></i>
                     </div>
-                    <h3
-                        class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-orange-500 dark:group-hover:text-indigo-600 transition-colors">
+                    <h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2 group-hover:text-gold-500 dark:group-hover:text-gold-400 transition-colors">
                         Wealth Protect</h3>
-                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Asset protection trusts and legacy
-                        planning.</p>
-                    <div
-                        class="h-1 w-12 bg-orange-200 dark:bg-black group-hover:w-full transition-all duration-500 rounded-full">
-                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Asset protection trusts and legacy planning.</p>
+                    <div class="h-1 w-12 bg-amber-200 dark:bg-amber-900 group-hover:w-full transition-all duration-500 rounded-full"></div>
                 </div>
             </div>
         </div>
-
-        <style>
-            .active-product {
-                transform: scale(1.05);
-                box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-            }
-
-            .dark .active-product {
-                box-shadow: 0 0 30px rgba(100, 255, 218, 0.2);
-                border-color: #64ffda !important;
-            }
-
-            .active-product .product-popup {
-                opacity: 1;
-                pointer-events: auto;
-            }
-        </style>
     </section>
 
-    <!-- 3. STRATEGIC TECH (NEW) -->
-    <section class="py-24 bg-white dark:bg-black/50 overflow-hidden">
+    <!-- ============================== -->
+    <!-- 4. STRATEGIC TECH -->
+    <!-- ============================== -->
+    <section class="py-24 bg-white dark:bg-slate-950 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
-            <!-- Image Side (Left LTR, Right RTL) -->
-            <div class="w-full lg:w-1/2 relative lg:order-1 rtl:lg:order-2">
-                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-indigo-400/20 group">
-                    <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=800&auto=format&fit=crop"
-                        alt="Strategic Tech"
+            <!-- Image Side -->
+            <div class="w-full lg:w-1/2 relative reveal">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+                    <img src="Assets/dashboard.jpeg" alt="Strategic Tech"
                         class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-navy-900/40 group-hover:bg-navy-900/20 transition duration-500">
-                    </div>
+                    <div class="absolute inset-0 bg-indigo-900/20 group-hover:bg-transparent transition duration-500"></div>
                 </div>
-                <!-- Decorative elements -->
-                <div
-                    class="absolute -bottom-6 -right-6 w-24 h-24 bg-indigo-400/10 rounded-full blur-xl rtl:right-auto rtl:-left-6">
-                </div>
+                <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-indigo-400/10 rounded-full blur-xl"></div>
             </div>
-            <!-- Text Side (Right LTR, Left RTL) -->
-            <div class="w-full lg:w-1/2 lg:order-2 rtl:lg:order-1 text-left rtl:text-right">
-                <h2 class="text-3xl font-display font-bold text-navy-900 dark:text-slate-lightest mb-6">
+            <!-- Text Side -->
+            <div class="w-full lg:w-1/2 reveal">
+                <p class="text-indigo-600 dark:text-indigo-400 font-medium tracking-widest uppercase text-sm mb-4">Technology</p>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-6">
                     Powered by AI & Speed</h2>
-                <p class="text-slate-600 dark:text-slate-light mb-8 text-lg leading-relaxed">
+                <p class="text-slate-600 dark:text-slate-400 mb-8 text-lg leading-relaxed">
                     We leverage cutting-edge AI to assess risks instantly. Our proprietary tech ensures your coverage is
                     precise, affordable, and approved in seconds.
                 </p>
                 <ul class="space-y-6">
                     <li class="flex items-start gap-4">
-                        <div
-                            class="w-12 h-12 rounded bg-navy-800 border border-indigo-400 flex items-center justify-center text-indigo-400 shrink-0 shadow-[0_0_15px_rgba(100,255,218,0.2)]">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-indigo-500/20">
                             <i class="fas fa-microchip text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="text-navy-900 dark:text-white font-bold mb-1 text-lg">Instant Quotes</h4>
-                            <p class="text-sm text-slate-600 dark:text-slate-light">Real-time pricing using predictive
-                                algorithms.
-                            </p>
+                            <h4 class="text-slate-900 dark:text-white font-bold mb-1 text-lg">Instant Quotes</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Real-time pricing using predictive algorithms.</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-4">
-                        <div
-                            class="w-12 h-12 rounded bg-navy-800 border border-indigo-400 flex items-center justify-center text-indigo-400 shrink-0 shadow-[0_0_15px_rgba(179,157,219,0.2)]">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-indigo-500/20">
                             <i class="fas fa-shield-alt text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="text-navy-900 dark:text-white font-bold mb-1 text-lg">Secure Data</h4>
-                            <p class="text-sm text-slate-600 dark:text-slate-light">Bank-grade encryption for your
-                                sensitive information.
-                            </p>
+                            <h4 class="text-slate-900 dark:text-white font-bold mb-1 text-lg">Secure Data</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400">Bank-grade encryption for your sensitive information.</p>
                         </div>
                     </li>
                 </ul>
@@ -1059,282 +591,129 @@
         </div>
     </section>
 
-    <!-- 5. INDUSTRIES (SECTOR WE COVER - WAVE LAYOUT) -->
-    <section id="industries" class="py-24 bg-slate-50 dark:bg-black/50 transition-colors duration-500 overflow-visible">
-        <div class="max-w-7xl mx-auto px-6 text-center mb-24">
-            <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-slate-lightest">
-                Sectors We Cover</h2>
-        </div>
+    <!-- ============================== -->
+    <!-- 5. SECTORS WE COVER -->
+    <!-- ============================== -->
+    <section id="sectors" class="py-24 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <p class="text-indigo-600 dark:text-indigo-400 font-medium tracking-widest uppercase text-sm mb-4">Industries</p>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white">
+                    Sectors We Cover</h2>
+            </div>
 
-        <div class="relative max-w-[1400px] mx-auto px-4 pb-20">
-            <!-- Wave Container -->
-            <div class="flex flex-col md:flex-row flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-10">
-
-                <!-- 1. Personal (Red) - UP -->
-                <div class="pentagon-wrapper wave-top w-full md:w-auto flex justify-start md:block">
-                    <div
-                        class="pentagon-card-new group border-red-500/50 hover:border-red-500 dark:border-red-500/30 dark:hover:border-red-500 dark:shadow-[0_0_15px_rgba(239,68,68,0.2)] dark:hover:shadow-[0_0_25px_rgba(239,68,68,0.5)] shadow-[0_0_15px_rgba(239,68,68,0.3)] hover:shadow-[0_0_25px_rgba(239,68,68,0.6)]">
-                        <i
-                            class="fas fa-user-shield text-3xl text-red-500 group-hover:text-red-400 transition-colors duration-300 drop-shadow-[0_0_5px_rgba(239,68,68,0.8)]"></i>
-                        <span
-                            class="mt-3 font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-red-500 transition-colors duration-300 uppercase tracking-wider">Personal</span>
-                    </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 reveal">
+                <!-- Sector 1 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center group hover:shadow-xl hover:-translate-y-3 hover:border-red-300 dark:hover:border-red-500 transition-all duration-300 cursor-pointer">
+                    <i class="fas fa-user-shield text-3xl text-red-500 mb-4 group-hover:scale-110 transition-transform duration-300 block"></i>
+                    <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-red-500 transition-colors uppercase tracking-wider">Personal</span>
                 </div>
-
-                <!-- 2. Medical (Purple) - DOWN -->
-                <div class="pentagon-wrapper wave-bottom w-full md:w-auto flex justify-end md:block">
-                    <div
-                        class="pentagon-card-new group border-indigo-500/50 hover:border-indigo-500 dark:border-indigo-500/30 dark:hover:border-indigo-500 dark:shadow-[0_0_15px_rgba(168,85,247,0.2)] dark:hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]">
-                        <i
-                            class="fas fa-heartbeat text-3xl text-indigo-500 group-hover:text-indigo-400 transition-colors duration-300 drop-shadow-[0_0_5px_rgba(168,85,247,0.8)]"></i>
-                        <span
-                            class="mt-3 font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-indigo-500 transition-colors duration-300 uppercase tracking-wider">Medical</span>
-                    </div>
+                <!-- Sector 2 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center group hover:shadow-xl hover:-translate-y-3 hover:border-purple-300 dark:hover:border-purple-500 transition-all duration-300 cursor-pointer">
+                    <i class="fas fa-heartbeat text-3xl text-purple-500 mb-4 group-hover:scale-110 transition-transform duration-300 block"></i>
+                    <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-purple-500 transition-colors uppercase tracking-wider">Medical</span>
                 </div>
-
-                <!-- 3. Business (Green) - UP -->
-                <div class="pentagon-wrapper wave-top w-full md:w-auto flex justify-start md:block">
-                    <div
-                        class="pentagon-card-new group border-green-500/50 hover:border-green-500 dark:border-green-500/30 dark:hover:border-green-500 dark:shadow-[0_0_15px_rgba(34,197,94,0.2)] dark:hover:shadow-[0_0_25px_rgba(34,197,94,0.5)] shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)]">
-                        <i
-                            class="fas fa-briefcase text-3xl text-green-500 group-hover:text-green-400 transition-colors duration-300 drop-shadow-[0_0_5px_rgba(34,197,94,0.8)]"></i>
-                        <span
-                            class="mt-3 font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-green-500 transition-colors duration-300 uppercase tracking-wider">Business</span>
-                    </div>
+                <!-- Sector 3 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center group hover:shadow-xl hover:-translate-y-3 hover:border-green-300 dark:hover:border-green-500 transition-all duration-300 cursor-pointer">
+                    <i class="fas fa-briefcase text-3xl text-green-500 mb-4 group-hover:scale-110 transition-transform duration-300 block"></i>
+                    <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-green-500 transition-colors uppercase tracking-wider">Business</span>
                 </div>
-
-                <!-- 4. Property (Blue) - DOWN -->
-                <div class="pentagon-wrapper wave-bottom w-full md:w-auto flex justify-end md:block">
-                    <div
-                        class="pentagon-card-new group border-indigo-500/50 hover:border-indigo-500 dark:border-indigo-500/30 dark:hover:border-indigo-500 dark:shadow-[0_0_15px_rgba(59,130,246,0.2)] dark:hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]">
-                        <i
-                            class="fas fa-home text-3xl text-indigo-500 group-hover:text-indigo-400 transition-colors duration-300 drop-shadow-[0_0_5px_rgba(59,130,246,0.8)]"></i>
-                        <span
-                            class="mt-3 font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-indigo-500 transition-colors duration-300 uppercase tracking-wider">Property</span>
-                    </div>
+                <!-- Sector 4 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center group hover:shadow-xl hover:-translate-y-3 hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-300 cursor-pointer">
+                    <i class="fas fa-home text-3xl text-blue-500 mb-4 group-hover:scale-110 transition-transform duration-300 block"></i>
+                    <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-blue-500 transition-colors uppercase tracking-wider">Property</span>
                 </div>
-
-                <!-- 5. Travel (Orange) - UP -->
-                <div class="pentagon-wrapper wave-top w-full md:w-auto flex justify-start md:block">
-                    <div
-                        class="pentagon-card-new group border-orange-500/50 hover:border-orange-500 dark:border-orange-500/30 dark:hover:border-orange-500 dark:shadow-[0_0_15px_rgba(249,115,22,0.2)] dark:hover:shadow-[0_0_25px_rgba(249,115,22,0.5)] shadow-[0_0_15px_rgba(249,115,22,0.3)] hover:shadow-[0_0_25px_rgba(249,115,22,0.6)]">
-                        <i
-                            class="fas fa-plane text-3xl text-orange-500 group-hover:text-orange-400 transition-colors duration-300 drop-shadow-[0_0_5px_rgba(249,115,22,0.8)]"></i>
-                        <span
-                            class="mt-3 font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-orange-500 transition-colors duration-300 uppercase tracking-wider">Travel</span>
-                    </div>
+                <!-- Sector 5 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center group hover:shadow-xl hover:-translate-y-3 hover:border-orange-300 dark:hover:border-orange-500 transition-all duration-300 cursor-pointer">
+                    <i class="fas fa-plane text-3xl text-orange-500 mb-4 group-hover:scale-110 transition-transform duration-300 block"></i>
+                    <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-orange-500 transition-colors uppercase tracking-wider">Travel</span>
                 </div>
-
-                <!-- 6. Liability (Teal) - DOWN -->
-                <div class="pentagon-wrapper wave-bottom w-full md:w-auto flex justify-end md:block">
-                    <div
-                        class="pentagon-card-new group border-indigo-500/50 hover:border-indigo-500 dark:border-indigo-500/30 dark:hover:border-indigo-500 dark:shadow-[0_0_15px_rgba(20,184,166,0.2)] dark:hover:shadow-[0_0_25px_rgba(20,184,166,0.5)] shadow-[0_0_15px_rgba(20,184,166,0.3)] hover:shadow-[0_0_25px_rgba(20,184,166,0.6)]">
-                        <i
-                            class="fas fa-gavel text-3xl text-indigo-500 group-hover:text-indigo-400 transition-colors duration-300 drop-shadow-[0_0_5px_rgba(20,184,166,0.8)]"></i>
-                        <span
-                            class="mt-3 font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-indigo-500 transition-colors duration-300 uppercase tracking-wider">Liability</span>
-                    </div>
+                <!-- Sector 6 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center group hover:shadow-xl hover:-translate-y-3 hover:border-teal-300 dark:hover:border-teal-500 transition-all duration-300 cursor-pointer">
+                    <i class="fas fa-gavel text-3xl text-teal-500 mb-4 group-hover:scale-110 transition-transform duration-300 block"></i>
+                    <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-teal-500 transition-colors uppercase tracking-wider">Liability</span>
                 </div>
-
             </div>
         </div>
-
-        <style>
-            .pentagon-card-new {
-                width: 180px;
-                height: 180px;
-                clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-                background-color: #f8fafc;
-                /* Slate 50 layout base */
-                background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-                border: 2px solid #cbd5e1;
-                /* Default Slate 300 */
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                cursor: pointer;
-                position: relative;
-                z-index: 10;
-            }
-
-            .dark .pentagon-card-new {
-                background: linear-gradient(135deg, #000000, #000000);
-                /* Allow inline/utility borders to work */
-                border-color: inherit;
-            }
-
-            .pentagon-card-new:hover {
-                transform: translateY(-12px) scale(1.05);
-                z-index: 20;
-            }
-
-            @media (min-width: 768px) {
-
-                /* Wave Vertical Offsets */
-                .wave-top {
-                    margin-top: 0px;
-                }
-
-                .wave-bottom {
-                    margin-top: 80px;
-                    /* The Wave Dip */
-                }
-            }
-
-            @media (max-width: 767px) {
-                .pentagon-card-new {
-                    width: 150px;
-                    height: 150px;
-                }
-            }
-        </style>
     </section>
 
-    <!-- 6. TIMELINE (From Quote to Claim) -->
-    <section class="py-24 bg-white dark:bg-black/50 relative overflow-hidden transition-colors duration-500">
+    <!-- ============================== -->
+    <!-- 6. TIMELINE: FROM QUOTE TO CLAIM -->
+    <!-- ============================== -->
+    <section class="py-24 bg-white dark:bg-slate-950 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-16 items-center justify-center">
-
-            <!-- Image Side (Vertical Staggered Stack) -->
-            <div class="hidden lg:flex flex-col gap-8 w-full lg:w-[42%] relative">
-                <style>
-                    @keyframes fadeInUp {
-                        from {
-                            opacity: 0;
-                            transform: translateY(24px);
-                        }
-
-                        to {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                    }
-
-                    .reveal-img {
-                        animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-                        opacity: 0;
-                        /* Start hidden */
-                    }
-                </style>
-
+            <!-- Image Side -->
+            <div class="hidden lg:flex flex-col gap-8 w-full lg:w-[42%] relative reveal">
                 <!-- Image 1 -->
-                <div class="reveal-img h-56 w-full relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 hover:border-indigo-500 dark:hover:border-indigo-400 shadow-lg transition-all duration-300 md:-translate-x-3"
-                    style="animation-delay: 100ms;">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop"
-                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700"
-                        alt="Analysis">
-                    <div
-                        class="absolute inset-0 bg-indigo-900/10 dark:bg-black/30 group-hover:bg-transparent transition duration-500">
-                    </div>
-                    <div
-                        class="absolute bottom-3 left-3 bg-white/90 dark:bg-black/90 px-2 py-1 rounded text-[10px] font-mono font-bold text-indigo-600 dark:text-indigo-400">
-                        // 01_ASSESSMENT
+                <div class="h-56 w-full relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-indigo-400 shadow-lg transition-all duration-300 md:-translate-x-3">
+                    <img src="Assets/office-1.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Assessment">
+                    <div class="absolute inset-0 bg-indigo-900/10 dark:bg-slate-900/30 group-hover:bg-transparent transition duration-500"></div>
+                    <div class="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-900/90 px-3 py-1 rounded-lg text-xs font-bold text-indigo-600 dark:text-indigo-400">
+                        01 — Assessment
                     </div>
                 </div>
-
                 <!-- Image 2 -->
-                <div class="reveal-img h-56 w-full relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 hover:border-indigo-500 dark:hover:border-indigo-400 shadow-lg transition-all duration-300 md:translate-x-3"
-                    style="animation-delay: 250ms;">
-                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop"
-                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700"
-                        alt="Structure">
-                    <div
-                        class="absolute inset-0 bg-indigo-900/10 dark:bg-black/30 group-hover:bg-transparent transition duration-500">
-                    </div>
-                    <div
-                        class="absolute bottom-3 left-3 bg-white/90 dark:bg-black/90 px-2 py-1 rounded text-[10px] font-mono font-bold text-indigo-600 dark:text-indigo-400">
-                        // 02_STRUCTURING
+                <div class="h-56 w-full relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-indigo-400 shadow-lg transition-all duration-300 md:translate-x-3">
+                    <img src="Assets/office-2.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Structuring">
+                    <div class="absolute inset-0 bg-indigo-900/10 dark:bg-slate-900/30 group-hover:bg-transparent transition duration-500"></div>
+                    <div class="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-900/90 px-3 py-1 rounded-lg text-xs font-bold text-indigo-600 dark:text-indigo-400">
+                        02 — Structuring
                     </div>
                 </div>
-
                 <!-- Image 3 -->
-                <div class="reveal-img h-56 w-full relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 hover:border-indigo-500 dark:hover:border-indigo-400 shadow-lg transition-all duration-300 md:-translate-x-3"
-                    style="animation-delay: 400ms;">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dd0f3217?q=80&w=800&auto=format&fit=crop"
-                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700"
-                        alt="Activation">
-                    <div
-                        class="absolute inset-0 bg-indigo-900/10 dark:bg-black/30 group-hover:bg-transparent transition duration-500">
-                    </div>
-                    <div
-                        class="absolute bottom-3 left-3 bg-white/90 dark:bg-black/90 px-2 py-1 rounded text-[10px] font-mono font-bold text-indigo-600 dark:text-indigo-400">
-                        // 03_ACTIVATION
+                <div class="h-56 w-full relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-indigo-400 shadow-lg transition-all duration-300 md:-translate-x-3">
+                    <img src="Assets/home.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Activation">
+                    <div class="absolute inset-0 bg-indigo-900/10 dark:bg-slate-900/30 group-hover:bg-transparent transition duration-500"></div>
+                    <div class="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-900/90 px-3 py-1 rounded-lg text-xs font-bold text-indigo-600 dark:text-indigo-400">
+                        03 — Activation
                     </div>
                 </div>
-
                 <!-- Image 4 -->
-                <div class="reveal-img h-56 w-full relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 hover:border-indigo-500 dark:hover:border-indigo-400 shadow-lg transition-all duration-300 md:translate-x-3"
-                    style="animation-delay: 550ms;">
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop"
-                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700"
-                        alt="Claims">
-                    <div
-                        class="absolute inset-0 bg-indigo-900/10 dark:bg-black/30 group-hover:bg-transparent transition duration-500">
-                    </div>
-                    <div
-                        class="absolute bottom-3 left-3 bg-white/90 dark:bg-black/90 px-2 py-1 rounded text-[10px] font-mono font-bold text-indigo-600 dark:text-indigo-400">
-                        // 04_AUTOMATION
+                <div class="h-56 w-full relative group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-indigo-400 shadow-lg transition-all duration-300 md:translate-x-3">
+                    <img src="Assets/service.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Claims">
+                    <div class="absolute inset-0 bg-indigo-900/10 dark:bg-slate-900/30 group-hover:bg-transparent transition duration-500"></div>
+                    <div class="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-900/90 px-3 py-1 rounded-lg text-xs font-bold text-indigo-600 dark:text-indigo-400">
+                        04 — Automation
                     </div>
                 </div>
-
             </div>
 
             <!-- Timeline Content -->
-            <div class="w-full lg:w-1/2">
-                <h4 class="font-mono text-indigo-600 dark:text-indigo-400 mb-4"></h4>
-                <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-slate-lightest mb-12 text-left">
+            <div class="w-full lg:w-1/2 reveal">
+                <p class="text-indigo-600 dark:text-indigo-400 font-medium tracking-widest uppercase text-sm mb-4">Our Process</p>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-12">
                     From Quote to Claim</h2>
 
-                <div
-                    class="relative border-l-2 border-indigo-100 dark:border-white/10 ml-6 space-y-12 rtl:border-l-0 rtl:border-r-2 rtl:ml-0 rtl:mr-6">
-                    <!-- Timeline Item -->
+                <div class="relative border-l-2 border-indigo-200 dark:border-slate-700 ml-6 space-y-12 rtl:border-l-0 rtl:border-r-2 rtl:ml-0 rtl:mr-6">
                     <div class="relative pl-12 rtl:pl-0 rtl:pr-12">
-                        <!-- Dot -->
-                        <div
-                            class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-50 dark:bg-black border-2 border-indigo-500 dark:border-indigo-400 rtl:-right-[9px] rtl:left-auto animate-pulse-slow">
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">1. Algorithmic Assessment
-                        </h3>
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-indigo-500 rtl:-right-[9px] rtl:left-auto"></div>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">1. Algorithmic Assessment</h3>
                         <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                            We deploy our proprietary risk models to analyze your unique profile, ensuring every
-                            variable is accounted for.
+                            We deploy our proprietary risk models to analyze your unique profile, ensuring every variable is accounted for.
                         </p>
                     </div>
-                    <!-- Timeline Item -->
                     <div class="relative pl-12 rtl:pl-0 rtl:pr-12">
-                        <div
-                            class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-50 dark:bg-black border-2 border-indigo-500 dark:border-indigo-400 rtl:-right-[9px] rtl:left-auto">
-                        </div>
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-indigo-500 rtl:-right-[9px] rtl:left-auto"></div>
                         <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">2. Dynamic Structuring</h3>
                         <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                            Tailored coverage options are generated instantly, allowing you to modulate limits and
-                            deductibles in real-time.
+                            Tailored coverage options are generated instantly, allowing you to modulate limits and deductibles in real-time.
                         </p>
                     </div>
-                    <!-- Timeline Item -->
                     <div class="relative pl-12 rtl:pl-0 rtl:pr-12">
-                        <div
-                            class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-50 dark:bg-black border-2 border-indigo-500 dark:border-indigo-600 rtl:-right-[9px] rtl:left-auto">
-                        </div>
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-indigo-500 rtl:-right-[9px] rtl:left-auto"></div>
                         <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">3. Immediate Activation</h3>
                         <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                            Coverage binds the moment you sign. Digital credentials are issued to your wallet
-                            immediately.
+                            Coverage binds the moment you sign. Digital credentials are issued to your wallet immediately.
                         </p>
                     </div>
-                    <!-- Timeline Item -->
                     <div class="relative pl-12 rtl:pl-0 rtl:pr-12">
-                        <div
-                            class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-50 dark:bg-black border-2 border-indigo-500 dark:border-neon-green rtl:-right-[9px] rtl:left-auto">
-                        </div>
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-gold-500 rtl:-right-[9px] rtl:left-auto"></div>
                         <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">4. Automated Claims</h3>
                         <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                            Upload evidence, and our smart contracts execute payouts for verified claims within hours,
-                            not weeks.
+                            Upload evidence, and our smart contracts execute payouts for verified claims within hours, not weeks.
                         </p>
-                        <p class="text-indigo-600 dark:text-on-cyan text-sm font-mono mt-4 font-bold">
-                            // Efficiency Unlocked
+                        <p class="text-indigo-600 dark:text-indigo-400 text-sm mt-3 font-semibold italic">
+                            Efficiency Unlocked
                         </p>
                     </div>
                 </div>
@@ -1342,62 +721,66 @@
         </div>
     </section>
 
+    <!-- ============================== -->
     <!-- 7. INTELLIGENCE DASHBOARD -->
-    <section class="py-24 bg-slate-50 dark:bg-black/50">
+    <!-- ============================== -->
+    <section class="py-24 bg-slate-50 dark:bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex items-center justify-between mb-12">
-                <h2 class="text-3xl font-display font-bold text-navy-900 dark:text-slate-lightest">
-                    Claims Live Feed</h2>
-                <span class="animate-pulse text-indigo-600 text-xs font-mono">● LIVE DATA FEED</span>
+            <div class="flex items-center justify-between mb-12 reveal">
+                <div>
+                    <p class="text-indigo-600 dark:text-indigo-400 font-medium tracking-widest uppercase text-sm mb-4">Live Data</p>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white">
+                        Claims Live Feed</h2>
+                </div>
+                <span class="animate-pulse text-indigo-600 dark:text-indigo-400 text-xs font-bold flex items-center gap-2">
+                    <span class="w-2 h-2 bg-indigo-600 dark:bg-indigo-400 rounded-full"></span> LIVE
+                </span>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Panel -->
-                <div class="glass-panel p-6 rounded-lg bg-white/50 dark:bg-black/50">
-                    <p class="text-xs font-mono text-slate-600 dark:text-slate-light mb-2">CLAIMS PAID (YTD)</p>
-                    <div class="text-4xl font-mono text-indigo-600 dark:text-indigo-400 font-bold">$2.5B</div>
-                    <div class="w-full h-1 bg-slate-200 dark:bg-white/10 mt-4 overflow-hidden">
-                        <div class="h-full bg-indigo-500 dark:bg-indigo-400 w-[75%]"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+                <!-- Panel 1 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm">
+                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Claims Paid (YTD)</p>
+                    <div class="text-4xl font-bold text-indigo-600 dark:text-indigo-400">$2.5B</div>
+                    <div class="w-full h-1 bg-slate-100 dark:bg-slate-800 mt-4 rounded-full overflow-hidden">
+                        <div class="h-full bg-indigo-500 w-[75%] rounded-full"></div>
                     </div>
                 </div>
-                <!-- Panel -->
-                <div class="glass-panel p-6 rounded-lg bg-white/50 dark:bg-black/50">
-                    <p class="text-xs font-mono text-slate-600 dark:text-slate-light mb-2">AVG PAYOUT TIME</p>
-                    <div class="text-4xl font-mono text-indigo-600 dark:text-indigo-400 font-bold">2 Days</div>
-                    <div class="w-full h-1 bg-slate-200 dark:bg-white/10 mt-4 overflow-hidden">
-                        <div class="h-full bg-indigo-500 dark:bg-indigo-400 w-[85%]"></div>
+                <!-- Panel 2 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm">
+                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Avg Payout Time</p>
+                    <div class="text-4xl font-bold text-indigo-600 dark:text-indigo-400">2 Days</div>
+                    <div class="w-full h-1 bg-slate-100 dark:bg-slate-800 mt-4 rounded-full overflow-hidden">
+                        <div class="h-full bg-indigo-500 w-[85%] rounded-full"></div>
                     </div>
                 </div>
-                <!-- Panel -->
-                <div class="glass-panel p-6 rounded-lg bg-white/50 dark:bg-black/50">
-                    <p class="text-xs font-mono text-slate-600 dark:text-slate-light mb-2">MARKETS ENTERED</p>
-                    <div class="text-4xl font-mono text-indigo-600 dark:text-indigo-600 font-bold">50+</div>
-                    <div class="w-full h-1 bg-slate-200 dark:bg-white/10 mt-4 overflow-hidden">
-                        <div class="h-full bg-indigo-500 dark:bg-indigo-600 w-[85%]"></div>
+                <!-- Panel 3 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm">
+                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Markets Entered</p>
+                    <div class="text-4xl font-bold text-indigo-600 dark:text-indigo-400">50+</div>
+                    <div class="w-full h-1 bg-slate-100 dark:bg-slate-800 mt-4 rounded-full overflow-hidden">
+                        <div class="h-full bg-indigo-500 w-[85%] rounded-full"></div>
                     </div>
                 </div>
-                <!-- Panel -->
-                <div class="glass-panel p-6 rounded-lg bg-white/50 dark:bg-black/50">
-                    <p class="text-xs font-mono text-slate-600 dark:text-slate-light mb-2">CLIENT RETENTION</p>
-                    <div class="text-4xl font-mono text-slate-900 dark:text-white font-bold">98%</div>
-                    <div class="w-full h-1 bg-slate-200 dark:bg-white/10 mt-4 overflow-hidden">
-                        <div class="h-full bg-slate-800 dark:bg-white w-[98%]"></div>
+                <!-- Panel 4 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm">
+                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Client Retention</p>
+                    <div class="text-4xl font-bold text-slate-900 dark:text-white">98%</div>
+                    <div class="w-full h-1 bg-slate-100 dark:bg-slate-800 mt-4 rounded-full overflow-hidden">
+                        <div class="h-full bg-slate-800 dark:bg-white w-[98%] rounded-full"></div>
                     </div>
                 </div>
             </div>
-            <!-- New Chart Row (Chart.js) -->
-            <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Data Chart: Bar -->
-                <div class="glass-panel p-8 rounded-2xl bg-white/50 dark:bg-black/50 relative overflow-hidden group">
-                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Claims Overview</h3>
+
+            <!-- Chart Row -->
+            <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 reveal">
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-lg font-serif font-bold text-slate-900 dark:text-white mb-6">Claims Overview</h3>
                     <div class="h-64 relative">
                         <canvas id="claimsBarChart"></canvas>
                     </div>
                 </div>
-
-                <!-- Timeline Graph: Pie -->
-                <div
-                    class="glass-panel p-8 rounded-2xl bg-white/50 dark:bg-black/50 relative overflow-hidden flex flex-col justify-center">
-                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Claim Distribution</h3>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-2xl shadow-sm flex flex-col justify-center">
+                    <h3 class="text-lg font-serif font-bold text-slate-900 dark:text-white mb-2">Claim Distribution</h3>
                     <div class="h-64 relative flex items-center justify-center">
                         <canvas id="claimsPieChart"></canvas>
                     </div>
@@ -1411,15 +794,14 @@
                     function getChartColors() {
                         const isDark = document.documentElement.classList.contains('dark');
                         return {
-                            textColor: isDark ? '#ffffff' : '#94a3b8',
-                            gridColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+                            textColor: isDark ? '#94a3b8' : '#64748b',
+                            gridColor: isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.08)'
                         };
                     }
 
                     function initCharts() {
                         const colors = getChartColors();
 
-                        // Bar Chart configuration
                         const ctxBar = document.getElementById('claimsBarChart').getContext('2d');
                         if (barChart) barChart.destroy();
 
@@ -1431,18 +813,14 @@
                                     label: 'Claims Processed',
                                     data: [120, 190, 300, 500],
                                     backgroundColor: [
-                                        'rgba(99, 102, 241, 0.6)',
-                                        'rgba(168, 85, 247, 0.6)',
-                                        'rgba(244, 63, 94, 0.6)',
-                                        'rgba(20, 184, 166, 0.6)'
+                                        'rgba(99, 102, 241, 0.7)',
+                                        'rgba(99, 102, 241, 0.55)',
+                                        'rgba(99, 102, 241, 0.7)',
+                                        'rgba(99, 102, 241, 0.85)'
                                     ],
-                                    borderColor: [
-                                        'rgba(99, 102, 241, 1)',
-                                        'rgba(168, 85, 247, 1)',
-                                        'rgba(244, 63, 94, 1)',
-                                        'rgba(20, 184, 166, 1)'
-                                    ],
-                                    borderWidth: 1
+                                    borderColor: 'rgba(99, 102, 241, 1)',
+                                    borderWidth: 1,
+                                    borderRadius: 8
                                 }]
                             },
                             options: {
@@ -1451,28 +829,20 @@
                                 scales: {
                                     y: {
                                         beginAtZero: true,
-                                        grid: {
-                                            color: colors.gridColor
-                                        },
+                                        grid: { color: colors.gridColor },
                                         ticks: { color: colors.textColor }
                                     },
                                     x: {
-                                        grid: {
-                                            display: false
-                                        },
+                                        grid: { display: false },
                                         ticks: { color: colors.textColor }
                                     }
                                 },
                                 plugins: {
-                                    legend: {
-                                        labels: { color: colors.textColor }
-                                    }
+                                    legend: { labels: { color: colors.textColor } }
                                 }
                             }
                         });
 
-
-                        // Pie Chart
                         const ctxPie = document.getElementById('claimsPieChart').getContext('2d');
                         if (pieChart) pieChart.destroy();
 
@@ -1485,9 +855,9 @@
                                     data: [35, 25, 25, 15],
                                     backgroundColor: [
                                         'rgba(99, 102, 241, 0.8)',
-                                        'rgba(168, 85, 247, 0.8)',
-                                        'rgba(59, 130, 246, 0.8)',
-                                        'rgba(20, 184, 166, 0.8)'
+                                        'rgba(79, 70, 229, 0.7)',
+                                        'rgba(129, 140, 248, 0.7)',
+                                        'rgba(212, 175, 55, 0.7)'
                                     ],
                                     borderWidth: 0
                                 }]
@@ -1505,268 +875,194 @@
                         });
                     }
 
-                    // Initial Init
                     initCharts();
 
-                    // Observer for theme changes
                     const observer = new MutationObserver((mutations) => {
                         mutations.forEach((mutation) => {
-                            if (mutation.attributeName === 'class') {
-                                initCharts();
-                            }
+                            if (mutation.attributeName === 'class') initCharts();
                         });
                     });
-
-                    observer.observe(document.documentElement, {
-                        attributes: true,
-                        attributeFilter: ['class']
-                    });
+                    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
                 });
             </script>
         </div>
     </section>
 
-    <!-- 8. PROOF (NUMBERS) - Merged into Dashboard above partially, adding distinct section as requested -->
-    <section class="py-24 bg-white dark:bg-black/50 border-t border-navy-900/5 dark:border-white/5">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-display font-bold text-navy-900 dark:text-slate-lightest mb-16"> Outcomes that
-                Speak</h2>
+    <!-- ============================== -->
+    <!-- 8. OUTCOMES / NUMBERS -->
+    <!-- ============================== -->
+    <section class="py-24 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 text-center reveal">
+            <p class="text-indigo-600 dark:text-indigo-400 font-medium tracking-widest uppercase text-sm mb-4">Track Record</p>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-16">Outcomes that Speak</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
                 <div>
-                    <div class="text-5xl font-bold text-indigo-600 mb-2">$<span class="counter-num"
-                            data-target="10">0</span>B+</div>
-                    <p class="text-indigo-600 font-mono text-xs">Value Created</p>
+                    <div class="text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">$<span class="counter-num" data-target="10">0</span>B+</div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Value Created</p>
                 </div>
                 <div>
-                    <div class="text-5xl font-bold text-green-700 dark:text-green-500 mb-2"><span class="counter-num"
-                            data-target="500">0</span>+</div>
-                    <p class="text-green-700 dark:text-green-500 font-mono text-xs">Strategies Deployed</p>
+                    <div class="text-5xl font-bold text-gold-500 mb-2"><span class="counter-num" data-target="500">0</span>+</div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Strategies Deployed</p>
                 </div>
                 <div>
-                    <div class="text-5xl font-bold text-indigo-600 mb-2"><span class="counter-num"
-                            data-target="40">0</span>+</div>
-                    <p class="text-indigo-600 font-mono text-xs">Years Legacy</p>
+                    <div class="text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-2"><span class="counter-num" data-target="40">0</span>+</div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Years Legacy</p>
                 </div>
                 <div>
-                    <div class="text-5xl font-bold text-green-700 dark:text-green-500 mb-2"><span class="counter-num"
-                            data-target="120">0</span>+</div>
-                    <p class="text-green-700 dark:text-green-500 font-mono text-xs">Partner Firms</p>
+                    <div class="text-5xl font-bold text-gold-500 mb-2"><span class="counter-num" data-target="120">0</span>+</div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Partner Firms</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ============================== -->
     <!-- 9. ENGAGEMENT MODELS (TABS) -->
-    <section id="engagement-section" class="py-24 bg-slate-50 dark:bg-black/50 transition-colors duration-700">
+    <!-- ============================== -->
+    <section id="engagement-section" class="py-24 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-700">
         <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-16 items-center">
-            <div class="w-full lg:w-1/2">
-                <h2 class="text-3xl font-display font-bold text-navy-900 dark:text-slate-lightest mb-12 text-left">
+            <div class="w-full lg:w-1/2 reveal">
+                <p class="text-indigo-600 dark:text-indigo-400 font-medium tracking-widest uppercase text-sm mb-4">Engagement</p>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-12">
                     Flexible by Design</h2>
 
                 <!-- Tabs -->
-                <div class="glass-panel rounded-xl overflow-hidden">
-                    <div class="flex border-b border-white/10">
-                        <button
-                            class="flex-1 py-4 text-center font-bold text-indigo-400 border-b-2 border-indigo-400 bg-white/5 transition-all duration-300"
-                            id="btn-advisory"
-                            onclick="openTab(event, 'advisory', 'bg-vibrant-royal-indigo')">Advisory</button>
-                        <button
-                            class="flex-1 py-4 text-center font-bold text-slate-light hover:text-white transition duration-300"
-                            id="btn-transform"
-                            onclick="openTab(event, 'transform', 'bg-indigo-900')">Transformation</button>
-                        <button
-                            class="flex-1 py-4 text-center font-bold text-slate-light hover:text-white transition duration-300"
-                            id="btn-embedded" onclick="openTab(event, 'embedded', 'bg-indigo-900')">Embedded</button>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+                    <div class="flex border-b border-slate-200 dark:border-slate-800">
+                        <button class="flex-1 py-4 text-center font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400 bg-indigo-50/50 dark:bg-indigo-950/30 transition-all duration-300"
+                            id="btn-advisory" onclick="openTab(event, 'advisory')">Advisory</button>
+                        <button class="flex-1 py-4 text-center font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition duration-300"
+                            id="btn-transform" onclick="openTab(event, 'transform')">Transformation</button>
+                        <button class="flex-1 py-4 text-center font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition duration-300"
+                            id="btn-embedded" onclick="openTab(event, 'embedded')">Embedded</button>
                     </div>
 
-                    <!-- Content -->
                     <div id="advisory" class="p-8 tab-content">
-                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Strategic Advisory</h3>
-                        <p class="text-slate-600 dark:text-slate-light mb-6">Retainer-based guidance for executive
-                            leadership.</p>
-                        <ul class="space-y-3 text-slate-700 dark:text-slate-lightest">
-                            <li class="flex items-center gap-2"><i
-                                    class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Weekly
-                                C-Suite
-                                Counseling</li>
-                            <li class="flex items-center gap-2"><i
-                                    class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Market
-                                Intelligence Reports</li>
-                            <li class="flex items-center gap-2"><i
-                                    class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Governance
-                                Audit
-                            </li>
+                        <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">Strategic Advisory</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6">Retainer-based guidance for executive leadership.</p>
+                        <ul class="space-y-3 text-slate-700 dark:text-slate-300">
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Weekly C-Suite Counseling</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Market Intelligence Reports</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Governance Audit</li>
                         </ul>
                     </div>
                     <div id="transform" class="p-8 tab-content hidden">
-                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Project Transformation</h3>
-                        <p class="text-slate-600 dark:text-slate-light mb-6">End-to-end execution of specific
-                            initiatives.</p>
-                        <ul class="space-y-3 text-slate-700 dark:text-slate-lightest">
-                            <li class="flex items-center gap-2"><i
-                                    class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Dedicated
-                                Project Teams</li>
-                            <li class="flex items-center gap-2"><i
-                                    class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Technology
-                                Implementation</li>
-                            <li class="flex items-center gap-2"><i
-                                    class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Change
-                                Management</li>
+                        <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">Project Transformation</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6">End-to-end execution of specific initiatives.</p>
+                        <ul class="space-y-3 text-slate-700 dark:text-slate-300">
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Dedicated Project Teams</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Technology Implementation</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Change Management</li>
                         </ul>
                     </div>
                     <div id="embedded" class="p-8 tab-content hidden">
-                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Embedded Teams</h3>
-                        <p class="text-slate-600 dark:text-slate-light mb-6">Augmenting your workforce with our experts.
-                        </p>
-                        <ul class="space-y-3 text-slate-700 dark:text-slate-lightest">
-                            <li class="flex items-center gap-2"><i
-                                    class="fas fa-check text-indigo-600 dark:text-indigo-600"></i> Interim
-                                CXO
-                                Roles</li>
-                            <li class="flex items-center gap-2"><i
-                                    class="fas fa-check text-indigo-600 dark:text-indigo-600"></i>
-                                specialized
-                                Task Forces</li>
-                            <li class="flex items-center gap-2"><i
-                                    class="fas fa-check text-indigo-600 dark:text-indigo-600"></i> IP
-                                Transfer
-                            </li>
+                        <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">Embedded Teams</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6">Augmenting your workforce with our experts.</p>
+                        <ul class="space-y-3 text-slate-700 dark:text-slate-300">
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Interim CXO Roles</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> Specialized Task Forces</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-600 dark:text-indigo-400"></i> IP Transfer</li>
                         </ul>
                     </div>
                 </div>
             </div>
+
             <!-- Image Side -->
-            <div
-                class="w-full lg:w-1/2 h-[500px] relative rounded-2xl overflow-hidden shadow-2xl border border-navy-900/5 dark:border-white/5 order-first lg:order-last">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop"
-                    alt="Engagement Models" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent"></div>
+            <div class="w-full lg:w-1/2 h-[500px] relative rounded-2xl overflow-hidden shadow-2xl order-first lg:order-last reveal">
+                <img src="Assets/home2.jpeg" alt="Engagement Models" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
                 <div class="absolute bottom-10 left-10 right-10">
-                    <h3 class="text-2xl font-bold text-white mb-2">Tailored for Scale</h3>
-                    <p class="text-slate-light">From advisory to full execution, we adapt to your velocity.</p>
+                    <h3 class="text-2xl font-serif font-bold text-white mb-2">Tailored for Scale</h3>
+                    <p class="text-slate-300">From advisory to full execution, we adapt to your velocity.</p>
                 </div>
             </div>
-            <script>
-                function openTab(evt, tabName, colorClass) {
-                    var i, tabcontent, tablinks;
 
+            <script>
+                function openTab(evt, tabName) {
                     // Hide all tabs
-                    tabcontent = document.getElementsByClassName("tab-content");
-                    for (i = 0; i < tabcontent.length; i++) {
+                    var tabcontent = document.getElementsByClassName("tab-content");
+                    for (var i = 0; i < tabcontent.length; i++) {
                         tabcontent[i].classList.add("hidden");
                     }
 
                     // Reset buttons
-                    tablinks = document.querySelectorAll("button[id^='btn-']");
-                    for (i = 0; i < tablinks.length; i++) {
-                        tablinks[i].classList.remove("text-indigo-400", "text-indigo-400", "text-indigo-600", "border-b-2", "border-indigo-400", "border-indigo-400", "border-indigo-600", "bg-white/5");
-                        tablinks[i].classList.add("text-slate-light");
+                    var tablinks = document.querySelectorAll("#engagement-section button[id^='btn-']");
+                    for (var i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = "flex-1 py-4 text-center font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition duration-300";
                     }
 
                     // Show current tab
                     document.getElementById(tabName).classList.remove("hidden");
 
                     // Style active button
-                    evt.currentTarget.classList.add("bg-white/5", "border-b-2");
-                    evt.currentTarget.classList.remove("text-slate-light");
-
-                    // Dynamic Color Coding (Hardcoded for simplicity matching defaults but can use the arg)
-                    // Logic: Advisory -> Vibrant Purple/Cyan theme, Transform -> Royal Blue, Embedded -> Royal Red
-
-                    // Update section background transition if we want to change the PARENT section
-                    // For now, let's just update the button colors.
-
-                    if (tabName === 'advisory') {
-                        evt.currentTarget.classList.add("text-indigo-400", "border-indigo-400");
-                        // If we wanted to change the section bg, we'd target the parent section. 
-                        // But the prompt says "Background changes... Smooth animated transition".
-                        // I'll assume the section ID 9 has an ID or class to target.
-                        document.getElementById('engagement-section').className = "py-24 transition-colors duration-700 bg-pastel-violet dark:bg-black";
-                    } else if (tabName === 'transform') {
-                        evt.currentTarget.classList.add("text-indigo-400", "border-indigo-400");
-                        document.getElementById('engagement-section').className = "py-24 transition-colors duration-700 bg-pastel-sky dark:bg-black";
-                    } else if (tabName === 'embedded') {
-                        evt.currentTarget.classList.add("text-indigo-600", "border-indigo-600");
-                        document.getElementById('engagement-section').className = "py-24 transition-colors duration-700 bg-pastel-rose dark:bg-black";
-                    }
+                    evt.currentTarget.className = "flex-1 py-4 text-center font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400 bg-indigo-50/50 dark:bg-indigo-950/30 transition-all duration-300";
                 }
             </script>
+        </div>
     </section>
 
-    <!-- 10. CLIENT GALAXY (TESTIMONIALS) -->
-    <section class="py-24 bg-white dark:bg-black/50 transition-colors duration-500">
+    <!-- ============================== -->
+    <!-- 10. TESTIMONIALS -->
+    <!-- ============================== -->
+    <section class="py-24 bg-white dark:bg-slate-950">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h4 class="font-mono text-indigo-600 dark:text-indigo-400 mb-4"></h4>
-                <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-slate-lightest">
+            <div class="text-center mb-16 reveal">
+                <p class="text-indigo-600 dark:text-indigo-400 font-medium tracking-widest uppercase text-sm mb-4">Testimonials</p>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white">
                     Voices from the Network</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
                 <!-- Review 1 -->
-                <div
-                    class="glass-panel p-8 rounded-2xl border border-slate-200 dark:border-white/5 relative group hover:border-indigo-200 dark:hover:border-indigo-400 transition-all duration-300">
-                    <div
-                        class="absolute -top-4 left-8 w-8 h-8 bg-indigo-600 flex items-center justify-center rounded-lg text-white">
+                <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-2xl relative group hover:shadow-xl hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300">
+                    <div class="absolute -top-4 left-8 w-8 h-8 bg-indigo-600 flex items-center justify-center rounded-lg text-white shadow-lg shadow-indigo-500/20">
                         <i class="fas fa-quote-left text-xs"></i>
                     </div>
-                    <p class="text-slate-600 dark:text-white italic mb-6 leading-loose">
-                        "Claimora's risk assessment models are lightyears ahead. They anticipated market shifts we
-                        hadn't even considered."
+                    <p class="text-slate-600 dark:text-slate-300 italic mb-6 leading-loose">
+                        "Claimora's risk assessment models are lightyears ahead. They anticipated market shifts we hadn't even considered."
                     </p>
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
-                            class="w-12 h-12 rounded-full object-cover border-2 border-indigo-100 dark:border-white/10"
-                            alt="Client">
+                        <img src="Assets/team-1.png"
+                            class="w-12 h-12 rounded-full object-cover border-2 border-indigo-100 dark:border-slate-700" alt="Client">
                         <div>
                             <h4 class="font-bold text-slate-900 dark:text-white text-sm">Alexandra Chen</h4>
-                            <p class="text-xs font-mono text-indigo-600 dark:text-indigo-400 whitespace-nowrap">CEO, Vertex Dynamics</p>
+                            <p class="text-xs text-indigo-600 dark:text-indigo-400">CEO, Vertex Dynamics</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Review 2 -->
-                <div
-                    class="glass-panel p-8 rounded-2xl border border-slate-200 dark:border-white/5 relative group hover:border-indigo-200 dark:hover:border-indigo-400 transition-all duration-300">
-                    <div
-                        class="absolute -top-4 left-8 w-8 h-8 bg-indigo-600 flex items-center justify-center rounded-lg text-white">
+                <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-2xl relative group hover:shadow-xl hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300">
+                    <div class="absolute -top-4 left-8 w-8 h-8 bg-indigo-600 flex items-center justify-center rounded-lg text-white shadow-lg shadow-indigo-500/20">
                         <i class="fas fa-quote-left text-xs"></i>
                     </div>
-                    <p class="text-slate-600 dark:text-white italic mb-6 leading-loose">
-                        "The speed of coverage activation is unmatched. We expanded to three new regions, and Claimora
-                        scaled with us instantly."
+                    <p class="text-slate-600 dark:text-slate-300 italic mb-6 leading-loose">
+                        "The speed of coverage activation is unmatched. We expanded to three new regions, and Claimora scaled with us instantly."
                     </p>
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"
-                            class="w-12 h-12 rounded-full object-cover border-2 border-indigo-100 dark:border-white/10"
-                            alt="Client">
+                        <img src="Assets/team-2.png"
+                            class="w-12 h-12 rounded-full object-cover border-2 border-indigo-100 dark:border-slate-700" alt="Client">
                         <div>
                             <h4 class="font-bold text-slate-900 dark:text-white text-sm">Marcus Thorne</h4>
-                            <p class="text-xs font-mono text-indigo-600 dark:text-indigo-400 whitespace-nowrap">Founder, Thorne Capital
-                            </p>
+                            <p class="text-xs text-indigo-600 dark:text-indigo-400">Founder, Thorne Capital</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Review 3 -->
-                <div
-                    class="glass-panel p-8 rounded-2xl border border-slate-200 dark:border-white/5 relative group hover:border-indigo-200 dark:hover:border-indigo-600 transition-all duration-300">
-                    <div
-                        class="absolute -top-4 left-8 w-8 h-8 bg-indigo-600 flex items-center justify-center rounded-lg text-white">
+                <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-2xl relative group hover:shadow-xl hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300">
+                    <div class="absolute -top-4 left-8 w-8 h-8 bg-indigo-600 flex items-center justify-center rounded-lg text-white shadow-lg shadow-indigo-500/20">
                         <i class="fas fa-quote-left text-xs"></i>
                     </div>
-                    <p class="text-slate-600 dark:text-white italic mb-6 leading-loose">
-                        "Finally, insurance that feels like a strategic asset rather than a liability. The dashboard
-                        analytics are game-changing."
+                    <p class="text-slate-600 dark:text-slate-300 italic mb-6 leading-loose">
+                        "Finally, insurance that feels like a strategic asset rather than a liability. The dashboard analytics are game-changing."
                     </p>
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop"
-                            class="w-12 h-12 rounded-full object-cover border-2 border-indigo-100 dark:border-white/10"
-                            alt="Client">
+                        <img src="Assets/team-3.png"
+                            class="w-12 h-12 rounded-full object-cover border-2 border-indigo-100 dark:border-slate-700" alt="Client">
                         <div>
                             <h4 class="font-bold text-slate-900 dark:text-white text-sm">Sarah O'Connell</h4>
-                            <p class="text-xs font-mono text-indigo-600 dark:text-indigo-400 whitespace-nowrap">Director, O'Connell Grp
-                            </p>
+                            <p class="text-xs text-indigo-600 dark:text-indigo-400">Director, O'Connell Group</p>
                         </div>
                     </div>
                 </div>
@@ -1774,143 +1070,113 @@
         </div>
     </section>
 
-
-    <!-- 11. KNOWLEDGE DROPS -->
-    <section class="py-24 bg-slate-50 dark:bg-black/50 transition-colors duration-500">
+    <!-- ============================== -->
+    <!-- 11. KNOWLEDGE / INSIGHTS -->
+    <!-- ============================== -->
+    <section class="py-24 bg-slate-50 dark:bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex items-center justify-between mb-12">
-                <h2 class="text-3xl font-display font-bold text-slate-900 dark:text-slate-lightest">Knowledge Drops</h2>
-                <a href="#" class="font-mono text-sm text-indigo-600 dark:text-indigo-400 hover:underline">View All
-                    -></a>
+            <div class="flex items-center justify-between mb-12 reveal">
+                <div>
+                    <p class="text-indigo-600 dark:text-indigo-400 font-medium tracking-widest uppercase text-sm mb-4">Insights</p>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white">Knowledge Drops</h2>
+                </div>
+                <a href="#" class="text-sm text-indigo-600 dark:text-indigo-400 font-semibold hover:underline hidden md:block">View All &rarr;</a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Drop 1 -->
-                <div
-                    class="glass-panel rounded-xl bg-white dark:bg-black border border-slate-200 dark:border-white/5 hover:border-indigo-400 dark:hover:border-indigo-400 hover:shadow-[0_0_20px_rgba(100,255,218,0.1)] transition duration-300 group cursor-pointer relative overflow-hidden flex flex-col">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+                <!-- Article 1 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden group cursor-pointer hover:shadow-xl hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300 flex flex-col">
                     <div class="h-48 w-full overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div
-                            class="absolute top-4 left-4 bg-indigo-600/90 backdrop-blur-sm text-white font-mono text-xs px-2 py-1 rounded">
-                            // REPORT</div>
+                        <img src="Assets/chip.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Article">
+                        <div class="absolute top-4 left-4 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">Report</div>
                     </div>
                     <div class="p-8 flex-1 flex flex-col">
-                        <h3
-                            class="text-xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                            The Future of Algorithmic Risk
-                        </h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-1">How AI is rewriting the rules
-                            of
-                            underwriting in the modern era.</p>
-                        <div
-                            class="w-12 h-1 bg-indigo-500 dark:bg-indigo-400 group-hover:w-full transition-all duration-500 rounded-full">
-                        </div>
+                        <h3 class="text-xl font-serif font-bold text-slate-800 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            The Future of Algorithmic Risk</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-1">How AI is rewriting the rules of underwriting in the modern era.</p>
+                        <div class="w-12 h-1 bg-indigo-500 group-hover:w-full transition-all duration-500 rounded-full"></div>
                     </div>
                 </div>
 
-                <!-- Drop 2 -->
-                <div
-                    class="glass-panel rounded-xl bg-white dark:bg-black border border-slate-200 dark:border-white/5 hover:border-indigo-400 dark:hover:border-indigo-400 hover:shadow-[0_0_20px_rgba(179,157,219,0.1)] transition duration-300 group cursor-pointer relative overflow-hidden flex flex-col">
+                <!-- Article 2 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden group cursor-pointer hover:shadow-xl hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300 flex flex-col">
                     <div class="h-48 w-full overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div
-                            class="absolute top-4 left-4 bg-indigo-600/90 backdrop-blur-sm text-white font-mono text-xs px-2 py-1 rounded">
-                            // STRATEGY</div>
+                        <img src="Assets/money.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Article">
+                        <div class="absolute top-4 left-4 bg-gold-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">Strategy</div>
                     </div>
                     <div class="p-8 flex-1 flex flex-col">
-                        <h3
-                            class="text-xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                            Business Continuity Planning 2026
-                        </h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-1">Protecting your operations
-                            from
-                            unforeseen global disruptions.</p>
-                        <div
-                            class="w-12 h-1 bg-indigo-500 dark:bg-indigo-400 group-hover:w-full transition-all duration-500 rounded-full">
-                        </div>
+                        <h3 class="text-xl font-serif font-bold text-slate-800 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            Business Continuity Planning 2026</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-1">Protecting your operations from unforeseen global disruptions.</p>
+                        <div class="w-12 h-1 bg-gold-500 group-hover:w-full transition-all duration-500 rounded-full"></div>
                     </div>
                 </div>
 
-                <!-- Drop 3 -->
-                <div
-                    class="glass-panel rounded-xl bg-white dark:bg-black border border-slate-200 dark:border-white/5 hover:border-indigo-400 dark:hover:border-indigo-600 hover:shadow-[0_0_20px_rgba(245,0,87,0.1)] transition duration-300 group cursor-pointer relative overflow-hidden flex flex-col">
+                <!-- Article 3 -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden group cursor-pointer hover:shadow-xl hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-300 flex flex-col">
                     <div class="h-48 w-full overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div
-                            class="absolute top-4 left-4 bg-indigo-600/90 backdrop-blur-sm text-white font-mono text-xs px-2 py-1 rounded">
-                            // PEOPLE</div>
+                        <img src="Assets/book.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Article">
+                        <div class="absolute top-4 left-4 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">People</div>
                     </div>
                     <div class="p-8 flex-1 flex flex-col">
-                        <h3
-                            class="text-xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-600 transition-colors">
-                            Protecting Your Expanding Team
-                        </h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-1">Comprehensive benefits and
-                            liability coverage for growing workforces.</p>
-                        <div
-                            class="w-12 h-1 bg-indigo-500 dark:bg-indigo-600 group-hover:w-full transition-all duration-500 rounded-full">
-                        </div>
+                        <h3 class="text-xl font-serif font-bold text-slate-800 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            Protecting Your Expanding Team</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-1">Comprehensive benefits and liability coverage for growing workforces.</p>
+                        <div class="w-12 h-1 bg-indigo-500 group-hover:w-full transition-all duration-500 rounded-full"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 12. FUTURE VISION -->
-    <section class="py-32 relative parallax-section flex items-center justify-center"
-        style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop'); background-attachment: fixed; background-size: cover;">
-        <div class="absolute inset-0 bg-navy-900/80"></div>
-        <div class="relative z-10 text-center max-w-4xl px-6">
-            <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-6">Building What's Next.</h2>
-            <p class="text-xl text-plate-light text-gray-300">We don't predict the future. We engineer it.</p>
+    <!-- ============================== -->
+    <!-- 12. FUTURE VISION (PARALLAX) -->
+    <!-- ============================== -->
+    <section class="py-32 relative parallax-section flex items-center justify-center bg-cover bg-center bg-fixed"
+        style="background-image: url('Assets/bg7.jpeg');">
+        <div class="absolute inset-0 bg-slate-950/80"></div>
+        <div class="relative z-10 text-center max-w-4xl px-6 reveal">
+            <h2 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Building What's Next.</h2>
+            <p class="text-xl text-slate-300">We don't predict the future. We engineer it.</p>
         </div>
     </section>
 
+    <!-- ============================== -->
     <!-- 13. CTA -->
-    <section class="py-24 bg-black border-t border-white/5">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-display font-bold text-indigo-500 dark:text-slate-lightest mb-6">Let's Design Your
-                Advantage</h2>
-            <p class="text-slate-light mb-12">The gap between strategy and execution is where we live.</p>
+    <!-- ============================== -->
+    <section class="py-24 bg-indigo-600 dark:bg-indigo-950">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Let's Design Your Advantage</h2>
+            <p class="text-indigo-100 dark:text-indigo-300 mb-12 text-lg">The gap between strategy and execution is where we live.</p>
             <a href="contact.html"
-                class="inline-block px-12 py-5 bg-indigo-400 text-navy-900 font-bold uppercase tracking-widest text-lg rounded shadow-[0_0_30px_rgba(100,255,218,0.4)] hover:shadow-[0_0_50px_rgba(100,255,218,0.6)] hover:-translate-y-1 transition duration-300 animate-pulse-slow">
-                Initiate Engagement
+                class="btn-pill bg-white text-indigo-700 hover:bg-slate-100 font-bold shadow-xl shadow-indigo-800/30 text-lg px-12 py-5">
+                Initiate Engagement <i data-lucide="arrow-right" class="w-5 h-5 ml-2 inline-block"></i>
             </a>
         </div>
     </section>
 
-    <!-- API/Script for Lucide -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- NEW ANIMATED GRADIENT FOOTER -->
+    <!-- ANIMATED GRADIENT FOOTER -->
     <footer class="footer-gradient pt-24 pb-12 w-full">
         <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             <!-- Col 1: Brand -->
             <div>
-                <a href="#" class="flex items-center gap-2 mb-6 text-white group">
-                    <div
-                        class="w-10 h-10 rounded-xl bg-indigo-400/20 border border-indigo-400/50 flex items-center justify-center text-indigo-400 shadow-[0_0_15px_rgba(100,255,218,0.3)] transition-transform group-hover:rotate-12">
-                        <i class="fas fa-shield-alt text-lg"></i>
+                <a href="index.html" class="flex items-center gap-3 mb-6 text-white group">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 transition-transform group-hover:rotate-12">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
                     </div>
-                    <span class="font-bold text-xl">Claimora</span>
+                    <span class="font-serif font-bold text-xl">Claimora</span>
                 </a>
                 <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
                     Next-generation insurance & business intelligence. Protecting your future with confidence.
                 </p>
                 <div class="flex gap-4 mt-6">
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-400 hover:text-white transition-all transform hover:-translate-y-1">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all transform hover:-translate-y-1">
                         <i data-lucide="facebook" class="w-5 h-5"></i>
                     </a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-400 hover:text-white transition-all transform hover:-translate-y-1">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all transform hover:-translate-y-1">
                         <i data-lucide="twitter" class="w-5 h-5"></i>
                     </a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-400 hover:text-white transition-all transform hover:-translate-y-1">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all transform hover:-translate-y-1">
                         <i data-lucide="instagram" class="w-5 h-5"></i>
                     </a>
                 </div>
@@ -1920,10 +1186,10 @@
             <div>
                 <h4 class="text-white font-bold mb-6">Quick Links</h4>
                 <ul class="space-y-4 text-sm text-slate-400">
-                    <li><a href="index.html" class="footer-link hover:text-white">Home</a></li>
-                    <li><a href="about.html" class="footer-link hover:text-white">About Us</a></li>
-                    <li><a href="services.html" class="footer-link hover:text-white">Services</a></li>
-                    <li><a href="contact.html" class="footer-link hover:text-white">Contact</a></li>
+                    <li><a href="index.html" class="footer-link hover:text-white transition-colors">Home</a></li>
+                    <li><a href="about.html" class="footer-link hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="services.html" class="footer-link hover:text-white transition-colors">Services</a></li>
+                    <li><a href="contact.html" class="footer-link hover:text-white transition-colors">Contact</a></li>
                 </ul>
             </div>
 
@@ -1931,10 +1197,10 @@
             <div>
                 <h4 class="text-white font-bold mb-6">Account</h4>
                 <ul class="space-y-4 text-sm text-slate-400">
-                    <li><a href="user_dashboard.html" class="footer-link hover:text-white">User Dashboard</a></li>
-                    <li><a href="admin_dashboard.html" class="footer-link hover:text-white">Admin Dashboard</a></li>
-                    <li><a href="login.html" class="footer-link hover:text-white">Sign In</a></li>
-                    <li><a href="#" class="footer-link hover:text-white">Privacy Policy</a></li>
+                    <li><a href="user_dashboard.html" class="footer-link hover:text-white transition-colors">User Dashboard</a></li>
+                    <li><a href="admin_dashboard.html" class="footer-link hover:text-white transition-colors">Admin Dashboard</a></li>
+                    <li><a href="login.html" class="footer-link hover:text-white transition-colors">Sign In</a></li>
+                    <li><a href="#" class="footer-link hover:text-white transition-colors">Privacy Policy</a></li>
                 </ul>
             </div>
 
@@ -1945,91 +1211,24 @@
                 <div class="flex gap-2">
                     <input type="email" placeholder="Email address"
                         class="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-indigo-400 transition-colors">
-                    <button
-                        class="px-6 py-3 bg-indigo-400 text-white font-bold rounded-lg hover:bg-indigo-400/80 transition-colors">Go</button>
+                    <button class="px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors">Go</button>
                 </div>
             </div>
         </div>
 
-        <div
-            class="max-w-[1920px] mx-auto px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+        <div class="max-w-[1920px] mx-auto px-6 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
             <div>&copy; 2026 Claimora Insurance. All rights reserved.</div>
             <div class="flex gap-6 mt-4 md:mt-0">
                 <a href="#" class="hover:text-white transition-colors">Terms</a>
                 <a href="#" class="hover:text-white transition-colors">Sitemap</a>
-
             </div>
         </div>
     </footer>
 
-    <!-- MOBILE DRAWER & OVERLAY -->
-    <div id="mobile-overlay"
-        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300">
-    </div>
-    <div id="mobile-drawer"
-        class="fixed top-0 bottom-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[70] mobile-drawer mobile-drawer-closed shadow-2xl overflow-y-auto">
-        <div class="p-6">
-            <div class="flex items-center justify-between mb-8">
-                <span class="font-bold text-xl dark:text-white">Menu</span>
-                <button id="close-menu-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-full">
-                    <i data-lucide="x" class="w-6 h-6 dark:text-white"></i>
-                </button>
-            </div>
-
-            <nav class="space-y-6">
-                <!-- Mobile Links -->
-                <div class="space-y-3">
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Navigation</p>
-                    <a href="index.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">Home</a>
-                    <a href="index2.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">Home V2
-                        (Retro)</a>
-                    <a href="about.html" class="block text-lg font-medium text-slate-800 dark:text-slate-200">About</a>
-                    <a href="services.html"
-                        class="block text-lg font-medium text-slate-800 dark:text-slate-200">Services</a>
-                    <a href="contact.html"
-                        class="block text-lg font-medium text-slate-800 dark:text-slate-200">Contact</a>
-                </div>
-
-                <div class="space-y-3">
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Portals</p>
-                    <a href="user_dashboard.html"
-                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
-                        <div
-                            class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                            <i data-lucide="user" class="w-4 h-4"></i>
-                        </div>
-                        <span class="text-slate-700 dark:text-slate-300 font-medium">User Dashboard</span>
-                    </a>
-                    <a href="admin_dashboard.html"
-                        class="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
-                        <div
-                            class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                            <i data-lucide="shield" class="w-4 h-4"></i>
-                        </div>
-                        <span class="text-slate-700 dark:text-slate-300 font-medium">Admin Dashboard</span>
-                    </a>
-                </div>
-
-                <hr class="border-slate-100 dark:border-slate-800">
-
-                <!-- Mobile Actions -->
-                <div class="flex gap-4">
-                    <button id="mobile-theme-toggle"
-                        class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">
-                        <i data-lucide="moon" class="w-5 h-5"></i> <span>Theme</span>
-                    </button>
-                    <!-- Note: RTL toggle on mobile usually less common, but added for completeness if needed, or rely on desktop -->
-                </div>
-                <a href="login.html"
-                    class="block w-full py-4 text-center font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/30">
-                    Get Started
-                </a>
-            </nav>
-        </div>
-    </div>
-
     <script src="main.js"></script>
-
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>
