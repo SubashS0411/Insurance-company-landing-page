@@ -186,6 +186,7 @@
             opacity: 1;
         }
     </style>
+    <link rel="icon" type="image/svg+xml" href="Assets/favicon.svg">
 </head>
 
 <body
@@ -209,7 +210,7 @@
             </a>
 
             <!-- Desktop Nav -->
-            <div id="desktop-menu" class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse relative gap-x-8">
+            <div id="desktop-menu" class="hidden lg:flex items-center space-x-4 xl:space-x-8 rtl:space-x-reverse relative">
                 <!-- Home Dropdown -->
                 <div class="relative group">
                     <button class="nav-link flex items-center gap-1 py-4">
@@ -254,7 +255,7 @@
             </div>
 
             <!-- Action Buttons -->
-            <div class="hidden lg:flex items-center gap-4">
+            <div class="hidden lg:flex items-center gap-2 xl:gap-4">
                 <button id="rtl-toggle"
                     class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
                     title="Toggle RTL">
@@ -276,22 +277,8 @@
                 </a>
             </div>
 
-            <!-- Mobile Actions & Menu (Visible on Mobile Only) -->
+            <!-- Mobile Actions (Menu Only) -->
             <div class="lg:hidden flex items-center gap-3">
-                <!-- Mobile RTL Toggle -->
-                <button onclick="document.getElementById('rtl-toggle').click()"
-                    class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-                    <i data-lucide="globe" class="w-5 h-5"></i>
-                </button>
-
-                <!-- Mobile Theme Toggle -->
-                <button onclick="document.getElementById('theme-toggle').click()"
-                    class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
-                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                </button>
-
-                <!-- Mobile Menu Toggle -->
                 <button id="mobile-menu-btn"
                     class="p-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 text-white dark:text-white hover:bg-slate-800 dark:hover:bg-slate-700 transition-colors">
                     <i data-lucide="menu" class="w-5 h-5"></i>
@@ -352,6 +339,22 @@
                 </div>
 
                 <hr class="border-slate-100 dark:border-slate-800">
+
+                <!-- Theme & RTL Controls -->
+                <div class="flex items-center gap-3">
+                    <button id="rtl-toggle-mobile"
+                        class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        <span class="text-sm font-medium">RTL</span>
+                    </button>
+                    <button id="theme-toggle-mobile"
+                        class="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                        <span class="text-sm font-medium block dark:hidden">Dark</span>
+                        <span class="text-sm font-medium hidden dark:block">Light</span>
+                    </button>
+                </div>
 
                 <div class="mt-6 border-t border-slate-100 dark:border-slate-800 pt-6 space-y-3">
                     <a href="login.html"
@@ -691,10 +694,10 @@
                 <div class="w-full lg:w-2/3 relative min-h-[600px]"> <!-- Increased Height -->
                     <div id="personal" class="cmd-content animate-fade-in relative w-full">
                         <div
-                            class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-indigo-400/30 hover:border-indigo-400 shadow-[0_0_30px_rgba(100,255,218,0.1)] hover:shadow-[0_0_50px_rgba(100,255,218,0.2)] transition-all duration-300 group flex flex-col md:flex-row gap-8">
+                            class="glass-panel p-6 lg:p-12 rounded-2xl h-full border border-indigo-400/30 hover:border-indigo-400 shadow-[0_0_30px_rgba(100,255,218,0.1)] hover:shadow-[0_0_50px_rgba(100,255,218,0.2)] transition-all duration-300 group flex flex-col lg:flex-row gap-8">
 
                             <!-- Left Content -->
-                            <div class="md:w-1/2">
+                            <div class="lg:w-1/2">
                                 <h2
                                     class="text-3xl font-display font-bold mb-6 text-black dark:text-indigo-400 group-hover:scale-105 transition-transform origin-left">
                                     <!-- Force black in Light mode -->
@@ -728,7 +731,7 @@
                             </div>
 
                             <!-- Right Images (Replaced with Abstract Cards - Interactive) -->
-                            <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
+                            <div class="lg:w-1/2 grid grid-rows-3 gap-4 h-full">
                                 <!-- Card 1 -->
                                 <div
                                     class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
@@ -802,9 +805,9 @@
 
                     <div id="business" class="cmd-content hidden relative w-full">
                         <div
-                            class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-indigo-400/50 shadow-[0_0_30px_rgba(179,157,219,0.1)] hover:shadow-[0_0_50px_rgba(179,157,219,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
+                            class="glass-panel p-6 lg:p-12 rounded-2xl h-full border border-indigo-400/50 shadow-[0_0_30px_rgba(179,157,219,0.1)] hover:shadow-[0_0_50px_rgba(179,157,219,0.2)] transition-shadow duration-500 flex flex-col lg:flex-row gap-8">
                             <!-- Left Content -->
-                            <div class="md:w-1/2">
+                            <div class="lg:w-1/2">
                                 <h2
                                     class="text-3xl font-display font-bold mb-6 text-black dark:text-indigo-400 group-hover:scale-105 transition-transform origin-left">
                                     Business Insurance
@@ -839,7 +842,7 @@
                                 </ul>
                             </div>
                             <!-- Right Images (Replaced with Abstract Cards - Interactive) -->
-                            <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
+                            <div class="lg:w-1/2 grid grid-rows-3 gap-4 h-full">
                                 <!-- Business Card 1 -->
                                 <div
                                     class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
@@ -913,9 +916,9 @@
 
                     <div id="life" class="cmd-content hidden relative w-full">
                         <div
-                            class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-indigo-600/50 shadow-[0_0_30px_rgba(245,0,87,0.1)] hover:shadow-[0_0_50px_rgba(245,0,87,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
+                            class="glass-panel p-6 lg:p-12 rounded-2xl h-full border border-indigo-600/50 shadow-[0_0_30px_rgba(245,0,87,0.1)] hover:shadow-[0_0_50px_rgba(245,0,87,0.2)] transition-shadow duration-500 flex flex-col lg:flex-row gap-8">
                             <!-- Left Content -->
-                            <div class="md:w-1/2">
+                            <div class="lg:w-1/2">
                                 <h2
                                     class="text-3xl font-display font-bold mb-6 text-black dark:text-indigo-600 group-hover:scale-105 transition-transform origin-left">
                                     Life & Health</h2>
@@ -949,7 +952,7 @@
                                 </ul>
                             </div>
                             <!-- Right Images (Replaced with Abstract Cards - Interactive) -->
-                            <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
+                            <div class="lg:w-1/2 grid grid-rows-3 gap-4 h-full">
                                 <!-- Life Card 1 -->
                                 <div
                                     class="overflow-hidden rounded-xl relative h-32 cursor-pointer active:scale-105 transition-transform duration-200">
@@ -1023,9 +1026,9 @@
 
                     <div id="specialty" class="cmd-content hidden relative w-full">
                         <div
-                            class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-indigo-500/50 shadow-[0_0_30px_rgba(255,159,28,0.1)] hover:shadow-[0_0_50px_rgba(255,159,28,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
+                            class="glass-panel p-6 lg:p-12 rounded-2xl h-full border border-indigo-500/50 shadow-[0_0_30px_rgba(255,159,28,0.1)] hover:shadow-[0_0_50px_rgba(255,159,28,0.2)] transition-shadow duration-500 flex flex-col lg:flex-row gap-8">
                             <!-- Left Content -->
-                            <div class="md:w-1/2">
+                            <div class="lg:w-1/2">
                                 <h2
                                     class="text-3xl font-display font-bold mb-6 text-black dark:text-indigo-500 group-hover:scale-105 transition-transform origin-left">
                                     Specialty Lines</h2>
@@ -1059,7 +1062,7 @@
                                 </ul>
                             </div>
                             <!-- Right Images -->
-                            <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
+                            <div class="lg:w-1/2 grid grid-rows-3 gap-4 h-full">
                                 <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
                                     <img src="https://images.unsplash.com/photo-1542361345-42bb27bb55ce?q=80&w=800&auto=format&fit=crop"
                                         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
@@ -1079,9 +1082,9 @@
 
                     <div id="cyber" class="cmd-content hidden relative w-full">
                         <div
-                            class="glass-panel p-8 md:p-12 rounded-2xl h-full border border-neon-green/50 shadow-[0_0_30px_rgba(0,255,157,0.1)] hover:shadow-[0_0_50px_rgba(0,255,157,0.2)] transition-shadow duration-500 flex flex-col md:flex-row gap-8">
+                            class="glass-panel p-6 lg:p-12 rounded-2xl h-full border border-neon-green/50 shadow-[0_0_30px_rgba(0,255,157,0.1)] hover:shadow-[0_0_50px_rgba(0,255,157,0.2)] transition-shadow duration-500 flex flex-col lg:flex-row gap-8">
                             <!-- Left Content -->
-                            <div class="md:w-1/2">
+                            <div class="lg:w-1/2">
                                 <h2
                                     class="text-3xl font-display font-bold mb-6 text-black dark:text-neon-green group-hover:scale-105 transition-transform origin-left">
                                     Cyber Protection</h2>
@@ -1115,7 +1118,7 @@
                                 </ul>
                             </div>
                             <!-- Right Images -->
-                            <div class="md:w-1/2 grid grid-rows-3 gap-4 h-full">
+                            <div class="lg:w-1/2 grid grid-rows-3 gap-4 h-full">
                                 <div class="overflow-hidden rounded-xl border border-white/20 shadow-lg relative h-32">
                                     <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop"
                                         class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
@@ -1349,7 +1352,7 @@
     <section class="py-24 bg-transparent transition-colors">
         <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
             <div class="w-full lg:w-1/2">
-                <h2 class="text-4xl font-display font-bold mb-6 text-[#004D40] dark:text-white">Risk <span
+                <h2 class="text-2xl md:text-4xl font-display font-bold mb-6 text-[#004D40] dark:text-white">Risk <span
                         class="text-[#004D40] dark:text-indigo-600">Analytics
                         Engine</span></h2>
                 <h3 class="text-xl font-mono text-indigo-600 dark:text-indigo-600 mb-8">Where data meets
@@ -1373,25 +1376,25 @@
             <div class="w-full lg:w-1/2 relative h-[400px]">
                 <!-- HTML/CSS Animated Bar Chart (Histogram) -->
                 <div
-                    class="absolute inset-0 bg-navy-900 rounded-2xl overflow-hidden glass-panel border border-indigo-600/20 p-8 flex items-end justify-between gap-4">
+                    class="absolute inset-0 bg-navy-900 rounded-2xl overflow-hidden glass-panel border border-indigo-600/20 p-4 md:p-8 flex items-end justify-between gap-2 md:gap-4">
 
                     <!-- Bars -->
-                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                    <div class="w-6 sm:w-8 lg:w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
                         style="--h: 40%; animation-delay: 0s;"></div>
-                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                    <div class="w-6 sm:w-8 lg:w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
                         style="--h: 70%; animation-delay: 0.2s;"></div>
-                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                    <div class="w-6 sm:w-8 lg:w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
                         style="--h: 55%; animation-delay: 0.4s;"></div>
-                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                    <div class="w-6 sm:w-8 lg:w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
                         style="--h: 90%; animation-delay: 0.6s;"></div>
-                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                    <div class="w-6 sm:w-8 lg:w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
                         style="--h: 65%; animation-delay: 0.8s;"></div>
-                    <div class="w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
+                    <div class="w-6 sm:w-8 lg:w-12 bg-gradient-to-t from-indigo-900 to-indigo-500 rounded-t-md animate-chart-bar"
                         style="--h: 80%; animation-delay: 1s;"></div>
 
                     <!-- Floating Data Points -->
                     <div
-                        class="absolute top-10 left-10 bg-white/10 p-2 rounded text-xs font-mono text-white backdrop-blur-md border border-white/10">
+                        class="absolute top-4 left-4 md:top-10 md:left-10 bg-white/10 p-2 rounded text-xs font-mono text-white backdrop-blur-md border border-white/10">
                         <i class="fas fa-circle text-green-400 text-[8px] me-2"></i> <span
                             class="text-black dark:text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">Live
                             Analysis</span>
@@ -1866,7 +1869,7 @@
 
     <!-- NEW ANIMATED GRADIENT FOOTER -->
     <footer class="footer-gradient pt-24 pb-12 w-full">
-        <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div class="max-w-[1920px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             <!-- Col 1: Brand -->
             <div>
                 <a href="#" class="flex items-center gap-2 mb-6 text-white group">
