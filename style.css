@@ -3,9 +3,9 @@
 
 :root {
     /* Core Defaults */
-    --primary-color: #1F3A5F;
-    --primary-hover: #162a45;
-    --secondary-color: #1E7F6D;
+    --primary-color: #4f46e5; /* Indigo 600 */
+    --primary-hover: #4338ca; /* Indigo 700 */
+    --secondary-color: #3730a3; /* Indigo 800 */
 
     /* Light Mode Palette (Warm/Soft) */
     /* Gradient: White -> Soft Lavender -> Warm Peach */
@@ -23,16 +23,16 @@
     --dark-text-primary: #FFFFFF;
     --dark-text-secondary: #EAEAFF;
 
-    /* Accents */
-    --accent-purple: #A855F7;
-    --accent-red: #EF4444;
-    --accent-orange: #F97316;
-    --accent-cyan: #22D3EE;
+    /* Accents (Unified to Indigo for consistency, but kept variables for legacy compatibility if used elsewhere) */
+    --accent-purple: #4f46e5; /* Indigo 600 */
+    --accent-red: #4f46e5;
+    --accent-orange: #4f46e5;
+    --accent-cyan: #4f46e5;
 
     /* Glow System */
-    --glow-purple: rgba(168, 85, 247, 0.6);
-    --glow-red: rgba(239, 68, 68, 0.6);
-    --glow-cyan: rgba(34, 211, 238, 0.6);
+    --glow-purple: rgba(79, 70, 229, 0.6); /* Indigo glow */
+    --glow-red: rgba(79, 70, 229, 0.6);
+    --glow-cyan: rgba(79, 70, 229, 0.6);
 }
 
 body {
@@ -197,10 +197,10 @@ body:not(.dark) {
 
 .dark .glass-panel {
     background: linear-gradient(135deg, #000000, #0a0a0a);
-    border: 1px solid rgba(168, 85, 247, 0.5);
-    /* Purple border in dark mode */
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
-    /* Purple glow */
+    border: 1px solid rgba(79, 70, 229, 0.5);
+    /* Indigo border in dark mode */
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.15);
+    /* Indigo glow */
 }
 
 /* New Glow Logic */
@@ -222,9 +222,9 @@ body:not(.dark) .glow-card:hover {
 }
 
 .dark .glow-card:hover {
-    box-shadow: 0 0 25px rgba(168, 85, 247, 0.4), 0 0 0 1px rgba(168, 85, 247, 0.5);
-    /* Strong Purple Neon Glow */
-    border-color: rgba(168, 85, 247, 0.8);
+    box-shadow: 0 0 25px rgba(79, 70, 229, 0.4), 0 0 0 1px rgba(79, 70, 229, 0.5);
+    /* Strong Indigo Neon Glow */
+    border-color: rgba(79, 70, 229, 0.8);
 }
 
 /* Animations */
@@ -324,8 +324,8 @@ body:not(.dark) .glow-card:hover {
 
 .ng-btn-primary {
     position: relative;
-    background: #2563EB;
-    /* Blue 600 */
+    background: #4f46e5;
+    /* Indigo 600 */
     color: #FFFFFF;
     padding: 0.75rem 2rem;
     border-radius: 9999px;
@@ -358,9 +358,9 @@ body:not(.dark) .glow-card:hover {
 
 .ng-btn-primary:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 20px 30px -5px rgba(37, 99, 235, 0.6);
-    background: #1D4ED8;
-    /* Blue 700 */
+    box-shadow: 0 20px 30px -5px rgba(79, 70, 229, 0.6);
+    background: #4338ca;
+    /* Indigo 700 */
 }
 
 /* Magnetic & Ripple Effects */
@@ -427,8 +427,8 @@ body:not(.dark) .glow-card:hover {
 
 .ng-btn-primary:hover {
     transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.6);
-    background: #1D4ED8;
+    box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.6);
+    background: #4338ca;
     filter: brightness(1.1);
 }
 
